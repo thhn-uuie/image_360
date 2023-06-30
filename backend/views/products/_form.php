@@ -20,14 +20,11 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'status')->dropDownList(
         [
-            'active' => 'Active', 'inactive' => 'Inactive'
-        ],
+            '0' => 'Inactive',
+            '1' => 'Active',
         
-        [
-            'prompt'=>'Select One'
         ]
-        
-        ) ?>
+    ) ?>
 
     <?= $form->field($model, 'id_category')->dropDownList(
         ArrayHelper::map(Categories::find()->all(),'id_category', 'name_category'),

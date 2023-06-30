@@ -37,31 +37,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'image',
             'files',
             'qr_code',
-            [
-                'attribute' => 'image',
-                'format' => 'raw',
-                'value' => function($products) {
-                    if(!is_null($products->image)) {
-                        return Html::img(Yii::$app->homeUrl . '../../uploads/' . $products->image,
-                        ['style'=>'width:50px;height:auto;']
-                        );
-                    } else {
-                        return NULL;
-                    }
-                }
-            ],
+            // [
+            //     'attribute' => 'image',
+            //     'format' => 'raw',
+            //     'value' => function($data) {
+            //         if(!is_null($data->image)) {
+            //             return Html::img($data->image,
+            //             ['width' => '150']
+            //             );
+            //         }
+            //     }
+            // ],
 
-            [
-                'attribute' => 'status',
-                'content' => function($model) {
-                   // var_dump($model->status);die;
-                    if ($model->status == '1') {
-                        return '<span class="label label-danger">Inactive</span>';
-                    } else {
-                        return '<span class="label label-success">Active</span>';
-                    }
-                }
-            ],
+            // [
+            //     'attribute' => 'status',
+            //     'content' => function($model) {
+            //        // var_dump($model->status);die;
+            //         if ($model->status == '1') {
+            //             return '<span class="label label-danger">Inactive</span>';
+            //         } else {
+            //             return '<span class="label label-success">Active</span>';
+            //         }
+            //     }
+            // ],
             [
 
                 'class' => ActionColumn::className(),

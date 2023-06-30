@@ -42,11 +42,9 @@ class Products extends \yii\db\ActiveRecord
             [['files'], 'unique'],
             ['image','string','max' => 100],
            // ['file','file', 'extension' => 'jpg,png'],
-           // [['file'], 'file', 'skipOnEmpty' => true, 'extension' => 'png, jpg, jpeg'], //tự thêm
             [['qr_code'], 'unique'],
             [['id_category'], 'unique'],
-            [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(),
-             'targetAttribute' => ['id_category' => 'id_category']],
+            [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }
 

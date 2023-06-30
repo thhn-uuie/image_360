@@ -9,5 +9,16 @@ return [
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['admin', 'user'],
+        ],
+    //     'view' => [
+    //         'theme' => [
+    //             'pathMap' => [
+    //                '@app/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+    //             ],
+    //         ],
+    //    ],
     ],
 ];
