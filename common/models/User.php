@@ -2,31 +2,54 @@
 
 namespace common\models;
 
+use PhpParser\Node\Stmt\Expression;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
+
+// /**
+//  * User model
+//  *
+//  * @property integer $id
+//  * @property string $username
+//  * @property string $password_hash
+//  * @property string $password_reset_token
+//  * @property string $verification_token
+//  * @property string $email
+//  * @property string $auth_key
+//  * @property integer $status
+//  * @property integer $created_at
+//  * @property integer $updated_at
+//  * @property string $password write-only password
+//  */
+
+
+
 /**
- * User model
+ * This is the model class for table "user".
  *
- * @property integer $id
+ * @property int $id
  * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $verification_token
- * @property string $email
  * @property string $auth_key
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $password write-only password
+ * @property string $password_hash
+ * @property string|null $password_reset_token
+ * @property string $email
+ * @property int $status
+ * @property int $created_at
+ * @property int $updated_at
+ * @property string|null $verification_token
+ *
+ * @property Profile $profile
+ * @property Rate[] $rates
  */
+
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_INACTIVE = 9;
+    //const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
 
@@ -44,7 +67,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::class,
+            //TimestampBehavior::class,
         ];
     }
 
@@ -54,8 +77,19 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            // ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            // ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            // ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            // ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+           
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['status'], 'integer'],
+            [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'string', 'max' => 255],
+            [['auth_key'], 'string', 'max' => 32],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+            [['password_reset_token'], 'unique'],
+            
         ];
     }
 
@@ -113,7 +147,8 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByVerificationToken($token) {
         return static::findOne([
             'verification_token' => $token,
-            'status' => self::STATUS_INACTIVE
+            // 'status' => self::STATUS_INACTIVE
+            'status' => self::STATUS_ACTIVE
         ]);
     }
 
@@ -210,4 +245,38 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+ 
+    /**
+     * Gets query for [[Profile]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::class, ['id_user' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Rates]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRates()
+    {
+        return $this->hasMany(Rate::class, ['id_user' => 'id']);
+    }
+
+    public function beforeSave($insert) {
+        $this -> setPassword($this->password_hash);
+        if ($insert) {
+            $this->generateAuthKey();
+            $this->generatePasswordResetToken();
+            $this->created_at = Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
+        } else {
+            $this->updated_at = Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s');
+        }
+        return parent::beforeSave(($insert));
+    }
+
 }
