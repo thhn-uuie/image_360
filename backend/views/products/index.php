@@ -1,6 +1,6 @@
 <?php
 
-use common\models\Products;
+use backend\models\Products;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -34,34 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
             'status',
             'id_category',
-            'image',
-            'files',
-            'qr_code',
-            // [
-            //     'attribute' => 'image',
-            //     'format' => 'raw',
-            //     'value' => function($data) {
-            //         if(!is_null($data->image)) {
-            //             return Html::img($data->image,
-            //             ['width' => '150']
-            //             );
-            //         }
-            //     }
-            // ],
-
-            // [
-            //     'attribute' => 'status',
-            //     'content' => function($model) {
-            //        // var_dump($model->status);die;
-            //         if ($model->status == '1') {
-            //             return '<span class="label label-danger">Inactive</span>';
-            //         } else {
-            //             return '<span class="label label-success">Active</span>';
-            //         }
-            //     }
-            // ],
+            //'image',
+            //'files',
+            //'qr_code',
+            //'created_at',
+            //'created_by',
+            //'updated_at',
+            //'updated_by',
             [
-
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Products $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id_products' => $model->id_products]);

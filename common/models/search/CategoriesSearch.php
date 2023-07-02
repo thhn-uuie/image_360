@@ -4,10 +4,10 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Categories;
+use backend\models\Categories;
 
 /**
- * CategoriesSearch represents the model behind the search form of `common\models\Categories`.
+ * CategoriesSearch represents the model behind the search form of `backend\models\Categories`.
  */
 class CategoriesSearch extends Categories
 {
@@ -18,7 +18,7 @@ class CategoriesSearch extends Categories
     {
         return [
             [['id_category'], 'integer'],
-            [['name_category', 'description'], 'safe'],
+            [['name_category', 'description', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'safe'],
         ];
     }
 
@@ -59,10 +59,14 @@ class CategoriesSearch extends Categories
         // grid filtering conditions
         $query->andFilterWhere([
             'id_category' => $this->id_category,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name_category', $this->name_category])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'created_by', $this->created_by])
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
 
         return $dataProvider;
     }
