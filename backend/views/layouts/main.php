@@ -12,12 +12,13 @@ use yii\bootstrap5\NavBar;
 
 AppAsset::register($this);
 
-$formLogout = Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
+$formLogout = Html::beginForm(['/site/logout'], 'post')
 . Html::submitButton(
     'Logout (' . Yii::$app->user->identity->username . ')',
-    ['class' => 'btn btn-link logout text-decoration-none']
+    ['class' => 'dropdown-item']
 )
 . Html::endForm();
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
