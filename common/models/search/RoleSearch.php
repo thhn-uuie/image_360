@@ -4,12 +4,12 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\base\Users;
+use common\models\base\Role;
 
 /**
- * UsersSearch represents the model behind the search form of `common\models\base\Users`.
+ * RoleSearch represents the model behind the search form of `common\models\base\Role`.
  */
-class UsersSearch extends Users
+class RoleSearch extends Role
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id_user', 'id_role'], 'integer'],
-            [['username', 'password', 'email', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'safe'],
+            [['id_role'], 'integer'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class UsersSearch extends Users
      */
     public function search($params)
     {
-        $query = Users::find();
+        $query = Role::find();
 
         // add conditions that should always apply here
 
@@ -58,17 +58,11 @@ class UsersSearch extends Users
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id_user' => $this->id_user,
             'id_role' => $this->id_role,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'created_by', $this->created_by])
-            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

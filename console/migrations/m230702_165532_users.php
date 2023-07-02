@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m230629_063613_users
+ * Class m230702_165532_users
  */
-class m230629_063613_users extends Migration
+class m230702_165532_users extends Migration
 {
     /**
      * {@inheritdoc}
@@ -17,6 +17,8 @@ class m230629_063613_users extends Migration
             // https://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
+
+       
 
         $this->createTable('{{%users}}', [
             'id_user' => $this->primaryKey(),

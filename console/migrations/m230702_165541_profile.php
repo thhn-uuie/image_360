@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m230630_144059_profile
+ * Class m230702_165541_profile
  */
-class m230630_144059_profile extends Migration
+class m230702_165541_profile extends Migration
 {
     /**
      * {@inheritdoc}
@@ -24,12 +24,12 @@ class m230630_144059_profile extends Migration
             'birthday' => $this->string()->notNull(),
             'gender' => $this->string()->notNull(),
             'enmail' => $this->string()->notNull()->unique(),
-            'phone' => $this->integer()->unique()->unique(),
+            'phone' => $this->integer()->unique(),
             'address' => $this->string()->notNull(), 
-            'created_at' => $this->timestamp()->notNull(),
-            'created_by' => $this->string()->notNull(),
-            'updated_at' => $this->timestamp()->notNull(),
-            'updated_by' => $this->string()->notNull(),
+            'created_at' => $this->timestamp(),
+            'created_by' => $this->string(),
+            'updated_at' => $this->timestamp(),
+            'updated_by' => $this->string(),
 
         ], $tableOptions);
 

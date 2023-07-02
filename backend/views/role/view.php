@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\base\Users $model */
+/** @var common\models\base\Role $model */
 
-$this->title = $model->id_user;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Roles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="users-view">
+<div class="role-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id_user' => $model->id_user], [
+        <?= Html::a('Update', ['update', 'id_role' => $model->id_role], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id_role' => $model->id_role], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -29,15 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id_user',
-            'username',
-            'password',
-            'email:email',
             'id_role',
-            'created_at',
-            'created_by',
-            'updated_at',
-            'updated_by',
+            'name',
+            'description',
         ],
     ]) ?>
 

@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use common\models\Role;
+use common\models\base\Role;
 use common\models\search\RoleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

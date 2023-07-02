@@ -14,10 +14,10 @@ use Yii;
  * @property string $enmail
  * @property int|null $phone
  * @property string $address
- * @property string $created_at
- * @property string $created_by
- * @property string $updated_at
- * @property string $updated_by
+ * @property string|null $created_at
+ * @property string|null $created_by
+ * @property string|null $updated_at
+ * @property string|null $updated_by
  *
  * @property Users $user
  */
@@ -37,7 +37,7 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'birthday', 'gender', 'enmail', 'address', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'required'],
+            [['name', 'birthday', 'gender', 'enmail', 'address'], 'required'],
             [['phone'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'birthday', 'gender', 'enmail', 'address', 'created_by', 'updated_by'], 'string', 'max' => 255],

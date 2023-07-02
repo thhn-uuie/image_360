@@ -3,6 +3,11 @@
 namespace common\models\base;
 
 use Yii;
+use yii\web\IdentityInterface;
+use PhpParser\Node\Stmt\Expression;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "users".
@@ -11,7 +16,7 @@ use Yii;
  * @property string $username
  * @property string $password
  * @property string $email
- * @property string $role
+ * @property int $id_role
  * @property string|null $created_at
  * @property string|null $created_by
  * @property string|null $updated_at
@@ -19,9 +24,12 @@ use Yii;
  *
  * @property Profile $profile
  * @property Rate[] $rates
+ * @property Role $role
  */
-class Users extends \yii\db\ActiveRecord
+class Users extends ActiveRecord implements IdentityInterface
 {
+    public $auth_key;
+    public $password_reset_token;
     /**
      * {@inheritdoc}
      */
@@ -36,11 +44,13 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'email', 'role'], 'required'],
+            [['username', 'password', 'email', 'id_role'], 'required'],
+            [['id_role'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['username', 'password', 'email', 'role', 'created_by', 'updated_by'], 'string', 'max' => 255],
+            [['username', 'password', 'email', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['username'], 'unique'],
             [['email'], 'unique'],
+            [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['id_role' => 'id_role']],
         ];
     }
 
@@ -50,15 +60,15 @@ class Users extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_user' => 'Id tài khoản',
-            'username' => 'Tên tài khoản',
-            'password' => 'Mật khẩu',
+            'id_user' => 'Id User',
+            'username' => 'Username',
+            'password' => 'Password',
             'email' => 'Email',
-            'role' => 'Chức năng',
-            'created_at' => 'Thời gian tạo',
-            'created_by' => 'Người tạo',
-            'updated_at' => 'Thời gian cập nhật',
-            'updated_by' => 'Người cập',
+            'id_role' => 'Id Role',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
         ];
     }
 
@@ -82,17 +92,19 @@ class Users extends \yii\db\ActiveRecord
         return $this->hasMany(Rate::class, ['id_user' => 'id_user']);
     }
 
-
-    public $auth_key;
-    public $password_reset_token;
-
-    public $role;
-
+    /**
+     * Gets query for [[Role]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRole()
+    {
+        return $this->hasOne(Role::class, ['id_role' => 'id_role']);
+    }
 
     public static function findIdentity($id)
     {
         return static::findOne(['id_user' => $id]);
-        
     }
 
     /**
@@ -120,8 +132,7 @@ class Users extends \yii\db\ActiveRecord
     public function validateAuthKey($authKey)
     {
         return $this->getAuthKey() === $authKey;
-    }
-
+     }
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username]);
@@ -133,10 +144,7 @@ class Users extends \yii\db\ActiveRecord
         $this->password = Yii::$app->security->generatePasswordHash($password);
     }
 
-    public function validatePassword($password)
-    {
-        return Yii::$app->security->validatePassword($password, $this->password);
-    }
+
     public function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
@@ -147,6 +155,17 @@ class Users extends \yii\db\ActiveRecord
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
+    /**
+     * Generates new token for email verification
+     */
+    // public function generateEmailVerificationToken()
+    // {
+    //     $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
+    // }
+
+    /**
+     * Removes password reset token
+     */
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
@@ -155,10 +174,7 @@ class Users extends \yii\db\ActiveRecord
         if ($insert) {
             $this -> setPassword($this->password);
             $this->generateAuthKey();
-            
             $this->generatePasswordResetToken();
-            $this->created_at = time();
-            $this->created_by = $this->username;
         } else {
             $old_user = Users::findOne($this->id_user);
             if($this->password != $old_user->password) {
@@ -170,15 +186,10 @@ class Users extends \yii\db\ActiveRecord
         return parent::beforeSave(($insert));
     }
 
-    
-    
-    public function getRole() {
-        
-        if($this->role == 'admin') {
-            $this->role = 1;
-        } elseif($this->role == 'user') {
-            $this->role = 0;
-        }
-        return $this->role;
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
+
 }
+

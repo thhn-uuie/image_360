@@ -33,27 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'password',
             'email:email',
-            [
-                'attribute' => 'id_role',
-                'content' => function($model) {
-                        if ($model -> id_role == 1) {
-                            return 'Admin';
-                        } else {
-                            return 'User';
-                        }
-                },
-                'headerOptions' => [
-                    'style' => 'width:150px;text-align:center'
-                ],
-                'contentOptions' => [
-                    'style' => 'width:150px;text-align:center'
-                ],
-
-            ],
-            'created_at',
-            'created_by',
-            'updated_at',
-            'updated_by',
+            'id_role',
+            //'created_at',
+            //'created_by',
+            //'updated_at',
+            //'updated_by',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Users $model, $key, $index, $column) {
