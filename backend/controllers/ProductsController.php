@@ -2,13 +2,11 @@
 
 namespace backend\controllers;
 
-use common\models\Products;
+use backend\models\Products;
 use common\models\search\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
-use Yii;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
@@ -71,31 +69,17 @@ class ProductsController extends Controller
     {
         $model = new Products();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->file = UploadedFile::getInstance($model, 'file');
-            if ($model->file) {
-                // var_dump($model->file);die;
-                $model->save();
-                $model->file->saveAs('../../uploads/' . $model->file->name);
-                $model->image = $model->file->name;
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id_products' => $model->id_products]);
             }
-
-            if ($model -> save(false)) {
-                Yii::$app->session->addFlash('success', 'Thêm mới thành công');
-                return $this->redirect((['view', 'id_products' => $model->id_products]));
-            } else {
-                Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
-            }
-        
-        } else{
-
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        } else {
+            $model->loadDefaultValues();
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -117,27 +101,6 @@ class ProductsController extends Controller
             'model' => $model,
         ]);
     }
-
-    //tự thêm hàm actionUpload:
-    /*public function actionUpload()
-    {
-        $model = new UploadForm();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                $models->updated_at=time();
-                if($model->save()) {
-                    Yii::$app->session->addFlash('success','Update thành công');
-                    return $this->redirect(['view', 'id_products' => $model->id_products]);
-                } else {
-                    Yii::$app->session->addFlash('danger','Update không thành công');
-                    return $this->render('create', ['model' => $model,]);
-                }
-            }
-        } 
-
-        return $this->render('upload', ['model' => $model]);
-    }*/
 
     /**
      * Deletes an existing Products model.

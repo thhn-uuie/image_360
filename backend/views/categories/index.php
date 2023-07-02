@@ -1,6 +1,6 @@
 <?php
 
-use common\models\Categories;
+use backend\models\Categories;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -27,20 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn',
-                'header' => "STT",
-                'headerOptions' => [
-                    'style' => 'width:15px;text-align:center'
-                ],
-                'contentOptions' => [
-                    'style' => 'width:15px;text-align:center'
-                ]
-            ],
+            ['class' => 'yii\grid\SerialColumn'],
 
             'id_category',
             'name_category',
             'description',
-            
+            'created_at',
+            'created_by',
+            //'updated_at',
+            //'updated_by',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Categories $model, $key, $index, $column) {

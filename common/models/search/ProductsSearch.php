@@ -4,10 +4,10 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Products;
+use backend\models\Products;
 
 /**
- * ProductsSearch represents the model behind the search form of `common\models\Products`.
+ * ProductsSearch represents the model behind the search form of `backend\models\Products`.
  */
 class ProductsSearch extends Products
 {
@@ -18,7 +18,7 @@ class ProductsSearch extends Products
     {
         return [
             [['id_products', 'id_category'], 'integer'],
-            [['name_products', 'description', 'status', 'image', 'files', 'qr_code'], 'safe'],
+            [['name_products', 'description', 'status', 'image', 'files', 'qr_code', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'safe'],
         ];
     }
 
@@ -60,6 +60,8 @@ class ProductsSearch extends Products
         $query->andFilterWhere([
             'id_products' => $this->id_products,
             'id_category' => $this->id_category,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name_products', $this->name_products])
@@ -67,7 +69,9 @@ class ProductsSearch extends Products
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'files', $this->files])
-            ->andFilterWhere(['like', 'qr_code', $this->qr_code]);
+            ->andFilterWhere(['like', 'qr_code', $this->qr_code])
+            ->andFilterWhere(['like', 'created_by', $this->created_by])
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
 
         return $dataProvider;
     }
