@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var common\models\Profile $model */
+/** @var common\models\base\Profile $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
@@ -18,13 +18,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'birthday')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'sex')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'gender')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'enmail')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'phone')->textInput() ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'created_at')->textInput() ?>
+
+    <?= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'updated_at')->textInput() ?>
+
+    <?= $form->field($model, 'updated_by')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

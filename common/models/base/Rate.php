@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\base;
 
 use Yii;
 
@@ -15,7 +15,7 @@ use Yii;
  * @property string $time
  *
  * @property Products $products
- * @property User $user
+ * @property Users $user
  */
 class Rate extends \yii\db\ActiveRecord
 {
@@ -38,7 +38,7 @@ class Rate extends \yii\db\ActiveRecord
             [['comment', 'rate', 'time'], 'string', 'max' => 255],
             [['id_products'], 'unique'],
             [['id_products'], 'exist', 'skipOnError' => true, 'targetClass' => Products::class, 'targetAttribute' => ['id_products' => 'id_products']],
-            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id_user' => 'id_user']],
         ];
     }
 
@@ -74,6 +74,6 @@ class Rate extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::class, ['id' => 'id_user']);
+        return $this->hasOne(Users::class, ['id_user' => 'id_user']);
     }
 }

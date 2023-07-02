@@ -7,8 +7,6 @@ use common\models\search\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use Yii;
 
 /**
  * UsersController implements the CRUD actions for Users model.
@@ -20,48 +18,18 @@ class UsersController extends Controller
      */
     public function behaviors()
     {
-        return [
-
-            'access' => [
-                'class' => AccessControl::class,
-
-                'rules' => [
-                    [
-                      'actions' => ['login', 'error'],
-                      'allow' => true,
-                    ],
-                    [
-                        'allow' => true,
-                        'roles' =>['@'],
-                        'matchCallback' => function($rule, $action) {
-                            if (Yii::$app->user->can('admin')) {
-                                return true;
-                            } 
-                        }
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-
+            ]
+        );
     }
-
-    // public function beforeAction($action) {
-    //     $user = Yii::$app->user;
-    //     $auth = Yii::$app->authManager;
-        
-    //     $admin = $auth->getRole('admin');
-    //     if ($user->identity->id_role == 1) {
-    //         $auth->assign($admin, $user->id_role);
-    //     } else {
-    //         //$auth->assign($userRole, $user->id);
-    //     }
-    // }
 
     /**
      * Lists all Users models.

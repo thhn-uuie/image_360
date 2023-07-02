@@ -4,10 +4,10 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Profile;
+use common\models\base\Profile;
 
 /**
- * ProfileSearch represents the model behind the search form of `common\models\Profile`.
+ * ProfileSearch represents the model behind the search form of `common\models\base\Profile`.
  */
 class ProfileSearch extends Profile
 {
@@ -18,7 +18,7 @@ class ProfileSearch extends Profile
     {
         return [
             [['id_user', 'phone'], 'integer'],
-            [['name', 'birthday', 'sex', 'enmail', 'address'], 'safe'],
+            [['name', 'birthday', 'gender', 'enmail', 'address', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'safe'],
         ];
     }
 
@@ -60,13 +60,17 @@ class ProfileSearch extends Profile
         $query->andFilterWhere([
             'id_user' => $this->id_user,
             'phone' => $this->phone,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'birthday', $this->birthday])
-            ->andFilterWhere(['like', 'sex', $this->sex])
+            ->andFilterWhere(['like', 'gender', $this->gender])
             ->andFilterWhere(['like', 'enmail', $this->enmail])
-            ->andFilterWhere(['like', 'address', $this->address]);
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'created_by', $this->created_by])
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
 
         return $dataProvider;
     }

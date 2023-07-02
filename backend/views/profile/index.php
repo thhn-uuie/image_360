@@ -1,6 +1,6 @@
 <?php
 
-use common\models\Profile;
+use common\models\base\Profile;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -32,10 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_user',
             'name',
             'birthday',
-            'sex',
+            'gender',
             'enmail',
             //'phone',
             //'address',
+            //'created_at',
+            //'created_by',
+            //'updated_at',
+            //'updated_by',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Profile $model, $key, $index, $column) {

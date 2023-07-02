@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m230629_063621_profile
+ * Class m230630_144059_profile
  */
-class m230629_063621_profile extends Migration
+class m230630_144059_profile extends Migration
 {
     /**
      * {@inheritdoc}
@@ -22,10 +22,15 @@ class m230629_063621_profile extends Migration
             'id_user' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
             'birthday' => $this->string()->notNull(),
-            'sex' => $this->string()->notNull(),
+            'gender' => $this->string()->notNull(),
             'enmail' => $this->string()->notNull()->unique(),
             'phone' => $this->integer()->unique()->unique(),
-            'address' => $this->string()->notNull(),       
+            'address' => $this->string()->notNull(), 
+            'created_at' => $this->timestamp()->notNull(),
+            'created_by' => $this->string()->notNull(),
+            'updated_at' => $this->timestamp()->notNull(),
+            'updated_by' => $this->string()->notNull(),
+
         ], $tableOptions);
 
         $this->addForeignKey(

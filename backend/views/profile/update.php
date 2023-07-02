@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var common\models\Profile $model */
+/** @var common\models\base\Profile $model */
 
 $this->title = 'Update Profile: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];

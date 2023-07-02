@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\base;
 
 use Yii;
 
@@ -12,7 +12,7 @@ use Yii;
  * @property string $count
  * @property string $date
  *
- * @property Products $products
+ * @property \common\models\Products $products
  */
 class View extends \yii\db\ActiveRecord
 {

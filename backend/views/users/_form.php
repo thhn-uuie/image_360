@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Role;
-use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
 /** @var common\models\base\Users $model */
@@ -20,12 +18,21 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_role')->dropDownList(
-        ArrayHelper::map(Role::find()->all(),'id_role', 'name'),
+    <?= $form->field($model, 'role')->dropDownList(
         [
-            'prompt'=>'select role'
+            'admin' => 'Admin',
+            'user' => 'User',
+
         ]
     ) ?>
+
+    <?= $form->field($model, 'created_at')->textInput() ?>
+
+    <?= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'updated_at')->textInput() ?>
+
+    <?= $form->field($model, 'updated_by')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

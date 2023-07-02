@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace common\models\base;
 
 use Yii;
 
@@ -10,12 +10,16 @@ use Yii;
  * @property int $id_user
  * @property string $name
  * @property string $birthday
- * @property string $sex
+ * @property string $gender
  * @property string $enmail
  * @property int|null $phone
  * @property string $address
+ * @property string $created_at
+ * @property string $created_by
+ * @property string $updated_at
+ * @property string $updated_by
  *
- * @property User $user
+ * @property Users $user
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -33,12 +37,13 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'birthday', 'sex', 'enmail', 'address'], 'required'],
+            [['name', 'birthday', 'gender', 'enmail', 'address', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'required'],
             [['phone'], 'integer'],
-            [['name', 'birthday', 'sex', 'enmail', 'address'], 'string', 'max' => 255],
+            [['created_at', 'updated_at'], 'safe'],
+            [['name', 'birthday', 'gender', 'enmail', 'address', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['enmail'], 'unique'],
             [['phone'], 'unique'],
-            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id_user' => 'id_user']],
         ];
     }
 
@@ -51,10 +56,14 @@ class Profile extends \yii\db\ActiveRecord
             'id_user' => 'Id User',
             'name' => 'Name',
             'birthday' => 'Birthday',
-            'sex' => 'Sex',
+            'gender' => 'Gender',
             'enmail' => 'Enmail',
             'phone' => 'Phone',
             'address' => 'Address',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
         ];
     }
 
@@ -65,6 +74,6 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::class, ['id' => 'id_user']);
+        return $this->hasOne(Users::class, ['id_user' => 'id_user']);
     }
 }
