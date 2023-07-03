@@ -7,6 +7,8 @@ use common\models\search\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
+use yii\web\UploadedFile;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
@@ -67,7 +69,7 @@ class ProductsController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Products();
+        /*$model = new Products();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -80,6 +82,33 @@ class ProductsController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+        */
+        $model = new \common\models\Products();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->fileImg = UploadedFile::getInstance($model, 'fileImg');
+            if ($model->fileImg) {
+                // var_dump($model->file);die;
+                $model->fileImg->saveAs('../../uploads/' . $model->fileImg->name);
+                $model->image = $model->fileImg->name;
+            }
+
+            if ($model -> save(false)) {
+                Yii::$app->session->addFlash('success', 'Thêm mới thành công');
+                return $this->redirect((['view', 'id_products' => $model->id_products]));
+            } else {
+                Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+        
+        } else{
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
