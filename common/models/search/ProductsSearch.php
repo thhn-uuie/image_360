@@ -4,10 +4,10 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Products;
+use common\models\base\Products;
 
 /**
- * ProductsSearch represents the model behind the search form of `backend\models\Products`.
+ * ProductsSearch represents the model behind the search form of `common\models\base\Products`.
  */
 class ProductsSearch extends Products
 {

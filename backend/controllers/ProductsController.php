@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use backend\models\Products;
+use common\models\base\Products;
 use common\models\search\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
