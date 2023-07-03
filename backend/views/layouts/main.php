@@ -66,18 +66,24 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                         <div class="menu_section">
                             <!-- <h3>General</h3> -->
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-user"></i> Quản lý tài khoản <span
-                                            class="fa fa-chevron-down"></span></a>
+
+                            
+                            <?php if (Yii::$app->user->identity->id_role == 1) { ?>
+                                <li>
+                                    <a><i class="fa fa-user"></i> Quản lý tài khoản <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <?php echo Html::a('Tạo tài khoản mới', ['/users/create']) ?>
                                         </li>
+
                                         <li>
                                             <?php echo Html::a('Danh sách tài khoản', ['/users']) ?>
                                         </li>
 
                                     </ul>
                                 </li>
+                            <?php } ?>
+                                
                                 <li><a><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
