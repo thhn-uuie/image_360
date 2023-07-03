@@ -66,48 +66,48 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                         <div class="menu_section">
                             <!-- <h3>General</h3> -->
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-user"></i> User Manager <span
+                                <li><a><i class="fa fa-user"></i> Quản lý tài khoản <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
-                                            <?php echo Html::a('Create a new user', ['/users/create']) ?>
+                                            <?php echo Html::a('Tạo tài khoản mới', ['/users/create']) ?>
                                         </li>
                                         <li>
-                                            <?php echo Html::a('Update a user', ['/users']) ?>
+                                            <?php echo Html::a('Danh sách tài khoản', ['/users']) ?>
                                         </li>
 
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-product-hunt"></i> Product Manager <span
+                                <li><a><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
-                                            <?php echo Html::a('Create a new product', ['/products/create']) ?>
+                                            <?php echo Html::a('Tạo sản phẩm mới', ['/products/create']) ?>
                                         </li>
                                         <li>
-                                            <?php echo Html::a('Update a product', ['/products']) ?>
+                                            <?php echo Html::a('Danh sách sản phẩm', ['/products']) ?>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-th-list"></i> Category Manager <span
+                                <li><a><i class="fa fa-th-list"></i> Danh mục sản phẩm <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
-                                            <?php echo Html::a('Create a new category', ['/categories/create']) ?>
+                                            <?php echo Html::a('Tạo danh mục mới', ['/categories/create']) ?>
                                         </li>
                                         <li>
-                                            <?php echo Html::a('Update a category', ['/categories']) ?>
+                                            <?php echo Html::a('Danh sách danh mục', ['/categories']) ?>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-eye"></i> Top view <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-eye"></i> Lượt view cao nhất <span class="fa fa-chevron-down"></span></a>
 
                                 </li>
-                                <li><a><i class="fa fa-star"></i> Top rate <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-star"></i> Đánh giá sản phẩm <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-pie-chart"></i> Chart <span
+                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                     </ul>
@@ -160,11 +160,11 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                             </li>
 
                             <li role="presentation" class="nav-item dropdown open">
-                                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
+                                <!-- <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
                                     data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope-o"></i>
                                     <span class="badge bg-green">6</span>
-                                </a>
+                                </a> -->
                                 <ul class="dropdown-menu list-unstyled msg_list" role="menu"
                                     aria-labelledby="navbarDropdown1">
                                     <li class="nav-item">
