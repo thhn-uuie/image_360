@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
-use common\models\base\Users;
+use common\models\User;
+
 use common\models\search\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
+use Yii;
 /**
  * UsersController implements the CRUD actions for Users model.
  */
@@ -18,17 +20,35 @@ class UsersController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
+        return [
+
+            // 'access' => [
+            //     'class' => AccessControl::class,
+
+            //     'rules' => [
+            //         [
+            //           'actions' => ['login', 'error'],
+            //           'allow' => true,
+            //         ],
+            //         [
+            //             'allow' => true,
+            //             'roles' =>['@'],
+            //             'matchCallback' => function($rule, $action) {
+            //                 if (Yii::$app->user->can('admin')) {
+            //                     return true;
+            //                 } 
+            //             }
+            //         ],
+            //     ],
+            // ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
-            ]
-        );
+            ],
+        ];
+
     }
 
     /**
@@ -67,7 +87,7 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Users();
+        $model = new User();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -120,12 +140,12 @@ class UsersController extends Controller
      * Finds the Users model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id_user Id User
-     * @return Users the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id_user)
     {
-        if (($model = Users::findOne(['id_user' => $id_user])) !== null) {
+        if (($model = User::findOne(['id_user' => $id_user])) !== null) {
             return $model;
         }
 
