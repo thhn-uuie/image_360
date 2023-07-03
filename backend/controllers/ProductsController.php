@@ -85,12 +85,13 @@ class ProductsController extends Controller
         */
         $model = new \common\models\Products();
 
+        
         if ($model->load(Yii::$app->request->post())) {
-            $model->fileImg = UploadedFile::getInstance($model, 'fileImg');
-            if ($model->fileImg) {
+            $model->file_image = UploadedFile::getInstance($model, 'file');
+            if ($model->file_image) {
                 // var_dump($model->file);die;
-                $model->fileImg->saveAs('../../uploads/' . $model->fileImg->name);
-                $model->image = $model->fileImg->name;
+                $model->file_image->saveAs('../../uploads/' . $model->file_image->name);
+                $model->image = $model->file_image->name;
             }
 
             if ($model -> save(false)) {
