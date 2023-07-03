@@ -45,6 +45,7 @@ class Products extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['name_products', 'description', 'status', 'image', 'files', 'qr_code', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['qr_code'], 'unique'],
+            
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }

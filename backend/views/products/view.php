@@ -34,7 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
             'status',
             'id_category',
-            'image',
+            //'image',
+            [
+                'attribute' => 'image',
+                'format' => 'html',             
+                'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
+                
+            ],
             'files',
             'qr_code',
             'created_at',
