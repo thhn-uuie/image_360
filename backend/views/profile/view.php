@@ -40,6 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_by',
             'updated_at',
             'updated_by',
+            [
+                'attribute' => 'avatar',
+                'format' => 'html',             
+                'value' => Html::img('../../avatar/'.$model['avatar'], ['width'=>'150'])
+                
+            ],
         ],
     ]) ?>
 

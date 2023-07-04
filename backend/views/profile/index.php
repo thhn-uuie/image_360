@@ -34,12 +34,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'birthday',
             'gender',
             'enmail',
-            //'phone',
-            //'address',
+            'phone',
+            'address',
             //'created_at',
             //'created_by',
             //'updated_at',
             //'updated_by',
+            [
+                'attribute' => 'avatar',
+                'format' => 'html',             
+                   'value' => function($model) {
+                    return Html::img('../../avatar/'.$model['avatar'], ['width'=>'150']);
+                },
+                
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Profile $model, $key, $index, $column) {

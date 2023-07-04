@@ -83,7 +83,21 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                     </ul>
                                 </li>
                             <?php } ?>
-                                
+                            <?php if (Yii::$app->user->identity->id_role == 1) { ?>
+                                <li>
+                                    <a><i class="fa fa-info-circle"></i> Profile <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <?php echo Html::a('Tạo profile', ['/profile/create']) ?>
+                                        </li>
+
+                                        <li>
+                                            <?php echo Html::a('Danh sách tài khoản', ['/profile']) ?>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            <?php } ?>
                                 <li><a><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -113,9 +127,12 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                     <ul class="nav child_menu">
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ <span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                <li><a><i class="fa fa-tags"></i> Phân loại sản phẩm </a>
+                                    
+                                   
+                                </li>
+                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ </a>
+                                    
                                     </ul>
                                 </li>
 
@@ -157,12 +174,17 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                     <img src="images/img.jpg" alt="">
                                 </a>
+                               
+                                
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"> Profile</a>
+                                <?php if(Yii::$app->user->identity->id_role == 2):?>
+                                    <a class="dropdown-item" href="/image_360/backend/web/index.php?r=profile"> Profile</a>
+                                    <?php endif;?>
                                     <a class="dropdown-item" href="javascript:;"><span>Settings</span></a>
                                    
                                     <?= $formLogout ?>
                                 </div>
+                                
                             </li>
 
                             <li role="presentation" class="nav-item dropdown open">

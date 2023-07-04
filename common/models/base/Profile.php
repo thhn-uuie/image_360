@@ -18,6 +18,7 @@ use Yii;
  * @property string|null $created_by
  * @property string|null $updated_at
  * @property string|null $updated_by
+ * @property string|null $avatar
  *
  * @property Users $user
  */
@@ -40,7 +41,7 @@ class Profile extends \yii\db\ActiveRecord
             [['name', 'birthday', 'gender', 'enmail', 'address'], 'required'],
             [['phone'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name', 'birthday', 'gender', 'enmail', 'address', 'created_by', 'updated_by'], 'string', 'max' => 255],
+            [['name', 'birthday', 'gender', 'enmail', 'address', 'created_by', 'updated_by', 'avatar'], 'string', 'max' => 255],
             [['enmail'], 'unique'],
             [['phone'], 'unique'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id_user' => 'id_user']],
@@ -64,6 +65,7 @@ class Profile extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
+            'avatar' => 'Avatar',
         ];
     }
 
