@@ -4,11 +4,13 @@
 /** @var string $content */
 
 use backend\assets\AppAsset;
+use common\models\Profile;
 use common\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -18,6 +20,7 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
     ['class' => 'dropdown-item']
 )
 . Html::endForm();
+
 
 ?>
 <?php $this->beginPage() ?>
@@ -83,7 +86,21 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                     </ul>
                                 </li>
                             <?php } ?>
-                                
+                            <?php if (Yii::$app->user->identity->id_role == 1) { ?>
+                                <li>
+                                    <a><i class="fa fa-info-circle"></i> Profile <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <?php echo Html::a('Tạo profile', ['/profile/create']) ?>
+                                        </li>
+
+                                        <li>
+                                            <?php echo Html::a('Danh sách tài khoản', ['/profile']) ?>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            <?php } ?>
                                 <li><a><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
                                             class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -113,9 +130,9 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                     <ul class="nav child_menu">
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ <span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                
+                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ </a>
+                                    
                                     </ul>
                                 </li>
 
@@ -157,84 +174,23 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                     <img src="images/img.jpg" alt="">
                                 </a>
+                               
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"> Profile</a>
+                                <?php if(Yii::$app->user->identity->id_role == 2):?>
+                                    <?php $profile = Profile::findOne(['id_user' => Yii::$app->user->identity->id_user])?>
+                                        <?php if ($profile == null):?>
+                                            <a class="dropdown-item" href="/image_360/backend/web/index.php?r=profile/create"> Profile</a>
+                                        <?php else: ?>
+                                            <a class="dropdown-item" href="<?= Url::toRoute(['profile/view', 'id_user' => $profile->id_user])?>"> Profile</a>
+                                        <?php endif;?>
+                                <?php endif;?>
                                     <a class="dropdown-item" href="javascript:;"><span>Settings</span></a>
-                                   
                                     <?= $formLogout ?>
                                 </div>
+                                
                             </li>
 
-                            <li role="presentation" class="nav-item dropdown open">
-                                <!-- <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
-                                    data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">6</span>
-                                </a> -->
-                                <ul class="dropdown-menu list-unstyled msg_list" role="menu"
-                                    aria-labelledby="navbarDropdown1">
-                                    <li class="nav-item">
-                                        <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were
-                                                where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were
-                                                where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were
-                                                where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item">
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were
-                                                where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <div class="text-center">
-                                            <a class="dropdown-item">
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                         </ul>
                     </nav>
                 </div>

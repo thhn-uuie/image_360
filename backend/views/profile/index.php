@@ -1,6 +1,6 @@
 <?php
 
-use common\models\base\Profile;
+use common\models\Profile;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -34,15 +34,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'birthday',
             'gender',
             'enmail',
-            //'phone',
-            //'address',
+            'phone',
+            'address',
             //'created_at',
             //'created_by',
             //'updated_at',
             //'updated_by',
             [
+                'attribute' => 'avatar',
+                'format' => 'html',             
+                   'value' => function($model) {
+                    return Html::img('../../avatar/'.$model['avatar'], ['width'=>'150']);
+                },
+                
+            ],
+            [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Profile $model, $key, $index, $column) {
+                'urlCreator' => function ($action,  $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id_user' => $model->id_user]);
                  }
             ],

@@ -21,11 +21,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Categories', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'layout' => "{items}\n{pager}",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -37,13 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             //'updated_by',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Categories $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id_category' => $model->id_category]);
-                 }
+                'class' => ActionColumn::class,
+                // 'urlCreator' => function ($action, Categories $model, $key, $index, $column) {
+                //     return Url::toRoute([$action, 'id_category' => $model->id_category]);
+                //  }
             ],
         ],
     ]); ?>
-
-
 </div>

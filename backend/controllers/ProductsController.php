@@ -70,12 +70,12 @@ class ProductsController extends Controller
     public function actionCreate()
     {
         $model = new \common\models\Products();
-        
+
+        $loadImg = new \common\helper\ImageHelper();
         if ($model->load(Yii::$app->request->post())) {
             $model->file_image = UploadedFile::getInstance($model, 'file_image');
-            $model->file_360 = UploadedFile::getInstance($model, 'file_360');
-
             if ($model->file_image) {
+                // var_dump($model->file);die;
                 $model->file_image->saveAs('../../uploads/' . $model->file_image->name);
                 $model->image = $model->file_image->name;
             }
@@ -86,10 +86,10 @@ class ProductsController extends Controller
             }
 
             if ($model -> save(false)) {
-                Yii::$app->session->addFlash('success', 'Thêm mới thành công');
+                //::$app->session->addFlash('success', 'Thêm mới thành công');
                 return $this->redirect((['view', 'id_products' => $model->id_products]));
             } else {
-                Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
+                //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
                 return $this->render('create', [
                     'model' => $model,
                 ]);
@@ -104,7 +104,6 @@ class ProductsController extends Controller
         
         
     }
-
     
     /**
      * Updates an existing Products model.

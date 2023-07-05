@@ -5,25 +5,14 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use zxing\yii2\qrcode\QRCode;
-
-// //tạo đối tượng qrcode
-// $qr_code = new QRCode();
-
-// //tạo mã qr chứa url 
-// $url='http://localhost/image_360/backend/web/index.php?r=products%2Fview&id_products=48';
-// $qr_code->setText($url);
-
-// //lấy đối tượng mã qr
-// $qrcodeImage = $qr_code->getQRCodeImage();
-
+use yii\helpers\ArrayHelper;
 // //hiển thị mã qr
 // echo '<img src="' . $qrcodeImage . '">';
 /** @var yii\web\View $this */
 /** @var common\models\search\ProductsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Products';
+$this->title = 'Quản lý sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="products-index">
@@ -43,20 +32,57 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_products',
+                      
             'name_products',
             'description',
             'status',
-            'id_category',
-            //'image:image',
+            // [
+            //     'attribute' => 'status',
+            //     'filter' => Html::activeDropDownList(
+            //         $searchModel,
+            //         'status',
+            //         \common\models\Products::getStatus(),
+            //         ['class' => 'form-control', 'prompt' => 'Chọn']
+            //     ),
+            //     'value' => function($model) {
+            //         return $model->status;
+            //     },
+            // ],
+            //'id_category',
+           
+            [
+                'attribute' => 'id_category',
+                // 'content' => function($model) {
+                    
+                // },
+                'headerOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+                'contentOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+
+                'filter' => Html::activeDropDownList(
+                    $searchModel,
+                    'id_category',
+                    \common\models\Products::getCategories(),
+                    ['class' => 'form-control', 'prompt' => 'Chọn']
+                ),
+                'value' => function($model) {
+                    return $model->id_category;
+                },
+
+            ],
+
             [
                 'attribute' => 'image',
                 'format' => 'html',             
                    'value' => function($model) {
-                    return Html::img('../../uploads/'.$model['image'], ['width'=>'150']);
+                    return Html::img('../../uploads/' . $model['image'], ['width'=>'150','height'=>'150']);
                 },
                 
             ],
-            'files',
+            // 'files',
             // 'qr_code',
             // 'created_at',
             // 'created_by',

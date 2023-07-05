@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\base\Profile $model */
+/** @var common\models\Profile $model */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
@@ -17,13 +17,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id_user' => $model->id_user], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php if (Yii::$app->user->identity->id_role==1):?>
+            <?= Html::a('Delete', ['delete', 'id_user' => $model->id_user], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]) ?>
+            <?php endif;?>
     </p>
 
     <?= DetailView::widget([
@@ -40,6 +42,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_by',
             'updated_at',
             'updated_by',
+            [
+                'attribute' => 'avatar',
+                'format' => 'html',             
+                'value' => Html::img('../../avatar/'.$model['avatar'], ['width'=>'150'])
+                
+            ],
         ],
     ]) ?>
 

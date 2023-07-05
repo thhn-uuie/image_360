@@ -2,11 +2,12 @@
 
 namespace backend\controllers;
 
-use common\models\base\Profile;
+use common\models\Profile;
 use common\models\search\ProfileSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -68,18 +69,26 @@ class ProfileController extends Controller
     public function actionCreate()
     {
         $model = new Profile();
+        $loadImg = new \common\helper\ImageHelper();
+        if ($model->load(Yii::$app->request->post())) {
+            $loadImg->loadImgAvatar($model);
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_user' => $model->id_user]);
+            if ($model -> save(false)) {
+                //::$app->session->addFlash('success', 'Thêm mới thành công');
+                return $this->redirect((['view', 'id_user' => $model->id_user]));
+            } else {
+                //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
             }
-        } else {
-            $model->loadDefaultValues();
-        }
+        
+        } else{
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

@@ -1,10 +1,12 @@
 <?php
 
+use common\models\User;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var common\models\base\Profile $model */
+/** @var common\models\Profile $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
@@ -12,7 +14,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+    <?php if (Yii::$app->user->identity->id_role == 1):?>
+
+    <?= $form->field($model, 'id_user')->dropDownList(
+       ArrayHelper::map(User::find()->all(),'id_user','username'),
+       [
+           'prompt' => 'Chọn user'
+       ]
+   ) ?>
+   <?php else: ?>
+    <?= $form->field($model, 'id_user')->textInput(['value' => $model->getIdUser()]) ?>
+    <?php endif;?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -26,13 +38,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file_image')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
