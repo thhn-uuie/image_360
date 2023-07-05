@@ -5,7 +5,20 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use zxing\yii2\qrcode\QRCode;
 
+// //tạo đối tượng qrcode
+// $qr_code = new QRCode();
+
+// //tạo mã qr chứa url 
+// $url='http://localhost/image_360/backend/web/index.php?r=products%2Fview&id_products=48';
+// $qr_code->setText($url);
+
+// //lấy đối tượng mã qr
+// $qrcodeImage = $qr_code->getQRCodeImage();
+
+// //hiển thị mã qr
+// echo '<img src="' . $qrcodeImage . '">';
 /** @var yii\web\View $this */
 /** @var common\models\search\ProductsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -37,15 +50,13 @@ $this->params['breadcrumbs'][] = $this->title;
             //'image:image',
             [
                 'attribute' => 'image',
-
-
                 'format' => 'html',             
                    'value' => function($model) {
                     return Html::img('../../uploads/'.$model['image'], ['width'=>'150']);
                 },
                 
             ],
-            // 'files',
+            'files',
             // 'qr_code',
             // 'created_at',
             // 'created_by',

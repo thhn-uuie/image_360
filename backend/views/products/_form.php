@@ -37,9 +37,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'file_image')->fileInput() ?>
 
-    <?= $form->field($model, 'files')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file_360')->fileInput() ?>
 
-    <?= $form->field($model, 'qr_code')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'qr_code')->hiddenInput(['id_products'=>'qr_code'])->label(false) ?>
 
     
 

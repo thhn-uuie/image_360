@@ -21,4 +21,10 @@ return [
     //         ],
     //    ],
     ],
+    'components' => [
+        'qr' => [
+            'class' => 'zxing\yii2\qrcode\QRCode',
+        ],
+        // ...
+    ],
 ];

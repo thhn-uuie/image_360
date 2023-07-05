@@ -69,29 +69,20 @@ class ProductsController extends Controller
      */
     public function actionCreate()
     {
-        /*$model = new Products();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_products' => $model->id_products]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-        */
         $model = new \common\models\Products();
-
         
         if ($model->load(Yii::$app->request->post())) {
             $model->file_image = UploadedFile::getInstance($model, 'file_image');
+            $model->file_360 = UploadedFile::getInstance($model, 'file_360');
+
             if ($model->file_image) {
-                // var_dump($model->file);die;
                 $model->file_image->saveAs('../../uploads/' . $model->file_image->name);
                 $model->image = $model->file_image->name;
+            }
+
+            if ($model->file_360) {
+                $model->file_360->saveAs('../../uploads/' . $model->file_360->name);
+                $model->files = $model->file_360->name;
             }
 
             if ($model -> save(false)) {
@@ -110,8 +101,11 @@ class ProductsController extends Controller
                 'model' => $model,
             ]);
         }
+        
+        
     }
 
+    
     /**
      * Updates an existing Products model.
      * If update is successful, the browser will be redirected to the 'view' page.

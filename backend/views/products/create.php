@@ -18,3 +18,22 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<?php
+    $this->registerJsFile('https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js', ['depends' => [\yii\web\JqueryAsset::class]]);
+    $this->registerJs("
+        function createQRCode() {
+            var qrCode = new QRCode();
+            var url = window.location.href;
+            qrCode.setText(url);
+            var qrcodeImage = qrCode.getQRCodeImage();
+            document.getElementById('qrcode').value = qrcodeImage;
+        }
+    ");
+    $this->registerJs("
+        $('#product-form').on('beforeSubmit', function() {
+            createQRCode();
+            return true;
+        });
+    ");
+?>
