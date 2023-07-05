@@ -1,6 +1,6 @@
 <?php
 
-use common\models\base\Profile;
+use common\models\Profile;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Profile $model, $key, $index, $column) {
+                'urlCreator' => function ($action,  $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id_user' => $model->id_user]);
                  }
             ],

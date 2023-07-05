@@ -17,4 +17,23 @@ class Products extends \common\models\base\Products {
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }
+
+   
+
+    // public static function getStatus() {
+    //     $products = Products::find()->all();
+    //     $arr_status = ['Hoạt động', 'Không hoạt động'];
+    //     var_dump($products);die;
+    //     return $arr;
+    // }
+
+
+    public static function getCategories() {
+        $categories = \common\models\base\Categories::find()->all();
+        $arr_cate = [];
+        foreach($categories as $cate) {
+            $arr_cate[$cate->id_category] = $cate->name_category;
+        }
+        return $arr_cate;
+    }
 }

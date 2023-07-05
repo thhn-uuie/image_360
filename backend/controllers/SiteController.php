@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\base\Categories;
 use common\models\form\LoginForm;
 use Yii;
 use yii\filters\VerbFilter;
@@ -33,7 +34,7 @@ class SiteController extends Controller
                         'roles' => ['?']
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','classify'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -105,5 +106,15 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionClassify()
+    {
+        $categories = Categories::find()->select('id_category')->all();
+        //var_dump($categories);die;
+        return $this->render('classify',
+    [
+        'categories' => $categories,
+    ]);
     }
 }

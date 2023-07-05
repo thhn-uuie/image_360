@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use common\models\base\Profile;
+use common\models\Profile;
 use common\models\search\ProfileSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -68,7 +68,7 @@ class ProfileController extends Controller
      */
     public function actionCreate()
     {
-        $model = new \common\models\Profile();
+        $model = new Profile();
         $loadImg = new \common\helper\ImageHelper();
         if ($model->load(Yii::$app->request->post())) {
             $loadImg->loadImgAvatar($model);
