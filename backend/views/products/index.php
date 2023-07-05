@@ -82,6 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 
             ],
+            
             // 'files',
             // 'qr_code',
             // 'created_at',
@@ -95,6 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  }
             ],
         ],
+        
     ]); ?>
 
 
