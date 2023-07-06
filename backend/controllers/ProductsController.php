@@ -9,6 +9,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
 use yii\web\UploadedFile;
+use backend\components\PngWriter;
+use yii\data\ActiveDataProvider;
+use yii\grid\GridView;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
@@ -40,6 +43,9 @@ class ProductsController extends Controller
      */
     public function actionIndex()
     {
+        // $dataProvider = new ActiveDataProvider([
+        //     'query' => Product::find(),
+        // ]);
         $searchModel = new ProductsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -55,6 +61,9 @@ class ProductsController extends Controller
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
+
+     
+
     public function actionView($id_products)
     {
         return $this->render('view', [
@@ -74,8 +83,12 @@ class ProductsController extends Controller
         $loadImg = new \common\helper\ImageHelper();
         if ($model->load(Yii::$app->request->post())) {
             $model->file_image = UploadedFile::getInstance($model, 'file_image');
+            $model->file_360 = UploadedFile::getInstance($model, 'file_360');
+
+            //gọi phương thức createQR() để tạp mã QR code cho sản phẩm mới được tạo
+            // $path = $this->createQR($model);
+            // return $this->redirect(['view','id_products' => $model->id_products]);
             if ($model->file_image) {
-                // var_dump($model->file);die;
                 $model->file_image->saveAs('../../uploads/' . $model->file_image->name);
                 $model->image = $model->file_image->name;
             }
@@ -86,7 +99,7 @@ class ProductsController extends Controller
             }
 
             if ($model -> save(false)) {
-                //::$app->session->addFlash('success', 'Thêm mới thành công');
+                //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
                 return $this->redirect((['view', 'id_products' => $model->id_products]));
             } else {
                 //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
@@ -96,7 +109,6 @@ class ProductsController extends Controller
             }
         
         } else{
-
             return $this->render('create', [
                 'model' => $model,
             ]);
