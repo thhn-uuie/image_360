@@ -47,6 +47,21 @@ use yii\widgets\ActiveForm;
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
+    <script>
+        var loadFile = function(event){
+            var fileReader = new FileReader();
+            fileReader.onload = function(){
+                var output = document.createElement("img");
+                output.src = fileReader.result;
+                output.style.width = "100px";
+                output.style.height = "80px";
+                document.getElementById("image-preview").innerHTML = "";
+                document.getElementById("image-preview").appendChild(imgElement);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+
     <?php ActiveForm::end(); ?>
 
 </div>
