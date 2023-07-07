@@ -47,7 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 
             ],
             'files',
-            'qr_code',
+            //'qr_code',
+            [
+                'attribute' => 'qr_code',
+                'format' => 'html',             
+                'value' => Html::img('../../qr/'.$model['qr_code'], ['width'=>'150'])
+                
+            ],
             'created_at',
             'created_by',
             'updated_at',

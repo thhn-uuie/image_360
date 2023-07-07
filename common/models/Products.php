@@ -1,12 +1,14 @@
 <?php
 namespace common\models;
-
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use yii\helpers\Url;
 class Products extends \common\models\base\Products {
     public $file_image;
 
     public $file_360;
 
-    public $qr_code;
+    public $qr;
     
     public function rules()
     {
@@ -22,4 +24,29 @@ class Products extends \common\models\base\Products {
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }
+
+    public static function getCategories() {
+        $categories = \common\models\base\Categories::find()->all();
+        $arr_cate = [];
+        foreach($categories as $cate) {
+            $arr_cate[$cate->id_category] = $cate->name_category;
+        }
+        return $arr_cate;
+    }
+
+    public function createQR() {
+        $writer = new PngWriter();
+        $url = Url::toRoute(['products/view', 'id_products' =>$this->id_products], true);
+        $qr = QrCode::create($url);
+
+        $res = $writer->write($qr);
+        $path = '../../qr/'.$this->name_products.time().'.png';
+        $res -> saveToFile($path);
+        // var_dump($url);
+        // die;
+        $this->setAttribute('qr_code', $path);
+        return $path;
+    }
+
+
 }

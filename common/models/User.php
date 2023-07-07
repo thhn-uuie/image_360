@@ -88,7 +88,7 @@ class User extends \common\models\base\Users implements IdentityInterface
             $this->generateAuthKey();
             $this->generatePasswordResetToken();
             $this->created_at = time();
-            $this->created_by = Yii::$app->user->identity->username;
+            //$this->created_by = Yii::$app->user->identity->username;
         } else {
             $old_user = User::findOne($this->id_user);
             if($this->password != $old_user->password) {

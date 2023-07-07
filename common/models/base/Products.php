@@ -30,6 +30,11 @@ class Products extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
 
+    public $file_image;
+    public $file_360;
+    
+
+
     public static function tableName()
     {
         return 'products';
@@ -41,7 +46,7 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name_products', 'description', 'status', 'image', 'files', 'qr_code'], 'required'],
+            [['name_products', 'description', 'status', 'image', 'files'], 'required'],
             [['id_category'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name_products', 'description', 'status', 'image', 'files', 'qr_code', 'created_by', 'updated_by'], 'string', 'max' => 255],

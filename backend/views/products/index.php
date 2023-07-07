@@ -82,8 +82,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 
             ],
-            // 'files',
-            // 'qr_code',
+            'files',
+            //'qr_code',
+            [
+                'attribute' => 'qr_code',
+                'format' => 'html',             
+                'value' => function($model) {
+                    return Html::img('../../qr/'.$model['qr_code'], ['width'=>'150']);
+                }
+            ],
             // 'created_at',
             // 'created_by',
             // 'updated_at',
@@ -92,7 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Products $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id_products' => $model->id_products]);
-                 }
+                }
             ],
         ],
         

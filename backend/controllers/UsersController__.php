@@ -22,25 +22,25 @@ class UsersController extends Controller
     {
         return [
 
-            'access' => [
-                'class' => AccessControl::class,
+            // 'access' => [
+            //     'class' => AccessControl::class,
 
-                'rules' => [
-                    [
-                      'actions' => ['login', 'error'],
-                      'allow' => true,
-                    ],
-                    [
-                        'allow' => true,
-                        'roles' =>['@'],
-                        'matchCallback' => function($rule, $action) {
-                            if (Yii::$app->user->can('admin')) {
-                                return true;
-                            } 
-                        }
-                    ],
-                ],
-            ],
+            //     'rules' => [
+            //         [
+            //           'actions' => ['login', 'error'],
+            //           'allow' => true,
+            //         ],
+            //         [
+            //             'allow' => true,
+            //             'roles' =>['@'],
+            //             'matchCallback' => function($rule, $action) {
+            //                 if (Yii::$app->user->can('admin')) {
+            //                     return true;
+            //                 } 
+            //             }
+            //         ],
+            //     ],
+            // ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

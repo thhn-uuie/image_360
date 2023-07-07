@@ -1,0 +1,1 @@
+<img src="<?= $qrImg ?>" alt="QR Code">
