@@ -21,9 +21,9 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
 )
 . Html::endForm();
 
-
 ?>
 <?php $this->beginPage() ?>
+
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 

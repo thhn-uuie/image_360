@@ -38,12 +38,30 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'file_image')->fileInput() ?>
+    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
+    <div id = "displayImg"></div>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-
+    <script>
+        function imagePreview() {
+        var fileSelected = document.getElementById('profile-file_image').files;
+            if (fileSelected.length > 0) {
+                var fileToLoad = fileSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoaderEvent) {
+                    var srcData = fileLoaderEvent.target.result;
+                    var previewImage = document.createElement('img');
+                    previewImage.src = srcData;
+                    previewImage.style.height = '150px';
+                    previewImage.style.width = '140px';
+                    document.getElementById('displayImg').innerHTML = previewImage.outerHTML;
+                }
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        }
+    </script>
     <?php ActiveForm::end(); ?>
 
 </div>

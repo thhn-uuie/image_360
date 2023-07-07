@@ -27,7 +27,7 @@ class ProductsController extends Controller
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::className(),
+                    'class' => VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
                     ],
@@ -140,16 +140,6 @@ class ProductsController extends Controller
         
     }
 
-    //action qr lấy đối tượng có id tương ứng và truyền ảnh qr code vào view để hiển thị
-    public function actionQr($id_products) {
-        $model = $this->findModel($id_products);
-        if ($model) {
-            $qrImg = '../../qr/' / $model->qr_code->name;
-            return $this->render('pr_code', [
-                'qrImg' => $qrImg,
-            ]);
-        }
-    }
     
     /**
      * Updates an existing Products model.

@@ -35,7 +35,8 @@ use yii\widgets\ActiveForm;
         ]
     ) ?>
 
-    <?= $form->field($model, 'file_image')->fileInput() ?>
+    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
+    <div id='displayImg'></div>
 
     <?= $form->field($model, 'file_360')->fileInput() ?>
 
@@ -48,17 +49,21 @@ use yii\widgets\ActiveForm;
     </div>
 
     <script>
-        var loadFile = function(event){
-            var fileReader = new FileReader();
-            fileReader.onload = function(){
-                var output = document.createElement("img");
-                output.src = fileReader.result;
-                output.style.width = "100px";
-                output.style.height = "80px";
-                document.getElementById("image-preview").innerHTML = "";
-                document.getElementById("image-preview").appendChild(imgElement);
-        };
-        reader.readAsDataURL(event.target.files[0]);
+        function imagePreview() {
+        var fileSelected = document.getElementById('products-file_image').files;
+            if (fileSelected.length > 0) {
+                var fileToLoad = fileSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoaderEvent) {
+                    var srcData = fileLoaderEvent.target.result;
+                    var previewImage = document.createElement('img');
+                    previewImage.src = srcData;
+                    previewImage.style.height = '150px';
+                    previewImage.style.width = '140px';
+                    document.getElementById('displayImg').innerHTML = previewImage.outerHTML;
+                }
+                fileReader.readAsDataURL(fileToLoad);
+            }
         }
     </script>
 
