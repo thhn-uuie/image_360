@@ -42,11 +42,30 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'qr_code')->hiddenInput(['id_products'=>'qr_code'])->label(false)?>
 
-    
-
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
+
+<!--    <script>-->
+<!--        function uploadFile360() {-->
+<!--            var fileSelected = document.getElementById('products-file_360').files;-->
+<!--            if (fileSelected.length > 0) {-->
+<!--                var fileToLoad = fileSelected[0];-->
+<!--                var fileReader = new FileReader();-->
+<!--                fileReader.onload = function (fileLoaderEvent) {-->
+<!--                    var iframe = document.createElement('iframe');-->
+<!--                    iframe.width = '600';-->
+<!--                    iframe.height = '400';-->
+<!--                    iframe.allowfullscreen = true;-->
+<!--                    iframe.style.borderStyle = 'none';-->
+<!--                    iframe.src = 'https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://pannellum.org/images/jfk.jpg';-->
+<!--                    document.getElementById('panorama').innerHTML = iframe.outerHTML;-->
+<!--                }-->
+<!--                fileReader.readAsDataURL(fileToLoad);-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+
 
     <script>
         function imagePreview() {

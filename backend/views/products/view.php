@@ -47,6 +47,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 
             ],
             'files',
+            [
+                    'label' => 'anh',
+                'attribute' => 'files',
+                'format' => 'html',
+
+                'value' => $this->render('view360', ['model' => $model]),
+
+            ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
