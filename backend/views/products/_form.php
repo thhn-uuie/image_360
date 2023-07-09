@@ -4,6 +4,7 @@ use common\models\base\Categories;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 /** @var common\models\base\Products $model */
@@ -38,8 +39,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
     <div id='displayImg'></div>
 
-    <?= $form->field($model, 'file_360')->fileInput() ?>
+<!--    --><?php //= $form->field($model, 'file_360')->fileInput(['onchange' => 'uploadFile360()']) ?>
+<!--    <div id='panorama'></div>-->
 
+    <?= $form->field($model, 'file_360')->fileInput() ?>
     <?= $form->field($model, 'qr_code')->hiddenInput(['id_products'=>'qr_code'])->label(false)?>
 
     <div class="form-group">
@@ -58,7 +61,7 @@ use yii\widgets\ActiveForm;
 <!--                    iframe.height = '400';-->
 <!--                    iframe.allowfullscreen = true;-->
 <!--                    iframe.style.borderStyle = 'none';-->
-<!--                    iframe.src = 'https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://pannellum.org/images/jfk.jpg';-->
+<!--                    iframe.src = 'https://cdn.pannellum.org/2.5/pannellum.htm#panorama=';-->
 <!--                    document.getElementById('panorama').innerHTML = iframe.outerHTML;-->
 <!--                }-->
 <!--                fileReader.readAsDataURL(fileToLoad);-->

@@ -82,21 +82,9 @@ class ProductsController extends Controller
 
         $loadImg = new \common\helper\ImageHelper();
         if ($model->load(Yii::$app->request->post())) {
-            $model->file_image = UploadedFile::getInstance($model, 'file_image');
+//            $model->file_image = UploadedFile::getInstance($model, 'file_image');
             $model->file_360 = UploadedFile::getInstance($model, 'file_360');
             $model->qr;
-
-            // if (($model->qr)) {
-            //     $model->qr_code = $model->createQR();
-            //     $model->qr->saveAs('../../qr' . $model->qr->name);
-            // }
-
-            // if (!empty($model->qr)) {
-            //     $model->qr->saveAs('../../qr' . $model->qr->name);
-            // } else {
-            //     $model->qr_code = $model->createQR();
-            //     $model->qr->saveAs('../../qr' . $model->qr->name);
-            // }
 
             if (!empty($model->qr)) {
                 $qrImg = Yii::getAlias('@image_360/qr/') . $model->qr->name;
@@ -104,18 +92,17 @@ class ProductsController extends Controller
             } else {
                 $qrPath = $model->createQR();
                 $model->qr_code = basename($qrPath);
-                //$qrImg = Yii::getAlias('@image_360/qr/') . $model->qr_code;
                 $model->setAttribute('qr_code', $model->qr_code);
                 $model->qr = UploadedFile::getInstance($model, 'qr');
-                //$model->qr->saveAs($qrImg);
-            }
-            
-
-            if ($model->file_image) {
-                $model->file_image->saveAs('../../uploads/' . $model->file_image->name);
-                $model->image = $model->file_image->name;
             }
 
+
+//            if ($model->file_image) {
+//                $model->file_image->saveAs('../../uploads/' . $model->file_image->name);
+//                $model->image = $model->file_image->name;
+//            }
+
+            $loadImg->loadImgProducts($model);
             if ($model->file_360) {
                 $model->file_360->saveAs('../../file360/' . $model->file_360->name);
                 $model->files = $model->file_360->name;

@@ -3,6 +3,8 @@ namespace common\models;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 use yii\helpers\Url;
+use Yii;
+use common\models\base\Categories;
 class Products extends \common\models\base\Products {
     public $file_image;
 
@@ -42,11 +44,18 @@ class Products extends \common\models\base\Products {
         $res = $writer->write($qr);
         $path = '../../qr/'.$this->name_products.time().'.png';
         $res -> saveToFile($path);
-        // var_dump($url);
-        // die;
         $this->setAttribute('qr_code', $path);
         return $path;
     }
 
-
+    public function beforeSave($insert) {
+        if ($insert) {
+            $this->created_at = time();
+            $this->created_by = Yii::$app->user->identity->username;
+        } else {
+            $this->updated_at = time();
+            $this->updated_by = Yii::$app->user->identity->username;
+        }
+        return parent::beforeSave(($insert));
+    }
 }

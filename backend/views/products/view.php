@@ -46,21 +46,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
                 
             ],
-            'files',
+            //'files',
             [
-                    'label' => 'anh',
+                //'label' => 'anh',
                 'attribute' => 'files',
-                'format' => 'html',
-
+                'format' => 'raw',
                 'value' => $this->render('view360', ['model' => $model]),
-
+                'contentOptions' => ['style' => 'width:150px; height:150px;'],
             ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
                 'format' => 'html',             
                 'value' => Html::img('../../qr/'.$model['qr_code'], ['width'=>'150'])
-                
             ],
             'created_at',
             'created_by',

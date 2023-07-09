@@ -1,9 +1,8 @@
-<?php
-use common\models\Products;
-use yii\helpers\Url;
 
+<?php
+use yii\helpers\Url;
 /** @var yii\web\View $this */
-/** @var Products $model */
+/** @var common\models\base\Products $model */
 
 ?>
 
@@ -12,31 +11,31 @@ use yii\helpers\Url;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ảnh 360</title>
+    <title>Auto load</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
         #panorama {
-            width: 150px;
+            width: 300px;
             height: 150px;
         }
     </style>
-
 </head>
 <body>
 
 <div id="panorama"></div>
+
 <script>
     <?php
-    $base_url = Url::base(true);
-    $url_file = 'image_360/file360/'.$model->files;
+        $url = Url::to('../../file360/');
+        $panoramaUrl = $url.'/'.$model->files;
     ?>
-
     pannellum.viewer('panorama', {
         "type": "equirectangular",
-        "panorama": "https://pannellum.org/images/cerro-toco-0.jpg",
+        "panorama": "<?php echo $panoramaUrl;?>",
         "autoLoad": true
     });
 </script>
+
 </body>
 </html>
