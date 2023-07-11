@@ -7,13 +7,18 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
 /** @var yii\web\View $this */
-/** @var common\models\base\Products $model */
+/** @var common\models\Products $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
 <div class="products-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+
+    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
+    <div id='displayImg'></div>
+
+    <?= $form->field($model, 'file_360')->fileInput() ?>
 
     <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
 
@@ -36,13 +41,12 @@ use yii\helpers\Url;
         ]
     ) ?>
 
-    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
-    <div id='displayImg'></div>
+
 
 <!--    --><?php //= $form->field($model, 'file_360')->fileInput(['onchange' => 'uploadFile360()']) ?>
 <!--    <div id='panorama'></div>-->
 
-    <?= $form->field($model, 'file_360')->fileInput() ?>
+
     <?= $form->field($model, 'qr_code')->hiddenInput(['id_products'=>'qr_code'])->label(false)?>
 
     <div class="form-group">

@@ -108,5 +108,6 @@ class User extends \common\models\base\Users implements IdentityInterface
         return Yii::$app->security->validatePassword($password, $this->password);
     }
 
+
 }
 

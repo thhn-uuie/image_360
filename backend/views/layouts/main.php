@@ -62,15 +62,11 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                     </div>
                     <!-- /menu profile quick info -->
 
-                    <br />
-
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <!-- <h3>General</h3> -->
                             <ul class="nav side-menu">
-
-                            
                             <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                 <li>
                                     <a><i class="fa fa-user"></i> Quản lý tài khoản <span class="fa fa-chevron-down"></span></a>
@@ -97,7 +93,6 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                         <li>
                                             <?php echo Html::a('Danh sách tài khoản', ['/profile']) ?>
                                         </li>
-
                                     </ul>
                                 </li>
                             <?php } ?>
@@ -123,18 +118,17 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-eye"></i> Lượt view cao nhất <span class="fa fa-chevron-down"></span></a>
-
-                                </li>
-                                <li><a><i class="fa fa-star"></i> Đánh giá sản phẩm <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                    </ul>
-                                </li>
+<!--                                <li><a><i class="fa fa-eye"></i> Lượt view cao nhất <span class="fa fa-chevron-down"></span></a>-->
+<!---->
+<!--                                </li>-->
+<!--                                <li><a><i class="fa fa-star"></i> Đánh giá sản phẩm <span class="fa fa-chevron-down"></span></a>-->
+<!--                                    <ul class="nav child_menu">-->
+<!--                                    </ul>-->
+<!--                                </li>-->
                                 
-                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ </a>
-                                    
-                                    </ul>
-                                </li>
+<!--                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ </a>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
 
                             </ul>
                         </div>
@@ -165,7 +159,7 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
             <div class="top_nav">
                 <div class="nav_menu">
                     <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        <a id="menu_toggle"><i class="fa fa-bars" style="color:#fff"></i></a>
                     </div>
                     <nav class="nav navbar-nav">
                         <ul class=" navbar-right">
@@ -206,7 +200,6 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
                 </div>
                 <div class="clearfix"></div>
             </footer>

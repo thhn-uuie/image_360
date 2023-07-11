@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
+use yii\web\UploadedFile;
+
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -74,7 +76,7 @@ class ProfileController extends Controller
             $loadImg->loadImgAvatar($model);
 
             if ($model -> save(false)) {
-                //::$app->session->addFlash('success', 'Thêm mới thành công');
+                //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
                 return $this->redirect((['view', 'id_user' => $model->id_user]));
             } else {
                 //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
@@ -101,14 +103,33 @@ class ProfileController extends Controller
     public function actionUpdate($id_user)
     {
         $model = $this->findModel($id_user);
+        $old_avatar = $model->avatar;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_user' => $model->id_user]);
+        if ($model->load(Yii::$app->request->post())){
+            $model->file_image =  UploadedFile::getInstance($model, 'file_image');
+            if($model->file_image){
+                $model->file_image->saveAs('../../avatar/' . time() . '_' .$model->file_image->name);
+                unlink('../../avatar/'.$model->avatar);
+                $model->avatar = time() . '_' . $model->file_image->name;
+
+            } else {
+                $model->file_image = $old_avatar;
+            }
+            if ($model -> save(false)) {
+                //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
+                return $this->redirect(['view', 'id_user' => $model->id_user]);
+            } else {
+                //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
+        } else {
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -120,8 +141,8 @@ class ProfileController extends Controller
      */
     public function actionDelete($id_user)
     {
-        $this->findModel($id_user)->delete();
-
+         $this->findModel($id_user)->delete();
+        //unlink('../../avatar/' . $model->avatar);
         return $this->redirect(['index']);
     }
 

@@ -10,16 +10,16 @@ use yii\grid\GridView;
 /** @var common\models\search\UsersSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Users';
+$this->title = 'Danh sách các tài khoản';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="users-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<!--    <p>-->
+<!--        --><?php //= Html::a('Create Users', ['create'], ['class' => 'btn btn-success']) ?>
+<!--    </p>-->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -27,9 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn',
+                'header' => 'STT',
+                'headerOptions' => [
+                        'style' => 'width:15px;text-align:center'
+                ],
+                'contentOptions' => [
+                        'style' => 'width:15px;text-align:center'
+                ],
+            ],
 
-            'id_user',
+            //'id_user',
             'username',
             //'password',
             'email:email',
@@ -43,10 +51,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                 },
                 'headerOptions' => [
-                    'style' => 'width:150px;text-align:center'
+                    'style' => 'text-align:center'
                 ],
                 'contentOptions' => [
-                    'style' => 'width:150px;text-align:center'
+                    'style' => 'width:100px;text-align:center'
                 ],
 
             ],

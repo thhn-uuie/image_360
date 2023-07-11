@@ -23,9 +23,11 @@ use yii\widgets\ActiveForm;
        ]
    ) ?>
    <?php else: ?>
-    <?= $form->field($model, 'id_user')->textInput(['value' => $model->getIdUser()]) ?>
+    <?= $form->field($model, 'id_user')->hiddenInput(['value' => $model->getIdUser()]) ?>
     <?php endif;?>
 
+    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
+    <div id = "displayImg"></div>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'birthday')->textInput(['maxlength' => true]) ?>
@@ -38,8 +40,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
-    <div id = "displayImg"></div>
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
