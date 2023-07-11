@@ -57,11 +57,11 @@ class Users extends \yii\db\ActiveRecord
             'username' => 'Username',
             'password' => 'Password',
             'email' => 'Email',
-            'id_role' => 'Id Role',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
+            'id_role' => 'Chức năng',
+            'created_at' => 'Thời gian tạo',
+            'created_by' => 'Người tạo',
+            'updated_at' => 'Thời gian cập nhật',
+            'updated_by' => 'Người cập nhật',
         ];
     }
 

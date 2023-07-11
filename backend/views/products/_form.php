@@ -4,15 +4,21 @@ use common\models\base\Categories;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 /** @var yii\web\View $this */
-/** @var common\models\base\Products $model */
+/** @var common\models\Products $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
 <div class="products-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+
+    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
+    <div id='displayImg'></div>
+
+    <?= $form->field($model, 'file_360')->fileInput() ?>
 
     <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
 
@@ -35,18 +41,38 @@ use yii\widgets\ActiveForm;
         ]
     ) ?>
 
-    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
-    <div id='displayImg'></div>
 
-    <?= $form->field($model, 'file_360')->fileInput() ?>
+
+<!--    --><?php //= $form->field($model, 'file_360')->fileInput(['onchange' => 'uploadFile360()']) ?>
+<!--    <div id='panorama'></div>-->
+
 
     <?= $form->field($model, 'qr_code')->hiddenInput(['id_products'=>'qr_code'])->label(false)?>
-
-    
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
+
+<!--    <script>-->
+<!--        function uploadFile360() {-->
+<!--            var fileSelected = document.getElementById('products-file_360').files;-->
+<!--            if (fileSelected.length > 0) {-->
+<!--                var fileToLoad = fileSelected[0];-->
+<!--                var fileReader = new FileReader();-->
+<!--                fileReader.onload = function (fileLoaderEvent) {-->
+<!--                    var iframe = document.createElement('iframe');-->
+<!--                    iframe.width = '600';-->
+<!--                    iframe.height = '400';-->
+<!--                    iframe.allowfullscreen = true;-->
+<!--                    iframe.style.borderStyle = 'none';-->
+<!--                    iframe.src = 'https://cdn.pannellum.org/2.5/pannellum.htm#panorama=';-->
+<!--                    document.getElementById('panorama').innerHTML = iframe.outerHTML;-->
+<!--                }-->
+<!--                fileReader.readAsDataURL(fileToLoad);-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+
 
     <script>
         function imagePreview() {

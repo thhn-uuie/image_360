@@ -14,11 +14,11 @@ use Yii;
  * @property int|null $id_category
  * @property string $image
  * @property string $files
- * @property string $qr_code
- * @property string|null $created_at
+ * @property int|null $created_at
  * @property string|null $created_by
- * @property string|null $updated_at
+ * @property int|null $updated_at
  * @property string|null $updated_by
+ * @property string|null $qr_code
  *
  * @property Categories $category
  * @property Rate $rate
@@ -29,12 +29,6 @@ class Products extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-
-    public $file_image;
-    public $file_360;
-    
-
-
     public static function tableName()
     {
         return 'products';
@@ -47,11 +41,8 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             [['name_products', 'description', 'status', 'image', 'files'], 'required'],
-            [['id_category'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name_products', 'description', 'status', 'image', 'files', 'qr_code', 'created_by', 'updated_by'], 'string', 'max' => 255],
-            [['qr_code'], 'unique'],
-            
+            [['id_category', 'created_at', 'updated_at'], 'integer'],
+            [['name_products', 'description', 'status', 'image', 'files', 'created_by', 'updated_by', 'qr_code'], 'string', 'max' => 255],
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }
@@ -69,11 +60,11 @@ class Products extends \yii\db\ActiveRecord
             'id_category' => 'Id Category',
             'image' => 'Image',
             'files' => 'Files',
-            'qr_code' => 'Qr Code',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
+            'qr_code' => 'Qr Code',
         ];
     }
 

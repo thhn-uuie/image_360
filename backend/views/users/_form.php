@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'id_role')->dropDownList(
        ArrayHelper::map(Role::find()->all(),'id_role', 'name'),
        [
-           'prompt'=>'select role'
+           'prompt'=>'Lựa chọn chức năng'
        ]
    ) ?>
     

@@ -6,8 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
-// //hiển thị mã qr
-// echo '<img src="' . $qrcodeImage . '">';
+
 /** @var yii\web\View $this */
 /** @var common\models\search\ProductsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -31,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_products',
+            //'id_products',
                       
             'name_products',
             'description',
@@ -80,9 +79,16 @@ $this->params['breadcrumbs'][] = $this->title;
                    'value' => function($model) {
                     return Html::img('../../uploads/' . $model['image'], ['width'=>'150','height'=>'150']);
                 },
-                
             ],
-            'files',
+            //'files',
+            [
+                'attribute' => 'files',
+                'format' => 'html',
+                'value' => function($model) {
+                    return Html::img('../../file360/' . $model['files'], ['width'=>'150','height'=>'150']);
+                },
+
+            ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
@@ -91,10 +97,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img('../../qr/'.$model['qr_code'], ['width'=>'150']);
                 }
             ],
-            // 'created_at',
-            // 'created_by',
-            // 'updated_at',
-            // 'updated_by',
+             'created_at',
+             'created_by',
+             'updated_at',
+             'updated_by',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Products $model, $key, $index, $column) {

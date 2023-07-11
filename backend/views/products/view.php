@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 
 
 /** @var yii\web\View $this */
-/** @var common\models\base\Products $model */
+/** @var common\models\Products $model */
 
 $this->title = $model->id_products;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id_products',
+            //'id_products',
             'name_products',
             'description',
             'status',
@@ -46,13 +46,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
                 
             ],
-            'files',
+            //'files',
+            [
+                //'label' => 'anh',
+                'attribute' => 'files',
+                'format' => 'raw',
+                'value' => $this->render('view360', ['model' => $model]),
+                'contentOptions' => ['style' => 'width:150px; height:150px;'],
+            ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
                 'format' => 'html',             
                 'value' => Html::img('../../qr/'.$model['qr_code'], ['width'=>'150'])
-                
             ],
             'created_at',
             'created_by',

@@ -17,8 +17,8 @@ class ProfileSearch extends Profile
     public function rules()
     {
         return [
-            [['id_user', 'phone'], 'integer'],
-            [['name', 'birthday', 'gender', 'enmail', 'address', 'created_at', 'created_by', 'updated_at', 'updated_by', 'avatar'], 'safe'],
+            [['id_user', 'phone', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'birthday', 'gender', 'enmail', 'address', 'avatar', 'created_by', 'updated_by'], 'safe'],
         ];
     }
 
@@ -69,9 +69,9 @@ class ProfileSearch extends Profile
             ->andFilterWhere(['like', 'gender', $this->gender])
             ->andFilterWhere(['like', 'enmail', $this->enmail])
             ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'avatar', $this->avatar])
             ->andFilterWhere(['like', 'created_by', $this->created_by])
-            ->andFilterWhere(['like', 'updated_by', $this->updated_by])
-            ->andFilterWhere(['like', 'avatar', $this->avatar]);
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
 
         return $dataProvider;
     }

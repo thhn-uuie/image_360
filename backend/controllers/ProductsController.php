@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use common\models\base\Products;
+use common\models\Products;
 use common\models\search\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -86,10 +86,23 @@ class ProductsController extends Controller
         $model = new \common\models\Products();
 
         $loadImg = new \common\helper\ImageHelper();
+
         if ($model->load(Yii::$app->request->post())) {
-            $model->file_image = UploadedFile::getInstance($model, 'file_image');
             $model->file_360 = UploadedFile::getInstance($model, 'file_360');
+            $model->file_image =UploadedFile::getInstance($model, 'file_image');
             $model->qr;
+
+            // if (($model->qr)) {
+            //     $model->qr_code = $model->createQR();
+            //     $model->qr->saveAs('../../qr' . $model->qr->name);
+            // }
+
+            // if (!empty($model->qr)) {
+            //     $model->qr->saveAs('../../qr' . $model->qr->name);
+            // } else {
+            //     $model->qr_code = $model->createQR();
+            //     $model->qr->saveAs('../../qr' . $model->qr->name);
+            // }
 
             if (!empty($model->qr)) {
                 $qrImg = Yii::getAlias('@image_360/qr/') . $model->qr->name;
@@ -100,20 +113,19 @@ class ProductsController extends Controller
                 $model->setAttribute('qr_code', $model->qr_code);
                 $model->qr = UploadedFile::getInstance($model, 'qr');
             }
-            
 
-            if ($model->file_image) {
-                $model->file_image->saveAs('../../uploads/' . $model->file_image->name);
-                $model->image = $model->file_image->name;
-            }
+            // Upload image
+            $loadImg->loadImgProducts($model, $model->file_image, '../../uploads/');
 
+            // Upload image 360
+           
             if ($model->file_360) {
-                $model->file_360->saveAs('../../uploads/' . $model->file_360->name);
-                $model->files = $model->file_360->name;
+                $model->file_360->saveAs('../../file360/' . time() . '_' . $model->file_360->name);
+                $model->files = time() . '_' . $model->file_360->name;
             }
 
             if ($model -> save(false)) {
-                //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
+                  //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
                 return $this->redirect((['view', 'id_products' => $model->id_products]));
             } else {
                 //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
@@ -122,7 +134,7 @@ class ProductsController extends Controller
                 ]);
             }
         
-        } else{
+        } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -140,14 +152,46 @@ class ProductsController extends Controller
     public function actionUpdate($id_products)
     {
         $model = $this->findModel($id_products);
+        $old_image = $model->image;
+        $old_360 = $model->files;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_products' => $model->id_products]);
+        if ($model->load(Yii::$app->request->post()))
+        {
+            $model->file_image =  UploadedFile::getInstance($model, 'file_image');
+            $model->file_360 = UploadedFile::getInstance($model, 'file_360');
+
+            if($model->file_image){
+                $model->file_image->saveAs('../../uploads/' . time() . '_' .$model->file_image->name);
+                unlink('../../uploads/'.$model->image);
+                $model->image = time() . '_' . $model->file_image->name;
+
+            } else {
+                $model->file_image = $old_image;
+            }
+
+            if($model->file_360){
+                $model->file_360->saveAs('../../file360/' . time() . '_' . $model->file_360->name);
+                unlink('../../file360/'.$model->files);
+                $model->files = time() . '_' . $model->file_360->name;
+            } else {
+                $model->file_360 = $old_360;
+            }
+
+            if ($model->save(false)) {
+                return $this->redirect(['view', 'id_products' => $model->id_products]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
+            
+
+        } else {
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -159,8 +203,10 @@ class ProductsController extends Controller
      */
     public function actionDelete($id_products)
     {
-        $this->findModel($id_products)->delete();
-
+        $model = $this->findModel($id_products);
+        $model -> delete();
+        unlink('../../uploads/' . $model->image);
+        unlink('../../file360/' . $model->files);
         return $this->redirect(['index']);
     }
 

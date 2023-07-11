@@ -3,6 +3,8 @@ namespace common\models;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 use yii\helpers\Url;
+use Yii;
+use common\models\base\Categories;
 class Products extends \common\models\base\Products {
     public $file_image;
 
@@ -19,8 +21,8 @@ class Products extends \common\models\base\Products {
             [['created_at', 'updated_at'], 'safe'],
             [['name_products', 'description', 'status', 'image', 'files', 'qr_code', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['qr_code'], 'unique'],
-            ['file_image','file','extensions'=>'jpg,png'],
-
+            [['file_image'],'file','extensions'=>'jpg,png, jpeg'],
+            //[['file_360'], 'file', 'extensions' => 'jpg, png, jpeg'],
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }
@@ -42,15 +44,8 @@ class Products extends \common\models\base\Products {
         $res = $writer->write($qr);
         $path = '../../qr/'.$this->name_products.time().'.png';
         $res -> saveToFile($path);
-        // var_dump($url);
-        // die;
         $this->setAttribute('qr_code', $path);
         return $path;
-    }
-
-    public function getProductsCount() {
-        $productsCount = static::find()->count();
-        return $productsCount;
     }
 
 
