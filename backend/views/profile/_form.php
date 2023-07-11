@@ -15,16 +15,22 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php if (Yii::$app->user->identity->id_role == 1):?>
+        <?php $ids = User::find()
+            ->select('users.id_user')
+            ->leftJoin('profile', 'users.id_user = profile.id_user')
+            ->where(['profile.id_user' => null])
+            ->column();
 
+        ?>
     <?= $form->field($model, 'id_user')->dropDownList(
-       ArrayHelper::map(User::find()->all(),'id_user','username'),
-       [
+            ArrayHelper::map(User::find()->where(['id_user' => $ids])->all(),'id_user','username'),       [
            'prompt' => 'Chọn user'
        ]
    ) ?>
-   <?php else: ?>
-    <?= $form->field($model, 'id_user')->hiddenInput(['value' => $model->getIdUser()]) ?>
-    <?php endif;?>
+   <?php endif; ?>
+
+<!--    --><?php //= $form->field($model, 'id_user')->hiddenInput(['value' => $model->getIdUser()]) ?>
+<!--    --><?php //endif;?>
 
     <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
     <div id = "displayImg"></div>
@@ -32,15 +38,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'birthday')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'gender')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'gender')->radioList(
+            [
+                    'Nam' => 'Nam',
+                    'Nữ' => 'Nữ',
+            ]
+    ) ?>
 
     <?= $form->field($model, 'enmail')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'phone')->textInput() ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-
-
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
