@@ -48,5 +48,10 @@ class Products extends \common\models\base\Products {
         return $path;
     }
 
+    public function getProductsCount() {
+        $productsCount = static::find()->count();
+        return $productsCount;
+    }
+
 
 }

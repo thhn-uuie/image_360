@@ -46,6 +46,11 @@ class ProductsController extends Controller
         // $dataProvider = new ActiveDataProvider([
         //     'query' => Product::find(),
         // ]);
+        $productsCount = Products::getProductsCount();
+        return $this->render('index', [
+            'getProductsCount'=> $getProductsCount,
+        ]);
+        
         $searchModel = new ProductsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -86,28 +91,14 @@ class ProductsController extends Controller
             $model->file_360 = UploadedFile::getInstance($model, 'file_360');
             $model->qr;
 
-            // if (($model->qr)) {
-            //     $model->qr_code = $model->createQR();
-            //     $model->qr->saveAs('../../qr' . $model->qr->name);
-            // }
-
-            // if (!empty($model->qr)) {
-            //     $model->qr->saveAs('../../qr' . $model->qr->name);
-            // } else {
-            //     $model->qr_code = $model->createQR();
-            //     $model->qr->saveAs('../../qr' . $model->qr->name);
-            // }
-
             if (!empty($model->qr)) {
                 $qrImg = Yii::getAlias('@image_360/qr/') . $model->qr->name;
                 $model->qr->saveAs($qrImg);
             } else {
                 $qrPath = $model->createQR();
                 $model->qr_code = basename($qrPath);
-                //$qrImg = Yii::getAlias('@image_360/qr/') . $model->qr_code;
                 $model->setAttribute('qr_code', $model->qr_code);
                 $model->qr = UploadedFile::getInstance($model, 'qr');
-                //$model->qr->saveAs($qrImg);
             }
             
 
@@ -136,8 +127,6 @@ class ProductsController extends Controller
                 'model' => $model,
             ]);
         }
-        
-        
     }
 
     
