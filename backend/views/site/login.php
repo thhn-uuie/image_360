@@ -174,7 +174,7 @@ $this->title = 'Login';
     <script>
         pannellum.viewer('panorama', {
             "type": "equirectangular",
-            "panorama": "https://pannellum.org/images/jfk.jpg",
+            "panorama": "login-image.jpg",
             "autoRotate": -2,
             "autoLoad": true
         });

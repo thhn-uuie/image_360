@@ -8,8 +8,8 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\Products $model */
 
-$this->title = $model->id_products;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->title = $model->name_products;
+$this->params['breadcrumbs'][] = ['label' => 'Quản lý sản phẩm', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
