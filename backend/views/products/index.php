@@ -33,8 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id_products',
-            
-                      
+
+            [
+                'attribute' => 'image',
+                'format' => 'html',
+                'value' => function($model) {
+                    return Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
+                },
+            ],
             'name_products',
             'description',
 
@@ -83,14 +89,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
 
-            [
-                'attribute' => 'image',
-                'format' => 'html',             
-                   'value' => function($model) {
-                    return Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
-                    //return Html::tag('div', Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100']), ['class' => 'circular-image']);
-                },
-            ],
 
 //            [
 //                'attribute' => 'files',
