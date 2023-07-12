@@ -35,10 +35,11 @@ $this->title = 'Login';
             .container {
                 display: flex;
                 height: 100vh;
+                position: relative;
             }
 
             .left {
-                overflow: hidden;
+                /*overflow: hidden;*/
                 display: flex;
                 flex-wrap: wrap;
                 flex-direction: column;
@@ -49,20 +50,11 @@ $this->title = 'Login';
                 animation-delay: 0s;
             }
 
-            .right {
-                flex: 1;
-                /*background-color: black;*/
-                transition: 0.5s;
-                /*background-image: url(https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://pannellum.org/images/jfk.jpg&amp;autoRotate=-2);*/
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-
-            }
-
             #panorama {
                 margin-left:100px;
+                position: relative;
             }
+
 
             .header > h2 {
                 margin: 0;
@@ -80,40 +72,39 @@ $this->title = 'Login';
                 /*max-width: 100%;*/
                 display: flex;
                 flex-direction: column;
+                padding-left: 90px;
+
             }
 
-            /*.form > p {*/
-            /*    text-align: right;*/
-            /*}*/
-
-            /*.form > p > a {*/
-            /*    color: #000;*/
-            /*    font-size: 14px;*/
-            /*}*/
 
             .form-field {
                 height: 46px;
+                width:300px;
                 padding: 0 16px;
                 border: 2px solid #ddd;
                 border-radius: 4px;
                 font-family: 'Rubik', sans-serif;
                 outline: 0;
                 transition: .2s;
-                margin-top: 20px;
+                margin-top: 10px;
             }
 
             .form-field:focus {
-                border-color: #0f7ef1;
+                border-color: #F48FB1;
+
             }
 
-            .form > button {
-                padding: 12px 10px;
-                border: 0;
-                background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+            .btn-login {
+                padding: 12px 127px;
+                border: 1px solid transparent;
+                vartical-align: middle;
+                text-align: center;
+                background: linear-gradient(to right, #ff5151 0%, #ff7b7b 100%);
                 border-radius: 3px;
                 margin-top: 10px;
-                color: #fff;
+                color: #ffffff;
                 letter-spacing: 1px;
+                font-size:15px;
                 font-family: 'Rubik', sans-serif;
             }
 
@@ -150,15 +141,16 @@ $this->title = 'Login';
                     width: 440px;
                 }
             }
+
         </style>
     </head>
     <div class="left">
         <div class="header">
         </div>
+<!--        <h1 style="font-weight: bold;white-space: nowrap; color: #cc0a2f"> TRÌNH DIỄN ẢNH 360</h1>-->
         <div class="site-login">
-            <h1 style="font-weight: bold; color: #48303c"><?= Html::encode($this->title) ?></h1>
-            <p>Please fill out the following fields to login:</p>
-
+            <h1 style="font-weight: bold; color: #f25555; padding-left:70px; margin-bottom:50px"><?= Html::encode($this->title) ?></h1>
+<!--            <p style="color: #450808; font-size: 15px;">Please fill out the following fields to login:</p>-->
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-field a3']) ?>
@@ -168,7 +160,7 @@ $this->title = 'Login';
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Login', ['class' => 'btn-login', 'name' => 'login-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
@@ -176,12 +168,13 @@ $this->title = 'Login';
         </div>
 
     </div>
-    <div class="right"></div>
-    <div id="panorama"></div>
+
+    <div id="panorama">
+    </div>
     <script>
         pannellum.viewer('panorama', {
             "type": "equirectangular",
-            "panorama": "https://pannellum.org/images/jfk.jpg",
+            "panorama": "login-image.jpg",
             "autoRotate": -2,
             "autoLoad": true
         });

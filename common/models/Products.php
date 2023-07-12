@@ -49,4 +49,7 @@ class Products extends \common\models\base\Products {
     }
 
 
+    public function get360Images() {
+        return Yii::getAlias('@image_360/file360');
+    }
 }

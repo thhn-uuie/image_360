@@ -45,9 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id_role',
                 'content' => function($model) {
                         if ($model -> id_role == 1) {
-                            return 'Admin';
+                            return '<span class="badge rounded-pill text-bg-info" style="font-size: 12px;">Admin</span>';
                         } else {
-                            return 'User';
+                            return '<span class="badge rounded-pill text-bg-secondary" style="font-size: 12px;">User</span>';
                         }
                 },
                 'headerOptions' => [
@@ -58,9 +58,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
 
             ],
-            'created_at',
+            [
+                'attribute' => 'created_at' ,
+                'content' => function($model) {
+                    return date('d-m-Y', $model->created_at);
+                }
+            ],
             'created_by',
-            'updated_at',
+            [
+                'attribute' => 'updated_at',
+                'content' => function($model) {
+                    return date('d-m-Y', $model->created_at);
+                }
+            ],
             'updated_by',
             [
                 'class' => ActionColumn::className(),

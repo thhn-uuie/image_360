@@ -7,6 +7,7 @@ use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
 /** @var common\models\Products $model */
+//$this->title = 'Xem sản phẩm';
 
 $this->title = $model->id_products;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
@@ -44,7 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image',
                 'format' => 'html',             
                 'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
-                
+                // 'value' => function ($model) {
+                //     return '<div class="circular-image">' . Html::img('../../uploads/' . $model['image'], ['width' => '200']) . '</div>';
+                // }
             ],
             //'files',
             [
@@ -58,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'qr_code',
                 'format' => 'html',             
-                'value' => Html::img('../../qr/'.$model['qr_code'], ['width'=>'150'])
+                'value' => Html::img('../../qr'.$model['qr_code'], ['width'=>'150'])
             ],
             'created_at',
             'created_by',

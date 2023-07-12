@@ -54,17 +54,17 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id_user' => 'Id User',
-            'name' => 'Name',
-            'birthday' => 'Birthday',
-            'gender' => 'Gender',
-            'enmail' => 'Enmail',
-            'phone' => 'Phone',
-            'address' => 'Address',
+            'name' => 'Họ tên',
+            'birthday' => 'Ngày sinh',
+            'gender' => 'Giới tính',
+            'enmail' => 'Email',
+            'phone' => 'Điện thoại',
+            'address' => 'Địa chỉ',
             'avatar' => 'Avatar',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
+            'created_at' => 'Thời gian tạo',
+            'created_by' => 'Người tạo',
+            'updated_at' => 'Thời gian cập nhật',
+            'updated_by' => 'Người cập nhật',
         ];
     }
 
