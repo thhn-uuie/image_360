@@ -46,10 +46,10 @@ class ProductsController extends Controller
         // $dataProvider = new ActiveDataProvider([
         //     'query' => Product::find(),
         // ]);
-        $productsCount = Products::getProductsCount();
-        return $this->render('index', [
-            'getProductsCount'=> $getProductsCount,
-        ]);
+//        $productsCount = Products::getProductsCount();
+//        return $this->render('index', [
+//            'getProductsCount'=> $getProductsCount,
+//        ]);
         
         $searchModel = new ProductsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);

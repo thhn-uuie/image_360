@@ -37,20 +37,23 @@ $this->params['breadcrumbs'][] = $this->title;
                       
             'name_products',
             'description',
-            'status',
-            // [
-            //     'attribute' => 'status',
-            //     'filter' => Html::activeDropDownList(
-            //         $searchModel,
-            //         'status',
-            //         \common\models\Products::getStatus(),
-            //         ['class' => 'form-control', 'prompt' => 'Chọn']
-            //     ),
-            //     'value' => function($model) {
-            //         return $model->status;
-            //     },
-            // ],
-            //'id_category',
+
+            [
+                    'attribute' => 'status',
+                    'content' => function($model) {
+                        if($model->status == 'Hoạt động') {
+                            return '<span class="badge text-bg-success" style="font-size: 12px;">Họat động</span>';
+                        } else {
+                            return '<span class="badge text-bg-danger" style="font-size: 12px;">Không hoạt động</span>';
+                        }
+                    },
+                    'headerOptions' => [
+                            'style' => 'width:150px; text-align:center'
+                    ],
+                    'contentOptions' => [
+                            'style' => 'width:150px; text-align:center'
+                    ]
+            ],
            
             [
                 'attribute' => 'id_category',
@@ -88,24 +91,31 @@ $this->params['breadcrumbs'][] = $this->title;
                     //return Html::tag('div', Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100']), ['class' => 'circular-image']);
                 },
             ],
-            //'files',
-            [
-                'attribute' => 'files',
-                'format' => 'html',
-                'value' => function($model) {
-                    return Html::img('../../file360/' . $model['files'], ['width'=>'150','height'=>'150']);
-                },
 
-            ],
-            //'qr_code',
+//            [
+//                'attribute' => 'files',
+//                'format' => 'html',
+//                'value' => function($model) {
+//                    return Html::img('../../file360/' . $model['files'], ['width'=>'150','height'=>'150']);
+//                },
+//
+//            ],
+
+//            [
+//                'attribute' => 'qr_code',
+//                'format' => 'html',
+//                'value' => function($model) {
+//                    return Html::img('../../qr/'.$model['qr_code'], ['width'=>'150']);
+//                }
+//            ],
+
             [
-                'attribute' => 'qr_code',
-                'format' => 'html',             
-                'value' => function($model) {
-                    return Html::img('../../qr/'.$model['qr_code'], ['width'=>'150']);
+                'attribute' => 'created_at' ,
+                'content' => function($model) {
+                    return date('d-m-Y', $model->created_at);
                 }
             ],
-             'created_at',
+
              'created_by',
 
 //            [
