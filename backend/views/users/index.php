@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id_role',
                 'content' => function($model) {
                         if ($model -> id_role == 1) {
-                            return '<span class="badge rounded-pill text-bg-info" style="font-size: 12px;">Admin</span>';
+                            return '<span class="badge rounded-pill bg-primary" style="font-size: 12px;">Admin</span>';
                         } else {
                             return '<span class="badge rounded-pill text-bg-secondary" style="font-size: 12px;">User</span>';
                         }

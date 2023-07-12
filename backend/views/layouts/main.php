@@ -14,8 +14,6 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 
-
-
 $formLogout = Html::beginForm(['/site/logout'], 'post')
 . Html::submitButton(
     'Logout (' . Yii::$app->user->identity->username . ')',
@@ -195,13 +193,10 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
 
             <!-- page content -->
             <div class="right_col" role="main">
-
-                    <?= Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-                    <?= Alert::widget() ?>
-
-
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
                 <?= $content ?>
             </div>
             <!-- /page content -->
