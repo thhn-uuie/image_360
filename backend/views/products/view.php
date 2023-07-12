@@ -32,6 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+
+<div class="products">
+    <div class="product-image">
+    </div>
+    <div class="product-info">
+        
+    </div>
+</div>
+
+    
+
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -45,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image',
                 'format' => 'html',             
                 'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
+                
             ],
             //'files',
             [
@@ -58,13 +71,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'qr_code',
                 'format' => 'html',             
-                'value' => Html::img('../../qr/'.$model['qr_code'], ['width'=>'150'])
+                'value' => Html::img('../../qr'.$model['qr_code'], ['width'=>'150'])
             ],
             'created_at',
             'created_by',
             'updated_at',
             'updated_by',
         ],
-    ]) ?>
+    ]) ?> 
 
 </div>

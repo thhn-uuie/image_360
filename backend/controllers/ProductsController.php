@@ -205,8 +205,8 @@ class ProductsController extends Controller
     {
         $model = $this->findModel($id_products);
         $model -> delete();
-         unlink('../../uploads/' . $model->image);
-         unlink('../../file360/' . $model->files);
+        unlink('../../uploads/' . $model->image);
+        unlink('../../file360/' . $model->files);
         return $this->redirect(['index']);
     }
 
