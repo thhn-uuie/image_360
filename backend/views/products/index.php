@@ -11,6 +11,8 @@ use yii\helpers\ArrayHelper;
 /** @var common\models\search\ProductsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
+//$this->registerJsFile('@web/js/three.js', ['position' => View::POS_HEAD]);
+
 $this->title = 'Quản lý sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -31,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id_products',
+            
                       
             'name_products',
             'description',
@@ -55,7 +58,11 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id_category',
                 // 'content' => function($model) {
-                    
+                //     if($model->id_category == 'Con người') {
+                //         return '<span class="badge text-bg-success" style="font-size: 12px;">Condsd người</span>';
+                //     } else {
+                //         return '<span class="badge text-bg-danger" style="font-size: 12px;">Con người</span>';
+                //     }
                 // },
                 'headerOptions' => [
                     'style' => 'width:150px;text-align:center'
@@ -80,7 +87,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image',
                 'format' => 'html',             
                    'value' => function($model) {
-                    return Html::img('../../uploads/' . $model['image'], ['width'=>'150','height'=>'150']);
+                    return Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
+                    //return Html::tag('div', Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100']), ['class' => 'circular-image']);
                 },
             ],
 

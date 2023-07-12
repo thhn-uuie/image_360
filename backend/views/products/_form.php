@@ -93,6 +93,39 @@ use yii\helpers\Url;
         }
     </script>
 
+    <script>
+        function img360Preview() {
+            var fileSelected = document.getElementById('products-file_image').files;
+            if (fileSelected.length > 0) {
+                var fileToLoad = fileSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoaderEvent) {
+                    var srcData = fileLoaderEvent.target.result;
+                    var loader = new THREE.CubeTextureLoader();
+                    loader.setPath('/path/to/images/'); // đường dẫn tới thư mục chứa ảnh 360 độ
+                    var textureCube = loader.load([
+                        'right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'
+                    ]);
+                    var material = new THREE.MeshBasicMaterial({
+                        envMap: textureCube,
+                        side: THREE.DoubleSide
+                    });
+                    var geometry = new THREE.SphereGeometry(500, 60, 40);
+                    var mesh = new THREE.Mesh(geometry, material);
+                    mesh.rotation.x = Math.PI / 2;
+                    var previewContainer = document.getElementById('displayImg');
+                    // Xóa bất kỳ phần tử HTML nào trong phần tử hiển thị trước đó
+                    while (previewContainer.firstChild) {
+                        previewContainer.removeChild(previewContainer.firstChild);
+                    }
+                    previewContainer.appendChild(mesh.renderer.domElement);
+                }
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        }
+    </script>
+
+
     <?php ActiveForm::end(); ?>
 
 </div>
