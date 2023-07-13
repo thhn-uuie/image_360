@@ -158,9 +158,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',             
-                'value' => function($model) {
-                    return Html::img('../../uploads/'.$model['image'], ['width'=>'150']);
-                }
+                'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
                 
             ],
             //'files',
@@ -174,10 +172,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'qr_code',
             [
                 'attribute' => 'qr_code',
-                'format' => 'html',
-                'value' => function($model) {
-                    return Html::img('../../qr/'.$model['qr_code'], ['width'=>'150']);
-                }
+                'format' => 'html',             
+                'value' => Html::img('../../qr'.$model['qr_code'], ['width'=>'150'])
             ],
             'created_at',
             'created_by',
