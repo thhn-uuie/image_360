@@ -12,9 +12,27 @@ use yii\helpers\ArrayHelper;
 
 <div class="users-form">
 
+
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../views/users/css/custom.css">
+    </head>
+    <body>
+      <div class="row">
+    <div class="col-md-12">
+       
+        
+        <fieldset>
+          
+        <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
@@ -23,15 +41,28 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'id_role')->dropDownList(
        ArrayHelper::map(Role::find()->all(),'id_role', 'name'),
        [
-           'prompt'=>'Lựa chọn chức năng'
+           'prompt'=>'Lựa chọn chức năng',
        ]
    ) ?>
-    
-
-    <div class="form-group">
+         
+        </fieldset>
+        
+       
+        <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
+        
+       </form>
+        </div>
+      </div>
+      
+    </body>
+</html>
 
+ 
+
+    
     <?php ActiveForm::end(); ?>
+
 
 </div>

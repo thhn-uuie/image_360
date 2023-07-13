@@ -39,9 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_by',
             [
                 'class' => ActionColumn::class,
-                // 'urlCreator' => function ($action, Categories $model, $key, $index, $column) {
-                //     return Url::toRoute([$action, 'id_category' => $model->id_category]);
-                //  }
+                'urlCreator' => function ($action, Categories $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id_category' => $model->id_category]);
+                 }
             ],
         ],
     ]); ?>
