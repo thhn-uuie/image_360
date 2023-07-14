@@ -7,7 +7,7 @@
   overflow: hidden;
   box-shadow: 2px 1px 15px -5px #414040;
   transition: all .3s ease;
-  margin: 100px auto;
+  margin: 40px auto;
 
   &
   :hover {
@@ -20,14 +20,14 @@
     opacity: .5;
   }
 
-  .profile-pic {
+  .products-pic {
     height: 100%;
     width: 100%;
     transition: all .3s ease;
 
     &:after {
       font-family: FontAwesome;
-      content: "\f007";
+      content: "\f03e";
       top: 0;
       left: 0;
       width: 100%;
@@ -48,21 +48,35 @@
     height: 100%;
     width: 100%;
 
-    .fa-arrow-circle-up {
+    .fa-cloud-upload {
       position: absolute;
-      font-size: 245px;
-      top: -10px;
-      left: 12px;
+      font-size: 180px;
+      top: 42px;
+      left: 20px;
       text-align: center;
       opacity: 0;
       transition: all .3s ease;
       color: #eaeaea;
     }
 
-    &:hover .fa-arrow-circle-up {
+
+    &:hover .fa-cloud-upload {
       opacity: .9;
     }
 
   }
 }
+
+.col-md-10 {
+  padding: 30px;
+
+  .form-group {
+    margin-bottom: 50px;
+
+    #products-description.form-control {
+      height:100px;
+    }
+  }
+}
+
 

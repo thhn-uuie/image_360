@@ -183,8 +183,6 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                 </div>
                                 
                             </li>
-
-                            
                         </ul>
                     </nav>
                 </div>

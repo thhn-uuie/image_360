@@ -54,16 +54,16 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             'id_products' => 'Id Products',
-            'name_products' => 'Name Products',
-            'description' => 'Description',
-            'status' => 'Status',
-            'id_category' => 'Id Category',
-            'image' => 'Image',
-            'files' => 'Files',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
+            'name_products' => 'Tên sản phẩm',
+            'description' => 'Mô tả',
+            'status' => 'Trạng thái',
+            'id_category' => 'Danh mục',
+            'image' => 'Hình ảnh',
+            'files' => 'Ảnh 360',
+            'created_at' => 'Thời gian tạo',
+            'created_by' => 'Người tạo',
+            'updated_at' => 'Thời gian cập nhật',
+            'updated_by' => 'Người cập nhât',
             'qr_code' => 'Qr Code',
         ];
     }

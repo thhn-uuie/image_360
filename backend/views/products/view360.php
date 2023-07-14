@@ -16,8 +16,9 @@ use yii\helpers\Url;
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
         #panorama {
-            width: 300px;
-            height: 150px;
+            margin:0 auto;
+            width: 600px;
+            height: 400px;
         }
     </style>
 </head>
@@ -27,7 +28,6 @@ use yii\helpers\Url;
 
 <script>
     <?php
-
     $url = Url::to('../../file360/') . $model->files;
     ?>
     pannellum.viewer('panorama', {
