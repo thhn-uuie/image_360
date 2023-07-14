@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="../views/users/css/view_custom.css">
+    <link rel="stylesheet" href="../views/users/css/button_custom.css">
 
 
 
@@ -82,17 +83,6 @@ $this->params['breadcrumbs'][] = $this->title;
   </body>
 </html>
 
-    <!-- <p>
-        <?= Html::a('Update', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id_user' => $model->id_user], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p> -->
-
     <html>
     <div style="text-align: center;">
       
@@ -107,63 +97,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     </html>
 
-    <style>
-      .btn-primary {
-        width: 150px;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        font-size: 20px;
-        color: white;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        transition-duration: 0.1s;
-        background-color: #57d699;
-        font-family: Roboto;
-
-    }
-
-    .btn-danger {
-      width: 150px;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        font-size: 20px;
-        color: white;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        transition-duration: 0.1s;
-        background-color: #e78e96;
-        font-family: Roboto;
-
-    }
-
-    .btn-primary:hover {
-        background-color: #2f9345;
-    }
-
-    .btn-primary:active {
-        box-shadow: 0 0 9e9q inset #0009; 
-        background-color: black;
-        outline: none;
-    }
-
-    .btn-danger:hover {
-        background-color: #d73b49;
-    }
-
-    .btn-danger:active {
-        box-shadow: 0 0 2e2q inset #0009; 
-        background-color: black;
-        outline: none;
-    }
-
-
-    </style>
     <!-- <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
