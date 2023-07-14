@@ -74,6 +74,16 @@ class ProductsController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id_products),
         ]);
+        // $product=Products::findOne($id_products);
+        // if ($product) {
+        //     $product->number_of_views += 1;
+        //     $product->save();
+        //     return $this->render('view',[
+        //         'product' => $product,
+        //     ]);
+        // } else {
+        //     throw new NotFoundHttpException('The requested page does not exist.');
+        // }
     }
 
     /**

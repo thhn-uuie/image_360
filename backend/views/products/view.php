@@ -21,6 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <div class="product-views">
+    </div>
     <p>
         <?= Html::a('Update', ['update', 'id_products' => $model->id_products], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id_products' => $model->id_products], [
@@ -131,7 +133,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <!-- End block content -->
     </main>
-
    
 
     <!-- Optional JavaScript -->

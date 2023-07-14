@@ -38,7 +38,10 @@ class Products extends \common\models\base\Products {
 
     public function createQR() {
         $writer = new PngWriter();
-        $url = Url::toRoute(['products/view', 'id_products' =>$this->id_products], true);
+        $url = Url::toRoute(['products/view', 'id_products' =>$this->id_products]);
+        // var_dump($url);
+        // die;
+        
         $qr = QrCode::create($url);
 
         $res = $writer->write($qr);

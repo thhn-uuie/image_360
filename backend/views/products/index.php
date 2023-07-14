@@ -60,13 +60,11 @@ $this->params['breadcrumbs'][] = $this->title;
            
             [
                 'attribute' => 'id_category',
-                // 'content' => function($model) {
-                //     if($model->id_category == 'Con người') {
-                //         return '<span class="badge text-bg-success" style="font-size: 12px;">Condsd người</span>';
-                //     } else {
-                //         return '<span class="badge text-bg-danger" style="font-size: 12px;">Con người</span>';
-                //     }
-                // },
+                'content' => function($model) {
+                    if ($model){
+                        
+                    }
+                },
                 'headerOptions' => [
                     'style' => 'width:150px;text-align:center'
                 ],
@@ -94,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
 
-            ],
+            
             //'qr_code',
             [
                 'attribute' => 'qr_code',
