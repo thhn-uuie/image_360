@@ -131,6 +131,7 @@ class ProductsController extends Controller
            
             if ($model->file_360) {
                 $model->file_360->saveAs('../../file360/' . time() . '_' . $model->file_360->name);
+
                 $model->files = time() . '_' . $model->file_360->name;
             }
 

@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 
-
 /** @var yii\web\View $this */
 /** @var common\models\Products $model */
 //$this->title = 'Xem sản phẩm';
@@ -14,7 +13,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Quản lý sản phẩm', 'url' =>
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-
 
 
 <div class="products-view">
@@ -34,153 +32,127 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <head>
+        <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+        <link rel="stylesheet" href="../views/products/css/view-css.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <link rel="stylesheet" href="../views/products/css/view360-css.css" type="text/css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
 
-<!-- header -->
-<nav class="navbar navbar-expand-md navbar-white sticky-top bg-white">
-        <div class="container">
-            
-        </div>
-    </nav>
-    <!-- end header -->
+    <div class="card">
+        <div class="row">
+            <div class="col-md-5">
 
-    <main role="main">
-        <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
-        <div class="container mt-4">
-            <div id="thongbao" class="alert alert-danger d-none face" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+                <!-- Upload image -->
+                <img style="margin-top: 100px;margin-left: 100px; border-radius:10%; border: 1px solid black; margin-bottom: 20px;"
+                     class="" width="250px" height="300px"
+                     src="<?php echo '../../uploads/' . $model->image ?>">
+                <div>
+                <div class="start-btn">
+                    <button type="button" class="btn btn-outline-success" style="font-size: 12px">QR Code</button>
+                </div>
+
+                <div class="center modal-box">
+                    <div class="fas fa-times"></div>
+                    <div class="form">
+                        <img class="qr-code" width="250px" height="250px"
+                             src="<?php echo '../../qr/' . $model->qr_code ?>">
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $('.start-btn').click(function () {
+                            $('.modal-box').toggleClass("show-modal");
+                            $('.start-btn').toggleClass("show-modal");
+                        });
+                        $('.fa-times').click(function () {
+                            var pop = $(this).closest(".modal-box");
+
+
+                            pop.toggleClass("show-modal");
+                            $('.start-btn').toggleClass("show-modal");
+                            event.stopPropagation();
+                        });
+                    });
+                </script>
+
+                <div class="start-btn-360">
+                    <button type="button" class="btn btn-outline-warning" style="font-size: 12px; color: brown; border: 1px solid brown">Ảnh 360</button>
+                </div>
+
+                <div class="center modal-box-360">
+                    <div class="fas fa-times"></div>
+                    <div class="form360">
+                        <?php echo $this->render('view360', ['model' => $model]) ?>
+
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $('.start-btn-360').click(function () {
+                            $('.modal-box-360').toggleClass("show-modal-360");
+                            $('.start-btn-360').toggleClass("show-modal-360");
+                        });
+                        $('.fa-times').click(function () {
+                            var popup = $(this).closest(".modal-box-360");
+                            // $('.modal-box-360').toggleClass("show-modal-360");
+                            // $('.start-btn-360').toggleClass("show-modal-360");
+                            popup.toggleClass("show-modal-360");
+                            $('.start-btn-360').toggleClass("show-modal-360");
+                            event.stopPropagation();
+                        });
+                    });
+                </script>
+                </div>
             </div>
+            <div class=" col-md-7">
+                <div class="p-3 py-5">
 
-            <div class="card">
-                <div class="container-fliud">
-                    <form name="frmsanphamchitiet" id="frmsanphamchitiet" method="post"
-                        action="/php/twig/frontend/giohang/themvaogiohang">
-                        <input type="hidden" name="sp_ma" id="sp_ma" value="5">
-                        <input type="hidden" name="sp_ten" id="sp_ten" value="Samsung Galaxy Tab 10.1 3G 16G">
-                        <input type="hidden" name="sp_gia" id="sp_gia" value="10990000.00">
-                        <input type="hidden" name="hinhdaidien" id="hinhdaidien" value="samsung-galaxy-tab-10.jpg">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right"
+                            style="font-size: 40px; font-weight: bold"><?php echo $model->name_products ?></h4>
 
-                        <div class="wrapper row">
-                            <div class="preview col-md-6">
-                                <div class="preview-pic tab-content">
-                                    <div class="tab-pane" id="pic-1">
-                                        <img src="../assets/img/product/samsung-galaxy-tab-10.jpg">
-                                    </div>
-                                    <div class="tab-pane" id="pic-2">
-                                        <img src="../assets/img/product/samsung-galaxy-tab.jpg">
-                                    </div>
-                                    <div class="tab-pane active" id="pic-3">
-                                        <img src="../assets/img/product/samsung-galaxy-tab-4.jpg">
-                                    </div>
-                                </div>
-                                <ul class="preview-thumbnail nav nav-tabs">
-                                    <li class="active">
-                                        <a data-target="#pic-1" data-toggle="tab" class="">
-                                            <img src="../assets/img/product/samsung-galaxy-tab-10.jpg">
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a data-target="#pic-2" data-toggle="tab" class="">
-                                            <img src="../assets/img/product/samsung-galaxy-tab.jpg">
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a data-target="#pic-3" data-toggle="tab" class="active">
-                                            <img src="../assets/img/product/samsung-galaxy-tab-4.jpg">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="details col-md-6">
-                                <h3 class="product-title">Thông tin sản phẩm</h3>
-                                
-                                <p class="product-description">Màn hình 10.1 inch cảm ứng đa điểm</p>
-                                <small class="text-muted">Giá cũ: <s><span>10,990,000.00 vnđ</span></s></small>
-                                <h4 class="price">Giá hiện tại: <span>10,990,000.00 vnđ</span></h4>
 
-                                <h4 class="name-product">Tên sản phẩm: <span>10,990,000.00 vnđ</span></h4>
-
-                                <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
-                                    <strong>Uy
-                                        tín</strong>!</p>
-                                <h5 class="sizes">sizes:
-                                    <span class="size" data-toggle="tooltip" title="cỡ Nhỏ">s</span>
-                                    <span class="size" data-toggle="tooltip" title="cỡ Trung bình">m</span>
-                                    <span class="size" data-toggle="tooltip" title="cỡ Lớn">l</span>
-                                    <span class="size" data-toggle="tooltip" title="cỡ Đại">xl</span>
-                                </h5>
-                                <h5 class="colors">colors:
-                                    <span class="color orange not-available" data-toggle="tooltip"
-                                        title="Hết hàng"></span>
-                                    <span class="color green"></span>
-                                    <span class="color blue"></span>
-                                </h5>
-                                <div class="form-group">
-                                    <label for="soluong">Số lượng đặt mua:</label>
-                                    <input type="number" class="form-control" id="soluong" name="soluong">
-                                </div>
-                                <div class="action">
-                                    <a class="add-to-cart btn btn-default" id="btnThemVaoGioHang">Thêm vào giỏ hàng</a>
-                                    <a class="like btn btn-default" href="#"><span class="fa fa-heart"></span></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Mô tả sản phẩm</label>
+                            <p style="font-size: 15px"><?php echo $model->description ?></p></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Trạng thái</label>
+                            <p style="font-size: 15px"><?php echo $model->status ?></p></div>
+                        <div class="col-md-12"><label class="labels">Danh mục sản phẩm</label>
+                            <p style="font-size: 15px"><?php echo $model->id_category ?></p></div>
+                        <div class="col-md-6"><label class="labels">Thời gian tạo sản phẩm</label>
+                            <p style="font-size: 15px"><?php echo $model->created_at ?></p></div>
+                        <div class="col-md-6"><label class="labels">Người tạo sản phẩm</label>
+                            <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
+                        <div class="col-md-6"><label class="labels">Thời gian cập nhật</label>
+                            <p style="font-size: 15px"><?php echo $model->updated_at ?></p></div>
+                        <div class="col-md-6"><label class="labels">Người cập nhật</label>
+                            <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- End block content -->
     </main>
+
    
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/popperjs/popper.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Custom script - Các file js do mình tự viết -->
-    <script src="../assets/js/app.js"></script>
-
-    
-
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            //'id_products',
-            'name_products',
-            'description',
-            'status',
-            'id_category',
-            //'image',
-            [
-                'attribute' => 'image',
-                'format' => 'html',             
-                'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
-                
-            ],
-            //'files',
-            [
-                //'label' => 'anh',
-                'attribute' => 'files',
-                'format' => 'raw',
-                'value' => $this->render('view360', ['model' => $model]),
-                'contentOptions' => ['style' => 'width:150px; height:150px;'],
-            ],
-            //'qr_code',
-            [
-                'attribute' => 'qr_code',
-                'format' => 'html',             
-                'value' => Html::img('../../qr'.$model['qr_code'], ['width'=>'150'])
-            ],
-            'created_at',
-            'created_by',
-            'updated_at',
-            'updated_by',
-        ],
-    ]) ?> 
-
+<div class="products">
+    <div class="product-image">
+    </div>
+    <div class="product-info">
+        
+    </div>
 </div>
+
+
+
+

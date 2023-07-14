@@ -15,114 +15,115 @@ use yii\helpers\Url;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()']) ?>
-    <div id='displayImg'></div>
+    <head>
+        <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
 
-    <?= $form->field($model, 'file_360')->fileInput() ?>
+    </head>
 
-    <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-5">
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+                <!-- Upload image -->
+                <div class="avatar-wrapper">
+                    <img class="products-pic" src=""/>
+                    <div class="upload-button">
+                        <label for="products-file_image">
+                            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                        </label>
+                    </div>
+                    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(
-        [
-            'Hoạt động' => 'Hoạt động',
-            'Không hoạt động' => 'Không hoạt động',
-        ],
-        [
-            'prompt' => 'Trạng thái'
-        ]
-    ) ?>
-
-    <?= $form->field($model, 'id_category')->dropDownList(
-        ArrayHelper::map(Categories::find()->all(),'id_category', 'name_category'),
-        [
-            'prompt' => 'Danh mục'
-        ]
-    ) ?>
+                </div>
 
 
+                <div class="avatar-wrapper">
+                    <img class="f360-pic" src=""/>
+                    <div id="panorama"></div>
 
-<!--    --><?php //= $form->field($model, 'file_360')->fileInput(['onchange' => 'uploadFile360()']) ?>
-<!--    <div id='panorama'></div>-->
+                    <label for="products-file_360">
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                    </label>
+                    <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()']) ?>
+                </div>
 
+                <!--                <div class="show-image360">-->
+                <!--                    <img class="pic-360" src=""/>-->
+                <!--                    <label for="products-file_360"> </label>-->
+                <!--                </div>-->
+                <!--                --><?php //= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()']) ?>
+            </div>
+            <div class="col-md-7">
+                <div class="col-md-10">
+                    <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'status')->dropDownList(
+                        [
+                            'Hoạt động' => 'Hoạt động',
+                            'Không hoạt động' => 'Không hoạt động',
+                        ],
+                        [
+                            'prompt' => 'Trạng thái'
+                        ]
+                    ) ?>
 
-    <?= $form->field($model, 'qr_code')->hiddenInput(['id_products'=>'qr_code'])->label(false)?>
+                    <?= $form->field($model, 'id_category')->dropDownList(
+                        ArrayHelper::map(Categories::find()->all(), 'id_category', 'name_category'),
+                        [
+                            'prompt' => 'Danh mục'
+                        ]
+                    ) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                    <?= $form->field($model, 'qr_code')->hiddenInput(['id_products' => 'qr_code'])->label(false) ?>
+                    <div class="form-group">
+                        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-
-<!--    <script>-->
-<!--        function uploadFile360() {-->
-<!--            var fileSelected = document.getElementById('products-file_360').files;-->
-<!--            if (fileSelected.length > 0) {-->
-<!--                var fileToLoad = fileSelected[0];-->
-<!--                var fileReader = new FileReader();-->
-<!--                fileReader.onload = function (fileLoaderEvent) {-->
-<!--                    var iframe = document.createElement('iframe');-->
-<!--                    iframe.width = '600';-->
-<!--                    iframe.height = '400';-->
-<!--                    iframe.allowfullscreen = true;-->
-<!--                    iframe.style.borderStyle = 'none';-->
-<!--                    iframe.src = 'https://cdn.pannellum.org/2.5/pannellum.htm#panorama=';-->
-<!--                    document.getElementById('panorama').innerHTML = iframe.outerHTML;-->
-<!--                }-->
-<!--                fileReader.readAsDataURL(fileToLoad);-->
-<!--            }-->
-<!--        }-->
-<!--    </script>-->
 
 
     <script>
         function imagePreview() {
-        var fileSelected = document.getElementById('products-file_image').files;
-            if (fileSelected.length > 0) {
-                var fileToLoad = fileSelected[0];
-                var fileReader = new FileReader();
-                fileReader.onload = function(fileLoaderEvent) {
-                    var srcData = fileLoaderEvent.target.result;
-                    var previewImage = document.createElement('img');
-                    previewImage.src = srcData;
-                    previewImage.style.height = '150px';
-                    previewImage.style.width = '140px';
-                    document.getElementById('displayImg').innerHTML = previewImage.outerHTML;
-                }
-                fileReader.readAsDataURL(fileToLoad);
-            }
-        }
-    </script>
-
-    <script>
-        function img360Preview() {
             var fileSelected = document.getElementById('products-file_image').files;
             if (fileSelected.length > 0) {
                 var fileToLoad = fileSelected[0];
                 var fileReader = new FileReader();
-                fileReader.onload = function(fileLoaderEvent) {
+                fileReader.onload = function (fileLoaderEvent) {
                     var srcData = fileLoaderEvent.target.result;
-                    var loader = new THREE.CubeTextureLoader();
-                    loader.setPath('/path/to/images/'); // đường dẫn tới thư mục chứa ảnh 360 độ
-                    var textureCube = loader.load([
-                        'right.jpg', 'left.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'
-                    ]);
-                    var material = new THREE.MeshBasicMaterial({
-                        envMap: textureCube,
-                        side: THREE.DoubleSide
-                    });
-                    var geometry = new THREE.SphereGeometry(500, 60, 40);
-                    var mesh = new THREE.Mesh(geometry, material);
-                    mesh.rotation.x = Math.PI / 2;
-                    var previewContainer = document.getElementById('displayImg');
-                    // Xóa bất kỳ phần tử HTML nào trong phần tử hiển thị trước đó
-                    while (previewContainer.firstChild) {
-                        previewContainer.removeChild(previewContainer.firstChild);
-                    }
-                    previewContainer.appendChild(mesh.renderer.domElement);
+                    $('.products-pic').attr('src', srcData);
                 }
                 fileReader.readAsDataURL(fileToLoad);
             }
         }
+
+    </script>
+
+
+    <script>
+        function image360Preview() {
+            var fileSelected = document.getElementById('products-file_360').files;
+            if (fileSelected.length > 0) {
+                var fileToLoad = fileSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function (fileLoaderEvent) {
+                    var url = fileLoaderEvent.target.result;
+                    pannellum.viewer('panorama', {
+                        "type": "equirectangular",
+                        "panorama": url,
+                        "autoLoad": true
+                    });
+                    $('.pic-360').attr('src', url);
+                }
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        }
+
     </script>
 
 

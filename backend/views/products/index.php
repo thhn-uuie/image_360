@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' => function($model) {
-                    return Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
+                'value' => function ($model) {
+                    return Html::img('../../uploads/' . $model['image'], ['width' => '100', 'height' => '100']);
                 },
             ],
             'name_products',
@@ -57,14 +57,16 @@ $this->params['breadcrumbs'][] = $this->title;
             //     },
             // ],
             //'id_category',
-           
+
             [
                 'attribute' => 'id_category',
-                'content' => function($model) {
-                    if ($model){
-                        
-                    }
-                },
+                // 'content' => function($model) {
+                //     if($model->id_category == 'Con người') {
+                //         return '<span class="badge text-bg-success" style="font-size: 12px;">Condsd người</span>';
+                //     } else {
+                //         return '<span class="badge text-bg-danger" style="font-size: 12px;">Con người</span>';
+                //     }
+                // },
                 'headerOptions' => [
                     'style' => 'width:150px;text-align:center'
                 ],
@@ -78,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     \common\models\Products::getCategories(),
                     ['class' => 'form-control', 'prompt' => 'Chọn']
                 ),
-                'value' => function($model) {
+                'value' => function ($model) {
                     return $model->id_category;
                 },
 
@@ -92,17 +94,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
 
-            
+            ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
-                'format' => 'html',             
-                'value' => function($model) {
-                    return Html::img('../../qr/'.$model['qr_code'], ['width'=>'150']);
+                'format' => 'html',
+                'value' => function ($model) {
+                    return Html::img('../../qr/' . $model['qr_code'], ['width' => '150']);
                 }
             ],
-             'created_at',
-             'created_by',
+            'created_at',
+            'created_by',
 
 //            [
 //                'attribute' => 'updated_at' ,
@@ -118,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
         ],
-        
+
     ]); ?>
 
 
