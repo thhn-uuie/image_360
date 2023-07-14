@@ -12,7 +12,42 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name_category')->textInput(['maxlength' => true]) ?>
+    
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../views/categories/css/form_custom.css">
+    </head>
+    <body>
+      <div class="row">
+    <div class="col-md-12">
+      <form action="index.html" method="post">
+       
+        
+        <fieldset>
+          
+        <?= $form->field($model, 'name_category')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+         
+        </fieldset>
+        
+       
+        <div class="form-group">
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    </div>
+        
+       </form>
+        </div>
+      </div>
+      
+    </body>
+</html>
+    <!-- <?= $form->field($model, 'name_category')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
@@ -26,7 +61,7 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
+    </div> -->
 
     <?php ActiveForm::end(); ?>
 

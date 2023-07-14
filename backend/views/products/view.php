@@ -142,8 +142,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-        </div>
-
+<div class="products">
+    <div class="product-image">
+    </div>
+    <div class="product-info">
+        
     </div>
 </div>
 
