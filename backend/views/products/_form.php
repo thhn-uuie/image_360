@@ -20,7 +20,8 @@ use yii\helpers\Url;
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-
+        <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
     </head>
 
     <div class="card">
@@ -41,13 +42,13 @@ use yii\helpers\Url;
 
 
                 <div class="avatar-wrapper">
-                    <img class="f360-pic" src=""/>
                     <div id="panorama"></div>
-
                     <label for="products-file_360">
-                        <i class="fa fa-file" aria-hidden="true"></i>
+                        <i class="fa fa-file" aria-hidden="true" style="font-size: 100px; margin-left: 90%; margin-top: 50%"></i>
                     </label>
-                    <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()']) ?>
+
+                    <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()', 'style' => 'display:none']) ?>
+
                 </div>
 
                 <!--                <div class="show-image360">-->
@@ -113,12 +114,14 @@ use yii\helpers\Url;
                 var fileReader = new FileReader();
                 fileReader.onload = function (fileLoaderEvent) {
                     var url = fileLoaderEvent.target.result;
+                    console.log(url);
                     pannellum.viewer('panorama', {
                         "type": "equirectangular",
                         "panorama": url,
+
                         "autoLoad": true
                     });
-                    $('.pic-360').attr('src', url);
+                    $('.panorama').attr('src', url);
                 }
                 fileReader.readAsDataURL(fileToLoad);
             }

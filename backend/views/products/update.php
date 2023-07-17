@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use common\models\base\Products;
 
 /** @var yii\web\View $this */
 /** @var common\models\Products $model */

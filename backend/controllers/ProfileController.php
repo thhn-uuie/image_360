@@ -75,7 +75,7 @@ class ProfileController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $loadImg->loadImgAvatar($model);
 
-            if ($model -> save(false)) {
+            if ($model->save(false)) {
                 //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
                 return $this->redirect((['view', 'id_user' => $model->id_user]));
             } else {
@@ -84,8 +84,8 @@ class ProfileController extends Controller
                     'model' => $model,
                 ]);
             }
-        
-        } else{
+
+        } else {
 
             return $this->render('create', [
                 'model' => $model,
@@ -105,17 +105,17 @@ class ProfileController extends Controller
         $model = $this->findModel($id_user);
         $old_avatar = $model->avatar;
 
-        if ($model->load(Yii::$app->request->post())){
-            $model->file_image =  UploadedFile::getInstance($model, 'file_image');
-            if($model->file_image){
-                $model->file_image->saveAs('../../avatar/' . time() . '_' .$model->file_image->name);
-                unlink('../../avatar/'.$model->avatar);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file_image = UploadedFile::getInstance($model, 'file_image');
+            if ($model->file_image) {
+                $model->file_image->saveAs('../../image/avatars/' . time() . '_' . $model->file_image->name);
+                unlink('../../image/avatars/' . $model->avatar);
                 $model->avatar = time() . '_' . $model->file_image->name;
 
             } else {
                 $model->file_image = $old_avatar;
             }
-            if ($model -> save(false)) {
+            if ($model->save(false)) {
                 //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
                 return $this->redirect(['view', 'id_user' => $model->id_user]);
             } else {
@@ -141,8 +141,9 @@ class ProfileController extends Controller
      */
     public function actionDelete($id_user)
     {
-         $this->findModel($id_user)->delete();
-        //unlink('../../avatar/' . $model->avatar);
+        $model = $this->findModel($id_user);
+             $model->delete();
+        unlink('../../image/avatars/' . $model->avatar);
         return $this->redirect(['index']);
     }
 

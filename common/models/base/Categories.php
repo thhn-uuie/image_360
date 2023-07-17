@@ -10,9 +10,9 @@ use Yii;
  * @property int $id_category
  * @property string $name_category
  * @property string $description
- * @property string|null $created_at
+ * @property int|null $created_at
  * @property string|null $created_by
- * @property string|null $updated_at
+ * @property int|null $updated_at
  * @property string|null $updated_by
  *
  * @property Products[] $products
@@ -34,7 +34,7 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             [['name_category', 'description'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'integer'],
             [['name_category', 'description', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['name_category'], 'unique'],
         ];

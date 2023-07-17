@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image',
                 'format' => 'html',
                 'value' => function ($model) {
-                    return Html::img('../../uploads/' . $model['image'], ['width' => '100', 'height' => '100']);
+                    return Html::img('../../image/products/' . $model['image'], ['width' => '100', 'height' => '100']);
                 },
             ],
             'name_products',
@@ -60,14 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'id_category',
+                'format' => 'html',
                 'value' => function ($model) {
-
-                    $query = Products::find()
-                        ->select(['categories.name_category'])
-                        ->join('JOIN', 'categories', 'products.id_category = categories.id_category');
-
-                    $results = $query->all();
-                    return $results;
+                    return Html::encode($model->category->name_category);
                 },
                 'headerOptions' => [
                     'style' => 'width:150px;text-align:center'
@@ -79,13 +74,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'id_category',
-                    \common\models\Products::getCategories(),
-                    ['class' => 'form-control', 'prompt' => 'Chọn']
+                    \common\models\Products::getCategoriesName(),
+                    ['class' => 'form-control']
                 ),
-                'value' => function ($model) {
-                    return $model->id_category;
-                },
-
             ],
 
             //'qr_code',
@@ -96,7 +87,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img('../../qr/' . $model['qr_code'], ['width' => '150']);
                 }
             ],
-            'created_at',
+            //'created_at',
+            [
+                'attribute' => 'created_at',
+                'content' => function ($model) {
+                    return date('d-m-Y', $model->created_at);
+                },
+
+            ],
             'created_by',
 
 //            [
