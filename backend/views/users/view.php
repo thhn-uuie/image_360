@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="../views/users/css/view_custom.css">
+    <link rel="stylesheet" href="../views/users/css/button_custom.css">
 
 
 
@@ -78,6 +79,8 @@ $this->params['breadcrumbs'][] = $this->title;
       </form>
     </div>
 
+  </body>
+</html>
 
     <!-- <p>
         <?= Html::a('Update', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
@@ -144,6 +147,7 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     .btn-primary:active {
+        box-shadow: 0 0 9e9q inset #0009; 
         background-color: black;
         outline: none;
     }
@@ -153,6 +157,7 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     .btn-danger:active {
+        box-shadow: 0 0 2e2q inset #0009; 
         background-color: black;
         outline: none;
     }

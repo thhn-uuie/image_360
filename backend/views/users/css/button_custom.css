@@ -1,0 +1,58 @@
+   
+   .btn-primary {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.1s;
+    background-color: #57d699;
+    font-family: Roboto;
+
+}
+
+.btn-danger {
+  width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.1s;
+    background-color: #e78e96;
+    font-family: Roboto;
+
+}
+
+.btn-primary:hover {
+    background-color: #2f9345;
+}
+
+.btn-primary:active {
+    box-shadow: 0 0 9e9q inset #0009; 
+    background-color: black;
+    outline: none;
+}
+
+.btn-danger:hover {
+    background-color: #d73b49;
+}
+
+.btn-danger:active {
+    box-shadow: 0 0 2e2q inset #0009; 
+    background-color: black;
+    outline: none;
+}
+.nav.child_menu>li>a {
+  color: #000000;
+  font-weight: 100;
+}

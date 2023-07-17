@@ -60,9 +60,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'id_category',
-                'format' => 'html',
                 'value' => function ($model) {
-                    return Html::encode($model->category->name_category);
+
+                    $query = Products::find()
+                        ->select(['categories.name_category'])
+                        ->join('JOIN', 'categories', 'products.id_category = categories.id_category');
+
+                    $results = $query->all();
+                    return $results;
                 },
                 'headerOptions' => [
                     'style' => 'width:150px;text-align:center'
@@ -79,6 +84,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 ),
             ],
 
+            [
+                'attribute' => 'image',
+                'format' => 'html',             
+                   'value' => function($model) {
+                    return Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
+                },
+            ],
+
+            ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
@@ -112,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
 
-    ]); ?>
+    ); ?>
 
 
 </div>

@@ -22,6 +22,8 @@ $idPath = $model->getRecordPrevious($model);
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <div class="product-views">
+    </div>
     <p>
         <?= Html::a('Update', ['update', 'id_products' => $model->id_products], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id_products' => $model->id_products], [
@@ -135,10 +137,11 @@ $idPath = $model->getRecordPrevious($model);
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- End block content -->
+    </main>
 
-
-
-
+   
 
 <div class="products">
     <div class="product-image">
