@@ -37,6 +37,7 @@ class Categories extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['name_category', 'description', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['name_category'], 'unique'],
+            [['status'], 'safe'],
         ];
     }
 

@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
 
-            ],
+            // ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
@@ -120,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
         ],
-
+    ],
     ); ?>
 
 

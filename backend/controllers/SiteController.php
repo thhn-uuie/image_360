@@ -34,7 +34,7 @@ class SiteController extends Controller
                         'roles' => ['?']
                     ],
                     [
-                        'actions' => ['logout', 'index','classify'],
+                        'actions' => ['logout', 'index', 'classify'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -111,9 +111,11 @@ class SiteController extends Controller
     {
         $categories = Categories::find()->select('id_category')->all();
         //var_dump($categories);die;
-        return $this->render('classify',
-    [
-        'categories' => $categories,
-    ]);
+        return $this->render(
+            'classify',
+            [
+                'categories' => $categories,
+            ]
+        );
     }
 }
