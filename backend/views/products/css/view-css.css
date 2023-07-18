@@ -100,22 +100,7 @@ form input:focus{
     0 0 25px #b4f0fd,
     0 0 35px #ffffff;
 }
-form button{
-    margin-top: 15px;
-    background: #48DBFB;
-    color: white;
-    font-size: 25px;
-    border: 1px solid #1ed2fa;
-    letter-spacing: 1px;
-    cursor: pointer;
-    outline: none;
-    transition: .3s;
-}
-form button:hover{
-    background: #1ed2fa;
-    border: 1px solid #05cdfa;
-    letter-spacing: 2px;
-}
+
 .modal-box .icons{
     margin-top: 25px;
 }

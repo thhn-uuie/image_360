@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'yii\grid\SerialColumn',
                         'header' => 'STT',
                         'headerOptions' => [
-                            'style' => 'width:15px;text-align:center'
+                            'style' => 'width:10px;text-align:center'
                         ],
                         'contentOptions' => [
-                            'style' => 'width:15px;text-align:center'
+                            'style' => 'width:10px;text-align:center'
                         ],
                     ],
 
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'avatar',
                         'format' => 'html',
                         'value' => function ($model) {
-                            return Html::img('../../avatar/' . $model['avatar'],  ['class'=> 'imgAvatar', 'width' => '100', 'height' => '100']);
+                            return Html::img('../../image/avatars/' . $model['avatar'],  ['class'=> 'imgAvatar', 'width' => '100', 'height' => '100']);
                         },
                         'headerOptions' => [
                             'style' => 'width:50px;text-align:center'
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'style' => 'width:200px;text-align:center'
                         ],
                         'contentOptions' => [
-                            'style' => 'width:200px;text-align:center'
+                            'style' => 'width:230px;text-align:center'
                         ],
                     ],
 
@@ -114,8 +114,31 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
 
                     //'created_at',
+                    [
+                        'attribute' => 'created_at',
+                        'content' => function ($model) {
+                            return date('d-m-Y', $model->created_at);
+                        },
+                        'headerOptions' => [
+                            'style' => 'width:150px;text-align:center'
+                        ],
+                        'contentOptions' => [
+                            'style' => 'width:150px;text-align:center'
+                        ],
+                    ],
                     //'created_by',
-                    //'updated_at',
+                    [
+                        'attribute' => 'updated_at',
+                        'content' => function ($model) {
+                            return date('d-m-Y', $model->updated_at);
+                        },
+                        'headerOptions' => [
+                            'style' => 'width:150px;text-align:center'
+                        ],
+                        'contentOptions' => [
+                            'style' => 'width:150px;text-align:center'
+                        ],
+                    ],
                     //'updated_by',
 
                     [

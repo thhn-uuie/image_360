@@ -17,8 +17,8 @@ class CategoriesSearch extends Categories
     public function rules()
     {
         return [
-            [['id_category'], 'integer'],
-            [['name_category', 'description', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'safe'],
+            [['id_category', 'created_at', 'updated_at'], 'integer'],
+            [['name_category', 'description', 'created_by', 'updated_by'], 'safe'],
         ];
     }
 

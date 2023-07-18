@@ -13,26 +13,25 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="users-view">
 
-  <h1>
-    <?= Html::encode($this->title) ?>
-  </h1>
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../views/users/css/view_custom.css">
+    <link rel="stylesheet" href="../views/users/css/button_custom.css">
 
 
-  <div class="d-flex justify-content-center container mt-5">
-    <div class="card p-3 bg-white"><i class="fa "></i>
-      <div class="about-product text-center mt-2">
-        <!-- <img src="https://i.imgur.com/3VTaSeb.png" width="300"> -->
-        <div>
-          <!-- <h4>Người dùng: </h4> -->
-          <h6 class="mt-0 text-black-50">
-            <legend>
-              <?php echo $model->username ?>
-            </legend>
-          </h6>
-        </div>
-      </div>
-      <div class="stats mt-2">
-        <!-- <div class="d-flex justify-content-between p-price"><span>Email:</span><span>
+
+  </head>
+  <body>
+    <div class="testbox">
+      <form>
+        <fieldset>
+          <legend><?php echo $model->username?></legend>
+          <div class="item" style="margin-bottom: 20px;">
+            <label for="activity" style="margin-right:10px;" >Email: </label>
             <div>
               <?php echo $model->email ?>
             </div>
@@ -105,21 +104,38 @@ $this->params['breadcrumbs'][] = $this->title;
           </span></div> -->
 
     </div>
-  </div>
-</div>
-<div>
-  <div style="text-align: center;">
 
-    <?= Html::a('Cập nhật', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a('Xóa', ['delete', 'id_user' => $model->id_user], [
-      'class' => 'btn btn-danger',
-      'data' => [
-        'confirm' => 'Are you sure you want to delete this item?',
-        'method' => 'post',
-      ],
-    ]) ?>
-  </div>
-</div>
+  </body>
+</html>
+
+    <html>
+    <div style="text-align: center;">
+      
+      <?= Html::a('Cập nhật', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
+      <?= Html::a('Xóa', ['delete', 'id_user' => $model->id_user], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </div>
+    </html>
+
+    <!-- <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id_user',
+            'username',
+            'password',
+            'email:email',
+            'id_role',
+            'created_at',
+            'created_by',
+            'updated_at',
+            'updated_by',
+        ],
+    ]) ?> -->
 
 </div>
 

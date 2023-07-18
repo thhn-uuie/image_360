@@ -6,12 +6,15 @@ use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
 /** @var common\models\Products $model */
-//$this->title = 'Xem sản phẩm';
 
 $this->title = $model->name_products;
 $this->params['breadcrumbs'][] = ['label' => 'Quản lý sản phẩm', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+
+$idPath = $model->getRecordPrevious($model);
+
 ?>
 
 
@@ -47,11 +50,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="card">
         <div class="row">
             <div class="col-md-5">
-
                 <!-- Upload image -->
                 <img style="margin-top: 100px;margin-left: 100px; border-radius:10%; border: 1px solid black; margin-bottom: 20px;"
                      class="" width="250px" height="300px"
-                     src="<?php echo '../../uploads/' . $model->image ?>">
+                     src="<?php echo '../../image/products' .'/' . $model->image ?>">
                 <div>
                 <div class="start-btn">
                     <button type="button" class="btn btn-outline-success" style="font-size: 12px">QR Code</button>
@@ -72,8 +74,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         });
                         $('.fa-times').click(function () {
                             var pop = $(this).closest(".modal-box");
-
-
                             pop.toggleClass("show-modal");
                             $('.start-btn').toggleClass("show-modal");
                             event.stopPropagation();
@@ -100,8 +100,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         });
                         $('.fa-times').click(function () {
                             var popup = $(this).closest(".modal-box-360");
-                            // $('.modal-box-360').toggleClass("show-modal-360");
-                            // $('.start-btn-360').toggleClass("show-modal-360");
                             popup.toggleClass("show-modal-360");
                             $('.start-btn-360').toggleClass("show-modal-360");
                             event.stopPropagation();
@@ -127,13 +125,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col-md-12"><label class="labels">Trạng thái</label>
                             <p style="font-size: 15px"><?php echo $model->status ?></p></div>
                         <div class="col-md-12"><label class="labels">Danh mục sản phẩm</label>
-                            <p style="font-size: 15px"><?php echo $model->id_category ?></p></div>
+                            <p style="font-size: 15px"><?php echo $model->category->name_category?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian tạo sản phẩm</label>
-                            <p style="font-size: 15px"><?php echo $model->created_at ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người tạo sản phẩm</label>
                             <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian cập nhật</label>
-                            <p style="font-size: 15px"><?php echo $model->updated_at ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->updated_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người cập nhật</label>
                             <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
                     </div>

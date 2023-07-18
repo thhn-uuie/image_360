@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-5 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="300px" height="300px"
-                         src="<?php echo '../../avatar/' . $model->avatar ?>">
+                         src="<?php echo '../../image/avatars/' . $model->avatar ?>">
                     <span class="font-weight-bold"
                           style="margin-top: 40px; font-size:30px; color: #E86A33">
                         <?php echo $model->name ?>
@@ -84,11 +84,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col-md-12"><label class="labels">Địa chỉ</label>
                             <p style="font-size: 15px"><?php echo $model->address ?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian tạo profile</label>
-                            <p style="font-size: 15px"><?php echo $model->created_at ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người tạo profile</label>
                             <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian cập nhật profile</label>
-                            <p style="font-size: 15px"><?php echo $model->updated_at ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người cập nhật profile</label>
                             <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
                     </div>

@@ -41,11 +41,11 @@ use yii\widgets\ActiveForm;
 
                 <div class="col-md-7">
                     <?php if (Yii::$app->user->identity->id_role == 1): ?>
-<!--                        --><?php //$ids = User::find()
-//                            ->select('users.id_user')
-//                            ->leftJoin('profile', 'users.id_user = profile.id_user')
-//                            ->where(['profile.id_user' => null])
-//                            ->column();
+                        <?php $ids = User::find()
+                            ->select('users.id_user')
+                            ->leftJoin('profile', 'users.id_user = profile.id_user')
+                            ->where(['profile.id_user' => null])
+                            ->column();
 //
 //                        ?>
                         <?= $form->field($model, 'id_user')->dropDownList(

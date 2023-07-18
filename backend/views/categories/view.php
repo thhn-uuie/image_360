@@ -90,9 +90,9 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     .btn-primary:active {
-      box-shadow: 0 0 9e9q inset #0009;
-      background-color: black;
-      outline: none;
+        box-shadow: 0 0 9e9q inset #0009; 
+        background-color: black;
+        outline: none;
     }
 
     .btn-danger:hover {
@@ -100,9 +100,9 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     .btn-danger:active {
-      box-shadow: 0 0 2e2q inset #0009;
-      background-color: black;
-      outline: none;
+        box-shadow: 0 0 2e2q inset #0009; 
+        background-color: black;
+        outline: none;
     }
 
     .imagePreview {

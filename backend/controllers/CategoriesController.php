@@ -69,45 +69,19 @@ class CategoriesController extends Controller
      */
     public function actionCreate()
     {
-        // $model = new Categories();
+        $model = new Categories();
 
-        // if ($this->request->isPost) {
-        //     if ($model->load($this->request->post()) && $model->save()) {
-        //         return $this->redirect(['view', 'id_category' => $model->id_category]);
-        //     }
-        // } else {
-        //     $model->loadDefaultValues();
-        // }
-
-        // return $this->render('create', [
-        //     'model' => $model,
-        // ]);
-
-        $model = new \common\models\Categories();
-
-        $loadImg = new \common\helper\ImageHelper();
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->file_image = UploadedFile::getInstance($model, 'file_image');
-
-            // Upload image
-            $loadImg->loadImgProducts($model, $model->file_image, '../../uploadsCategory/');
-
-            if ($model->save(false)) {
-                //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
-                return $this->redirect((['view', 'id_category' => $model->id_category]));
-            } else {
-                //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id_category' => $model->id_category]);
             }
-
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            $model->loadDefaultValues();
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -121,21 +95,13 @@ class CategoriesController extends Controller
     {
         $model = $this->findModel($id_category);
 
-        if ($this->request->isPost && $model->load($this->request->post())) {
-            if ($model->save(false)) 
-            {
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id_category' => $model->id_category]);
-            } else {
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
-            }
-        }else {
+        }
 
         return $this->render('update', [
             'model' => $model,
         ]);
-    }
     }
 
     /**
@@ -165,6 +131,4 @@ class CategoriesController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
 }

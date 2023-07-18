@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' => function ($model) {
-                    return Html::img('../../uploads/' . $model['image'], ['width' => '100', 'height' => '100']);
+                'value' => function($model) {
+                    return Html::img('../../image/products/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
                 },
             ],
             'name_products',
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'id_category',
-                    \common\models\Products::getCategories(),
+                    \common\models\Products::getCategoriesName(),
                     ['class' => 'form-control', 'prompt' => 'Chọn']
                 ),
                 'value' => function ($model) {
@@ -86,13 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
 
-            [
-                'attribute' => 'image',
-                'format' => 'html',             
-                   'value' => function($model) {
-                    return Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
-                },
-            ],
+
 
             // ],
             //'qr_code',
@@ -103,7 +97,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img('../../qr/' . $model['qr_code'], ['width' => '150']);
                 }
             ],
-            'created_at',
+            [
+                'attribute' => 'created_at' ,
+                'content' => function($model) {
+                    return date('d-m-Y', $model->created_at);
+                },
+                'headerOptions' => [
+                    'style' => 'width:110px;text-align:center'
+                ],
+                'contentOptions' => [
+                    'style' => 'width:110px;text-align:center'
+                ],
+            ],
             'created_by',
 
 //            [
