@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' => function ($model) {
-                    return Html::img('../../image/products/' . $model['image'], ['width' => '100', 'height' => '100']);
+                'value' => function($model) {
+                    return Html::img('../../image/products/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
                 },
             ],
             'name_products',
@@ -60,15 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'id_category',
-                'value' => function ($model) {
-
-                    $query = Products::find()
-                        ->select(['categories.name_category'])
-                        ->join('JOIN', 'categories', 'products.id_category = categories.id_category');
-
-                    $results = $query->all();
-                    return $results;
-                },
+                // 'content' => function($model) {
+                //     if($model->id_category == 'Con người') {
+                //         return '<span class="badge text-bg-success" style="font-size: 12px;">Condsd người</span>';
+                //     } else {
+                //         return '<span class="badge text-bg-danger" style="font-size: 12px;">Con người</span>';
+                //     }
+                // },
                 'headerOptions' => [
                     'style' => 'width:150px;text-align:center'
                 ],
@@ -80,19 +78,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     $searchModel,
                     'id_category',
                     \common\models\Products::getCategoriesName(),
-                    ['class' => 'form-control']
+                    ['class' => 'form-control', 'prompt' => 'Chọn']
                 ),
-            ],
-
-            [
-                'attribute' => 'image',
-                'format' => 'html',             
-                   'value' => function($model) {
-                    return Html::img('../../uploads/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
+                'value' => function ($model) {
+                    return $model->id_category;
                 },
-            ],
 
             ],
+
+
+
+            // ],
             //'qr_code',
             [
                 'attribute' => 'qr_code',
@@ -101,13 +97,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img('../../qr/' . $model['qr_code'], ['width' => '150']);
                 }
             ],
-            //'created_at',
             [
-                'attribute' => 'created_at',
-                'content' => function ($model) {
+                'attribute' => 'created_at' ,
+                'content' => function($model) {
                     return date('d-m-Y', $model->created_at);
                 },
-
+                'headerOptions' => [
+                    'style' => 'width:110px;text-align:center'
+                ],
+                'contentOptions' => [
+                    'style' => 'width:110px;text-align:center'
+                ],
             ],
             'created_by',
 
@@ -125,7 +125,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
         ],
-
+    ],
     ); ?>
 
 

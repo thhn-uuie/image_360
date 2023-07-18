@@ -12,76 +12,16 @@ use yii\filters\VerbFilter;
 use Yii;
 use yii\web\UploadedFile;
 use backend\components\PngWriter;
+use yii\data\ActiveDataProvider;
+use yii\grid\GridView;
 
 
 /**
  * ProductsController implements the CRUD actions for Products model.
  */
-class ProductsController extends Controller
+class ProductsController extends \backend\controllers\base\ProductsController
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
 
-    /**
-     * Lists all Products models.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        // $dataProvider = new ActiveDataProvider([
-        //     'query' => Product::find(),
-        // ]);
-//        $productsCount = Products::getProductsCount();
-//        return $this->render('index', [
-//            'getProductsCount'=> $getProductsCount,
-//        ]);
-        
-        $searchModel = new ProductsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Displays a single Products model.
-     * @param int $id_products Id Products
-     * @return string
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-
-     
-
-    public function actionView($id_products)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id_products),
-        ]);
-    }
-
-    /**
-     * Creates a new Products model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
-     */
     public function actionCreate()
     {
 
