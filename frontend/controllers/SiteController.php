@@ -256,4 +256,8 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionCategories() {
+        return $this->render('categories');
+    }
 }
