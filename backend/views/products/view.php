@@ -112,13 +112,13 @@ $idPath = $model->getRecordPrevious($model);
                 <div class="p-3 py-5">
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right"
+                        <h4
                             style="font-size: 40px; font-weight: bold"><?php echo $model->name_products ?></h4>
 
 
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Mô tả sản phẩm</label>
+                        <div class="col-md-11"><label class="labels">Mô tả sản phẩm</label>
                             <p style="font-size: 15px"><?php echo $model->description ?></p></div>
                     </div>
                     <div class="row mt-3">
@@ -127,28 +127,21 @@ $idPath = $model->getRecordPrevious($model);
                         <div class="col-md-12"><label class="labels">Danh mục sản phẩm</label>
                             <p style="font-size: 15px"><?php echo $model->category->name_category?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian tạo sản phẩm</label>
-                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->created_at) ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người tạo sản phẩm</label>
                             <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian cập nhật</label>
-                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->updated_at) ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->updated_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người cập nhật</label>
                             <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
         <!-- End block content -->
     </main>
 
-   
-
-<div class="products">
-    <div class="product-image">
-    </div>
-    <div class="product-info">
-        
-    </div>
 </div>
 
 

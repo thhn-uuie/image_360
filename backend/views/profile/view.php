@@ -78,17 +78,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col-md-12"><label class="labels">Ngày sinh</label>
                             <p style="font-size: 15px"><?php echo $model->birthday ?></p></div>
                         <div class="col-md-6"><label class="labels">Email</label>
-                            <p style="font-size: 15px"><?php echo $model->enmail ?></p></div>
+                            <p style="font-size: 15px"><?php echo $model->email ?></p></div>
                         <div class="col-md-6"><label class="labels">Điện thoại</label>
                             <p style="font-size: 15px"><?php echo $model->phone ?></p></div>
                         <div class="col-md-12"><label class="labels">Địa chỉ</label>
                             <p style="font-size: 15px"><?php echo $model->address ?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian tạo profile</label>
-                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->created_at) ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người tạo profile</label>
                             <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
                         <div class="col-md-6"><label class="labels">Thời gian cập nhật profile</label>
-                            <p style="font-size: 15px"><?php echo date('d-m-Y', $model->created_at) ?></p></div>
+                            <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người cập nhật profile</label>
                             <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
                     </div>

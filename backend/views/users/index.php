@@ -61,14 +61,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'created_at' ,
                 'content' => function($model) {
-                    return date('d-m-Y', $model->created_at);
+                    return date('d-m-Y h:i:s', $model->created_at);
                 }
             ],
             'created_by',
             [
                 'attribute' => 'updated_at',
                 'content' => function($model) {
-                    return date('d-m-Y', $model->created_at);
+                    return date('d-m-Y h:i:s', $model->created_at);
                 }
             ],
             'updated_by',

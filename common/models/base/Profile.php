@@ -11,14 +11,14 @@ use Yii;
  * @property string $name
  * @property string $birthday
  * @property string $gender
- * @property string $enmail
- * @property int|null $phone
  * @property string $address
  * @property string|null $avatar
  * @property int|null $created_at
  * @property string|null $created_by
  * @property int|null $updated_at
  * @property string|null $updated_by
+ * @property string|null $email
+ * @property int|null $phone
  *
  * @property Users $user
  */
@@ -38,11 +38,9 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'birthday', 'gender', 'enmail', 'address'], 'required'],
-            [['phone', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'birthday', 'gender', 'enmail', 'address', 'avatar', 'created_by', 'updated_by'], 'string', 'max' => 255],
-            [['enmail'], 'unique'],
-            [['phone'], 'unique'],
+            [['name', 'birthday', 'gender', 'address'], 'required'],
+            [['created_at', 'updated_at', 'phone'], 'integer'],
+            [['name', 'birthday', 'gender', 'address', 'avatar', 'created_by', 'updated_by', 'email'], 'string', 'max' => 255],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id_user' => 'id_user']],
         ];
     }
@@ -57,14 +55,14 @@ class Profile extends \yii\db\ActiveRecord
             'name' => 'Họ tên',
             'birthday' => 'Ngày sinh',
             'gender' => 'Giới tính',
-            'enmail' => 'Email',
-            'phone' => 'Điện thoại',
             'address' => 'Địa chỉ',
             'avatar' => 'Avatar',
             'created_at' => 'Thời gian tạo',
             'created_by' => 'Người tạo',
             'updated_at' => 'Thời gian cập nhật',
             'updated_by' => 'Người cập nhật',
+            'email' => 'Email',
+            'phone' => 'Điện thoại',
         ];
     }
 

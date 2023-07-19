@@ -21,9 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-10" style="font-size: 35px; font-weight:bold">
                 <?= Html::encode($this->title) ?>
             </div>
-            <div class="col-md-2" style="font-size: 35px; font-weight:bold;">
-                <?= Html::a('Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
-            </div>
+<!--            <div class="col-md-2" style="font-size: 35px; font-weight:bold;">-->
+<!--                --><?php //= Html::a('Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
+<!--            </div>-->
         </div>
 
         <div class="card-body text-dark">
@@ -45,7 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'avatar',
                         'format' => 'html',
                         'value' => function ($model) {
-                            return Html::img('../../image/avatars/' . $model['avatar'],  ['class'=> 'imgAvatar', 'width' => '100', 'height' => '100']);
+                            $profile_id_user = Profile::findOne(['id_user' => Yii::$app->user->identity->id_user]);
+                            if (Yii::$app->user->identity->getId() == $profile_id_user->id_user) {
+
+                                return Html::img('../../image/avatars/' . $model['avatar'], ['class' => 'imgAvatar', 'width' => '100', 'height' => '100']);
+                            }
                         },
                         'headerOptions' => [
                             'style' => 'width:50px;text-align:center'
@@ -86,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
 
                     [
-                        'attribute' => 'enmail',
+                        'attribute' => 'email',
                         'headerOptions' => [
                             'style' => 'width:200px;text-align:center'
                         ],
@@ -117,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'created_at',
                         'content' => function ($model) {
-                            return date('d-m-Y', $model->created_at);
+                            return date('d-m-Y h:i:s', $model->created_at);
                         },
                         'headerOptions' => [
                             'style' => 'width:150px;text-align:center'
@@ -130,7 +134,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'updated_at',
                         'content' => function ($model) {
-                            return date('d-m-Y', $model->updated_at);
+                            return date('d-m-Y h:i:s', $model->updated_at);
                         },
                         'headerOptions' => [
                             'style' => 'width:150px;text-align:center'

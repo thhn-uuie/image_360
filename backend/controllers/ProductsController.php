@@ -19,7 +19,7 @@ use yii\grid\GridView;
 /**
  * ProductsController implements the CRUD actions for Products model.
  */
-class ProductsController extends \backend\controllers\base\ProductsController
+class ProductsController extends base\ProductsController
 {
 
     public function actionCreate()
@@ -59,7 +59,7 @@ class ProductsController extends \backend\controllers\base\ProductsController
 //                $model->files = time() . '_' . $model->file_360->name;
 //            }
 
-            $path360 = '/file360' ;
+            $path360 = '/file360';
             $load360->loadFile360($model, $model->file_360, $path360);
 
             if ($model -> save(false)) {
@@ -85,7 +85,6 @@ class ProductsController extends \backend\controllers\base\ProductsController
     {
         $model = $this->findModel($id_products);
 
-
         $old_360 = $model->files;
         $loadImg = new ImageHelper();
 
@@ -102,8 +101,8 @@ class ProductsController extends \backend\controllers\base\ProductsController
             $loadImg->updateImage($model, $model->file_image, $path);
 
             if($model->file_360){
-                $model->file_360->saveAs('../../file360/' . time() . '_' . $model->file_360->name);
-                unlink('../../file360/'.$model->files);
+                $model->file_360->saveAs('../../image/file360/' . time() . '_' . $model->file_360->name);
+                unlink('../../image/file360/'.$model->files);
                 $model->files = time() . '_' . $model->file_360->name;
             } else {
                 $model->file_360 = $old_360;

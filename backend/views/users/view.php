@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item">
                 <label for="fname" style="margin-right:10px;"> Thời gian tạo: </label>
                 <div>
-                    <?php echo $model->created_at?>
+                    <?php echo date('d-m-Y h:i:s', $model->created_at)?>
                 </div>
             </div>
             <div class="item">
@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="item">
                 <label for="address1" style="margin-right:10px;"> Thời gian cập nhật: </label>
                 <div>
-                    <?php echo $model->updated_at?>
+                    <?php echo date('d-m-Y h:i:s', $model->updated_at) ?>
                 </div>
             </div>
             <div class="item">
