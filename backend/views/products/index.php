@@ -37,36 +37,39 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'image',
                 'format' => 'html',
-                'value' => function($model) {
-                    return Html::img('../../image/products/' . $model['image'], ['width'=>'100','height'=>'100'], ['class' => 'circular-image']);
+                'value' => function ($model) {
+                    return Html::img('../../image/products/' . $model['image'], ['width' => '100', 'height' => '100'], ['class' => 'circular-image']);
                 },
             ],
             'name_products',
-            'description',
-            'status',
-            // [
-            //     'attribute' => 'status',
-            //     'filter' => Html::activeDropDownList(
-            //         $searchModel,
-            //         'status',
-            //         \common\models\Products::getStatus(),
-            //         ['class' => 'form-control', 'prompt' => 'Chọn']
-            //     ),
-            //     'value' => function($model) {
-            //         return $model->status;
-            //     },
-            // ],
-            //'id_category',
+            [
+                'attribute' => 'description',
+                'headerOptions' => [
+                    'style' => 'width:200px;text-align:center'
+                ],
+            ],
+
+
+//            'status',
+            [
+                'attribute' => 'status',
+                'content' => function ($model) {
+                    if ($model->status == 'Hoạt động') {
+                        return '<span class="badge bg-success" style="font-size: 12px;">Hoạt động</span>';
+                    } else {
+                        return '<span class="badge bg-danger" style="font-size: 12px;">Không hoạt động</span>';
+                    }
+                },
+                'headerOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+                'contentOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+            ],
 
             [
                 'attribute' => 'id_category',
-                // 'content' => function($model) {
-                //     if($model->id_category == 'Con người') {
-                //         return '<span class="badge text-bg-success" style="font-size: 12px;">Condsd người</span>';
-                //     } else {
-                //         return '<span class="badge text-bg-danger" style="font-size: 12px;">Con người</span>';
-                //     }
-                // },
                 'headerOptions' => [
                     'style' => 'width:150px;text-align:center'
                 ],
@@ -81,11 +84,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'form-control', 'prompt' => 'Chọn']
                 ),
                 'value' => function ($model) {
-                    return $model->id_category;
+                    return $model->category->name_category;
                 },
 
             ],
-
 
 
             // ],
@@ -98,9 +100,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'attribute' => 'created_at' ,
-                'content' => function($model) {
-                    return date('d-m-Y', $model->created_at);
+                'attribute' => 'created_at',
+                'content' => function ($model) {
+                    return date('d-m-Y h:i:s', $model->created_at);
                 },
                 'headerOptions' => [
                     'style' => 'width:110px;text-align:center'
@@ -114,7 +116,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            [
 //                'attribute' => 'updated_at' ,
 //                'content' => function($model) {
-//                    return date('d-m-Y', $model->created_at);
+//                    return date('d-m-Y h:i:s', $model->created_at);
 //                }
 //            ],
 //             'updated_by',

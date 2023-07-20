@@ -22,6 +22,8 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
         <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+        <link rel="stylesheet" href="../views/products/css/upload.css" type="text/css">
+
     </head>
 
     <div class="card">
@@ -39,23 +41,35 @@ use yii\helpers\Url;
                     <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
 
                 </div>
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="image">
+                            <div id="panorama"></div>
+                        </div>
+                        <div class="content">
+                            <div class="icon">
+                                <i class="fa fa-cloud-upload"></i>
+                            </div>
+                            <div class="text">
+                                No file chosen, yet!
+                            </div>
+                        </div>
+                        <div id="cancel-btn">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div class="file-name">
+                            File name here
+                        </div>
+                    </div>
 
+<label for="products-file_360">
 
-                <div class="avatar-wrapper">
-                    <div id="panorama"></div>
-                    <label for="products-file_360">
-                        <i class="fa fa-file" aria-hidden="true" style="font-size: 100px; margin-left: 90%; margin-top: 50%"></i>
-                    </label>
-
-                    <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()', 'style' => 'display:none']) ?>
+    <div id="custom-btn"> <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()', 'style' => 'display:none']) ?>
+       </div>
+</label>
 
                 </div>
 
-                <!--                <div class="show-image360">-->
-                <!--                    <img class="pic-360" src=""/>-->
-                <!--                    <label for="products-file_360"> </label>-->
-                <!--                </div>-->
-                <!--                --><?php //= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()']) ?>
             </div>
             <div class="col-md-7">
                 <div class="col-md-10">

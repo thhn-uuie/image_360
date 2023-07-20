@@ -1,7 +1,5 @@
 <?php
 
-use common\models\User;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -40,23 +38,23 @@ use yii\widgets\ActiveForm;
                 </div>
 
                 <div class="col-md-7">
-                    <?php if (Yii::$app->user->identity->id_role == 1): ?>
-                        <?php $ids = User::find()
-                            ->select('users.id_user')
-                            ->leftJoin('profile', 'users.id_user = profile.id_user')
-                            ->where(['profile.id_user' => null])
-                            ->column();
-//
-//                        ?>
-                        <?= $form->field($model, 'id_user')->dropDownList(
-//                            ArrayHelper::map(User::find()->where(['id_user' => $ids])->all(), 'id_user', 'username'),
-                            ArrayHelper::map(User::find()->all(), 'id_user', 'username'),
-                            [
-                                'prompt' => 'Chọn user',
-                                // 'style' => 'width: 300px'
-                            ]
-                        ) ?>
-                    <?php endif; ?>
+<!--                    --><?php //if (Yii::$app->user->identity->id_role == 1): ?>
+<!--                        --><?php //$ids = User::find()
+//                            ->select('users.id_user')
+//                            ->leftJoin('profile', 'users.id_user = profile.id_user')
+//                            ->where(['profile.id_user' => null])
+//                            ->column();
+////
+////                        ?>
+<!--                        --><?php //= $form->field($model, 'id_user')->dropDownList(
+////                            ArrayHelper::map(User::find()->where(['id_user' => $ids])->all(), 'id_user', 'username'),
+//                            ArrayHelper::map(User::find()->all(), 'id_user', 'username'),
+//                            [
+//                                'prompt' => 'Chọn user',
+//                                // 'style' => 'width: 300px'
+//                            ]
+//                        ) ?>
+<!--                    --><?php //endif; ?>
 
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -69,7 +67,7 @@ use yii\widgets\ActiveForm;
                         ]
                     ) ?>
 
-                    <?= $form->field($model, 'enmail')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
                     <?= $form->field($model, 'phone')->textInput() ?>
 

@@ -17,8 +17,8 @@ class ProfileSearch extends Profile
     public function rules()
     {
         return [
-            [['id_user', 'phone', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'birthday', 'gender', 'enmail', 'address', 'avatar', 'created_by', 'updated_by'], 'safe'],
+            [['id_user', 'created_at', 'updated_at', 'phone'], 'integer'],
+            [['name', 'birthday', 'gender', 'address', 'avatar', 'created_by', 'updated_by', 'email'], 'safe'],
         ];
     }
 
@@ -59,19 +59,19 @@ class ProfileSearch extends Profile
         // grid filtering conditions
         $query->andFilterWhere([
             'id_user' => $this->id_user,
-            'phone' => $this->phone,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'phone' => $this->phone,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'birthday', $this->birthday])
             ->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'enmail', $this->enmail])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'avatar', $this->avatar])
             ->andFilterWhere(['like', 'created_by', $this->created_by])
-            ->andFilterWhere(['like', 'updated_by', $this->updated_by]);
+            ->andFilterWhere(['like', 'updated_by', $this->updated_by])
+            ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }

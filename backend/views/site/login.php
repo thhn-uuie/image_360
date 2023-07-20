@@ -23,10 +23,9 @@ $this->title = 'Login';
     <div class="left">
         <div class="header">
         </div>
-<!--        <h1 style="font-weight: bold;white-space: nowrap; color: #cc0a2f"> TRÌNH DIỄN ẢNH 360</h1>-->
+
         <div class="site-login">
             <h1 style="font-weight: bold; color: #f25555; padding-left:70px; margin-bottom:50px"><?= Html::encode($this->title) ?></h1>
-<!--            <p style="color: #450808; font-size: 15px;">Please fill out the following fields to login:</p>-->
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-field a3']) ?>
