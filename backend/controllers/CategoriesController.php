@@ -130,5 +130,5 @@ class CategoriesController extends Controller
         if (($model = Categories::findOne(['id_category' => $id_category])) !== null) {
             return $model;
         }
-
+    }
 }
