@@ -13,121 +13,128 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="users-view">
 
-  <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-  <html>
-
+    <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="../views/users/css/view_custom.css">
     <link rel="stylesheet" href="../views/users/css/button_custom.css">
-
-
-
   </head>
 
   <body>
     <div class="testbox">
       <form>
         <fieldset>
-          <legend><?php echo $model->username ?></legend>
+          <legend><?php echo $model->username?></legend>
           <div class="item" style="margin-bottom: 20px;">
-            <label for="activity" style="margin-right:10px;">Email: </label>
+            <label for="activity" style="margin-right:10px;" >Email: </label>
             <div>
               <?php echo $model->email ?>
             </div>
-            </span>
+          </span></div>
+        <div class="d-flex justify-content-between p-price"><span>Chức năng:</span><span>
+            <div>
+              <?php echo $model->id_role ?>
+            </div>
+          </span></div> -->
+      </div>
+      <div class="colums">
+        <div class="item">
+          <label for="fname" style="margin-right:10px;"> Email: </label>
+          <div>
+            <?php echo $model->email ?>
           </div>
-          <div class="d-flex justify-content-between p-price"><span>Chức năng:</span>
-            <span>
-              <div>
-                <?php echo $model->id_role ?>
-              </div>
-            </span>
+        </div>
+        <div class="item">
+          <label for="lname" style="margin-right:10px; margin-left: 25px;"> Chức năng: </label>
+          <div>
+            <?php echo $model->id_role ?>
           </div>
+        </div>
+        <div class="item">
+          <label for="fname" style="margin-right:10px;"> Thời gian tạo: </label>
+          <div>
+            <?php echo $model->created_at ?>
+          </div>
+        </div>
+        <div class="item">
+          <label for="lname" style="margin-right:10px;margin-left: 25px;"> Người tạo: </label>
+          <div>
+            <?php echo $model->created_by ?>
+          </div>
+        </div>
+        <div class="item">
+          <label for="address1" style="margin-right:10px;"> Thời gian cập nhật: </label>
+          <div>
+            <?php echo $model->updated_at ?>
+          </div>
+        </div>
+        <div class="item">
+          <label for="address2" style="margin-right:10px;margin-left: 25px;">Người cập nhật: </label>
+          <div>
+            <?php echo $model->created_by ?>
+          </div>
+        </div>
+        <div class="question">
+        </div>
+      </div>
+      <!-- <div class="d-flex justify-content-between p-price"><span>Thời gian tạo:</span><span>
+            <div>
+              <?php echo $model->created_at ?>
+            </div>
+          </span></div>
+        <div class="d-flex justify-content-between p-price"><span>Người tạo:</span><span>
+            <div>
+              <?php echo $model->created_by ?>
+            </div>
+          </span></div>
+        <div class="d-flex justify-content-between p-price"><span>Thời gian cập nhật:</span><span>
+            <div>
+              <?php echo $model->updated_at ?>
+            </div>
+          </span></div>
+        <div class="d-flex justify-content-between p-price"><span>Người cập nhật:</span><span>
+            <div>
+              <?php echo $model->created_by ?>
+            </div>
+          </span></div> -->
+
     </div>
-    <div class="colums">
-      <div class="item">
-        <label for="fname" style="margin-right:10px;"> Email: </label>
-        <div>
-          <?php echo $model->email ?>
-        </div>
-      </div>
-      <div class="item">
-        <label for="lname" style="margin-right:10px; margin-left: 25px;"> Chức năng: </label>
-        <div>
-          <?php echo $model->id_role ?>
-        </div>
-        <fieldset>
-          <div class="colums">
-            <div class="item">
-              <label for="fname" style="margin-right:10px;"> Thời gian tạo: </label>
-              <div>
-                <?php echo date('d-m-Y h:i:s', $model->created_at) ?>
-              </div>
-            </div>
-            <div class="item">
-              <label for="lname" style="margin-right:10px;margin-left: 25px;"> Người tạo: </label>
-              <div>
-                <?php echo $model->created_by ?>
-              </div>
-            </div>
-            <div class="item">
-              <label for="address1" style="margin-right:10px;"> Thời gian cập nhật: </label>
-              <div>
-                <?php echo date('d-m-Y h:i:s', $model->updated_at) ?>
-              </div>
-            </div>
-            <div class="item">
-              <label for="address2" style="margin-right:10px;margin-left: 25px;">Người cập nhật: </label>
-              <div>
-                <?php echo $model->created_by ?>
-              </div>
-            </div>
-            <div class="question">
-            </div>
-          </div>
-        </fieldset>
-      </div>
-      </span>
-    </div> -->
 
-</div>
-
-</body>
-
+  </body>
 </html>
 
-<html>
-<div style="text-align: center;">
+    <html>
+    <div style="text-align: center;">
+      
+      <?= Html::a('Cập nhật', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
+      <?= Html::a('Xóa', ['delete', 'id_user' => $model->id_user], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </div>
+    </html>
 
-  <?= Html::a('Cập nhật', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
-  <?= Html::a('Xóa', ['delete', 'id_user' => $model->id_user], [
-    'class' => 'btn btn-danger',
-    'data' => [
-      'confirm' => 'Are you sure you want to delete this item?',
-      'method' => 'post',
-    ],
-  ]) ?>
-</div>
-
-</html>
-
-<!-- <?= DetailView::widget([
+    <!-- <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-          'id_user',
-          'username',
-          'password',
-          'email:email',
-          'id_role',
-          'created_at',
-          'created_by',
-          'updated_at',
-          'updated_by',
+            'id_user',
+            'username',
+            'password',
+            'email:email',
+            'id_role',
+            'created_at',
+            'created_by',
+            'updated_at',
+            'updated_by',
         ],
-      ]) ?> -->
+    ]) ?> -->
 
 </div>
 
@@ -143,58 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
   </head> -->
 
 <div class="testbox">
-  <!-- <form>
-      <fieldset>
-        <legend>
-          <?php echo $model->username ?>
-        </legend>
-        <div class="item" style="margin-bottom: 20px;">
-          <label for="activity" style="margin-right:10px;">Email: </label>
-          <div>
-            <?php echo $model->username ?>
-          </div>
-        </div>
-        <div class="item">
-          <label for="fee" style="margin-right:10px;">Chức năng:</label>
-          <div>
-            <?php echo $model->id_role ?>
-          </div>
-        </div>
-        <div class="item">
 
-
-        </div>
-        <div class="colums">
-          <div class="item">
-            <label for="fname" style="margin-right:10px;"> Thời gian tạo: </label>
-            <div>
-              <?php echo $model->created_at ?>
-            </div>
-          </div>
-          <div class="item">
-            <label for="lname" style="margin-right:10px;"> Người tạo: </label>
-            <div>
-              <?php echo $model->created_by ?>
-            </div>
-          </div>
-          <div class="item">
-            <label for="address1" style="margin-right:10px;"> Thời gian cập nhật: </label>
-            <div>
-              <?php echo $model->updated_at ?>
-            </div>
-          </div>
-          <div class="item">
-            <label for="address2" style="margin-right:10px;">Người cập nhật: </label>
-            <div>
-              <?php echo $model->created_by ?>
-            </div>
-          </div>
-          <div class="question">
-          </div>
-        </div>
-      </fieldset>
-  </div>
-  </form> -->
 </div>
 
 

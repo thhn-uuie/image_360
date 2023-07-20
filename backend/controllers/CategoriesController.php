@@ -95,6 +95,8 @@ class CategoriesController extends Controller
     {
         $model = $this->findModel($id_category);
 
+        //$old_ImgCate = $model->image;
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id_category' => $model->id_category]);
         }

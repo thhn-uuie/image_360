@@ -96,14 +96,7 @@ use yii\widgets\ActiveForm;
             </div>
             <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
           </div>
-
-
-          <!-- Chọn ảnh danh mục -->
-          <!-- <input type="file" class="uploadFile img" value="Upload Photo"
-            style="width: 5 px;height: 100px;overflow: hidden;"> -->
-          <!-- </label> -->
-        </div><!-- col-2 -->
-        <!-- <i class="fa fa-plus imgAdd"></i> -->
+        </div>
       </div>
 
       <div class="col-md-7">
@@ -126,10 +119,14 @@ use yii\widgets\ActiveForm;
 
       <div class="row">
         <div class="col-md-12">
+
+
+
           <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
           </div>
 
+          </form>
         </div>
       </div>
 
