@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
       transition-duration: 0.1s;
       background-color: #cff2e9;
       font-family: Roboto;
-
+      margin-left: 300px;
     }
 
     .btn-danger {
@@ -76,6 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
       transition-duration: 0.1s;
       background-color: #e78e96;
       font-family: Roboto;
+      margin-left: 10px;
 
     }
 
@@ -151,13 +152,19 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     .colums div {
-      width: 48%;
+      width: 35%;
     }
 
     .item {
       display: flex;
       align-items: center;
     }
+
+    .bg-white {
+      color: #3b5570;
+    }
+
+    
   </style>
 
 
@@ -184,27 +191,28 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
 
 
+
       <div class="colums">
         <div class="item">
-          <label for="fname" style="margin-right:10px;"> Thời gian tạo: </label>
+          <label for="fname" style="margin-right:10px; margin-top: 7px;"> Thời gian tạo: </label>
           <div>
             <?php echo $model->created_at ?>
           </div>
         </div>
         <div class="item">
-          <label for="lname" style="margin-right:10px;margin-left: 25px;"> Người tạo: </label>
+          <label for="lname" style="margin-right:10px;margin-left: 25px;margin-top: 7px;"> Người tạo: </label>
           <div>
             <?php echo $model->created_by ?>
           </div>
         </div>
         <div class="item">
-          <label for="address1" style="margin-right:10px;"> Thời gian cập nhật: </label>
+          <label for="address1" style="margin-right:10px;margin-top: 7px;"> Thời gian cập nhật: </label>
           <div>
             <?php echo $model->updated_at ?>
           </div>
         </div>
         <div class="item">
-          <label for="address2" style="margin-right:10px;margin-left: 25px;">Người cập nhật: </label>
+          <label for="address2" style="margin-right:10px;margin-left: 25px;margin-top: 7px;">Người cập nhật: </label>
           <div>
             <?php echo $model->created_by ?>
           </div>
@@ -212,33 +220,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="question">
         </div>
       </div>
-
-
-
-
-
-
-      <!-- <div class="d-flex justify-content-between p-price"><span>Thời gian tạo:</span><span>
-            <div>
-              <?php echo $model->created_at ?>
-            </div>
-          </span></div>
-        <div class="d-flex justify-content-between p-price"><span>Người tạo:</span><span>
-            <div>
-              <?php echo $model->created_by ?>
-            </div>
-          </span></div>
-        <div class="d-flex justify-content-between p-price"><span>Thời gian cập nhật:</span><span>
-            <div>
-              <?php echo $model->updated_at ?>
-            </div>
-          </span></div>
-        <div class="d-flex justify-content-between p-price"><span>Người cập nhật:</span><span>
-            <div>
-              <?php echo $model->created_by ?>
-            </div>
-          </span></div> -->
-
     </div>
   </div>
 </div>
@@ -257,7 +238,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </head> -->
 
-<body>
+
   <div class="testbox">
 
     <div style="text-align: center;">
@@ -272,9 +253,4 @@ $this->params['breadcrumbs'][] = $this->title;
       ]) ?>
     </div>
   </div>
-</body>
-
-
-
-
 </div>
