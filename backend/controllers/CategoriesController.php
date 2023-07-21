@@ -146,5 +146,18 @@ class CategoriesController extends base\CategoriesController {
         return $this->redirect(['index']);
     }
 
-  
+    /**
+     * Finds the Categories model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param int $id_category Id Category
+     * @return Categories the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id_category)
+    {
+        if (($model = Categories::findOne(['id_category' => $id_category])) !== null) {
+            return $model;
+        }
+
+    }
 }
