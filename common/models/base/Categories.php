@@ -14,6 +14,8 @@ use Yii;
  * @property string|null $created_by
  * @property int|null $updated_at
  * @property string|null $updated_by
+ * @property string|null $image
+ * @property string|null $status
  *
  * @property Products[] $products
  */
@@ -35,9 +37,8 @@ class Categories extends \yii\db\ActiveRecord
         return [
             [['name_category', 'description'], 'required'],
             [['created_at', 'updated_at'], 'integer'],
-            [['name_category', 'description', 'created_by', 'updated_by'], 'string', 'max' => 255],
+            [['name_category', 'description', 'created_by', 'updated_by', 'image', 'status'], 'string', 'max' => 255],
             [['name_category'], 'unique'],
-            [['status'], 'safe'],
         ];
     }
 
@@ -54,6 +55,8 @@ class Categories extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
+            'image' => 'Image',
+            'status' => 'Status',
         ];
     }
 

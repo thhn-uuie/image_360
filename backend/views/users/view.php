@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div>
               <?php echo $model->id_role ?>
             </div>
-          </span></div> -->
+          </span></div> 
       </div>
       <div class="colums">
         <div class="item">

@@ -85,8 +85,11 @@ use yii\helpers\Url;
                         ]
                     ) ?>
 
+                    <!-- $cate=Categories::find()->where(['status'=>'Hiện'])->all();
+                    $categoryList =ArrayHelper::map($cate, 'id_category', 'name_category'); -->
+
                     <?= $form->field($model, 'id_category')->dropDownList(
-                        ArrayHelper::map(Categories::find()->all(), 'id_category', 'name_category'),
+                        ArrayHelper::map(Categories::find()->where(['status'=>'Hiện'])->all(), 'id_category', 'name_category'),
                         [
                             'prompt' => 'Danh mục'
                         ]

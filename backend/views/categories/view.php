@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\base\Categories $model */
+/** @var common\models\Categories $model */
 
 $this->title = $model->id_category;
 $this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="categories-view">
 
   <style>
-    .category {
+        .category {
       font-size: 40px;
       color: inherit;
       font-family: Roboto;
@@ -163,20 +163,14 @@ $this->params['breadcrumbs'][] = $this->title;
     .bg-white {
       color: #3b5570;
     }
-
-    
   </style>
-
-
-
-
 
 
   <div class="d-flex justify-content-center container mt-5">
     <div class="card p-3 bg-white"><i class="fa fa-apple"></i>
       <div class="about-product text-center mt-2">
         <<img style="margin-top: -27px; margin-left: -9px; border-radius: -20%; margin-bottom: 16px;" class="element"
-          width="700px" height="300px" src="<?php echo '../../uploadsCategory/' . $model->image ?>">
+          width="700px" height="300px" src="<?php echo '../../image/category' . '/' . $model->image ?>">
           <div>
 
             <h4>Danh mục:</h4>

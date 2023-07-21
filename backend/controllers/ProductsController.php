@@ -6,6 +6,7 @@ use common\helper\File360Helper;
 use common\models\Products;
 use common\helper\ImageHelper;
 use common\models\search\ProductsSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,6 +15,8 @@ use yii\web\UploadedFile;
 use backend\components\PngWriter;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
+use common\models\base\Categories;
+
 
 
 /**
@@ -27,10 +30,15 @@ class ProductsController extends base\ProductsController
 
         $model = new Products();
 
+        //lấy danh sách các danh mục có status là 'hiện'
+        $cate = Categories::find()->where(['status'=>'Hiện'])->all();
+        $categoryList = ArrayHelper::map($cate,'id_category', 'name_category');
+
         $loadImg = new ImageHelper();
 
         $load360 = new File360Helper();
 
+        
         if ($model->load(Yii::$app->request->post())) {
             $model->file_360 = UploadedFile::getInstance($model, 'file_360');
             $model->file_image =UploadedFile::getInstance($model, 'file_image');
@@ -70,6 +78,7 @@ class ProductsController extends base\ProductsController
                 //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
                 return $this->render('create', [
                     'model' => $model,
+                    'categoryList' => $categoryList,
                 ]);
             }
 
