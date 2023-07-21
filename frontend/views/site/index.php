@@ -1,11 +1,10 @@
 <?php
-use common\models\Products;
 
 /** @var yii\web\View $this */
 use yii\bootstrap5\Html;
 
 
-$this->title = 'My Yii Application';
+$this->title = 'Trình diễn ảnh 360';
 ?>
 
 <section class="slider_section">
@@ -49,14 +48,13 @@ $this->title = 'My Yii Application';
             </h2>
         </div>
 
-        <?php $products = Products::find()->all(); ?>
-        <?php $limitShowProducts = array_slice($products,0, 8);
+        <?php $limitShowProducts = array_slice($products,count($products) - 8, 8);
         if ($limitShowProducts): ?>
             <div class="row">
                 <?php for ($item = 0; $item < count($limitShowProducts); $item++): ?>
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="box">
-                            <a href="">
+                            <a href="index.php?r=site/view-products">
                                 <div class="img-box">
                                     <img src="<?php echo '../../image/products/' . $limitShowProducts[$item]->image; ?>" alt="">
                                 </div>
@@ -68,7 +66,6 @@ $this->title = 'My Yii Application';
                             </a>
                         </div>
                     </div>
-
                 <?php endfor; ?>
             </div>
         <?php endif; ?>

@@ -107,15 +107,5 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionClassify()
-    {
-        $categories = Categories::find()->select('id_category')->all();
-        //var_dump($categories);die;
-        return $this->render(
-            'classify',
-            [
-                'categories' => $categories,
-            ]
-        );
-    }
+
 }

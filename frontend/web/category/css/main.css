@@ -258,7 +258,6 @@ a#scrollUp i{
   outline: medium none;
   padding-left: 10px;
   width: 155px;
-  background-image: url(../images/home/searchicon.png);
   background-repeat: no-repeat;
   background-position: 130px;
 }
@@ -717,13 +716,22 @@ h2.title:before{
   color: #FFFFFF;
   padding: 5px 20px;
 }
+.category-products .panel-default .panel-heading .panel-title {
+  border-bottom: 1px dashed #9e9e9e;
+}
+
+
 
 .category-products .panel-default .panel-heading .panel-title a {
-  color: #696763;
+  color: #282828;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   text-decoration: none;
   text-transform: uppercase;
+
+}
+.category-products .panel-default .panel-heading .panel-title a:hover {
+  color: blue;
 }
 
 .panel-group .panel-heading + .panel-collapse .panel-body {
@@ -844,9 +852,9 @@ h2.title {
 }
 
 .product-image-wrapper{
-  border:1px solid #F7F7F5;
   overflow: hidden;
   margin-bottom:30px;
+  cursor: pointer;
 }
 
 .single-products {
@@ -882,6 +890,8 @@ h2.title {
 
 .productinfo img{
   width: 100%;
+  height: 200px;
+  border: 5px solid #e7d0d0;
 }
 
 .productinfo{

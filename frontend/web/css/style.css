@@ -3,6 +3,25 @@
   color: rgb(16, 16, 16);
   background-color: rgb(255, 255, 255);
 }
+.top-bar {
+  background: #f6f6f6;
+  text-align:right;
+}
+
+.top-bar ul {
+  display: inline-flex;
+  list-style: none;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.top-bar ul li {
+  width: 150px;
+  padding-top: 10px;
+}
+.top-bar .fa {
+  margin-right: 8px;
+}
 
 .layout_padding {
   padding-top: 90px;
@@ -52,6 +71,30 @@
   text-align: center;
 }
 
+.sub-menu-1 {
+  display: none;
+}
+
+#navbarSupportedContent ul li:hover .sub-menu-1 {
+  display: block;
+  position: absolute;
+  background: rgb(249, 236, 230);
+}
+
+#navbarSupportedContent ul li:hover .sub-menu-1 ul {
+  display: block;
+  padding: 10px;
+}
+
+#navbarSupportedContent ul li:hover .sub-menu-1 ul li {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px dotted #2a551d;
+  background: transparent;
+  border-radius: 0;
+  text-align: center;
+}
+
 .hero_area {
   padding: 0px 45px;
 }
@@ -80,16 +123,25 @@
 }
 
 #navbarSupportedContent .navbar-nav .nav-link {
-  padding: 5px 25px;
-  color: rgb(81, 79, 79);
+  padding: 7px 20px;
+  color: rgb(26 26 26);
   text-align: center;
   text-transform: uppercase;
   border-radius: 5px;
 }
 
-#navbarSupportedContent .nav-item.active .nav-link {
-  background-color: rgb(255, 255, 255);
+/*#navbarSupportedContent .nav-item.active .nav-link {*/
+/*  background-color: rgb(255, 255, 255);*/
+/*}*/
+
+#navbarSupportedContent .nav-item a:hover
+{
+  background: #ffffff;
+  border-radius: 10px;
+  color: #29d533;
 }
+
+
 
 a, a:hover, a:focus {
   text-decoration: none;
@@ -291,6 +343,7 @@ a:hover, a:focus {
   position: relative;
   padding: 10px;
   margin-top: 25px;
+
 }
 
 .shop_section .box a {
@@ -310,6 +363,10 @@ a:hover, a:focus {
 .shop_section .box .img-box img {
   max-width: 100%;
   max-height: 100%;
+  transition: transform 0.3s ease;
+}
+.shop_section .box .img-box img:hover {
+  transform: scale(1.2);
 }
 
 .shop_section .box .detail-box {

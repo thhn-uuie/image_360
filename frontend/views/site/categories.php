@@ -1,7 +1,6 @@
 <?php
 
-use common\models\base\Categories;
-use common\models\Products;
+use yii\helpers\Url;
 
 ?>
 <section>
@@ -13,13 +12,13 @@ use common\models\Products;
 
                     <!-- Start show categories -->
                     <div class="panel-group category-products" id="accordian">
-                        <?php $cate = Categories::find()->all(); ?>
-                        <?php foreach ($cate as $item) : ?>
+                        <?php if ($cate):?>
+                        <?php foreach ($cate as $item) :?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordian" href="">
-                                            <span class="badge pull-right"></span>
+                                        <a
+                                           href="<?= Url::toRoute(['products/products-category', 'id_products' => $item->id_category]) ?>">
                                             <?php echo $item->name_category ?>
                                         </a>
                                     </h4>
@@ -27,6 +26,7 @@ use common\models\Products;
 
                             </div>
                         <?php endforeach; ?>
+                        <?php endif;?>
                     </div>
                     <!-- End show categories-->
 
@@ -55,7 +55,7 @@ use common\models\Products;
                     </div>
 
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="images/home/shipping.jpg" alt=""/>
+                        <img src="" alt=""/>
                     </div><!--/shipping-->
 
                 </div>
@@ -66,10 +66,9 @@ use common\models\Products;
                 <div class="features_items">
                     <h2 class="title text-center">Tất cả hình ảnh</h2>
                     <div class="heading_container heading_center">
-                        <?php $products = Products::find()->all() ?>
                         <?php if ($products): ?>
                             <div class="row">
-                                <?php foreach ($products as $item) : ?>
+                                <?php foreach ($products as $item) :?>
                                     <div class="col-sm-6 col-md-4 col-lg-3">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
@@ -107,7 +106,7 @@ use common\models\Products;
                 <div class="product-image-wrapper">
                     <div class="single-products">
                         <div class="productinfo text-center">
-                            <img src="images/home/gallery1.jpg" alt=""/>
+                            <img src="" alt=""/>
                             <h2>$56</h2>
                             <p>Easy Polo Black Edition</p>
                             <a href="#" class="btn btn-default add-to-cart"><i

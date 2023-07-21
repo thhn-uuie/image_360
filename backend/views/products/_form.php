@@ -62,11 +62,11 @@ use yii\helpers\Url;
                         </div>
                     </div>
 
-<label for="products-file_360">
+                    <label for="products-file_360">
 
-    <div id="custom-btn"> <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()', 'style' => 'display:none']) ?>
-       </div>
-</label>
+                        <div id="custom-btn"> <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()', 'style' => 'display:none']) ?>
+                        </div>
+                    </label>
 
                 </div>
 
