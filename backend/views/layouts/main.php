@@ -93,10 +93,7 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                         <a><i class="fa fa-info-circle"></i> Profile <span
                                                     class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <!--                                        <li>-->
-                                            <!--                                            --><?php //echo Html::a('Tạo profile', ['/profile/create']) ?>
-                                            <!--                                        </li>-->
-
+                                         
                                             <li>
                                                 <?php echo Html::a('Danh sách tài khoản', ['/profile']) ?>
                                             </li>
@@ -125,40 +122,13 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                         </li>
                                     </ul>
                                 </li>
-                                <!--                                <li><a><i class="fa fa-eye"></i> Lượt view cao nhất <span class="fa fa-chevron-down"></span></a>-->
-                                <!---->
-                                <!--                                </li>-->
-                                <!--                                <li><a><i class="fa fa-star"></i> Đánh giá sản phẩm <span class="fa fa-chevron-down"></span></a>-->
-                                <!--                                    <ul class="nav child_menu">-->
-                                <!--                                    </ul>-->
-                                <!--                                </li>-->
-
-                                <!--                                <li><a><i class="fa fa-pie-chart"></i> Biểu đồ </a>-->
-                                <!--                                    </ul>-->
-                                <!--                                </li>-->
+                              
 
                             </ul>
                         </div>
 
                     </div>
-                    <!-- /sidebar menu -->
-
-                    <!-- /menu footer buttons -->
-                    <!-- <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div> -->
-                    <!-- /menu footer buttons -->
+                  
                 </div>
             </div>
 

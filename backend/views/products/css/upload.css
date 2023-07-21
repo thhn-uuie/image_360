@@ -17,13 +17,19 @@
 .wrapper.active{
     border: none;
 }
-.wrapper .image{
+.wrapper {
     position: absolute;
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 1px;
+}
+
+.image {
+    float: left;
+    margin-right: -500px;
 }
 .wrapper img{
     height: 100%;

@@ -1,6 +1,6 @@
 <?php
 
-use common\models\base\Categories;
+use common\models\Categories;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image',
                 'format' => 'html',
                 'value' => function ($model) {
-                        return Html::img('../../uploadsCategory/' . $model['image'], ['width' => '100', 'height' => '100']);
+                        return Html::img('../../image/category/' . $model['image'], ['width' => '100', 'height' => '100']);
                     },
             ],
             // 'description',
@@ -59,10 +59,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_by',
             [
                 'class' => ActionColumn::class,
-                'urlCreator' => function ($action, Categories $model, $key, $index, $column) {
+                'urlCreator' => function ($action, \common\models\base\Categories $model, $key, $index, $column) {
                         return Url::toRoute([$action, 'id_category' => $model->id_category]);
                     }
             ],
         ],
+    
     ]); ?>
 </div>
