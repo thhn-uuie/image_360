@@ -2,12 +2,13 @@
 
 namespace backend\controllers;
 
-use common\model\Categories;
+use common\models\Categories;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
 use yii\web\UploadedFile;
 use common\helper\ImgCateHelper;
+
 
 /**
  * CategoriesController implements the CRUD actions for Categories model.
