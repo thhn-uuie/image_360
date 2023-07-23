@@ -15,6 +15,8 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\Categories;
+use common\models\Products;
 
 /**
  * Site controller
@@ -75,7 +77,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $products = Products::find()->all();
+        return $this->render('index', [
+            'products' => $products
+        ]);
     }
 
     /**
@@ -217,8 +222,8 @@ class SiteController extends Controller
      * Verify email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionVerifyEmail($token)
     {
@@ -257,7 +262,39 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionCategories() {
-        return $this->render('categories');
+    public function actionCategories()
+    {
+        $cate = Categories::find()->all();
+        $products = Products::find()->all();
+
+
+        return $this->render('categories', [
+            'cate' => $cate,
+            'products' => $products
+        ]);
+    }
+
+    public function actionViewProducts()
+    {
+        $cate = Categories::find()->all();
+
+        return $this->render('view-products', [
+            'cate' => $cate,
+        ]);
+    }
+
+    public function actionProductsCategory()
+    {
+        $cate = Categories::find()->all();
+//        foreach ($cate as $category) {
+//            $products = Products::find()
+//                ->innerJoin('categories', 'products.id_category = categories.id_category')
+//                ->where(['or', ['categories.name_category' => $category->name_category], ['categories.id_category' => Categories::find()->select('id_category')->where(['name_category' => $category->name_category])]])
+//                ->all();
+//        }
+        return $this->render('products-category', [
+            'cate' => $cate,
+//            'products' => $products
+        ]);
     }
 }

@@ -3,13 +3,13 @@
 
 .container .wrapper{
     position: relative;
-    height: 200px;
-    width: 300px;
+    height: 100%;
+    width: 60%;
     border-radius: 10px;
     background: #fff;
     border: 2px dashed #c2cdda;
     display: flex;
-    margin-left: 108px;
+    margin-left: 21%;
     align-items: center;
     justify-content: center;
     overflow: hidden;

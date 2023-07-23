@@ -6,6 +6,7 @@
 
 use frontend\assets\AppAsset;
 use yii\bootstrap5\Html;
+use yii\helpers\Url;
 
 $log_out = Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
     . Html::submitButton(
@@ -37,27 +38,48 @@ $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login tex
 
     <!-- header section strats -->
     <header class="header_section">
+        <div class="top-bar">
+            <div class="row">
+
+                <div class="col-md-9">
+                    <ul>
+                        <li><a href="#"><i class="icon fa fa-user"></i>Tài khoản của tôi</a></li>
+                        <li><a href="#"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
+                        <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                        <li><a href="#"><i class="icon fa fa-lock"></i>Đăng nhập</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+
+        </div>
+
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="http://localhost/image_360/frontend/web/index.php">
-          <span>
-            Trình diễn ảnh 360
-          </span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false">
-                <span class=""></span>
-            </button>
+
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav  ">
+                <ul class="navbar-nav">
                     <li class="nav-item active">
                         <?php echo Html::a('Trang chủ', ['/site/index'], ['class' => 'nav-link']) ?>
 
                         <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <?php echo Html::a('Danh mục ảnh', ['/site/categories'], ['class' => 'nav-link']) ?>
+                    <li class="nav-item active">
+                        <?php echo Html::a('Sản phẩm', ['/site/categories'], ['class' => 'nav-link']) ?>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" style="cursor: pointer">Danh mục</a>
+                        <div class="sub-menu-1">
+                            <ul>
+                                <?php $category = \common\models\Categories::find()->all();
+                                foreach ($category as $item):?>
+                                    <li><a class="nav-link"
+                                           href="<?= Url::toRoute(['products/products-category', 'id_products' => $item->id_category]) ?>"><?php echo $item->name_category; ?></a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="why.html">
