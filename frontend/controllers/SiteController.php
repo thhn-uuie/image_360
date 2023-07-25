@@ -286,7 +286,7 @@ class SiteController extends Controller
     public function actionProductsCategory()
     {
         $cate = Categories::find()->all();
-//        foreach ($cate as $category) {
+        //        foreach ($cate as $category) {
 //            $products = Products::find()
 //                ->innerJoin('categories', 'products.id_category = categories.id_category')
 //                ->where(['or', ['categories.name_category' => $category->name_category], ['categories.id_category' => Categories::find()->select('id_category')->where(['name_category' => $category->name_category])]])
@@ -294,7 +294,9 @@ class SiteController extends Controller
 //        }
         return $this->render('products-category', [
             'cate' => $cate,
-//            'products' => $products
+            //            'products' => $products
         ]);
     }
+
+    
 }

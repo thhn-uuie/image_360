@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\controllers;
+
 use common\models\Products;
 use frontend\models\Categories;
 
@@ -11,8 +12,9 @@ class ProductsController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionProductsCategory($id_products) {
-//        $query = new \yii\db\Query();
+    public function actionProductsCategory($id_products)
+    {
+        //        $query = new \yii\db\Query();
 //        $query->select('*')
 //            ->from('products')
 //            ->innerJoin('categories', 'categories.id_category = products.id_category')
@@ -23,9 +25,9 @@ class ProductsController extends \yii\web\Controller
             ->innerJoin('categories', 'categories.id_category = products.id_category')
             ->where(['products.id_category' => $id_products])
             ->all();
-//        var_dump($res);die;
+        //        var_dump($res);die;
         return $this->render('products-category', [
-            'res'=>$res
+            'res' => $res
         ]);
     }
 
@@ -35,5 +37,16 @@ class ProductsController extends \yii\web\Controller
         if (($model = Products::findOne(['id_products' => $id_products])) !== null) {
             return $model;
         }
+    }
+
+    public function actionSearch()
+    {
+        $searchModel = new YourSearchModel();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('search', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }

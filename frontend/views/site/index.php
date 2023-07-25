@@ -2,11 +2,31 @@
 
 /** @var yii\web\View $this */
 use yii\bootstrap5\Html;
-
-
 $this->title = 'Trình diễn ảnh 360';
 ?>
 
+<section>
+<div class="search-form">
+    <!-- <form action="<?= \yii\helpers\Url::to(['product/search']) ?>" method="get">
+        <input type="text" name="ProductSearch[name]" placeholder="Search for products...">
+        <button type="submit"><i class="fa fa-search"></i></button>
+
+        <ul class="dropdown-list">
+            <li class="dropdown-list-item">Everything</li>
+            <li class="dropdown-list-item">Videos</li>
+            <li class="dropdown-list-item">Community</li>
+            <li class="dropdown-list-item">Playlists</li>
+            <li class="dropdown-list-item">Shorts</li>
+        </ul>
+
+        <div class="search-box">
+            <input type="text">
+        </div>
+    </form> -->
+</div>
+
+
+</section>
 <section class="slider_section">
     <div class="slider_container">
         <div class="row">
@@ -270,6 +290,7 @@ $this->title = 'Trình diễn ảnh 360';
 <!-- end client section -->
 
 <!-- info section -->
+
 
 <section class="info_section  layout_padding2-top">
     <div class="social_container">
