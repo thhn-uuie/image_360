@@ -12,11 +12,7 @@ use yii\helpers\ArrayHelper;
 
 <div class="users-form">
 
-
     <?php $form = ActiveForm::begin(); ?>
-
-
-    <html>
 
     <head>
         <meta charset="utf-8">
@@ -24,7 +20,7 @@ use yii\helpers\ArrayHelper;
         <title>Sign Up Form</title>
         <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
         <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../views/users/css/custom.css">
+        <link rel="stylesheet" href="../views/users/css/form_custom.css">
     </head>
 
     <body>
@@ -57,15 +53,6 @@ use yii\helpers\ArrayHelper;
                 </form>
             </div>
         </div>
-
     </body>
-
-    </html>
-
-
-
-
     <?php ActiveForm::end(); ?>
-
-
 </div>
