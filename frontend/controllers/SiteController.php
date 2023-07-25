@@ -77,10 +77,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $products = Products::find()->all();
-        return $this->render('index', [
-            'products' => $products
-        ]);
+        return $this->render('index');
     }
 
     /**
@@ -262,39 +259,14 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionCategories()
-    {
-        $cate = Categories::find()->all();
-        $products = Products::find()->all();
-
-
-        return $this->render('categories', [
-            'cate' => $cate,
-            'products' => $products
-        ]);
-    }
-
-    public function actionViewProducts()
-    {
-        $cate = Categories::find()->all();
-
-        return $this->render('view-products', [
-            'cate' => $cate,
-        ]);
-    }
-
     public function actionProductsCategory()
     {
         $cate = Categories::find()->all();
-//        foreach ($cate as $category) {
-//            $products = Products::find()
-//                ->innerJoin('categories', 'products.id_category = categories.id_category')
-//                ->where(['or', ['categories.name_category' => $category->name_category], ['categories.id_category' => Categories::find()->select('id_category')->where(['name_category' => $category->name_category])]])
-//                ->all();
-//        }
         return $this->render('products-category', [
             'cate' => $cate,
-//            'products' => $products
         ]);
+    }
+    public function actionNewLogin() {
+        return $this->render('new-login');
     }
 }

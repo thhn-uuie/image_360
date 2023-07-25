@@ -366,7 +366,7 @@ a:hover, a:focus {
   transition: transform 0.3s ease;
 }
 .shop_section .box .img-box img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .shop_section .box .detail-box {

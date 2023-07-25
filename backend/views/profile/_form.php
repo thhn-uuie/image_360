@@ -9,20 +9,15 @@ use kartik\date\DatePicker;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 <head>
-    <!-- on your view layout file HEAD section -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="../views/profile/css/upload-img.scss" type="text/css">
+    <link rel="stylesheet" href="../views/profile/css/form-body.css" type="text/css">
 </head>
+
 <div class="profile-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <!--    --><?php //= $form->field($model, 'id_user')->hiddenInput(['value' => $model->getIdUser()]) ?>
-    <!--    --><?php //endif;?>
-
-    <head>
-        <link rel="stylesheet" href="../views/profile/css/upload-img.scss" type="text/css">
-        <link rel="stylesheet" href="../views/profile/css/form-body.css" type="text/css">
-    </head>
     <div class="container d-flex justify-content-center mt-5">
         <div class="card">
             <div class="row">
@@ -93,25 +88,7 @@ use kartik\date\DatePicker;
     </div>
 
 
-    <!--    <script>-->
-    <!--        function imagePreview(input) {-->
-    <!--            if (input.files && input.files[0]) {-->
-    <!--                var reader = new FileReader();-->
-    <!--                reader.onload = function (event) {-->
-    <!--                    var fileurl = event.target.result;-->
-    <!--                    $('.profile-pic').attr('src', fileurl);-->
-    <!--                }-->
-    <!--                reader.readAsDataURL(input.files[0]);-->
-    <!--            }-->
-    <!--        }-->
-    <!---->
-    <!--        $(".file-upload").on('change', function () {-->
-    <!--            imagePreview(this);-->
-    <!--        });-->
-    <!--        $(".upload-button").on('click', function () {-->
-    <!--            $(".file-upload").click();-->
-    <!--        });-->
-    <!--    </script>-->
+    <!-- JS: image preview    -->
     <script>
         function imagePreview() {
             var fileSelected = document.getElementById('profile-file_image').files;

@@ -1,8 +1,9 @@
 <?php
 
 namespace frontend\controllers;
-use common\models\Products;
+
 use frontend\models\Categories;
+use frontend\models\Products;
 
 class ProductsController extends \yii\web\Controller
 {
@@ -11,21 +12,26 @@ class ProductsController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionProductsCategory($id_products) {
-//        $query = new \yii\db\Query();
-//        $query->select('*')
-//            ->from('products')
-//            ->innerJoin('categories', 'categories.id_category = products.id_category')
-//            ->where(['products.id_category' => $id_products]);
-//        $results = $query->all();
-
-        $res = Products::find()
-            ->innerJoin('categories', 'categories.id_category = products.id_category')
-            ->where(['products.id_category' => $id_products])
-            ->all();
-//        var_dump($res);die;
+    public function actionProductsCategory($id_cate)
+    {
+        $products = new Products();
+        $products_cate = $products->getProductsCate($id_cate);
         return $this->render('products-category', [
-            'res'=>$res
+            'products_cate' => $products_cate
+        ]);
+    }
+
+    public function actionDetail($id_products)
+    {
+        $products = new Products();
+        $products_cate = $products->getProductsBy($id_products);
+        foreach ($products_cate as $item) {
+            $name_cate = Categories::find()->where(['categories.id_category' => $item->id_category])->asArray()->all();
+        }
+
+        return $this->render('detail', [
+            'products_cate' => $products_cate,
+            'name_cate' => $name_cate
         ]);
     }
 
