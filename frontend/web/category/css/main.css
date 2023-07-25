@@ -6,7 +6,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
-
+.grid-container {
+  display: grid!important;
+  grid-template-columns: 1fr 1fr 1fr 1fr!important; /* 4 cột bằng nhau */
+  gap: 10px!important; /* Khoảng cách giữa các khối */
+}
 
 ul li {
   list-style: none;

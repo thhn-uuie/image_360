@@ -1,151 +1,195 @@
+<?php
+
+use yii\imagine\Image;
+use yii\helpers\Url;
+use frontend\widgets\recommendedWidget;
+
+?>
+
 <!-- Open Content -->
 <section class="bg-light">
     <div class="container pb-5">
         <div class="row">
-            <?php foreach ($products_cate as $item):?>
-            <div class="col-lg-5 mt-5">
-                <div class="card mb-3">
-                    <img class="card-img img-products" src="<?php echo '../../image/products/' . $item->image ?>" id="product-detail">
-                </div>
-                <div class="row">
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                            <i class="text-dark fa fa-chevron-left"></i>
-                            <span class="sr-only">Previous</span>
-                        </a>
+            <?php foreach ($products_cate as $item): ?>
+                <div class="col-lg-5 mt-5">
+                    <div class="card mb-3">
+                        <img class="card-img img-products" src="<?php echo '../../image/products/' . $item->image ?>"
+                             id="product-detail">
                     </div>
-                    <!--End Controls-->
-                    <!--Start Carousel Wrapper-->
-                    <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
-                        <!--Start Slides-->
-                        <div class="carousel-inner product-links-wap" role="listbox">
 
-                            <!--First slide-->
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="temp/img/product_single_01.jpg" alt="Product Image 1">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="temp/img/product_single_02.jpg" alt="Product Image 2">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="temp/img/product_single_03.jpg" alt="Product Image 3">
-                                        </a>
-                                    </div>
+                </div>
+                <!-- col end -->
+                <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h2"><?php echo $item->name_products ?></h1>
+                            <p class="py-2">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <span class="list-inline-item text-dark">Đánh giá 4.8 | 36 Bình luận</span>
+                            </p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Danh mục:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="<?= Url::toRoute(['products/products-category', 'id_cate' => $name_cate[0]['id_category']]) ?>">
+                                        <p class="text-muted">
+                                            <strong><?php echo $name_cate[0]['name_category'] ?></strong></p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <h6>Mô tả:</h6>
+                            <p><?php echo $item->description ?></p>
+
+
+                            <h6>Mã QR:</h6>
+
+                            <button data-modal-target="#modal">Open Modal</button>
+                            <div class="modal" id="modal">
+                                <div class="modal-header">
+                                    <div class="title">Example Modal</div>
+                                    <button data-close-button class="close-button">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quod alias ut illo
+                                    doloremque eum ipsum obcaecati distinctio debitis reiciendis quae quia soluta totam
+                                    doloribus quos nesciunt necessitatibus, consectetur quisquam accusamus ex, dolorum,
+                                    dicta vel? Nostrum voluptatem totam, molestiae rem at ad autem dolor ex aperiam.
+                                    Amet assumenda eos architecto, dolor placeat deserunt voluptatibus tenetur sint
+                                    officiis perferendis atque! Voluptatem maxime eius eum dolorem dolor exercitationem
+                                    quis iusto totam! Repudiandae nobis nesciunt sequi iure! Eligendi, eius libero. Ex,
+                                    repellat sapiente!
                                 </div>
                             </div>
-                            <!--/.First slide-->
+                            <div id="overlay"></div>
 
-                            <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="temp/img/product_single_04.jpg" alt="Product Image 4">
-                                        </a>
+                            <style>
+
+                                .modal {
+                                    position: fixed;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%) scale(0);
+                                    transition: 200ms ease-in-out;
+                                    border: 1px solid black;
+                                    border-radius: 10px;
+                                    z-index: 10;
+                                    background-color: white;
+                                    width: 500px;
+                                    max-width: 80%;
+                                }
+
+                                .modal.active {
+                                    transform: translate(-50%, -50%) scale(1);
+                                }
+
+                                .modal-header {
+                                    padding: 10px 15px;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    border-bottom: 1px solid black;
+                                }
+
+                                .modal-header .title {
+                                    font-size: 1.25rem;
+                                    font-weight: bold;
+                                }
+
+                                .modal-header .close-button {
+                                    cursor: pointer;
+                                    border: none;
+                                    outline: none;
+                                    background: none;
+                                    font-size: 1.25rem;
+                                    font-weight: bold;
+                                }
+
+                                .modal-body {
+                                    padding: 10px 15px;
+                                }
+
+                                #overlay {
+                                    position: fixed;
+                                    opacity: 0;
+                                    transition: 200ms ease-in-out;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    background-color: rgba(0, 0, 0, .5);
+                                    pointer-events: none;
+                                }
+
+                                #overlay.active {
+                                    opacity: 1;
+                                    pointer-events: all;
+                                }
+                            </style>
+
+
+                            <script>
+                                const openModalButtons = document.querySelectorAll('[data-modal-target]')
+                                const closeModalButtons = document.querySelectorAll('[data-close-button]')
+                                const overlay = document.getElementById('overlay')
+
+                                openModalButtons.forEach(button => {
+                                    button.addEventListener('click', () => {
+                                        const modal = document.querySelector(button.dataset.modalTarget)
+                                        openModal(modal)
+                                    })
+                                })
+
+                                overlay.addEventListener('click', () => {
+                                    const modals = document.querySelectorAll('.modal.active')
+                                    modals.forEach(modal => {
+                                        closeModal(modal)
+                                    })
+                                })
+
+                                closeModalButtons.forEach(button => {
+                                    button.addEventListener('click', () => {
+                                        const modal = button.closest('.modal')
+                                        closeModal(modal)
+                                    })
+                                })
+
+                                function openModal(modal) {
+                                    if (modal == null) return
+                                    modal.classList.add('active')
+                                    overlay.classList.add('active')
+                                }
+
+                                function closeModal(modal) {
+                                    if (modal == null) return
+                                    modal.classList.remove('active')
+                                    overlay.classList.remove('active')
+                                }
+                            </script>
+                            <h6>Ảnh 360 độ:</h6>
+                            <?php echo $item->files ?>
+
+                            <form action="" method="GET">
+                                <input type="hidden" name="product-title" value="Activewear">
+
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">
+                                            Đánh giá
+                                        </button>
                                     </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="temp/img/product_single_05.jpg" alt="Product Image 5">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="temp/img/product_single_06.jpg" alt="Product Image 6">
-                                        </a>
-                                    </div>
+
                                 </div>
-                            </div>
-                            <!--/.Second slide-->
+                            </form>
+
                         </div>
-                        <!--End Slides-->
-                    </div>
-                    <!--End Carousel Wrapper-->
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="next">
-                            <i class="text-dark fa fa-chevron-right"></i>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    <!--End Controls-->
-                </div>
-            </div>
-            <!-- col end -->
-            <div class="col-lg-7 mt-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="h2"><?php echo $item->name_products ?></h1>
-                        <p class="py-2">
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-warning"></i>
-                            <i class="fa fa-star text-secondary"></i>
-                            <span class="list-inline-item text-dark">Đánh giá 4.8 | 36 Bình luận</span>
-                        </p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <h6>Danh mục:</h6>
-                            </li>
-                            <li class="list-inline-item">
-                                <p class="text-muted"><strong><?php echo $name_cate[0]['name_category']?></strong></p>
-                            </li>
-                        </ul>
-
-                        <h6>Mô tả:</h6>
-                        <p><?php echo $item->description ?></p>
-
-
-                        <h6>Mã QR:</h6>
-                        <?php echo $item->qr_code ?>
-
-                        <form action="" method="GET">
-                            <input type="hidden" name="product-title" value="Activewear">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <ul class="list-inline pb-3">
-                                        <li class="list-inline-item">Size :
-                                            <input type="hidden" name="product-size" id="product-size" value="S">
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">S</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">M</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">L</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span></li>
-                                    </ul>
-                                </div>
-                                <div class="col-auto">
-                                    <ul class="list-inline pb-3">
-                                        <li class="list-inline-item text-right">
-                                            Quantity
-                                            <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                                        <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                        <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row pb-3">
-                                <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
-                                </div>
-                                <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
-                                </div>
-                            </div>
-                        </form>
-
                     </div>
                 </div>
-            </div>
             <?php endforeach; ?>
 
         </div>
@@ -153,100 +197,9 @@
 </section>
 <!-- Close Content -->
 
-<!-- Start Article -->
-<section class="py-5">
-    <div class="container">
-        <div class="row text-left p-2 pb-3">
-            <h4>Related Products</h4>
-        </div>
-
-        <!--Start Carousel Wrapper-->
-        <div id="carousel-related-product">
-
-            <div class="p-2 pb-3">
-                <div class="product-wap card rounded-0">
-                    <div class="card rounded-0">
-                        <img class="card-img rounded-0 img-fluid" src="../../image/avatars/1689668736_Wall paper.jpg">
-                        <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                            <ul class="list-unstyled">
-                                <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h3 text-decoration-none">Red Clothing</a>
-                        <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                            <li>M/L/X/XL</li>
-                            <li class="pt-2">
-                                <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled d-flex justify-content-center mb-1">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                        </ul>
-                        <p class="text-center mb-0">$20.00</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-2 pb-3">
-                <div class="product-wap card rounded-0">
-                    <div class="card rounded-0">
-                        <img class="card-img rounded-0 img-fluid" src="../../image/products/1689585883_sapa.jpg">
-                        <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                            <ul class="list-unstyled">
-                                <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h3 text-decoration-none">Black Fashion</a>
-                        <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                            <li>M/L/X/XL</li>
-                            <li class="pt-2">
-                                <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled d-flex justify-content-center mb-1">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                        </ul>
-                        <p class="text-center mb-0">$60.00</p>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-</section>
-<!-- End Article -->
+<!-- Start Recommended Products -->
+<?= recommendedWidget::widget() ?>
+<!-- End Recommended Products -->
 
 
 <!-- Start Footer -->
@@ -305,23 +258,28 @@
             <div class="col-auto me-auto">
                 <ul class="list-inline text-left footer-icons">
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
+                                    class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                     </li>
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i
+                                    class="fab fa-instagram fa-lg fa-fw"></i></a>
                     </li>
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
+                                    class="fab fa-twitter fa-lg fa-fw"></i></a>
                     </li>
                     <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                        <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i
+                                    class="fab fa-linkedin fa-lg fa-fw"></i></a>
                     </li>
                 </ul>
             </div>
             <div class="col-auto">
                 <label class="sr-only" for="subscribeEmail">Email address</label>
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
+                    <input type="text" class="form-control bg-dark border-light" id="subscribeEmail"
+                           placeholder="Email address">
                     <div class="input-group-text btn-success text-light">Subscribe</div>
                 </div>
             </div>

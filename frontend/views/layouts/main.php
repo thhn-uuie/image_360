@@ -13,7 +13,6 @@ use frontend\widgets\navbarWidget;
 
 
 
-$log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login text-decoration-none']]);
 
 ?>
 <?php $this->beginPage() ?>
