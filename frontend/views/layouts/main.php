@@ -22,13 +22,16 @@ $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login tex
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
 
+    <?php $this->registerCsrfMetaTags() ?>
+    <title>
+        <?= Html::encode($this->title) ?>
+    </title>
+    <?php $this->head() ?>
+</head>
 
-        <?php $this->registerCsrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
-        <?php $this->head() ?>
-    </head>
-    <body class="hero_area">
+<body class="hero_area">
     <?php $this->beginBody() ?>
 
 
@@ -60,6 +63,11 @@ $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login tex
 
     <?php $this->endBody() ?>
 
-    </body>
-    </html>
+
+</body>
+
+</html>
+
+
+
 <?php $this->endPage();

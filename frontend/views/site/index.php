@@ -12,6 +12,7 @@ use frontend\widgets\infoWidget;
 $this->title = 'Trình diễn ảnh 360';
 ?>
 
+
 <section class="slider_section">
     <?= bannerWidget::widget() ?>
 </section>
@@ -169,6 +170,7 @@ $this->title = 'Trình diễn ảnh 360';
 <!-- end client section -->
 
 <!-- info section -->
+
 
 <section class="info_section  layout_padding2-top">
     <?= infoWidget::widget()?>

@@ -12,9 +12,10 @@ class ProductsController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionProductsCategory($id_cate)
+    public function actionProductsCategory($id_products) 
     {
         $products = new Products();
+
         $products_cate = $products->getProductsCate($id_cate);
         return $this->render('products-category', [
             'products_cate' => $products_cate
@@ -41,5 +42,16 @@ class ProductsController extends \yii\web\Controller
         if (($model = Products::findOne(['id_products' => $id_products])) !== null) {
             return $model;
         }
+    }
+
+    public function actionSearch()
+    {
+        $searchModel = new YourSearchModel();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('search', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }
