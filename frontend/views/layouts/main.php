@@ -259,6 +259,9 @@ $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login tex
 
                 dropdownBtn.onclick = function(){
                     list.classList.toggle("show");
+                    if(lislist.classList.contain("show")) {
+
+                    }
                     icon.style.rotate = "-180deg";
                 };
 
@@ -320,7 +323,6 @@ $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login tex
                     </li>
                     <?= $log_in ?>
 
-                    <?= $log_out ?>
                 </ul>
 
             </div>
