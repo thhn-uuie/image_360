@@ -12,7 +12,7 @@ class ProductsController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionProductsCategory($id_products) 
+    public function actionProductsCategory($id_cate)
     {
         $products = new Products();
 

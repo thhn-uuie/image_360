@@ -1,8 +1,24 @@
+<?php
+
+/** @var yii\web\View $this */
+/** @var yii\bootstrap5\ActiveForm $form */
+/** @var \common\models\LoginForm $model */
+
+use yii\bootstrap5\Html;
+use yii\bootstrap5\ActiveForm;
+
+$this->title = 'Login';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
 
 <html>
 <div class="overlay">
+    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+
     <form>
         <div class="con">
+
             <header class="head-form">
                 <h2>Log In</h2>
                 <p>login here using your username and password</p>
@@ -12,17 +28,18 @@
                 <span class="input-item">
                     <i class="fa fa-user-circle"></i>
                 </span>
-                <input class="form-input" id="txt-input" type="text" placeholder="@UserName" required>
+                <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+
                 <br>
                 <span class="input-item">
                     <i class="fa fa-key"></i>
                 </span>
-                <input class="form-input" type="password" placeholder="Password" id="pwd" name="password" required>
+                <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
                 <span>
                     <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
                 </span>
                 <br>
-                <button class="log-in"> Log In </button>
+                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
             </div>
 
             <div class="other">
@@ -31,8 +48,11 @@
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
                 </button>
             </div>
+
         </div>
     </form>
+    <?php ActiveForm::end(); ?>
+
 </div>
 
 </html>
@@ -46,6 +66,15 @@
         box-sizing: border-box;
     }
 
+    input[type="text"] {
+        width: 300px;
+        height: 35px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+        margin-left: 0px;
+    }
     body {
         background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
         background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
@@ -56,9 +85,44 @@
         opacity: .95;
     }
 
+    .form-label {
+        margin-bottom: 125px;
+        margin-top: 0px;
+        margin-left: -70px;
+    }
+
+    .form-control {
+        display: block;
+        width: 300px;
+        height: 35px;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        position: relative;
+        transition: transform 0.3s ease-in-out;
+        margin-top: -160px;
+    }
+
+    .form-control:hover {
+        transform: translateY(10px);
+    }
+
+    .fa {
+        margin-left: -55px;
+        margin-bottom: 0px;
+        margin-top: 10px;
+    }
+
     form {
-        width: 450px;
-        min-height: 500px;
+        width: 550px;
+        min-height: 400px;
         height: auto;
         border-radius: 5px;
         margin: 2% auto;
@@ -86,7 +150,7 @@
     }
 
     header h2 {
-        font-size: 500%;
+        font-size: 575%;
         font-family: 'Playfair Display', serif;
         color: #056d39;
     }
@@ -157,7 +221,20 @@
         width: 48%;
         display: inline-block;
         float: left;
-        margin-left: 2%;
+        margin-left: 100px;
+        -top: -60px;
+    }
+
+    .btn-success {
+        color: #271313;
+        background-color: #28a745;
+        border-color: #28a745;
+        margin-left: 32px;
+    }
+
+    .fa-user-plus:before {
+        content: "\f234";
+        margin-left: -70px;
     }
 
     .frgt-pass {

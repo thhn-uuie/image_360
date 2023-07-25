@@ -21,7 +21,7 @@ use yii\helpers\Url;
                 <div class="features_items">
                     <h2 class="title text-center">Hình ảnh</h2>
                     <div class="heading_container heading_center">
-                        <div class="row row-cols-4">
+                        <div class="grid-container">
                             <?php foreach ($products_cate as $item):?>
                                 <div class="col">
                                     <div class="product-image-wrapper">
