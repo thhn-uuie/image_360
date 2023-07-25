@@ -99,4 +99,22 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->hasOne(View::class, ['id_products' => 'id_products']);
     }
+
+    public function getProductsCate($id_cate) {
+        $products_cate = Products::find()
+            ->innerJoin('categories', 'categories.id_category = products.id_category')
+            ->where(['products.id_category' => $id_cate, 'products.status' => 'Hoạt động'])
+            ->all();
+        return $products_cate;
+    }
+    public function getProdCate() {
+        return $this->getProductsCate($this->id_category);
+    }
+
+    public function getProductsBy($id_products){
+        $data = Products::find()
+            ->where(['products.id_products' => $id_products, 'products.status' => 'Hoạt động']) -> all();
+        return $data;
+    }
+
 }

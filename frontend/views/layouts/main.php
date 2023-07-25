@@ -7,27 +7,22 @@
 use frontend\assets\AppAsset;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
+use frontend\widgets\headerWidget;
+use frontend\widgets\navbarWidget;
 
-$log_out = Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
-    . Html::submitButton(
-        'Logout ',
-        ['class' => 'btn btn-link logout text-decoration-none']
-    )
-    . Html::endForm();
-AppAsset::register($this);
+
+
 
 $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login text-decoration-none']]);
 
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
-
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>" class="h-100">
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
 
     <?php $this->registerCsrfMetaTags() ?>
     <title>
@@ -40,20 +35,10 @@ $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login tex
     <?php $this->beginBody() ?>
 
 
-    <!-- header section strats -->
+    <!-- header section starts -->
     <header class="header_section">
-        <div class="top-bar">
-            <div class="row">
 
-                <div class="col-md-9">
-                    <ul>
-                        <li><a href="#"><i class="icon fa fa-user"></i>Tài khoản của tôi</a></li>
-                        <li><a href="#"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
-                        <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
-                        <li><a href=""><i class="icon fa fa-lock"></i>Đăng nhập</a></li>
-                    </ul>
-                </div>
-            </div>
+        <?= headerWidget::widget() ?>
 
 
         </div>
@@ -343,7 +328,7 @@ $log_in = Html::a('Login', ['/site/login'], ['class' => ['btn btn-link login tex
     </header>
 
     <!-- end header section -->
-    <!-- slider section -->
+
 
     <?= $content ?>
 
