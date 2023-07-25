@@ -4,7 +4,7 @@ use common\models\base\Categories;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\Url;
+use Itstructure\CKEditor\CKEditor;
 
 /** @var yii\web\View $this */
 /** @var common\models\Products $model */
@@ -74,7 +74,10 @@ use yii\helpers\Url;
             <div class="col-md-7">
                 <div class="col-md-10">
                     <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
-                    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'description')->widget(CKEditor::class, [
+                            'options' => ['row' => 6],
+                            'preset' => 'custom'
+                    ]) ?>
                     <?= $form->field($model, 'status')->dropDownList(
                         [
                             'Hoạt động' => 'Hoạt động',

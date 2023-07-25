@@ -23,7 +23,6 @@ class AppAsset extends AssetBundle
 
     ];
     public $js = [
-        // 'vendors/jquery/dist/jquery.min.js',
         'vendors/bootstrap/dist/js/bootstrap.bundle.min.js',
         'vendors/fastclick/lib/fastclick.js',
         'vendors/nprogress/nprogress.js',
@@ -47,6 +46,7 @@ class AppAsset extends AssetBundle
         'vendors/moment/min/moment.min.js',
         'vendors/bootstrap-daterangepicker/daterangepicker.js',
         'build/js/custom.min.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

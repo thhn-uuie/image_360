@@ -2,12 +2,16 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 
 /** @var yii\web\View $this */
 /** @var common\models\Profile $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
-
+<head>
+    <!-- on your view layout file HEAD section -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+</head>
 <div class="profile-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -38,27 +42,33 @@ use yii\widgets\ActiveForm;
                 </div>
 
                 <div class="col-md-7">
-<!--                    --><?php //if (Yii::$app->user->identity->id_role == 1): ?>
-<!--                        --><?php //$ids = User::find()
-//                            ->select('users.id_user')
-//                            ->leftJoin('profile', 'users.id_user = profile.id_user')
-//                            ->where(['profile.id_user' => null])
-//                            ->column();
-////
-////                        ?>
-<!--                        --><?php //= $form->field($model, 'id_user')->dropDownList(
-////                            ArrayHelper::map(User::find()->where(['id_user' => $ids])->all(), 'id_user', 'username'),
-//                            ArrayHelper::map(User::find()->all(), 'id_user', 'username'),
-//                            [
-//                                'prompt' => 'Chọn user',
-//                                // 'style' => 'width: 300px'
-//                            ]
-//                        ) ?>
-<!--                    --><?php //endif; ?>
+                    <!--                    --><?php //if (Yii::$app->user->identity->id_role == 1): ?>
+                    <!--                        --><?php //$ids = User::find()
+                    //                            ->select('users.id_user')
+                    //                            ->leftJoin('profile', 'users.id_user = profile.id_user')
+                    //                            ->where(['profile.id_user' => null])
+                    //                            ->column();
+                    ////
+                    ////                        ?>
+                    <!--                        --><?php //= $form->field($model, 'id_user')->dropDownList(
+                    ////                            ArrayHelper::map(User::find()->where(['id_user' => $ids])->all(), 'id_user', 'username'),
+                    //                            ArrayHelper::map(User::find()->all(), 'id_user', 'username'),
+                    //                            [
+                    //                                'prompt' => 'Chọn user',
+                    //                                // 'style' => 'width: 300px'
+                    //                            ]
+                    //                        ) ?>
+                    <!--                    --><?php //endif; ?>
 
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-                    <?= $form->field($model, 'birthday')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'birthday')->widget(DatePicker::classname(), [
+                        'options' => ['placeholder' => 'Nhập ngày sinh...'],
+                        'pluginOptions' => [
+                            'autoclose' => true
+                        ],
+                    ])?>
+
 
                     <?= $form->field($model, 'gender')->radioList(
                         [
@@ -83,39 +93,39 @@ use yii\widgets\ActiveForm;
     </div>
 
 
-<!--    <script>-->
-<!--        function imagePreview(input) {-->
-<!--            if (input.files && input.files[0]) {-->
-<!--                var reader = new FileReader();-->
-<!--                reader.onload = function (event) {-->
-<!--                    var fileurl = event.target.result;-->
-<!--                    $('.profile-pic').attr('src', fileurl);-->
-<!--                }-->
-<!--                reader.readAsDataURL(input.files[0]);-->
-<!--            }-->
-<!--        }-->
-<!---->
-<!--        $(".file-upload").on('change', function () {-->
-<!--            imagePreview(this);-->
-<!--        });-->
-<!--        $(".upload-button").on('click', function () {-->
-<!--            $(".file-upload").click();-->
-<!--        });-->
-<!--    </script>-->
-        <script>
-            function imagePreview() {
+    <!--    <script>-->
+    <!--        function imagePreview(input) {-->
+    <!--            if (input.files && input.files[0]) {-->
+    <!--                var reader = new FileReader();-->
+    <!--                reader.onload = function (event) {-->
+    <!--                    var fileurl = event.target.result;-->
+    <!--                    $('.profile-pic').attr('src', fileurl);-->
+    <!--                }-->
+    <!--                reader.readAsDataURL(input.files[0]);-->
+    <!--            }-->
+    <!--        }-->
+    <!---->
+    <!--        $(".file-upload").on('change', function () {-->
+    <!--            imagePreview(this);-->
+    <!--        });-->
+    <!--        $(".upload-button").on('click', function () {-->
+    <!--            $(".file-upload").click();-->
+    <!--        });-->
+    <!--    </script>-->
+    <script>
+        function imagePreview() {
             var fileSelected = document.getElementById('profile-file_image').files;
-                if (fileSelected.length > 0) {
-                    var fileToLoad = fileSelected[0];
-                    var fileReader = new FileReader();
-                    fileReader.onload = function(fileLoaderEvent) {
-                        var srcData = fileLoaderEvent.target.result;
-                        $('.profile-pic').attr('src', srcData);
-                    }
-                    fileReader.readAsDataURL(fileToLoad);
+            if (fileSelected.length > 0) {
+                var fileToLoad = fileSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function (fileLoaderEvent) {
+                    var srcData = fileLoaderEvent.target.result;
+                    $('.profile-pic').attr('src', srcData);
                 }
+                fileReader.readAsDataURL(fileToLoad);
             }
-        </script>
+        }
+    </script>
     <?php ActiveForm::end(); ?>
 
 </div>
