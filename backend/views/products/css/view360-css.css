@@ -6,20 +6,21 @@
 }
 .center,.start-btn-360{
     position: absolute;
-    top: 70%;
-    left: 50%;
+    top: 80%;
+    left: 55%;
     transform: translate(-50%, -50%);
 }
 
 .modal-box-360{
     position:absolute;
-    z-index:999;
+    z-index:200;
+    margin-left: 300px;;
     top: 40%;
     opacity: 0;
     visibility: hidden;
     background: white;
     height: auto;
-    width: 700px;
+    width: 1080px;
     padding: 30px;
     border-radius: 5px;
     border: 1px solid #50dcfb;

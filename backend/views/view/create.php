@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var common\models\View $model */
+/** @var common\models\base\View $model */
 
 $this->title = 'Create View';
 $this->params['breadcrumbs'][] = ['label' => 'Views', 'url' => ['index']];

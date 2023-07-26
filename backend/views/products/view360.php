@@ -17,8 +17,8 @@ use yii\helpers\Url;
     <style>
         #panorama {
             margin:0 auto;
-            width: 600px;
-            height: 400px;
+            width: 1000px;
+            height: 500px;
         }
     </style>
 </head>

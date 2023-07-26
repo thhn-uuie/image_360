@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 /** @var common\models\Profile $model */
@@ -10,6 +10,12 @@ use yii\widgets\DetailView;
 $this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+if (Yii::$app->user->isGuest) {
+    // Chuyển hướng người dùng đến trang đăng nhập
+    $redirectUrl = Url::to(['site/login']);
+    return Yii::$app->getResponse()->redirect($redirectUrl);
+}
 ?>
 <div class="profile-view">
 

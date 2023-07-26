@@ -1201,15 +1201,15 @@
 }
 
 .profile_pic {
-    width: 35%;
+    width: 9%;
     float: left
 }
 
 .img-circle.profile_img {
-    width: 70%;
+    width: 6vw;
     background: #fff;
     margin-left: 15%;
-    z-index: 1000;
+    height: 13vh;
     position: inherit;
     margin-top: 20px;
     border: 1px solid rgba(52,73,94,0.44);
@@ -1217,15 +1217,16 @@
 }
 
 .profile_info {
-    padding: 25px 10px 10px;
+    padding: 43px 23px 9px;
     width: 65%;
-    float: left
+    float: left;
+    margin-left: 26%;
 }
 
 .profile_info span {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 30px;
-    color: #BAB8B8
+    color: #000000;
 }
 
 .profile_info h2 {

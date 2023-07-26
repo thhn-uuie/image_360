@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 
 /** @var yii\web\View $this */
@@ -14,10 +14,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 $idPath = $model->getRecordPrevious($model);
-
+if (Yii::$app->user->isGuest) {
+    // Chuyển hướng người dùng đến trang đăng nhập
+    $redirectUrl = Url::to(['site/login']);
+    return Yii::$app->getResponse()->redirect($redirectUrl);
+}
 ?>
 
-
+<head>
+    <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <link rel="stylesheet" href="../views/products/css/view-css.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="../views/products/css/view360-css.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
 <div class="products-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -34,18 +48,6 @@ $idPath = $model->getRecordPrevious($model);
             ],
         ]) ?>
     </p>
-
-    <head>
-        <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-        <link rel="stylesheet" href="../views/products/css/view-css.css" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-        <link rel="stylesheet" href="../views/products/css/view360-css.css" type="text/css">
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    </head>
 
     <div class="card">
         <div class="row">

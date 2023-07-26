@@ -9,10 +9,10 @@ use Yii;
  *
  * @property int $id_view
  * @property int $id_products
- * @property string $count
- * @property string $date
+ * @property int|null $view_count
+ * @property string|null $view_date
  *
- * @property \common\models\Products $products
+ * @property Products $products
  */
 class View extends \yii\db\ActiveRecord
 {
@@ -30,9 +30,9 @@ class View extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_products', 'count', 'date'], 'required'],
-            [['id_products'], 'integer'],
-            [['count', 'date'], 'string', 'max' => 255],
+            [['id_products'], 'required'],
+            [['id_products', 'view_count'], 'integer'],
+            [['view_date'], 'string', 'max' => 255],
             [['id_products'], 'unique'],
             [['id_products'], 'exist', 'skipOnError' => true, 'targetClass' => Products::class, 'targetAttribute' => ['id_products' => 'id_products']],
         ];
@@ -46,8 +46,8 @@ class View extends \yii\db\ActiveRecord
         return [
             'id_view' => 'Id View',
             'id_products' => 'Id Products',
-            'count' => 'Count',
-            'date' => 'Date',
+            'view_count' => 'View Count',
+            'view_date' => 'View Date',
         ];
     }
 
