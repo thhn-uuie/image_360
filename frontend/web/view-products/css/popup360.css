@@ -1,0 +1,56 @@
+.open-modal-btn-360 {
+    padding: 4px 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: rgba(179,200,144,0.5);
+}
+
+.modal-360 {
+    position: fixed;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    z-index:100;
+}
+
+.modal-inner-360 {
+    width: 100%;
+    position: relative;
+    top: 50%;
+    margin: auto;
+    border-radius: 7px;
+    overflow: hidden;
+    animation: modal360Show 0.2s linear;
+    border:1px solid #33a827;
+}
+
+.modal-header-360 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    background: #aac8a7;
+    padding-right: 10px;
+}
+
+
+.modal-header-360 p{
+    margin-top:10px;
+}
+
+.hide-360 {
+    display:none;
+}
+
+@keyframes modal360Show {
+    from {
+        top: -200px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+
+}

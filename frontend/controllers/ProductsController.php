@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use frontend\models\Categories;
 use frontend\models\Products;
+use common\models\base\View;
 
 class ProductsController extends \yii\web\Controller
 {
@@ -21,13 +22,20 @@ class ProductsController extends \yii\web\Controller
             'products_cate' => $products_cate
         ]);
     }
-
     public function actionDetail($id_products)
     {
         $products = new Products();
         $products_cate = $products->getProductsBy($id_products);
+
         foreach ($products_cate as $item) {
             $name_cate = Categories::find()->where(['categories.id_category' => $item->id_category])->asArray()->all();
+        }
+
+        if (!$products->countView($id_products)) {
+            $view = new View();
+            $view->id_products = $id_products;
+            $view->view_count += 1;
+            $view->save();
         }
 
         return $this->render('detail', [
@@ -35,7 +43,6 @@ class ProductsController extends \yii\web\Controller
             'name_cate' => $name_cate
         ]);
     }
-
 
     protected function findModel($id_products)
     {
