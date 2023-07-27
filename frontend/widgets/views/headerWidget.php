@@ -8,11 +8,7 @@ AppAsset::register($this);
 
 ?>
 
-<<<<<<< HEAD
 <div class="top-bar">
-=======
-<div class="top-b ar">
->>>>>>> 11ffbf85f319a3932bd73f860cbf608d53d652a5
     <div class="row">
         <ul>
             <li><a href="#"><i class="icon fa fa-user"></i>Tài khoản của tôi</a></li>
