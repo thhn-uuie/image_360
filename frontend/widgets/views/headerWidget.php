@@ -6,16 +6,13 @@ use frontend\assets\AppAsset;
 use frontend\widgets\searchBarWidget;
 AppAsset::register($this);
 
-
-
-
-
 ?>
-<head>
-<link rel="stylesheet" href="../web/search/style.css" type="text/css">
-<!-- web/search/style.css -->
-</head>
+
+<<<<<<< HEAD
+<div class="top-bar">
+=======
 <div class="top-b ar">
+>>>>>>> 11ffbf85f319a3932bd73f860cbf608d53d652a5
     <div class="row">
         <ul>
             <li><a href="#"><i class="icon fa fa-user"></i>Tài khoản của tôi</a></li>
@@ -42,10 +39,8 @@ AppAsset::register($this);
 
         </ul>
 
-
-
     </div>
-    <?= searchBarWidget::widget()?>
 
+<?= searchBarWidget::widget()?>
 </div>
 
