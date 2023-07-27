@@ -3,6 +3,10 @@
 use yii\helpers\Url;
 
 ?>
+<head>
+<link rel="stylesheet" href="../web/search/custom_search_bar.css" type="text/css">
+<!-- web/search/style.css -->
+</head>
 <!-- search bar start -->
 <div class="search-bar">
     <!-- dropdown start -->

@@ -11,10 +11,7 @@ AppAsset::register($this);
 
 
 ?>
-<head>
-<link rel="stylesheet" href="../web/search/style.css" type="text/css">
-<!-- web/search/style.css -->
-</head>
+
 <div class="top-b ar">
     <div class="row">
         <ul>
