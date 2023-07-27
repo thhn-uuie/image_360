@@ -8,9 +8,14 @@ use yii\helpers\Url;
     <!-- dropdown start -->
     <div class="dropdown">
         <div id="drop-text" class="dropdown-text">
-            <span id="span" class="every">Everything</span>
+            <span id="span" class="every" style="    width: 118px; height: 28px; margin-left: 171px;">Everything</span>
             <!-- <i class="fa-solid fa-chevron-down"></i> -->
-            <i id="icon" class="arrow-down"></i>
+            <i id="icon" class="arrow-down" style="position: absolute;
+        top: 17px;
+        left: 299px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid white;"></i>
         </div>
 
         <div id="cover" style="position: absolute; top:0; left:0;width:100%; height:100%; z-index:9"></div>
@@ -25,17 +30,7 @@ use yii\helpers\Url;
 
     </div>
 
-    <!-- <script>
-        var list = document.getElementById("list");
-        var navbarSupportedContent = document.getElementById("navbarSupportedContent");
-
-        window.addEventListener("resize", function () {
-            var rect = list.getBoundingClientRect();
-            navbarSupportedContent.style.top = rect.bottom + "px";
-        });
-    </script> -->
-
-    <!--  -->
+   
 
 
     <!-- dropdown end -->
@@ -53,7 +48,11 @@ use yii\helpers\Url;
     margin-top: 6px;
     color: #a91630;">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <button type="submit"><i class="fa fa-search"></i></button>
+    <button type="submit" style="padding: 8px 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    color: white;"><i class="fa fa-search" ></i></button>
     <!-- search box input end -->
 </div>
 <!-- search bar end -->
@@ -144,7 +143,7 @@ use yii\helpers\Url;
     .arrow-down {
         position: absolute;
         top: 17px;
-        left: 300px;
+        left: 299px;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         border-top: 5px solid white;
