@@ -12,7 +12,7 @@ AppAsset::register($this);
 
 ?>
 
-<div class="top-b ar">
+<div class="top-bar">
     <div class="row">
         <ul>
             <li><a href="#"><i class="icon fa fa-user"></i>Tài khoản của tôi</a></li>
