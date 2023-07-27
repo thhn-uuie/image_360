@@ -170,13 +170,7 @@ if (Yii::$app->user->isGuest) {
                                     <a class="dropdown-item" href="javascript:" ><span>Settings</span></a>
 =======
                                     <a class="dropdown-item" href="javascript:"><span>Settings</span></a>
-                                    <?= Html::beginForm(['/site/logout'], 'post')
-                                    . Html::submitButton(
-                                        'Logout (' . Yii::$app->user->identity->username . ')',
-                                        ['class' => 'dropdown-item']
-                                    )
-                                    . Html::endForm(); ?>
->>>>>>> 3e2e6f8730adf2f0fefbe95c9f42ca070c28f7a4
+                                    <?= $formLogout ?>
                                 </div>
 
                             </li>
