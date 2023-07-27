@@ -4,10 +4,10 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\View;
+use common\models\base\View;
 
 /**
- * ViewSearch represents the model behind the search form of `common\models\View`.
+ * ViewSearch represents the model behind the search form of `common\models\base\View`.
  */
 class ViewSearch extends View
 {
@@ -17,8 +17,8 @@ class ViewSearch extends View
     public function rules()
     {
         return [
-            [['id_view', 'id_products'], 'integer'],
-            [['count', 'date'], 'safe'],
+            [['id_view', 'id_products', 'view_count'], 'integer'],
+            [['view_date'], 'safe'],
         ];
     }
 
@@ -60,10 +60,10 @@ class ViewSearch extends View
         $query->andFilterWhere([
             'id_view' => $this->id_view,
             'id_products' => $this->id_products,
+            'view_count' => $this->view_count,
         ]);
 
-        $query->andFilterWhere(['like', 'count', $this->count])
-            ->andFilterWhere(['like', 'date', $this->date]);
+        $query->andFilterWhere(['like', 'view_date', $this->view_date]);
 
         return $dataProvider;
     }
