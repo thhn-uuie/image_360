@@ -1,6 +1,8 @@
 <?php
 
 namespace frontend\models;
+use common\models\base\View;
+
 
 use Yii;
 
@@ -117,4 +119,12 @@ class Products extends \yii\db\ActiveRecord
         return $data;
     }
 
+    public function countView($id_products) {
+        if (($model = View::findOne(['id_products' => $id_products])) !== null) {
+            $model->view_count += 1;
+            $model->save();
+            return true;
+        }
+        return false;
+    }
 }

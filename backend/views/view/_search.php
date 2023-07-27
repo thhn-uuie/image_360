@@ -19,9 +19,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_products') ?>
 
-    <?= $form->field($model, 'count') ?>
+    <?= $form->field($model, 'view_count') ?>
 
-    <?= $form->field($model, 'date') ?>
+    <?= $form->field($model, 'view_date') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

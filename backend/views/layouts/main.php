@@ -16,14 +16,15 @@ use yii\web\View;
 
 AppAsset::register($this);
 
-$formLogout = Html::beginForm(['/site/logout'], 'post')
-    . Html::submitButton(
-        'Logout (' . Yii::$app->user->identity->username . ')',
-        ['class' => 'dropdown-item']
-    )
-    . Html::endForm();
+if (Yii::$app->user->isGuest) {
+    // Chuyển hướng người dùng đến trang đăng nhập
+    $redirectUrl = Url::to(['site/login']);
+    return Yii::$app->getResponse()->redirect($redirectUrl);
+}
+
 
 ?>
+
 <?php $this->beginPage() ?>
 
     <!DOCTYPE html>
@@ -60,10 +61,14 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                 <img alt="..." class="img-circle profile_img" src="<?php echo '../../image/avatars/'.$profile_id_user->avatar ?>">
                             </div>
 
+                        <?php $user = \common\models\User::findOne(['id_user'=>$profile_id_user->id_user]); ?>
                         <div class="profile_info">
-                            <span>Welcome,</span>
+                            <span>Xin chào,</span><br>
+
+                            <span style="font-size: 15px; color: #720303; font-weight: bold"><?php echo $user->username ?></span>
                             <h2></h2>
                         </div>
+
                     </div>
                     <!-- /menu profile quick info -->
 
@@ -74,7 +79,7 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                             <ul class="nav side-menu">
                                 <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                     <li>
-                                        <a><i class="fa fa-user"></i> Quản lý tài khoản <span
+                                        <a style="font-weight:400"><i class="fa fa-user" ></i> Quản lý tài khoản <span
                                                     class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li>
@@ -90,17 +95,17 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                 <?php } ?>
                                 <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                     <li>
-                                        <a><i class="fa fa-info-circle"></i> Profile <span
+                                        <a style="font-weight:400"><i class="fa fa-info-circle"></i> Profile <span
                                                     class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                         
+
                                             <li>
                                                 <?php echo Html::a('Danh sách tài khoản', ['/profile']) ?>
                                             </li>
                                         </ul>
                                     </li>
                                 <?php } ?>
-                                <li><a><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
+                                <li><a style="font-weight:400"><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
                                                 class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
@@ -111,7 +116,7 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-th-list"></i> Danh mục sản phẩm <span
+                                <li><a style="font-weight:400"><i class="fa fa-th-list"></i> Danh mục sản phẩm <span
                                                 class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
@@ -122,13 +127,13 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                         </li>
                                     </ul>
                                 </li>
-                              
+
 
                             </ul>
                         </div>
 
                     </div>
-                  
+
                 </div>
             </div>
 
@@ -161,8 +166,17 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
                                                 Profile</a>
                                         <?php endif; ?>
                                     <?php endif; ?>
+<<<<<<< HEAD
+                                    <a class="dropdown-item" href="javascript:" ><span>Settings</span></a>
+=======
                                     <a class="dropdown-item" href="javascript:"><span>Settings</span></a>
-                                    <?= $formLogout ?>
+                                    <?= Html::beginForm(['/site/logout'], 'post')
+                                    . Html::submitButton(
+                                        'Logout (' . Yii::$app->user->identity->username . ')',
+                                        ['class' => 'dropdown-item']
+                                    )
+                                    . Html::endForm(); ?>
+>>>>>>> 3e2e6f8730adf2f0fefbe95c9f42ca070c28f7a4
                                 </div>
 
                             </li>
@@ -197,4 +211,5 @@ $formLogout = Html::beginForm(['/site/logout'], 'post')
     </body>
 
     </html>
-<?php $this->endPage();
+<?php $this->endPage() ?>
+

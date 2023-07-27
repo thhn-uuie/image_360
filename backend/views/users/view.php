@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
   <body>
     <div class="testbox">
-      <form>
+      <form class="form2">
         <fieldset>
           <legend>
             <?php echo $model->username ?>
@@ -89,3 +89,139 @@ $this->params['breadcrumbs'][] = $this->title;
     ],
   ]) ?>
 </div>
+
+
+<style>
+  .colums {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.colums div {
+  width: 48%;
+}
+
+legend {
+  font-size: 70px;
+  color: inherit;
+  font-family: Roboto;
+  font-weight: bold;
+  line-height: -0.8;
+  letter-spacing: 2px;
+}
+
+legend {
+  display: block;
+  width: 90%;
+  max-width: 106%;
+  padding: -11px;
+  margin-top: -0.9rem;
+
+  margin-bottom: -0.5rem;
+  font-size: 3.5rem;
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 11px 20px;
+}
+
+form {
+  width: 100%;
+  height: 48px;
+  padding: -20px;
+  background: #fdfdfd;
+  box-shadow: 3 0 8px #073315;
+}
+
+.form2 {
+  width: 100%;
+  height: 180px;
+  padding: -20px;
+  background: #fdfdfd;
+  box-shadow: 3 0 8px #073315;
+}
+
+.btn-primary {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.1s;
+  background-color: #cff2e9;
+  font-family: Roboto;
+  /* margin-top: 130px; */
+
+}
+
+.btn-danger {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.1s;
+  background-color: #e78e96;
+  font-family: Roboto;
+  /* margin-top: 130px; */
+
+}
+
+fieldset {
+  border: none;
+  margin: 16px;
+  padding: 0;
+}
+
+.btn-primary:hover {
+  background-color: #2f9345;
+}
+
+.btn-primary:active {
+  box-shadow: 0 0 9e9q inset #0009;
+  background-color: black;
+  outline: none;
+}
+
+.btn-danger:hover {
+  background-color: #d73b49;
+}
+
+.btn-danger:active {
+  box-shadow: 0 0 2e2q inset #0009;
+  background-color: black;
+  outline: none;
+}
+
+.card {
+  width: 627px;
+  height: 200px;
+}
+
+body {
+  background: #eee;
+}
+
+.bg-white {
+  background: #d6f4ef !important;
+  border: 1px solid #a31b1b !important;
+  color: #083c73;
+  margin-left: 10px;
+}
+</style>

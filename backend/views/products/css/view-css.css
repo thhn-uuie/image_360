@@ -6,19 +6,21 @@
 }
 .center,.start-btn{
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 30%;
     transform: translate(-50%, -50%);
 }
 
 .modal-box{
+    z-index:100;
     top: 40%;
     opacity: 0;
     visibility: hidden;
     background: white;
     height: auto;
-    width: 400px;
-    padding: 30px;
+    width: 300px;
+    padding: 20px;
+    padding-top: 35px;
     border-radius: 5px;
     border: 1px solid #50dcfb;
     box-shadow: 5px 5px 30px rgba(0,0,0,.2);

@@ -18,13 +18,26 @@ use yii\grid\GridView;
 use common\models\base\Categories;
 
 
-
 /**
  * ProductsController implements the CRUD actions for Products model.
  */
 class ProductsController extends base\ProductsController
 {
+    public function actionIndex()
+    {
+        $searchModel = new ProductsSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
+        if (Yii::$app->user->identity->id_role == 2) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => Products::find()->where(['created_by' => Yii::$app->user->identity->username]),
+            ]);
+        }
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     public function actionCreate()
     {
 
@@ -127,7 +140,6 @@ class ProductsController extends base\ProductsController
 
 
         } else {
-
             return $this->render('update', [
                 'model' => $model,
             ]);

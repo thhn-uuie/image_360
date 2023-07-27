@@ -1,6 +1,6 @@
 <?php
 
-use common\models\View;
+use common\models\base\View;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_view',
             'id_products',
-            'count',
-            'date',
+            'view_count',
+            'view_date',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, View $model, $key, $index, $column) {

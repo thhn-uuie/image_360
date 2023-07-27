@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\View $model */
+/** @var common\models\base\View $model */
 
 $this->title = $model->id_view;
 $this->params['breadcrumbs'][] = ['label' => 'Views', 'url' => ['index']];
@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id_view',
             'id_products',
-            'count',
-            'date',
+            'view_count',
+            'view_date',
         ],
     ]) ?>
 

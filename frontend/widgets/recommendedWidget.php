@@ -1,6 +1,7 @@
 <?php
 namespace frontend\widgets;
 use yii\base\Widget;
+use frontend\models\Products;
 class recommendedWidget extends Widget {
     public $messsage;
 
@@ -11,6 +12,7 @@ class recommendedWidget extends Widget {
 
     public function run()
     {
+        $products = new Products();
         return $this->render('recommendedWidget');
     }
 }

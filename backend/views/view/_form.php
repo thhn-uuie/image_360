@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var common\models\View $model */
+/** @var common\models\base\View $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_products')->textInput() ?>
 
-    <?= $form->field($model, 'count')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'view_count')->textInput() ?>
 
-    <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'view_date')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

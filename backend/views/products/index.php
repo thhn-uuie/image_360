@@ -16,6 +16,8 @@ use yii\helpers\ArrayHelper;
 $this->title = 'Quản lý sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
 <div class="products-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

@@ -7,11 +7,13 @@ use frontend\widgets\bannerWidget;
 use frontend\widgets\contentHomeWidget;
 use frontend\widgets\contactWidget;
 use frontend\widgets\infoWidget;
+use frontend\widgets\searchBarWidget;
 
 
 $this->title = 'Trình diễn ảnh 360';
 ?>
 
+echo searchBarWidget::widget();
 
 <section class="slider_section">
     <?= bannerWidget::widget() ?>
