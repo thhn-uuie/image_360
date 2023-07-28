@@ -1,9 +1,8 @@
 <?php
 
 namespace frontend\models;
+
 use common\models\base\View;
-
-
 use Yii;
 
 /**
@@ -21,7 +20,6 @@ use Yii;
  * @property int|null $updated_at
  * @property string|null $updated_by
  * @property string|null $qr_code
- * @property string|null $number_of_views
  *
  * @property Categories $category
  * @property Rate $rate
@@ -45,7 +43,7 @@ class Products extends \yii\db\ActiveRecord
         return [
             [['name_products', 'description', 'status', 'image', 'files'], 'required'],
             [['id_category', 'created_at', 'updated_at'], 'integer'],
-            [['name_products', 'description', 'status', 'image', 'files', 'created_by', 'updated_by', 'qr_code', 'number_of_views'], 'string', 'max' => 255],
+            [['name_products', 'description', 'status', 'image', 'files', 'created_by', 'updated_by', 'qr_code'], 'string', 'max' => 255],
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }
@@ -68,7 +66,6 @@ class Products extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
             'qr_code' => 'Qr Code',
-            'number_of_views' => 'Number Of Views',
         ];
     }
 
@@ -102,29 +99,21 @@ class Products extends \yii\db\ActiveRecord
         return $this->hasOne(View::class, ['id_products' => 'id_products']);
     }
 
-    public function getProductsCate($id_cate) {
+    public function getProductsCate($id_cate)
+    {
         $products_cate = Products::find()
             ->innerJoin('categories', 'categories.id_category = products.id_category')
             ->where(['products.id_category' => $id_cate, 'products.status' => 'Hoạt động'])
             ->all();
         return $products_cate;
     }
-    public function getProdCate() {
+
+    public function getViewProducts($id_products) {
+        $viewCount= View::findOne(['id_products'=>$id_products]);
+        return $viewCount;
+    }
+    public function getProdCate()
+    {
         return $this->getProductsCate($this->id_category);
-    }
-
-    public function getProductsBy($id_products){
-        $data = Products::find()
-            ->where(['products.id_products' => $id_products, 'products.status' => 'Hoạt động']) -> all();
-        return $data;
-    }
-
-    public function countView($id_products) {
-        if (($model = View::findOne(['id_products' => $id_products])) !== null) {
-            $model->view_count += 1;
-            $model->save();
-            return true;
-        }
-        return false;
     }
 }

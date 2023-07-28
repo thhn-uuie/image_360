@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use frontend\models\Categories;
 use frontend\models\Products;
 use common\models\base\View;
+use Yii;
 
 class ProductsController extends \yii\web\Controller
 {
@@ -22,24 +23,29 @@ class ProductsController extends \yii\web\Controller
             'products_cate' => $products_cate
         ]);
     }
+
     public function actionDetail($id_products)
     {
-        $products = new Products();
-        $products_cate = $products->getProductsBy($id_products);
 
-        foreach ($products_cate as $item) {
-            $name_cate = Categories::find()->where(['categories.id_category' => $item->id_category])->asArray()->all();
+        $viewProducts = View::findOne(['id_products' => $id_products]);
+        if ($viewProducts !== null) {
+            $temp = $viewProducts->view_count;
+            $viewProducts->view_count = $temp + 1;
+            $viewProducts->save();
+        } else {
+            $model= new View();
+            $model->id_products = $id_products;
+            $model->view_count = 1;
+            $model->save();
         }
 
-        if (!$products->countView($id_products)) {
-            $view = new View();
-            $view->id_products = $id_products;
-            $view->view_count += 1;
-            $view->save();
-        }
+        $products = $this->findModel($id_products);
+        $name_cate = Categories::findOne(['id_category'=>$products->id_category]);
+        $viewCount = $products->getViewProducts($id_products);
 
         return $this->render('detail', [
-            'products_cate' => $products_cate,
+            'products' => $this->findModel($id_products),
+            'viewCount' => $viewCount,
             'name_cate' => $name_cate
         ]);
     }
@@ -53,9 +59,27 @@ class ProductsController extends \yii\web\Controller
 
     public function actionSearch()
     {
-        $searchModel = new YourSearchModel();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // $searchModel = new YourSearchModel();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        // return $this->render('search', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+
+        // $keyword = Yii::$app->request->get('keyword','');
+
+        // $query = Products::find()->where(['like', 'name',$keyword]);
+        // $products=$query->all();
+        // return $this->render('search',[
+        //     'products'=>$products,
+        //     'keyword'=>$keyword,
+        // ]);
+
+        $searchModel = new ProductSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $keyword);
+    
         return $this->render('search', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

@@ -104,7 +104,7 @@
 <section class="py-5">
     <div class="container">
         <div class="row text-left p-2 pb-3">
-            <h4>Related Products</h4>
+            <h4>Sản phẩm liên quan</h4>
         </div>
 
         <!--Start Carousel Wrapper-->

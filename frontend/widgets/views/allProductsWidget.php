@@ -7,9 +7,9 @@ use yii\helpers\Url;
     <div class="features_items">
         <h2 class="title text-center">Tất cả hình ảnh</h2>
         <div class="heading_container heading_center">
-            <?php if ($products): ?>
                 <div class="row">
-                    <?php foreach ($products as $item) : ?>
+                    <?php foreach ($products as $item) :
+                        ?>
                         <div class="col-sm-6 col-md-4 col-lg-3">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -24,7 +24,6 @@ use yii\helpers\Url;
                         </div>
                     <?php endforeach; ?>
                 </div>
-            <?php endif; ?>
         </div>
     </div>
 </div>

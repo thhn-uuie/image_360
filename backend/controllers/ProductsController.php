@@ -18,6 +18,7 @@ use yii\grid\GridView;
 use common\models\base\Categories;
 
 
+
 /**
  * ProductsController implements the CRUD actions for Products model.
  */
@@ -156,4 +157,20 @@ class ProductsController extends base\ProductsController
         return $this->redirect(['index']);
     }
 
+    public function actionView($id_products)
+    {
+        $viewProducts = \common\models\base\View::findOne(['id_products' => $id_products]);
+        if ($viewProducts !== null) {
+            $viewProducts->view_count += 1;
+            $viewProducts->save();
+        } else {
+            $model= new \common\models\base\View();
+            $model->id_products = $id_products;
+            $model->view_count += 1;
+            $model->save();
+        }
+        return $this->render('view', [
+            'model' => $this->findModel($id_products),
+        ]);
+    }
 }

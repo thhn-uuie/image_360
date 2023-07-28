@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\base\Categories;
 use common\models\form\LoginForm;
+use common\models\Products;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -68,7 +69,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $products = Products::find()->select('name_products')->asArray()->all();
+        return $this->render('index', [
+            'products' => $products
+        ]);
     }
     /**
      * Login action.

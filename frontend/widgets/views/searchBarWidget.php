@@ -3,23 +3,18 @@
 use yii\helpers\Url;
 
 ?>
+
 <head>
-<link rel="stylesheet" href="../web/search/custom_search_bar.css" type="text/css">
-<!-- web/search/style.css -->
+    <link rel="stylesheet" href="../web/search/custom_search_bar.css" type="text/css">
 </head>
 <!-- search bar start -->
 <div class="search-bar">
     <!-- dropdown start -->
     <div class="dropdown">
         <div id="drop-text" class="dropdown-text">
-            <span id="span" class="every" style="    width: 118px; height: 28px; margin-left: 171px;">Everything</span>
+            <span id="span" class="every">Everything</span>
             <!-- <i class="fa-solid fa-chevron-down"></i> -->
-            <i id="icon" class="arrow-down" style="position: absolute;
-        top: 17px;
-        left: 299px;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid white;"></i>
+            <i id="icon" class="arrow-down"></i>
         </div>
 
         <div id="cover" style="position: absolute; top:0; left:0;width:100%; height:100%; z-index:9"></div>
@@ -47,16 +42,12 @@ use yii\helpers\Url;
     border: 1px solid pink;
     border-radius: -4px;
     outline: none;
-    margin-left: -773px;
-    margin-right: 200px;
+    margin-left: -75%;
+    margin-right: 20%;
     margin-top: 6px;
     color: #a91630;">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <button type="submit" style="padding: 8px 12px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 20px;
-    color: white;"><i class="fa fa-search" ></i></button>
+    <button type="submit"><i class="fa fa-search"></i></button>
     <!-- search box input end -->
 </div>
 <!-- search bar end -->
@@ -98,21 +89,12 @@ use yii\helpers\Url;
 
 
 
-
-
-
-
-
-
-
-
-
 <style>
     span.every {
         width: 114px;
-        height: 29px;
-        margin-left: 176px;
-        margin-top: -2px;
+    height: 29px;
+    margin-left: 176px;
+    margin-top: -2px;
     }
 
     .every {
@@ -120,10 +102,19 @@ use yii\helpers\Url;
         width: 111px;
         border-radius: 50px;
         border: 1px solid white;
-        background-color: red;
+        background-color: #ff0060;
         box-shadow: gray;
         cursor: pointer;
         text-align: center;
+        margin-left: 144px;
+        position: absolute;
+        top: 6px;
+        height: 27px;
+        width: 113px;
+    }
+
+    .dropdown-list{
+        position: relative;
     }
 
     .dropdown-text {
@@ -136,18 +127,10 @@ use yii\helpers\Url;
         padding: 1rem 1.5rem;
     }
 
-    .every {
-        margin-left: 144px;
-        position: absolute;
-        top: 6px;
-        height: 27px;
-        width: 113px;
-    }
-
     .arrow-down {
         position: absolute;
         top: 17px;
-        left: 299px;
+        left: 297px;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         border-top: 5px solid white;
@@ -156,9 +139,9 @@ use yii\helpers\Url;
     .search-bar {
         display: flex;
         align-items: center;
-        min-width: 700px;
+        min-width: 90%;
         border-radius: 50px;
-        margin-left: 100px;
+        margin-left: 10%;
     }
 
     .search-box {
@@ -171,9 +154,6 @@ use yii\helpers\Url;
         outline: 0;
     }
 
-    #search-input {
-        margin-left: 20px;
-    }
 
     input {
         padding: 1rem;
@@ -192,6 +172,7 @@ use yii\helpers\Url;
         font-weight: 500;
         color: purple;
         border-radius: 20px;
+        margin-left: 200%;
     }
 
     form {
@@ -200,25 +181,25 @@ use yii\helpers\Url;
 
     .input[type="text"] {
         width: 400px;
-        height: 27px;
-        padding: 8px;
-        border: 1px solid pink;
-        border-radius: -4px;
-        outline: none;
-        margin-left: -773px;
-        margin-right: 200px;
-        margin-top: 6px;
-        color: #a91630;
+    height: 27px;
+    padding: 8px;
+    border: 1px solid pink;
+    border-radius: -4px;
+    outline: none;
+    margin-left: -773px;
+    margin-right: 200px;
+    margin-top: 6px;
+    color: #a91630;
     }
 
     button[type="submit"] {
         padding: 8px 12px;
-        background-color: #007bff;
-        border: none;
-        border-radius: 20px;
-        color: white;
-        cursor: pointer;
-        margin-left: -227px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    margin-left: -227px;
     }
 
     .dropdown-list {
@@ -232,7 +213,6 @@ use yii\helpers\Url;
         background-color: lightseagreen;
         transition: max-height 0.5s;
         z-index: 1000;
-        /* overflow: visible; */
     }
 
     #navbarSupportedContent {
@@ -243,7 +223,6 @@ use yii\helpers\Url;
         padding: 10px 0px;
         border-radius: 15px 15px 0px 0px;
         z-index: 999;
-        /* đặt z-index cho phần tử #navbarSupportedContent */
     }
 
     #list.show {
@@ -255,7 +234,7 @@ use yii\helpers\Url;
         font-weight: 500;
         padding: 1rem 0 1rem 1.5rem;
         cursor: pointer;
-        margin-left: -50px;
+        margin-left: -147%;
         transition: margin-left 0.2s ease, color 0.2s ease;
     }
 
@@ -271,6 +250,6 @@ use yii\helpers\Url;
 
     .search-input {
         margin-right;
-    : 100px
+        : 100px
     }
 </style>

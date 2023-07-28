@@ -1,0 +1,27 @@
+
+.modal-inner-review {
+    border: 1px solid black;
+    padding: 20px;
+    background:#e9fff5;
+    width: 70vw;
+    position: relative;
+    top: 50%;
+    margin: auto;
+    border-radius: 7px;
+    overflow: hidden;
+    animation: modalShow 0.2s linear;
+}
+.modal-review {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index:100;
+}
+
+.modal-header-review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}

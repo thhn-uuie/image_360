@@ -37,6 +37,6 @@ AppAsset::register($this);
 
     </div>
 
-<?= searchBarWidget::widget()?>
+<?php //= searchBarWidget::widget()?>
 </div>
 
