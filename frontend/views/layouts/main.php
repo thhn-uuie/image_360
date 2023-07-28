@@ -33,11 +33,7 @@ use frontend\widgets\navbarWidget;
 
         <?= headerWidget::widget() ?>
 
-<<<<<<< HEAD
-        <?= navbarWidget::widget() ?>
-=======
         <?= navbarWidget::widget()?>
->>>>>>> 94caa2f6868f3c4de72e74f98e142c749688e6f2
     </header>
 
     <!-- end header section -->

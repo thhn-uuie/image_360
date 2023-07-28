@@ -166,10 +166,6 @@ if (Yii::$app->user->isGuest) {
                                                 Profile</a>
                                         <?php endif; ?>
                                     <?php endif; ?>
-<<<<<<< HEAD
-=======
-                                    <a class="dropdown-item" href="javascript:"><span>Settings</span></a>
->>>>>>> 94caa2f6868f3c4de72e74f98e142c749688e6f2
                                     <?= Html::beginForm(['/site/logout'], 'post')
                                     . Html::submitButton(
                                         'Logout (' . Yii::$app->user->identity->username . ')',
