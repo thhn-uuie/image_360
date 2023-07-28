@@ -53,9 +53,27 @@ class ProductsController extends \yii\web\Controller
 
     public function actionSearch()
     {
-        $searchModel = new YourSearchModel();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // $searchModel = new YourSearchModel();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        // return $this->render('search', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+
+        // $keyword = Yii::$app->request->get('keyword','');
+
+        // $query = Products::find()->where(['like', 'name',$keyword]);
+        // $products=$query->all();
+        // return $this->render('search',[
+        //     'products'=>$products,
+        //     'keyword'=>$keyword,
+        // ]);
+
+        $searchModel = new ProductSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $keyword);
+    
         return $this->render('search', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

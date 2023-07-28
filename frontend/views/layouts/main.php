@@ -34,51 +34,7 @@ use yii\helpers\Url;
 
         <?= headerWidget::widget() ?>
 
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <?php echo Html::a('Trang chủ', ['/site/index'], ['class' => 'nav-link']) ?>
-
-                        <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <?php echo Html::a('Sản phẩm', ['/site/categories'], ['class' => 'nav-link']) ?>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" style="cursor: pointer">Danh mục</a>
-                        <div class="sub-menu-1">
-                            <ul>
-                                <?php $category = \common\models\Categories::find()->all();
-                                foreach ($category as $item): ?>
-                                    <li><a class="nav-link"
-                                            href="<?= Url::toRoute(['products/products-category', 'id_products' => $item->id_category]) ?>"><?php echo $item->name_category; ?></a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="why.html">
-                            Why Us
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="testimonial.html">
-                            Testimonial
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </nav>
+        <?= navbarWidget::widget()?>
     </header>
 
     <!-- end header section -->

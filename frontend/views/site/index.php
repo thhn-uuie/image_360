@@ -13,7 +13,6 @@ use frontend\widgets\searchBarWidget;
 $this->title = 'Trình diễn ảnh 360';
 ?>
 
-echo searchBarWidget::widget();
 
 <section class="slider_section">
     <?= bannerWidget::widget() ?>
