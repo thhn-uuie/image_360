@@ -92,9 +92,9 @@ use yii\helpers\Url;
 <style>
     span.every {
         width: 114px;
-        height: 29px;
-        margin-left: 357%;
-        margin-top: -2px;
+    height: 29px;
+    margin-left: 176px;
+    margin-top: -2px;
     }
 
     .every {
@@ -181,24 +181,25 @@ use yii\helpers\Url;
 
     .input[type="text"] {
         width: 400px;
-        height: 27px;
-        padding: 8px;
-        border: 1px solid pink;
-        border-radius: -4px;
-        outline: none;
-        margin-left: -75%;
-        margin-right: 20%;
-        margin-top: 6px;
-        color: #a91630;
+    height: 27px;
+    padding: 8px;
+    border: 1px solid pink;
+    border-radius: -4px;
+    outline: none;
+    margin-left: -773px;
+    margin-right: 200px;
+    margin-top: 6px;
+    color: #a91630;
     }
 
     button[type="submit"] {
-        padding: 6px 6px;
-        background-color: #007bff;
-        border: none;
-        border-radius: 20px;
-        color: white;
-        margin-left: -22%;
+        padding: 8px 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    margin-left: -227px;
     }
 
     .dropdown-list {
@@ -248,11 +249,7 @@ use yii\helpers\Url;
 
 
     .search-input {
-        margin-right: 100px;
-
-    }
-
-    .fa-search:before {
-        margin-left: 20%;
+        margin-right;
+        : 100px
     }
 </style>

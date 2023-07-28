@@ -6,10 +6,6 @@ use frontend\assets\AppAsset;
 use frontend\widgets\searchBarWidget;
 AppAsset::register($this);
 
-
-
-
-
 ?>
 
 <div class="top-bar">
@@ -39,10 +35,8 @@ AppAsset::register($this);
 
         </ul>
 
-
-
     </div>
-    <?= searchBarWidget::widget()?>
 
+<?= searchBarWidget::widget()?>
 </div>
 
