@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Categories;
+use common\models\Products;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
@@ -183,7 +184,15 @@ class CategoriesController extends base\CategoriesController {
      */
     public function actionDelete($id_category)
     {
-        $this->findModel($id_category)->delete();
+        $findCate = $this->findModel($id_category);
+        $productCate = Products::findOne(['id_category' => $findCate]);
+        if (!$productCate) {
+            $findCate->delete();
+            Yii::$app->session->addFlash('success', 'Xóa danh mục ' . $findCate->name_category . ' thành công.');
+
+        } else {
+            Yii::$app->session->addFlash('danger', 'Không xóa được do tồn tại sản phẩm có chứa danh mục này');
+        }
 
         return $this->redirect(['index']);
     }
