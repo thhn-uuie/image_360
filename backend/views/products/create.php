@@ -14,10 +14,6 @@ $this->title = 'Tạo sản phẩm mới';
 $this->params['breadcrumbs'][] = ['label' => 'Quản lý sản phẩm', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-        // //lấy danh sách các danh mục có status lag 'hiện'
-        // $cate = Categories::find()->where(['status'=>'Hiện'])->all();
-        // $categoryList = ArrayHelper::map($cate,'id_category', 'name_category');
-
 ?>
 <div class="products-create">
 

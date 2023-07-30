@@ -5,11 +5,70 @@ namespace backend\controllers;
 use common\models\Profile;
 use Yii;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+
 use common\helper\ImageHelper;
 
 
 class ProfileController extends \backend\controllers\base\ProfileController
 {
+
+    public function behaviors()
+    {
+        return [
+
+            'access' => [
+                'class' => AccessControl::class,
+
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'actions' => ['view'],
+                        'matchCallback' => function ($rule, $action) {
+                            $userRole = Yii::$app->user->identity->id_role;
+                            if ($userRole == 1 || $userRole == 2) {
+                                return true;
+                            }
+                        },
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'actions' => ['index', 'delete'],
+                        'matchCallback' => function ($rule, $action) {
+                            $userRole = Yii::$app->user->identity->id_role;
+                            if ($userRole == 1) {
+                                return true;
+                            }
+                        },
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'actions' => ['update'],
+                        'matchCallback' => function ($rule, $action) {
+                            $userId = Yii::$app->user->identity->getId();
+                            if ($userId == Yii::$app->request->get('id_user')) {
+                                return true;
+                            }
+                        },
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
     public function actionCreate()
     {
         $model = new Profile();

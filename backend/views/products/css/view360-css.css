@@ -4,23 +4,17 @@
     color: white;
     background: #48DBFB;
 }
-.center,.start-btn-360{
+.center, .start-btn-360 {
     position: absolute;
-    top: 80%;
-    left: 55%;
-    transform: translate(-50%, -50%);
+    z-index: 100;
 }
-
 .modal-box-360{
     position:absolute;
     z-index:200;
-    margin-left: 300px;;
     top: 40%;
     opacity: 0;
     visibility: hidden;
     background: white;
-    height: auto;
-    width: 1080px;
     padding: 30px;
     border-radius: 5px;
     border: 1px solid #50dcfb;
@@ -28,10 +22,14 @@
 }
 
 .modal-box-360.show-modal-360{
-    top: 50%;
     opacity: 1;
     visibility: visible;
     transition: .4s;
+    position: fixed;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .modal-box-360 .fa-times{
     position: absolute;

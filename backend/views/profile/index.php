@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\search\ProfileSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Profiles';
+$this->title = 'Hồ sơ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-index">
@@ -21,9 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-10" style="font-size: 35px; font-weight:bold">
                 <?= Html::encode($this->title) ?>
             </div>
-<!--            <div class="col-md-2" style="font-size: 35px; font-weight:bold;">-->
-<!--                --><?php //= Html::a('Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
-<!--            </div>-->
+
         </div>
 
         <div class="card-body text-dark">

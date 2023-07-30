@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'gender') ?>
 
-    <?= $form->field($model, 'enmail') ?>
+    <?= $form->field($model, 'email') ?>
 
     <?php // echo $form->field($model, 'phone') ?>
 
@@ -40,7 +40,7 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'avatar') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Tìm kiếm', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 

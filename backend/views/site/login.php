@@ -8,7 +8,7 @@
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
-$this->title = 'Login';
+$this->title = 'Đăng nhập';
 ?>
 
 <div class="container">
@@ -25,7 +25,7 @@ $this->title = 'Login';
         </div>
 
         <div class="site-login">
-            <h1 style="font-weight: bold; color: #f25555; padding-left:70px; margin-bottom:50px"><?= Html::encode($this->title) ?></h1>
+            <h1 style="font-weight: bold; color: #f25555; text-align:center; margin-bottom:50px"><?= Html::encode($this->title) ?></h1>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
             <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-field a3']) ?>
@@ -35,7 +35,7 @@ $this->title = 'Login';
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Login', ['class' => 'btn-login', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Đăng nhập', ['class' => 'btn-login', 'name' => 'login-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

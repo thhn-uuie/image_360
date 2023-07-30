@@ -37,23 +37,6 @@ use kartik\date\DatePicker;
                 </div>
 
                 <div class="col-md-7">
-                    <!--                    --><?php //if (Yii::$app->user->identity->id_role == 1): ?>
-                    <!--                        --><?php //$ids = User::find()
-                    //                            ->select('users.id_user')
-                    //                            ->leftJoin('profile', 'users.id_user = profile.id_user')
-                    //                            ->where(['profile.id_user' => null])
-                    //                            ->column();
-                    ////
-                    ////                        ?>
-                    <!--                        --><?php //= $form->field($model, 'id_user')->dropDownList(
-                    ////                            ArrayHelper::map(User::find()->where(['id_user' => $ids])->all(), 'id_user', 'username'),
-                    //                            ArrayHelper::map(User::find()->all(), 'id_user', 'username'),
-                    //                            [
-                    //                                'prompt' => 'Chọn user',
-                    //                                // 'style' => 'width: 300px'
-                    //                            ]
-                    //                        ) ?>
-                    <!--                    --><?php //endif; ?>
 
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

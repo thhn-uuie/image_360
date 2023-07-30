@@ -1206,10 +1206,9 @@
 }
 
 .img-circle.profile_img {
-    width: 6vw;
+    width: 80px;
     background: #fff;
-    margin-left: 15%;
-    height: 13vh;
+    margin-left: 37%;
     position: inherit;
     margin-top: 20px;
     border: 1px solid rgba(52,73,94,0.44);
@@ -1341,8 +1340,9 @@ body .container.body .right_col {
     float: left;
     background: #7fa47b;
     border-radius: 0;
-    height: 57px;
-    padding: 0px
+    height: 58px;
+    padding: 0px;
+    border-right: 1px solid #e1ecc863 !important;
 }
 
 @media (max-width: 991px) {
@@ -1828,12 +1828,10 @@ a:hover,a:focus {
     font-size: 25px;
     width: 100%;
     color: #ffffff !important;
-    margin-left: 0 !important;
-    line-height: 70px;
+    margin-left: 48px !important;
+    line-height: 64px;
     display: block;
     height: 55px;
-    margin: 0;
-    padding-left: 10px
 }
 
 .site_title:hover,.site_title:focus {
@@ -4670,7 +4668,7 @@ ul.project_files li a i {
  * bootstrap-vertical-tabs - v1.2.1
  * https://dbtek.github.io/bootstrap-vertical-tabs
  * 2014-11-07
- * Copyright (c) 2014 Ãƒâ€žÃ‚Â°smail Demirbilek
+ * Copyright (c) 2014 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â°smail Demirbilek
  * License: MIT
  */
 .tabs-left,.tabs-right {

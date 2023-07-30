@@ -16,13 +16,6 @@ use yii\web\View;
 
 AppAsset::register($this);
 
-if (Yii::$app->user->isGuest) {
-    // Chuyển hướng người dùng đến trang đăng nhập
-    $redirectUrl = Url::to(['site/login']);
-    return Yii::$app->getResponse()->redirect($redirectUrl);
-}
-
-
 ?>
 
 <?php $this->beginPage() ?>
@@ -49,7 +42,7 @@ if (Yii::$app->user->isGuest) {
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/image_360/backend/web/" class="site_title"><span
                                     class="glyphicon glyphicon-picture"></span>
-                            <span> Image 360</span></a>
+                            <span> Ảnh 360</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -163,12 +156,12 @@ if (Yii::$app->user->isGuest) {
                                         <?php else: ?>
                                             <a class="dropdown-item"
                                                href="<?= Url::toRoute(['profile/view', 'id_user' => $profile->id_user]) ?>">
-                                                Profile</a>
+                                                Hồ sơ</a>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                     <?= Html::beginForm(['/site/logout'], 'post')
                                     . Html::submitButton(
-                                        'Logout (' . Yii::$app->user->identity->username . ')',
+                                        'Đăng xuất (' . Yii::$app->user->identity->username . ')',
                                         ['class' => 'dropdown-item']
                                     )
                                     . Html::endForm(); ?>

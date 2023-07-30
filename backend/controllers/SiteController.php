@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\base\Categories;
+use common\models\base\View;
 use common\models\form\LoginForm;
 use common\models\Products;
 use Yii;
@@ -69,9 +70,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $products = Products::find()->select('name_products')->asArray()->all();
+        $products = Products::find()->all();
+        $view = View::find()->all();
+        $category = Categories::find()->all();
+        foreach ($category as $item) {
+            $productsCate = Products::find()->where(['id_category'=>$item->id_category])->asArray()->all();
+
+
+        }
         return $this->render('index', [
-            'products' => $products
+            'products' => $products,
+            'view' => $view,
+            'category' => $category,
+            'productsCate'=>$productsCate
         ]);
     }
     /**

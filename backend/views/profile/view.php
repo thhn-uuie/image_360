@@ -6,8 +6,7 @@ use yii\helpers\Url;
 /** @var yii\web\View $this */
 /** @var common\models\Profile $model */
 //
-//$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Hồ sơ', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
@@ -55,9 +54,9 @@ if (Yii::$app->user->isGuest) {
                     </span>
                     <span style="margin-top: 30px">
 
-                        <?= Html::a('Update', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a('Cập nhật', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
                         <?php if (Yii::$app->user->identity->id_role == 1): ?>
-                            <?= Html::a('Delete', ['delete', 'id_user' => $model->id_user], [
+                            <?= Html::a('Xóa', ['delete', 'id_user' => $model->id_user], [
                                 'class' => 'btn btn-danger',
                                 'data' => [
                                     'confirm' => 'Are you sure you want to delete this item?',
@@ -72,7 +71,7 @@ if (Yii::$app->user->isGuest) {
             <div class="col-md-7 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile</h4>
+                        <h4 class="text-right">Hồ sơ</h4>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Họ tên</label>
@@ -89,6 +88,9 @@ if (Yii::$app->user->isGuest) {
                             <p style="font-size: 15px"><?php echo $model->phone ?></p></div>
                         <div class="col-md-12"><label class="labels">Địa chỉ</label>
                             <p style="font-size: 15px"><?php echo $model->address ?></p></div>
+
+                        <?php if (Yii::$app->user->isGuest): ?>
+                        <?php if (Yii::$app->user->identity->id_role == 1):?>
                         <div class="col-md-6"><label class="labels">Thời gian tạo profile</label>
                             <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người tạo profile</label>
@@ -97,6 +99,8 @@ if (Yii::$app->user->isGuest) {
                             <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
                         <div class="col-md-6"><label class="labels">Người cập nhật profile</label>
                             <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
+                        <?php endif; ?>
+                        <?php endif; ?>
                     </div>
 
                 </div>
@@ -106,29 +110,5 @@ if (Yii::$app->user->isGuest) {
     </div>
 </div>
 </div>
-<!---->
-<!--    --><?php //= DetailView::widget([
-//        'model' => $model,
-//        'attributes' => [
-//            [
-//                'attribute' => 'avatar',
-//                'label' =>'',
-//                'format' => 'html',
-//                'value' => Html::img('../../avatar/'.$model['avatar'], ['class'=>'imgAvatar','width'=>'150'])
-//
-//            ],
-//            'name',
-//            'birthday',
-//            'gender',
-//            'enmail',
-//            'phone',
-//            'address',
-//            'created_at',
-//            'created_by',
-//            'updated_at',
-//            'updated_by',
-//
-//        ],
-//    ]) ?>
 
 </div>
