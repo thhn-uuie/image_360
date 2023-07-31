@@ -88,12 +88,11 @@ AppAsset::register($this);
                                 <?php } ?>
                                 <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                     <li>
-                                        <a style="font-weight:400"><i class="fa fa-info-circle"></i> Profile <span
+                                        <a style="font-weight:400"><i class="fa fa-info-circle"></i> Hồ sơ <span
                                                     class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-
                                             <li>
-                                                <?php echo Html::a('Danh sách tài khoản', ['/profile']) ?>
+                                                <?php echo Html::a('Danh sách hồ sơ các tài khoản', ['/profile']) ?>
                                             </li>
                                         </ul>
                                     </li>
