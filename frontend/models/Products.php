@@ -116,4 +116,9 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->getProductsCate($this->id_category);
     }
+
+    public function getRelatedProducts()
+    {
+        return $this->hasMany(Products::class, ['id_products'=>'related_product_id']) -> viaTable('product_related',['products_id'=>'id_products']);
+    }
 }

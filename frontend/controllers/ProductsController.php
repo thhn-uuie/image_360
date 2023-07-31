@@ -6,6 +6,8 @@ use frontend\models\Categories;
 use frontend\models\Products;
 use common\models\base\View;
 use Yii;
+use yii\web\NotFoundHttpException;
+use frontend\widgets\widgets\recommendedWidget;
 
 class ProductsController extends \yii\web\Controller
 {
@@ -85,4 +87,21 @@ class ProductsController extends \yii\web\Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    // public function actionsView($id_products) 
+    // {
+    //     //get the curent product
+    //     $product = Products::findOne($id_products);
+
+    //     if ($product === null) {
+    //         throw new NotFoundHttpException('The requested page does not exist.');
+    //     }
+    //     return $this->render('view', [
+    //         'product'=>$product,
+    //         'recommendedProductsWidget'=>recommendedWidget::widget([
+    //             'productId'=>$product->id_products
+    //         ]),
+    //     ]);
+    // }
+    
 }

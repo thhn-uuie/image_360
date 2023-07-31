@@ -20,14 +20,21 @@ class AppAsset extends AssetBundle
         'category/css/animate.css',
         'category/css/main.css',
 
+        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css',
+
     ];
     public $js = [
         'js/jquery-3.4.1.min.js',
         'js/bootstrap.min.js',
         'js/jquery.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap5\BootstrapAsset',
     ];
+
+   
 }
