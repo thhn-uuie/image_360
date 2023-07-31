@@ -1,37 +1,48 @@
 <?php
 
 /** @var yii\web\View $this */
+
 use common\models\Products;
+
 $this->title = 'Dashboard';
+
+
 ?>
-<div style="width: 500px;">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div>
+<div style="width: 800px;">
     <canvas id="myChart"></canvas>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const productsArray = [];
+
     <?php
-    $products = Products::find()->all();
-    foreach ($products as $item):
+
+    foreach ($products as $data) {
+        $productsArr[] = $data['name_products'];
+
+
+        foreach ($view as $item) {
+            $dataProducts[] = $item['view_count'];
+        }
+    }
     ?>
-    productsArray.push(<?php echo json_encode($item->name_products) ?>);
-    <?php endforeach;?>
+
+
     const ctx = document.getElementById('myChart');
 
-    const chartLabels = [];
-    for (let i = 0; i < productsArray.length; i++) {
-        chartLabels.push(productsArray[i]);
-    }
-    console.log(chartLabels);
+
     new Chart(ctx, {
-        type: 'pie',
+        type: 'bar',
         data: {
-            labels: chartLabels,
+            labels: <?php echo json_encode($productsArr)?>,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Lượt xem',
+                data: <?php echo json_encode($dataProducts)?>,
+                backgroundColor: [
+                    '#ff6384',
+                ],
                 borderWidth: 1
             }]
         },
@@ -44,3 +55,5 @@ $this->title = 'Dashboard';
         }
     });
 </script>
+</div>
+

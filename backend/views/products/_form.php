@@ -9,62 +9,79 @@ use Itstructure\CKEditor\CKEditor;
 /** @var yii\web\View $this */
 /** @var common\models\Products $model */
 /** @var yii\widgets\ActiveForm $form */
+
+
 ?>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
+    <link rel="stylesheet" href="../views/products/css/upload.css" type="text/css">
+</head>
 <div class="products-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-
-    <head>
-        <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-        <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
-        <link rel="stylesheet" href="../views/products/css/upload.css" type="text/css">
-
-    </head>
 
     <div class="card">
         <div class="row">
             <div class="col-md-5">
 
                 <!-- Upload image -->
+
                 <div class="avatar-wrapper">
-                    <img class="products-pic" src=""/>
+                    <?php if ($model->image !== null): ?>
+                        <img class="products-pic" src="<?php echo '../../image/products/' . $model->image ?>"/>
+                    <?php else: ?>
+                        <img class="products-pic" src=""/>
+                    <?php endif; ?>
+
                     <div class="upload-button">
                         <label for="products-file_image">
                             <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                         </label>
                     </div>
                     <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
-
                 </div>
-                <div class="container">
+                <div class="container-pr">
                     <div class="wrapper">
                         <div class="image">
-                            <div id="panorama"></div>
+                            <?php if ($model->files !== null): ?>
+
+                                <style>
+                                    #panorama {
+                                        width: 336px!important;
+                                        height: 200px!important;
+                                    }
+                                </style>
+
+                            <?= $this->render('view360', ['model'=>$model]) ?>
+                            <?php else: ?>
+
+                            <div id="panorama" style="width:336px; height:200px;"></div>
+                            <?php endif; ?>
+
                         </div>
                         <div class="content">
                             <div class="icon">
                                 <i class="fa fa-cloud-upload"></i>
                             </div>
                             <div class="text">
-                                No file chosen, yet!
+                                Chưa chọn file nào!
                             </div>
                         </div>
                         <div id="cancel-btn">
                             <i class="fas fa-times"></i>
                         </div>
-                        <div class="file-name">
-                            File name here
-                        </div>
+
                     </div>
 
-                    <label for="products-file_360">
-
-                        <div id="custom-btn"> <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()', 'style' => 'display:none']) ?>
+                    <label class="products-360-label" for="products-file_360">
+                        <div id="custom-btn">
+                            <?= $form->field($model, 'file_360')->fileInput(['onchange' => 'image360Preview()', 'style' => 'display:none']) ?>
                         </div>
                     </label>
 
@@ -75,8 +92,8 @@ use Itstructure\CKEditor\CKEditor;
                 <div class="col-md-10">
                     <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'description')->widget(CKEditor::class, [
-                            'options' => ['row' => 6],
-                            'preset' => 'custom'
+                        'options' => ['row' => 6],
+                        'preset' => 'custom'
                     ]) ?>
                     <?= $form->field($model, 'status')->dropDownList(
                         [
@@ -92,16 +109,12 @@ use Itstructure\CKEditor\CKEditor;
                     $categoryList =ArrayHelper::map($cate, 'id_category', 'name_category'); -->
 
                     <?= $form->field($model, 'id_category')->dropDownList(
-                        ArrayHelper::map(Categories::find()->where(['status'=>'Hiện'])->all(), 'id_category', 'name_category'),
+                        ArrayHelper::map(Categories::find()->where(['status' => 'Hiện'])->all(), 'id_category', 'name_category'),
                         [
                             'prompt' => 'Danh mục'
                         ]
                     ) ?>
-
-                    <?= $form->field($model, 'qr_code')->hiddenInput(['id_products' => 'qr_code'])->label(false) ?>
-                    <div class="form-group">
-                        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-                    </div>
+                    <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
                 </div>
 
             </div>
@@ -138,7 +151,6 @@ use Itstructure\CKEditor\CKEditor;
                     pannellum.viewer('panorama', {
                         "type": "equirectangular",
                         "panorama": url,
-
                         "autoLoad": true
                     });
                     $('.panorama').attr('src', url);

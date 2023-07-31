@@ -3,19 +3,80 @@
 namespace backend\controllers;
 
 use common\models\Categories;
+use common\models\Products;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
 use yii\web\UploadedFile;
 use common\helper\ImgCateHelper;
+use yii\filters\AccessControl;
+use common\models\search\CategoriesSearch;
+use yii\data\ActiveDataProvider;
+
+
 
 
 /**
  * CategoriesController implements the CRUD actions for Categories model.
  */
 class CategoriesController extends base\CategoriesController {
-   
-   
+
+    public function behaviors()
+    {
+        return [
+
+            'access' => [
+                'class' => AccessControl::class,
+
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'actions' => ['create', 'index'],
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'actions' => ['update', 'view', 'delete'],
+                        'matchCallback' => function ($rule, $action) {
+                            $product = $action->controller->findModel(Yii::$app->request->get('id_category'));
+                            $user = Yii::$app->user->identity;
+                            if ($user->id_role == 1 || $product->created_by == $user->username) {
+                                return true;
+                            }
+                            return false;
+                        },
+                    ],
+
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+    public function actionIndex()
+    {
+        $searchModel = new CategoriesSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (Yii::$app->user->identity->id_role == 2) {
+            $dataProvider = new ActiveDataProvider([
+                'query' => Categories::find()->where(['created_by' => Yii::$app->user->identity->username]),
+            ]);
+        }
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     public function actionCreate()
     {
         // $model = new \common\models\Categories();
@@ -23,17 +84,6 @@ class CategoriesController extends base\CategoriesController {
         $model = new \common\models\Categories();
 
         $loadImg = new \common\helper\ImageHelper();
-        // if ($this->request->isPost) {
-        //     if ($model->load($this->request->post()) && $model->save()) {
-        //         return $this->redirect(['view', 'id_category' => $model->id_category]);
-        //     }
-        // } else {
-        //     $model->loadDefaultValues();
-        // }
-
-        // return $this->render('create', [
-        //     'model' => $model,
-        // ]);
 
         if ($model->load(Yii::$app->request->post())) {
             $model->file_image = UploadedFile::getInstance($model, 'file_image');
@@ -84,13 +134,13 @@ class CategoriesController extends base\CategoriesController {
             $path = '/category' ;
             $loadImg->updateImgCategory($model, $model->file_image, $path);
 
-            // if($model->file_image){
-            //     $model->file_image->saveAs('../../image/category/' . time() . '_' . $model->file_image->name);
-            //     unlink('../../image/category/'.$model->image);
-            //     $model->image = time() . '_' . $model->file_image->name;
-            // } else {
-            //     $model->file_image = $old_ImgCate;
-            // }
+            if($model->file_image){
+                $model->file_image->saveAs('../../image/category/' . time() . '_' . $model->file_image->name);
+                unlink('../../image/category/'.$model->image);
+                $model->image = time() . '_' . $model->file_image->name;
+            } else {
+                $model->file_image = $old_ImgCate;
+            }
 
             if ($model->save(false)) {
                 return $this->redirect(['view', 'id_category' => $model->id_category]);
@@ -142,7 +192,15 @@ class CategoriesController extends base\CategoriesController {
      */
     public function actionDelete($id_category)
     {
-        $this->findModel($id_category)->delete();
+        $findCate = $this->findModel($id_category);
+        $productCate = Products::findOne(['id_category' => $findCate]);
+        if (!$productCate) {
+            $findCate->delete();
+            Yii::$app->session->addFlash('success', 'Xóa danh mục ' . $findCate->name_category . ' thành công.');
+
+        } else {
+            Yii::$app->session->addFlash('danger', 'Không xóa được do tồn tại sản phẩm có chứa danh mục này');
+        }
 
         return $this->redirect(['index']);
     }

@@ -56,7 +56,7 @@ class Profile extends \yii\db\ActiveRecord
             'birthday' => 'Ngày sinh',
             'gender' => 'Giới tính',
             'address' => 'Địa chỉ',
-            'avatar' => 'Avatar',
+            'avatar' => 'Ảnh đại diện',
             'created_at' => 'Thời gian tạo',
             'created_by' => 'Người tạo',
             'updated_at' => 'Thời gian cập nhật',
