@@ -81,16 +81,16 @@ class CategoriesController extends base\CategoriesController {
         {
             $model->file_image =  UploadedFile::getInstance($model, 'file_image');
 
-            $path = '/categories' ;
+            $path = '/category' ;
             $loadImg->updateImgCategory($model, $model->file_image, $path);
 
-            if($model->file_image){
-                $model->file_image->saveAs('../../image/category/' . time() . '_' . $model->file_image->name);
-                unlink('../../image/category/'.$model->image);
-                $model->image = time() . '_' . $model->file_image->name;
-            } else {
-                $model->file_image = $old_ImgCate;
-            }
+            // if($model->file_image){
+            //     $model->file_image->saveAs('../../image/category/' . time() . '_' . $model->file_image->name);
+            //     unlink('../../image/category/'.$model->image);
+            //     $model->image = time() . '_' . $model->file_image->name;
+            // } else {
+            //     $model->file_image = $old_ImgCate;
+            // }
 
             if ($model->save(false)) {
                 return $this->redirect(['view', 'id_category' => $model->id_category]);

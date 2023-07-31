@@ -81,63 +81,6 @@ use yii\widgets\ActiveForm;
 
 
 
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col-md-5"> -->
-  <!-- <div class="col-sm-2"> -->
-
-  <!-- Upload image -->
-  <!-- </div>
-      <div class="container">
-        <div class="wrapper">
-          <div class="image" >
-            <img class="categories-pic">
-          </div>
-          <div class="content">
-            <div class="icon">
-              <i class="fa fa-cloud-upload"></i>
-            </div>
-            <div class="text">
-              No file chosen, yet!
-            </div>
-          </div>
-          <div id="cancel-btn">
-            <i class="fas fa-times"></i>
-          </div>
-          <div class="file-name">
-            File name here
-          </div>
-        </div> 
-
-        <label for="categories-file_image">
-
-          <div id="custom-btn">
-            <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
-          </div>
-        </label>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-7">
-
-
-    <?= $form->field($model, 'name_category')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'status')->dropDownList(
-      [
-        'Ẩn' => 'Ẩn',
-        'Hiện' => 'Hiện',
-      ],
-      [
-        'prompt' => 'Trạng thái'
-      ]
-    ) ?>
-
-
-  </div> -->
-
-
   <div class="row">
     <div class="col-md-12">
 
@@ -174,3 +117,9 @@ use yii\widgets\ActiveForm;
 
 </div>
 
+<style>
+  .categories-pic {
+    max-width: 100%;
+    max-height: 100%;
+  }
+</style>
