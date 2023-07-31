@@ -18,7 +18,7 @@ class CategoriesSearch extends Categories
     {
         return [
             [['id_category', 'created_at', 'updated_at'], 'integer'],
-            [['name_category', 'description', 'created_by', 'updated_by', 'image', 'status'], 'safe'],
+            [['name_category', 'created_by', 'updated_by', 'image', 'status'], 'safe'],
         ];
     }
 
@@ -64,7 +64,6 @@ class CategoriesSearch extends Categories
         ]);
 
         $query->andFilterWhere(['like', 'name_category', $this->name_category])
-            ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'created_by', $this->created_by])
             ->andFilterWhere(['like', 'updated_by', $this->updated_by])
             ->andFilterWhere(['like', 'image', $this->image])

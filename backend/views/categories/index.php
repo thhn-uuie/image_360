@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </h1>
 
     <p>
-        <?= Html::a('Create Categories', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tạo mới danh mục', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id_category',
-            'name_category',
             [
                 'attribute' => 'image',
                 'format' => 'html',
@@ -41,22 +40,28 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::img('../../image/category/' . $model['image'], ['width' => '100', 'height' => '100']);
                     },
             ],
-            // 'description',
-               'status',
-            // [
-            //     'attribute' => 'status',
-            //     'headerOptions' => [
-            //         'style' => 'width:100px;text-align:center'
-            //     ],
-            //     'contentOptions' => [
-            //         'style' => 'width:100px;text-align:center'
-            //     ],
-            //     'filter' => ['Ẩn' => 'Ẩn', 'Hiện' => 'Hiện']
-            // ],
+            'name_category',
+            // 'status',
+            [
+                'attribute' => 'status',
+                'content' => function ($model) {
+                    if ($model->status == 'Hiện') {
+                        return '<span class="badge bg-success" style="font-size: 12px;">Hiện</span>';
+                    } else {
+                        return '<span class="badge bg-danger" style="font-size: 12px;">Ẩn</span>';
+                    }
+                },
+                'headerOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+                'contentOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+            ],
             'created_at',
             'created_by',
-            //'updated_at',
-            //'updated_by',
+            'updated_at',
+            'updated_by',
             [
                 'class' => ActionColumn::class,
                 'urlCreator' => function ($action, \common\models\base\Categories $model, $key, $index, $column) {

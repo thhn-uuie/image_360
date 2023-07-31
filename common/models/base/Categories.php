@@ -49,14 +49,13 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id_category' => 'Id Category',
-            'name_category' => 'Name Category',
-            'description' => 'Description',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'image' => 'Image',
-            'status' => 'Status',
+            'name_category' => 'Tên danh mục',
+            'created_at' => 'Thời gian tạo',
+            'created_by' => 'Người tạo',
+            'updated_at' => 'Thời gian cập nhật',
+            'updated_by' => 'Người cập nhật',
+            'image' => 'Ảnh danh mục',
+            'status' => 'Trạng thái',
         ];
     }
 
