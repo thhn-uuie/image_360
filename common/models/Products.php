@@ -14,7 +14,7 @@ class Products extends \common\models\base\Products {
     
     public function rules()
     {
-       
+
         return [
             [['name_products', 'description', 'status', 'image', 'files'], 'required'],
             [['id_category'], 'integer'],
@@ -38,10 +38,9 @@ class Products extends \common\models\base\Products {
 
     public function createQR() {
         $writer = new PngWriter();
-        $url = Url::toRoute(['products/view', 'id_products' =>$this->id_products]);
-        // var_dump($url);
-        // die;
-        
+        $path = 'http://localhost/image_360/frontend/web/index.php?r=';
+//        $frontendUrl = Url::to('/image_360/frontend/web/index.php?r=', true);
+        $url =  Url::to(['/products/details', 'id_products' => $this->id_category]);
         $qr = QrCode::create($url);
 
         $res = $writer->write($qr);

@@ -70,21 +70,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $products = Products::find()->all();
-        $view = View::find()->all();
         $category = Categories::find()->all();
-        foreach ($category as $item) {
-            $productsCate = Products::find()->where(['id_category'=>$item->id_category])->asArray()->all();
 
-
+        if (Yii::$app->user->identity->id_role == 1) {
+            $productsCate = Products::find()->where(['status' => 'Hoạt động'])->all();
+        } else {
+            $productsCate = Products::find()->where(['status' => 'Hoạt động', 'created_by' => Yii::$app->user->identity->username])->all();
         }
+
+
         return $this->render('index', [
-            'products' => $products,
-            'view' => $view,
             'category' => $category,
-            'productsCate'=>$productsCate
+            'productsCate' => $productsCate,
         ]);
     }
+
     /**
      * Login action.
      *
@@ -121,6 +121,4 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
-
-
 }

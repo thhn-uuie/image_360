@@ -3,57 +3,96 @@
 /** @var yii\web\View $this */
 
 use common\models\Products;
+use common\models\base\View;
 
 $this->title = 'Dashboard';
 
 
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <div>
-<div style="width: 800px;">
-    <canvas id="myChart"></canvas>
-</div>
+    <div style="width: 70%;">
+        <canvas id= 'myChart'></canvas>
+        <canvas id= 'topProducts'></canvas>
+
+    </div>
 
 
-<script>
 
     <?php
+//    $products = Product::find()
+//        ->orderBy(['view_count' => SORT_DESC])
+//        ->limit(10)
+//        ->all();
 
-    foreach ($products as $data) {
-        $productsArr[] = $data['name_products'];
+    $dataProducts = [];
+    $nameProducts = [];
+    for($i = 0; $i < count($productsCate); $i++) {
+        array_push($dataProducts, $productsCate[$i]['id_products']);
+        array_push($nameProducts,$productsCate[$i]['name_products'] );
+    }
 
-
-        foreach ($view as $item) {
-            $dataProducts[] = $item['view_count'];
+    $viewByDb= [];
+    for ($i = 0; $i < count($dataProducts); $i++) {
+        if (($view = View::findOne(['id_products'=>$dataProducts[$i]])) !== null) {
+            $viewCount = $view->view_count;
+            array_push($viewByDb, $viewCount);
+        } else {
+            array_push($viewByDb, 0);
         }
     }
     ?>
 
 
-    const ctx = document.getElementById('myChart');
 
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: <?php echo json_encode($productsArr)?>,
+    <script>
+        // Setup Block
+        const nameProd = <?php echo json_encode($nameProducts) ?>
+
+        const dt = <?php echo json_encode($viewByDb) ?>;
+        const data = {
+            labels: nameProd,
             datasets: [{
+                axis: 'y',
                 label: 'Lượt xem',
-                data: <?php echo json_encode($dataProducts)?>,
+                data: dt,
                 backgroundColor: [
-                    '#ff6384',
+                    'rgba(255,99,132,0.2)',
+                    'rgba(54,162,235,0.2)',
+                    'rgba(255,206,86,0.2)',
+                    'rgba(75,192,192,0.2)',
+                    'rgba(153,102,255,0.2)',
+                    'rgba(255,159,64,0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54,162,235,1)',
+                    'rgba(255,206,86,1)',
+                    'rgba(75,192,192,1)',
+                    'rgba(153,102,255,1)',
+                    'rgba(255,159,64,1)'
                 ],
                 borderWidth: 1
             }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+        };
+
+        // Config Block
+        const config = {
+            type: 'bar',
+            data,
+            options: {
+               indexAxis:'y',
             }
-        }
-    });
-</script>
+        };
+
+        // Render Block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
 </div>
 
