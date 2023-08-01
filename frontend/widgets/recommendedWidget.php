@@ -16,29 +16,9 @@ class recommendedWidget extends Widget {
 
     public function run()
     {
-        $products = new Products();
-        return $this->render('recommendedWidget');
-
-
-        // //get the current product
-        // $product = Products::findOne($this->productId);
-
-        // if ($product === null) {
-        //     return '';
-        // }
-
-        // //get the related products (same category except for the curent product)
-        // $recommendedProducts = Products::find() 
-        //     -> where(['id_category'=> $product -> id_category])
-        //     -> andWhere(['<>','id_products', $product -> id_products])
-        //     -> orderBy(['created_at'=>SORT_DESC])
-        //     ->limit($this->limit)
-        //     ->all();
-
-        // // Render the widget view with related products data
-        // return $this->render('recommended-products', [
-        //     'recommendedProducts' => $recommendedProducts,
-        // ]);
-
+        $products = Products::find()->all();
+        return $this->render('recommendedWidget', [
+            'products'=> $products
+        ]);
     }
 }
