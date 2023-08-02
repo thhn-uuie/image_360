@@ -28,39 +28,39 @@ use yii\widgets\ActiveForm;
       <div class="col-md-5">
 
         <div class="container">
-        <div class="wrapper">
-  <div class="image">
-    <?php if ($model->image !== null): ?>
-      <img class="categories-pic" src="<?php echo '../../image/category/' . $model->image ?>" />
-    <?php else: ?>
-      <img class="categories-pic" />
-    <?php endif; ?>
-  </div>
-  <div class="content">
-    <div class="icon">
-      <i class="fa fa-cloud-upload"></i>
-    </div>
-    <div class="text">
-      <?php if ($model->image !== null): ?>
-        Đã chọn ảnh.
-      <?php else: ?>
-        Chưa chọn ảnh.
-      <?php endif; ?>
-    </div>
-  </div>
-  <div id="cancel-btn">
-    <i class="fas fa-times"></i>
-  </div>
-  <div class="file-name">
-    Chọn ảnh
-  </div>
-</div>
+          <div class="wrapper">
+            <div class="image">
+              <?php if ($model->image !== null): ?>
+                <img class="categories-pic" src="<?php echo '../../image/category/' . $model->image ?>" />
+              <?php else: ?>
+                <img class="categories-pic" />
+              <?php endif; ?>
+            </div>
+            <div class="content">
+              <div class="icon">
+                <i class="fa fa-cloud-upload"></i>
+              </div>
+              <div class="text">
+                <?php if ($model->image !== null): ?>
+                  Đã chọn ảnh.
+                <?php else: ?>
+                  Chưa chọn ảnh.
+                <?php endif; ?>
+              </div>
+            </div>
+            <div id="cancel-btn">
+              <i class="fas fa-times"></i>
+            </div>
+            <div class="file-name">
+              Chọn ảnh
+            </div>
+          </div>
 
-<label for="categories-file_image">
-  <div id="custom-btn">
-    <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
-  </div>
-</label>
+          <label for="categories-file_image">
+            <div id="custom-btn">
+              <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
+            </div>
+          </label>
 
         </div>
 
@@ -90,7 +90,7 @@ use yii\widgets\ActiveForm;
 
 
       <div class="form-group">
-        <?= Html::submitButton('Cập nhật', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
       </div>
 
       </form>
@@ -125,4 +125,11 @@ use yii\widgets\ActiveForm;
     max-width: 100%;
     max-height: 100%;
   }
+
+  .btn-success {
+    background: #20bb9b;
+    float: right;
+    margin-top: -8%;
+    margin-right: 29%;
+}
 </style>

@@ -84,3 +84,39 @@ $this->params['breadcrumbs'][] = $this->title;
   </div>
 </div>
 </div>
+
+<style>
+  .btn-primary {
+          width: 150px;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          font-size: 20px;
+          color: white;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          transition-duration: 0.1s;
+          background-color: #0fc395;
+          font-family: Roboto;
+          margin-left: 300px;
+        }
+  .btn-danger {
+          width: 150px;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          font-size: 20px;
+          color: white;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          transition-duration: 0.1s;
+          background-color: #f04e5c;
+          font-family: Roboto;
+          margin-left: 10px;
+
+        }
+</style>
