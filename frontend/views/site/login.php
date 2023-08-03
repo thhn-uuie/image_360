@@ -20,13 +20,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="con">
 
             <header class="head-form">
-                <h2>Log In</h2>
-                <p>login here using your username and password</p>
+                <h5>Đăng nhập</h5>
             </header>
             <br>
             <div class="field-set">
                 <span class="input-item">
-                    <i class="fa fa-user-circle"></i>
+                    <i class="fa fa-user-circle" ></i>
                 </span>
                 <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
@@ -35,16 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     <i class="fa fa-key"></i>
                 </span>
                 <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
-                <span>
-                    <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
-                </span>
+                
                 <br>
-                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
             </div>
 
             <div class="other">
-                <button class="btn submits frgt-pass">Forgot Password</button>
-                <button class="btn submits sign-up">Sign Up
+                <button class="btn submits frgt-pass">Quên mật khẩu?</button>
+                <button class="btn submits sign-up">Đăng ký
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
                 </button>
             </div>
@@ -58,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </html>
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+    /* @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur'); */
 
     * {
         padding: 0;
@@ -73,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
         border: 1px solid #ccc;
         border-radius: 4px;
         outline: none;
-        margin-left: 0px;
+        margin-left: 15%;
     }
     body {
         background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
@@ -88,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
     .form-label {
         margin-bottom: 125px;
         margin-top: 0px;
-        margin-left: -70px;
+        margin-left: -25%;
     }
 
     .form-control {
@@ -108,6 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
         position: relative;
         transition: transform 0.3s ease-in-out;
         margin-top: -160px;
+        margin-left: 15%;
     }
 
     .form-control:hover {
@@ -149,8 +147,8 @@ $this->params['breadcrumbs'][] = $this->title;
         text-align: center;
     }
 
-    header h2 {
-        font-size: 575%;
+    header h5 {
+        font-size:400%;
         font-family: 'Playfair Display', serif;
         color: #056d39;
     }
@@ -225,12 +223,15 @@ $this->params['breadcrumbs'][] = $this->title;
         -top: -60px;
     }
 
-    .btn-success {
-        color: #271313;
-        background-color: #28a745;
-        border-color: #28a745;
-        margin-left: 32px;
-    }
+    button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    margin-left: 14%;
+}
 
     .fa-user-plus:before {
         content: "\f234";
