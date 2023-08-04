@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 use frontend\widgets\searchBarWidget;
+use frontend\widgets\recommendedWidget;
 AppAsset::register($this);
 
 ?>
@@ -34,7 +35,6 @@ AppAsset::register($this);
         </ul>
 
     </div>
-
-<?php //= searchBarWidget::widget()?>
+<?= searchBarWidget::widget()?>
 </div>
 

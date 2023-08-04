@@ -23,6 +23,8 @@ class AppAsset extends AssetBundle
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css',
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css',
 
+        'css/jquery-ui.min.css',
+
     ];
     public $js = [
         'js/jquery-3.4.1.min.js',
@@ -32,10 +34,14 @@ class AppAsset extends AssetBundle
         'js/jquery.js',
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js',
 
+        'js/jquery-ui.min.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap5\BootstrapAsset',
+
+        // JuiAsset::class, // Đăng ký tài nguyên JUI
     ];
 
    

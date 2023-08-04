@@ -9,6 +9,8 @@ use common\models\base\View;
 use Yii;
 use yii\web\NotFoundHttpException;
 use frontend\widgets\widgets\recommendedWidget;
+use yii\web\Response;
+
 
 class ProductsController extends \yii\web\Controller
 {
@@ -84,19 +86,4 @@ class ProductsController extends \yii\web\Controller
     }
 
 
-    public function actionRateReview()
-    {
-
-        $id_products_current = Yii::$app->request->post('id_products_current');
-        $id_user_current = Yii::$app->request->post('id_user_current');
-        $comment = Yii::$app->request->post('comment');
-        $rate = '2';
-        $modelRate = new Rate();
-        $modelRate->id_products = $id_products_current;
-        $modelRate->id_user = $id_user_current;
-        $modelRate->comment = $comment;
-        $modelRate->rate = $rate;
-        $modelRate->time = time();
-        $modelRate->save(false);
-    }
-}
+ }

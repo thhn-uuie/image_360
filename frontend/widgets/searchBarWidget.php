@@ -1,6 +1,13 @@
 <?php
 namespace frontend\widgets;
 use yii\base\Widget;
+use frontend\models\Products;
+use kartik\form\ActiveForm;
+use kartik\autocomplete\Autocomplete;
+use yii\helpers\Html;
+use Yii;
+
+
 
 class searchBarWidget extends Widget {
     public $messsage;
@@ -12,6 +19,11 @@ class searchBarWidget extends Widget {
 
     public function run()
     {
-        return $this->render('searchBarWidget');
+        // return $this->render('searchBarWidget');
+
+        $products = Products::find()->all();
+        return $this->render('searchBarWidget', [
+            'products'=> $products
+        ]);
     }
 }
