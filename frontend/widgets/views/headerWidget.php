@@ -11,9 +11,7 @@ AppAsset::register($this);
 <div class="top-bar">
     <div class="row">
         <ul>
-            <li><a href="#"><i class="icon fa fa-user"></i>Tài khoản của tôi</a></li>
             <li><a href="#"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
-            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Giỏ hàng</a></li>
             <?php if (Yii::$app->user->isGuest): ?>
                 <li>
                     <a href="<?= Url::toRoute(['site/login']) ?>">

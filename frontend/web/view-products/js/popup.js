@@ -9,7 +9,7 @@ function toggleModalQR() {
 btnOpen.addEventListener('click', toggleModalQR);
 iconClose.addEventListener('click', toggleModalQR);
 modalQR.addEventListener('click', function (event) {
-    if (event.target == event.currentTarget) {
+    if (event.target === event.currentTarget) {
         toggleModalQR();
     }
 });

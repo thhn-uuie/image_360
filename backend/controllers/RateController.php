@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use common\models\Rate;
+use common\models\base\Rate;
 use common\models\search\RateSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

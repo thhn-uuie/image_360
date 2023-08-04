@@ -1,6 +1,6 @@
 <?php
 
-use common\models\Rate;
+use common\models\base\Rate;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;

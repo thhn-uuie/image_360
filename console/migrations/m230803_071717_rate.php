@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m230702_165536_rate
+ * Class m230803_071717_rate
  */
-class m230702_165536_rate extends Migration
+class m230803_071717_rate extends Migration
 {
     /**
      * {@inheritdoc}
@@ -20,11 +20,11 @@ class m230702_165536_rate extends Migration
 
         $this->createTable('{{%rate}}', [
             'id_rate' => $this->primaryKey(),
-            'id_products' => $this->integer()->notNull()->unique(),
+            'id_products' => $this->integer()->notNull(),
             'id_user' => $this->integer()->notNull(),
-            'comment' => $this->string()->notNull(),
+            'comment' => $this->string(),
             'rate' => $this->string()->notNull(),
-            'time' => $this->string()->notNull(),
+            'time' => $this->string(),
         ], $tableOptions);
 
 
@@ -34,27 +34,27 @@ class m230702_165536_rate extends Migration
             'id_user'
         );
 
-        
+
         $this->addForeignKey(
             'fk-products_rate',
-            'rate', 
+            'rate',
             'id_products',
 
-            'products',  
-            'id_products', 
+            'products',
+            'id_products',
 
-            
-            'CASCADE' 
+
+            'CASCADE'
         );
 
         $this->addForeignKey(
-            'fk-user_rate',  
-            'rate', 
-            'id_user', 
-
-            'users',  
+            'fk-user_rate',
+            'rate',
             'id_user',
-            'CASCADE' 
+
+            'users',
+            'id_user',
+            'CASCADE'
         );
     }
 
