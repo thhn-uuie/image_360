@@ -86,15 +86,6 @@ class ProductsController extends \yii\web\Controller
     }
 
 
-    public function actionView($id_products)
-    {
-        $model = Products::findOne($id_products);
-        if (!$model) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-        return $this->render('view', [
-            'model' => $model,
-        ]);
-    }
+    
 
 }
