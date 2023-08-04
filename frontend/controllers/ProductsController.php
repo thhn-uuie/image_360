@@ -8,6 +8,8 @@ use common\models\base\View;
 use Yii;
 use yii\web\NotFoundHttpException;
 use frontend\widgets\widgets\recommendedWidget;
+use yii\web\Response;
+
 
 class ProductsController extends \yii\web\Controller
 {
@@ -35,14 +37,14 @@ class ProductsController extends \yii\web\Controller
             $viewProducts->view_count = $temp + 1;
             $viewProducts->save();
         } else {
-            $model= new View();
+            $model = new View();
             $model->id_products = $id_products;
             $model->view_count = 1;
             $model->save();
         }
 
         $products = $this->findModel($id_products);
-        $name_cate = Categories::findOne(['id_category'=>$products->id_category]);
+        $name_cate = Categories::findOne(['id_category' => $products->id_category]);
         $viewCount = $products->getViewProducts($id_products);
 
         return $this->render('detail', [
@@ -79,29 +81,56 @@ class ProductsController extends \yii\web\Controller
         //     'keyword'=>$keyword,
         // ]);
 
-        $searchModel = new ProductSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $keyword);
-    
-        return $this->render('search', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+
+
+        // $searchModel = new ProductSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $keyword);
+
+        // return $this->render('search', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+        // $product = new Products();
+        // $product->load(Yii::$app->request->get());
+        // var_dump();
+        // die;
+
+        $keyword = Yii::$app->request->get('search');
+
+        $result = Products::find()
+            ->where(['like', 'name_products', $keyword])
+            ->all();
+
+            return $this->render('search', [
+                'result' => $result
+            ]);
+            // $data = [];
+            // foreach ($result as $result) {
+            //     $data[] = [
+            //         'id_products' => $result->id_products,
+            //         'name_products' => $result->name_products,
+            //     ];
+            // }
+
+            // Yii::$app->response->format = Response::FORMAT_JSON;
+            // return $data;
     }
 
-    // public function actionsView($id_products) 
-    // {
-    //     //get the curent product
-    //     $product = Products::findOne($id_products);
+    public function actionAutocomplete($keyword)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
-    //     if ($product === null) {
-    //         throw new NotFoundHttpException('The requested page does not exist.');
-    //     }
-    //     return $this->render('view', [
-    //         'product'=>$product,
-    //         'recommendedProductsWidget'=>recommendedWidget::widget([
-    //             'productId'=>$product->id_products
-    //         ]),
-    //     ]);
-    // }
-    
+        $products = Products::find()
+            ->where(['like', 'name_products', $keyword])
+            ->all();
+
+        $result = [];
+        foreach ($products as $product) {
+            $result[] = ['value' => $product->name_products, 'data' => $product->id_products];
+        }
+
+        return ['suggestions' => $result];
+    }
+
 }

@@ -20,8 +20,13 @@
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "yiisoft/yii2-imagine": "^2.3",
         "endroid/qr-code": "^4.8",
-        "itstructure/yii2-ckeditor": "~1.1.6",
-        "kartik-v/yii2-widget-datepicker": "@dev"
+        "itstructure/yii2-ckeditor": "^1.1",
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "bower-asset/slick-carousel": "^1.8",
+        "bower-asset/jquery-ui": "^1.12.1",
+        "yiisoft/yii2-jui": "*",
+        "kartik-v/yii2-widget-select2": "^2.2"
+        
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

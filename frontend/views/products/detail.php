@@ -27,7 +27,6 @@ use frontend\widgets\rateCmtWidget;
                     <img class="card-img img-products" src="<?php echo '../../image/products/' . $products->image ?>"
                          id="product-detail">
                 </div>
-
             </div>
             <!-- col end -->
             <div class="col-lg-7 mt-5">

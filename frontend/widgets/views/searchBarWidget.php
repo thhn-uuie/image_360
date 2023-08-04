@@ -1,100 +1,93 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
+use yii\web\JsExpression;
+use yii\jui\AutoComplete;
+use yii\widgets\ActiveForm;
+use frontend\controllers\ProductsController;
+use kartik\select2\Select2;
+use yii\web\Response;
+use frontend\models\Products;
 
 ?>
 
 <head>
     <link rel="stylesheet" href="../web/search/custom_search_bar.css" type="text/css">
 </head>
-<!-- search bar start -->
-<div class="search-bar">
-    <!-- dropdown start -->
-    <div class="dropdown">
-        <div id="drop-text" class="dropdown-text">
-            <span id="span" class="every">Everything</span>
-            <!-- <i class="fa-solid fa-chevron-down"></i> -->
-            <i id="icon" class="arrow-down"></i>
-        </div>
 
-        <div id="cover" style="position: absolute; top:0; left:0;width:100%; height:100%; z-index:9"></div>
-        <ul id="list" class="dropdown-list" style="z-index:100;">
-            <li class="dropdown-list-item">Everything</li>
-            <li class="dropdown-list-item">Videos</li>
-            <li class="dropdown-list-item">Community</li>
-            <li class="dropdown-list-item">Playlists</li>
-            <li class="dropdown-list-item">Shorts</li>
-        </ul>
-
-
+<body>
+    <div class="search-bar">
+        <?= Autocomplete::widget([
+            'name' => 'search', //tên của ô tìm kiếm
+            'options' => [  
+                'class' => 'form-control',
+                'placeholder' => 'Tìm kiếm sản phẩm...',
+                'action' => Url::toRoute(['products/search']),
+                'method' => 'get'
+            ],
+            'clientOptions' => [  //các thuộc tính của ô tìm kiếm
+                // 'source' => Url::to(['products/search']),
+                'action' => Url::to(['products/search']),          // Đường dẫn đến action xử lý tìm kiếm
+                'minLength' => 2,
+            ],
+        ]) ?>
+        <?= Html::submitButton('Tìm kiếm', ['class' => 'btn btn-primary']) ?>
+        <!-- <?= Html::submitButton('Tìm kiếm', ['class' => 'btn btn-success']) ?> -->
     </div>
 
+  
+    <?php if (!empty($result)): ?>
+        <h3>Kết quả trùng khớp</h3>
+        <?php foreach ($result as $products): ?>
+            <div class="product-item">
+                <div class="product-image">
+                    <?= Html::img($products->image, ['alt' => $products->name_products]) ?>
+                </div>
+                <div class="product-name">
+                    <?= $products->name_products ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Không có kết quả trùng khớp</p>
+    <?php endif; ?>
 
+</body>
 
-
-    <!-- dropdown end -->
-
-    <!-- search box input start -->
-    <div class="search-box"></div>
-    <input type="text" id="search-input" class="search-input" placeholder=".....Search anything..." style="width: 400px;
-    height: 27px;
-    padding: 8px;
-    border: 1px solid pink;
-    border-radius: -4px;
-    outline: none;
-    margin-left: -75%;
-    margin-right: 20%;
-    margin-top: 6px;
-    color: #a91630;">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <button type="submit"><i class="fa fa-search"></i></button>
-    <!-- search box input end -->
-</div>
-<!-- search bar end -->
-
-<script>
-    let dropdownBtn = document.getElementById("drop-text");
-    let list = document.getElementById("list");
-    let icon = document.getElementById("icon");
-    let span = document.getElementById("span");
-
-    dropdownBtn.onclick = function () {
-        if (list.classList.contains("show")) {
-            icon.style.rotate = "0deg";
-        } else {
-            icon.style.rotate = "-180deg";
-        }
-        list.classList.toggle("show");
-
-    };
-
-    window.onclick = function (e) {
-        if (
-            e.target.id !== "drop-text" &&
-            e.target.id !== "span" &&
-            e.target.id !== "icon"
-        ) {
-            list.classList.remove("show");
-            icon.style.rotate = "0deg";
-        }
-    }
-
-    $('.dropdown-item').click(function () {
-        var category = $(this).text();
-        $('#span').text(category);
-    });
-
-
-</script>
 
 
 
 <style>
+    .form-control {
+        display: block;
+        width: 80%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: -7rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #007bff;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ff0060;
+        border-radius: 15px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .btn.btn-primary {
+        background: #007bff;
+        border: 0 none;
+        border-radius: 20px;
+        margin-left: -7%;
+        margin-top: 0%;
+    }
+
     span.every {
         width: 114px;
-    height: 29px;
-    margin-left: 176px;
-    margin-top: -2px;
+        height: 29px;
+        margin-left: 176px;
+        margin-top: -2px;
     }
 
     .every {
@@ -111,29 +104,6 @@ use yii\helpers\Url;
         top: 6px;
         height: 27px;
         width: 113px;
-    }
-
-    .dropdown-list{
-        position: relative;
-    }
-
-    .dropdown-text {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 1rem;
-        font-weight: 500;
-        color: white;
-        padding: 1rem 1.5rem;
-    }
-
-    .arrow-down {
-        position: absolute;
-        top: 17px;
-        left: 297px;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid white;
     }
 
     .search-bar {
@@ -181,39 +151,39 @@ use yii\helpers\Url;
 
     .input[type="text"] {
         width: 400px;
-    height: 27px;
-    padding: 8px;
-    border: 1px solid pink;
-    border-radius: -4px;
-    outline: none;
-    margin-left: -773px;
-    margin-right: 200px;
-    margin-top: 6px;
-    color: #a91630;
+        height: 27px;
+        padding: 8px;
+        border: 1px solid pink;
+        border-radius: -4px;
+        outline: none;
+        margin-left: -773px;
+        margin-right: 200px;
+        margin-top: 6px;
+        color: #a91630;
     }
 
     button[type="submit"] {
         padding: 8px 12px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 20px;
-    color: white;
-    cursor: pointer;
-    margin-left: -227px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+        margin-left: -227px;
     }
 
-    .dropdown-list {
-        position: absolute;
-        top: 2rem;
-        left: 195px;
-        width: 120px;
-        border-radius: 15px;
-        max-height: 0;
-        overflow: hidden;
-        background-color: lightseagreen;
-        transition: max-height 0.5s;
-        z-index: 1000;
+    button[type="submit-search"] {
+        padding: 8px 12px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        margin-left: -23%;
+        height: 4%;
+        width: 4%;
     }
+
+
 
     #navbarSupportedContent {
         width: 100%;
@@ -229,23 +199,6 @@ use yii\helpers\Url;
         max-height: 300px;
     }
 
-    .dropdown-list-item {
-        font-size: 0.9rem;
-        font-weight: 500;
-        padding: 1rem 0 1rem 1.5rem;
-        cursor: pointer;
-        margin-left: -147%;
-        transition: margin-left 0.2s ease, color 0.2s ease;
-    }
-
-    .dropdown-list-item:hover {
-        color: #f2f2f2;
-        transform: translateX(10px);
-    }
-
-    .dropdown-list.show {
-        display: block;
-    }
 
 
     .search-input {
