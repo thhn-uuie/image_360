@@ -12,7 +12,9 @@ class recommendedWidget extends Widget {
 
     public function run()
     {
-        $products = Products::find()->all();
+        $products = Products::find()
+            ->limit(8)
+            ->all();
         return $this->render('recommendedWidget', [
             'products'=> $products
         ]);

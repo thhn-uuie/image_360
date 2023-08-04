@@ -86,6 +86,8 @@ class ProductsController extends \yii\web\Controller
     }
 
 
+    
+
     public function actionSearch() {
         $keyword = Yii::$app->request->get('search');
 

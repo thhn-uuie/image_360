@@ -1,3 +1,9 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
 <head>
     <style type="text/css">
         .slick-prev:before,
@@ -23,49 +29,37 @@
             <div class="row filtering">
                 <?php foreach ($products as $item): ?>
                     <div class="p-2 pb-3">
-                        <div class="product-wap card rounded-0">
-                            <div class="card rounded-0">
-                                <img class="img-fluid" src="<?php echo '../../image/products/' . $item->image ?>">
-                                <div
-                                    class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                        <a href="<?= Url::to(['product/view', 'id_products' => $item->id_products]) ?>">
+                            <div class="product-wap card rounded-0">
+                                <div class="card rounded-0">
+<a
+                                            href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
+                                            <img class="img-fluid" src="<?php echo '../../image/products/' . $item->image ?>">
+
+                                            <!-- <img src=<?php echo '../../image/products/' . $item->image ?> alt="" /> -->
+                                            <!-- <p style="margin-top: 20px; color:black">
+                                                <?php echo $item->name_products; ?>
+                                            </p> -->
+                                        </a>
+                                    <div
+                                        class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="text-decoration-none">
+                                        <?= $item->name_products ?>
+                                    </h3>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">
-                                    <?php echo $item->name_products ?>
-                                </a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span
-                                            class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span
-                                            class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span
-                                            class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span
-                                            class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$60.00</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 <?php endforeach; ?>
-
             </div>
         </div>
     </div>
+
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -81,15 +75,20 @@
             slidesToShow: 4,
             slidesToScroll: 4
         });
-
     </script>
 
 </body>
 
 
 <style>
+    h3,
+    .h3 {
+        font-size: 150%;
+        margin-left: auto;
+    }
+
     .img-fluid {
-        max-width: 105%;
+        max-width: 100%;
         height: 240px;
     }
 
@@ -102,5 +101,6 @@
         transition: height 500ms ease 0s;
         width: 100%;
         display: block;
+        width: 100%;
     }
 </style>
