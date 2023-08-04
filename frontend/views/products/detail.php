@@ -173,7 +173,7 @@ use frontend\widgets\rateCmtWidget;
                                                        value="<?php echo Yii::$app->user->identity->getId(); ?>">
                                                 <input type="text" name="comment" id="comment" class="form-control"
                                                        placeholder="Nhập bình luận..."/>
-                                                <input type="submit" value="Submit">
+                                                <input type="submit" id="rate-submit" value="Lưu">
                                             </form>
 
                                         </div>

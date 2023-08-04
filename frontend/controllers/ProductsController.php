@@ -86,4 +86,30 @@ class ProductsController extends \yii\web\Controller
     }
 
 
+    public function actionSearch() {
+        $keyword = Yii::$app->request->get('search');
+
+        $result = Products::find()
+            ->where(['name_products'=>$keyword])
+            ->all();
+
+        return $this->render('search', [
+            'result' => $result
+        ]);
+    }
+    public function actionAutocomplete($keyword)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $products = Products::find()
+            ->where(['like', 'name_products', $keyword])
+            ->all();
+
+        $result = [];
+        foreach ($products as $product) {
+            $result[] = ['value' => $product->name_products, 'data' => $product->id_products];
+        }
+
+        return ['suggestions' => $result];
+    }
  }

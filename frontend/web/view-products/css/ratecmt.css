@@ -78,6 +78,7 @@
 }
 
 #rate-submit {
+    color: black;
     width: 30%;
     height: 40px;
     margin-top: 20px;
@@ -88,6 +89,7 @@
 }
 
 #rate-submit:hover{
+    color:white;
     background:#198754;
     border: 1px solid #198754;
 }
