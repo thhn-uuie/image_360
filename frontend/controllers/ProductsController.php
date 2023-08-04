@@ -102,19 +102,19 @@ class ProductsController extends \yii\web\Controller
             ->where(['like', 'name_products', $keyword])
             ->all();
 
-            return $this->render('search', [
-                'result' => $result
-            ]);
-            // $data = [];
-            // foreach ($result as $result) {
-            //     $data[] = [
-            //         'id_products' => $result->id_products,
-            //         'name_products' => $result->name_products,
-            //     ];
-            // }
+        return $this->render('view', [
+            'result' => $result
+        ]);
+        // $data = [];
+        // foreach ($result as $result) {
+        //     $data[] = [
+        //         'id_products' => $result->id_products,
+        //         'name_products' => $result->name_products,
+        //     ];
+        // }
 
-            // Yii::$app->response->format = Response::FORMAT_JSON;
-            // return $data;
+        // Yii::$app->response->format = Response::FORMAT_JSON;
+        // return $data;
     }
 
     public function actionAutocomplete($keyword)
@@ -131,6 +131,17 @@ class ProductsController extends \yii\web\Controller
         }
 
         return ['suggestions' => $result];
+    }
+
+    public function actionView($id_products)
+    {
+        $model = Products::findOne($id_products);
+        if (!$model) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+        return $this->render('view', [
+            'model' => $model,
+        ]);
     }
 
 }

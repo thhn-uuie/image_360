@@ -17,6 +17,7 @@ use frontend\widgets\rateCmtWidget;
         width: 90vw;
         height: 500px;
     }
+    
 </style>
 <!-- Open Content -->
 <section class="bg-light">

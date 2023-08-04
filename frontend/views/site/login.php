@@ -70,22 +70,23 @@ $this->params['breadcrumbs'][] = $this->title;
         border: 1px solid #ccc;
         border-radius: 4px;
         outline: none;
-        margin-left: 15%;
+        /* margin-left: 6%; */
     }
     body {
         background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
         background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
         background-attachment: fixed;
         background-repeat: no-repeat;
-        font-family: 'Vibur', cursive;
-        font-family: 'Abel', sans-serif;
+        font-family: 'Serif font', cursive;
+        font-family: 'Serif font', sans-serif;
         opacity: .95;
+        font-size: 14px;
     }
 
     .form-label {
         margin-bottom: 125px;
         margin-top: 0px;
-        margin-left: -25%;
+        margin-left: -28%;
     }
 
     .form-control {
@@ -105,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
         position: relative;
         transition: transform 0.3s ease-in-out;
         margin-top: -160px;
-        margin-left: 15%;
+        margin-left: 6%;
     }
 
     .form-control:hover {
@@ -172,7 +173,7 @@ $this->params['breadcrumbs'][] = $this->title;
         padding: 15px;
 
         font-size: 16px;
-        font-family: 'Abel', sans-serif;
+        font-family: 'Arial', sans-serif;
         color: #5E6472;
 
         outline: none;
