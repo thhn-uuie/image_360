@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-index">
 
-
     <div class="card border-info mb-3" >
         <div class="card-header">
             <div class="col-md-10" style="font-size: 35px; font-weight:bold">
@@ -28,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
+                'summary' => 'Hiển thị <strong>{begin}-{end}</strong> hồ sơ của <strong>{totalCount}</strong> hồ sơ',
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn',
                         'header' => 'STT',
@@ -50,10 +50,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             }
                         },
                         'headerOptions' => [
-                            'style' => 'width:50px;text-align:center'
+                            'style' => 'width:150px;text-align:center'
                         ],
                         'contentOptions' => [
-                            'style' => 'width:50px;text-align:center'
+                            'style' => 'width:150px;text-align:center'
                         ],
                     ],
 

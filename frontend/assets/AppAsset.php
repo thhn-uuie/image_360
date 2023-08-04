@@ -28,6 +28,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/jquery-3.4.1.min.js',
+        'https://code.jquery.com/jquery-3.4.1.js',
+
         'js/bootstrap.min.js',
         'js/jquery.js',
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js',

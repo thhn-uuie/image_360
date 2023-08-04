@@ -1,27 +1,93 @@
-
-.modal-inner-review {
-    border: 1px solid black;
-    padding: 20px;
-    background:#e9fff5;
-    width: 70vw;
-    position: relative;
-    top: 50%;
-    margin: auto;
-    border-radius: 7px;
-    overflow: hidden;
-    animation: modalShow 0.2s linear;
-}
 .modal-review {
-    position: fixed;
-    left: 50%;
+    width: 100%;
+    height: 300px;
+    display:block;
+    position: absolute;
     top: 50%;
+    left:50%;
     transform: translate(-50%, -50%);
-    z-index:100;
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+
+}
+@media screen and (min-width: 768px) {
+    .modal-review {
+        top: calc(50% + 410px);
+    }
 }
 
-.modal-header-review {
+
+.modal-review-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    border-bottom: 2px solid #00000042;
+}
+
+.progress-label-left {
+    float: left;
+    margin-right: 0.5em;
+    line-height: 1em;
+}
+
+.progress-label-right {
+    float: right;
+    margin-left: 0.3em;
+    line-height: 1em;
+}
+
+.star-light {
+    color: #e9ecef;
+}
+
+.modal-review.show-form {
+    opacity: 1;
+    visibility: visible;
+    opacity: 1;
+    visibility: visible;
+    background: #FEF5E7;
+    border: 1px solid #ebc180;
+}
+.rating-css div {
+    color: #ffe400;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+.rating-css input {
+    display: none;
+}
+.rating-css input + label {
+    font-size: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+}
+.rating-css input:checked + label ~ label {
+    color: #b4afaf;
+}
+.rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+}
+
+#rate-submit {
+    width: 30%;
+    height: 40px;
+    margin-top: 20px;
+    font-size:20px;
+    margin-left: 35%;
+    background: #44ee6a;
+    border: 1px solid #2db940;
+}
+
+#rate-submit:hover{
+    background:#198754;
+    border: 1px solid #198754;
 }

@@ -20,10 +20,3 @@ $this->params['breadcrumbs'][] = $this->title;
     the file <code><?= __FILE__; ?></code>.
 </p>
 
-
-<h1><?= Html::encode($this->title) ?></h1>
-
-<?= ListView::widget([
-    'dataProvider' => $dataProvider,
-    'itemView' => '_product',
-]) ?>

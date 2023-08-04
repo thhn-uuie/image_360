@@ -3,7 +3,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 ?>
 
-<nav class="navbar navbar-expand-lg custom_nav-container ">
+<nav class="navbar navbar-expand-lg custom_nav-container" style="padding: 0rem 0rem!important;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class=""></span>
     </button>
@@ -32,18 +32,18 @@ use yii\helpers\Html;
                     </ul>
                 </div>
             </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="why.html">-->
+<!--                    Why Us-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="testimonial.html">-->
+<!--                    Testimonial-->
+<!--                </a>-->
+<!--            </li>-->
             <li class="nav-item">
-                <a class="nav-link" href="why.html">
-                    Why Us
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="testimonial.html">
-                    Testimonial
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
+                <a class="nav-link" href="contact.html">Liên hệ</a>
             </li>
         </ul>
         <!--                <div class="user_option">-->

@@ -31,7 +31,6 @@ use Itstructure\CKEditor\CKEditor;
             <div class="col-md-5">
 
                 <!-- Upload image -->
-
                 <div class="avatar-wrapper">
                     <?php if ($model->image !== null): ?>
                         <img class="products-pic" src="<?php echo '../../image/products/' . $model->image ?>"/>
@@ -46,6 +45,8 @@ use Itstructure\CKEditor\CKEditor;
                     </div>
                     <?= $form->field($model, 'file_image')->fileInput(['onchange' => 'imagePreview()', 'style' => 'display:none']) ?>
                 </div>
+
+                <!-- Upload 360-->
                 <div class="container-pr">
                     <div class="wrapper">
                         <div class="image">

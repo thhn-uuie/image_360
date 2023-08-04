@@ -25,7 +25,11 @@ use kartik\date\DatePicker;
 
                     <!-- Upload image -->
                     <div class="avatar-wrapper">
-                        <img class="profile-pic" src=""/>
+                        <?php if ($model->avatar !== null): ?>
+                            <img class="profile-pic" src="<?php echo '../../image/avatars/' . $model->avatar ?>"/>
+                        <?php else: ?>
+                            <img class="profile-pic" src=""/>
+                        <?php endif; ?>
                         <div class="upload-button">
                             <label for="profile-file_image">
                                 <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
@@ -45,7 +49,7 @@ use kartik\date\DatePicker;
                         'pluginOptions' => [
                             'autoclose' => true
                         ],
-                    ])?>
+                    ]) ?>
 
 
                     <?= $form->field($model, 'gender')->radioList(

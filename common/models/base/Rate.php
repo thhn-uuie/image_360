@@ -10,9 +10,9 @@ use Yii;
  * @property int $id_rate
  * @property int $id_products
  * @property int $id_user
- * @property string $comment
+ * @property string|null $comment
  * @property string $rate
- * @property string $time
+ * @property string|null $time
  *
  * @property Products $products
  * @property Users $user
@@ -33,10 +33,9 @@ class Rate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_products', 'id_user', 'comment', 'rate', 'time'], 'required'],
+            [['id_products', 'id_user', 'rate'], 'required'],
             [['id_products', 'id_user'], 'integer'],
             [['comment', 'rate', 'time'], 'string', 'max' => 255],
-            [['id_products'], 'unique'],
             [['id_products'], 'exist', 'skipOnError' => true, 'targetClass' => Products::class, 'targetAttribute' => ['id_products' => 'id_products']],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id_user' => 'id_user']],
         ];

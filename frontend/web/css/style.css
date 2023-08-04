@@ -4,7 +4,7 @@
   background-color: rgb(255, 255, 255);
 }
 .top-bar {
-  background: #f6f6f6;
+  background: rgb(249, 236, 230);
   text-align:right;
 }
 
@@ -110,7 +110,6 @@
   -webkit-box-pack: center;
   justify-content: center;
   padding: 10px 0px;
-  border-radius: 15px 15px 0px 0px;
 }
 
 #navbarSupportedContent.innerpage_navbar {

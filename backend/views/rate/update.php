@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var common\models\Rate $model */
+/** @var common\models\base\Rate $model */
 
 $this->title = 'Update Rate: ' . $model->id_rate;
 $this->params['breadcrumbs'][] = ['label' => 'Rates', 'url' => ['index']];

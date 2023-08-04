@@ -1207,6 +1207,7 @@
 
 .img-circle.profile_img {
     width: 80px;
+    height: 80px;
     background: #fff;
     margin-left: 37%;
     position: inherit;

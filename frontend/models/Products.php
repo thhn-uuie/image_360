@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use common\models\base\View;
+use common\models\base\Rate;
 use Yii;
 
 /**
@@ -120,5 +121,22 @@ class Products extends \yii\db\ActiveRecord
     public function getRelatedProducts()
     {
         return $this->hasMany(Products::class, ['id_products'=>'related_product_id']) -> viaTable('product_related',['products_id'=>'id_products']);
+    }
+
+    public function getRateProducts($id_products) {
+        $rateDb = Rate::find()->where(['id_products'=>$id_products])->all();
+
+        $rateArr = [];
+        foreach ($rateDb as $temp) {
+            array_push($rateArr, (int)$temp->rate);
+        }
+        if (count($rateArr) == 0) {
+            $rateAverage = 0;
+            $cmt = 0;
+        } else {
+            $rateAverage = array_sum($rateArr) / count($rateArr);
+            $cmt = count($rateArr);
+        }
+        return [$rateAverage, $cmt];
     }
 }
