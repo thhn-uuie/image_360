@@ -12,7 +12,7 @@ AppAsset::register($this);
 <div class="top-bar">
     <div class="row">
         <ul>
-            <li><a href="#"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
+<!--            <li><a href="#"><i class="icon fa fa-heart"></i>Yêu thích</a></li>-->
             <?php if (Yii::$app->user->isGuest): ?>
                 <li>
                     <a href="<?= Url::toRoute(['site/login']) ?>">
