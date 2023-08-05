@@ -37,21 +37,7 @@ use frontend\models\Products;
     </div>
 
   
-    <?php if (!empty($result)): ?>
-        <h3>Kết quả trùng khớp</h3>
-        <?php foreach ($result as $products): ?>
-            <div class="product-item">
-                <div class="product-image">
-                    <?= Html::img($products->image, ['alt' => $products->name_products]) ?>
-                </div>
-                <div class="product-name">
-                    <?= $products->name_products ?>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Không có kết quả trùng khớp</p>
-    <?php endif; ?>
+  
 
 </body>
 

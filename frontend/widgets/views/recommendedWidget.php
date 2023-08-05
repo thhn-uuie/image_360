@@ -41,10 +41,10 @@ use yii\helpers\Url;
                                                 <?php echo $item->name_products; ?>
                                             </p> -->
                                         </a>
-                                    <div
+                                    <!-- <div
                                         class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="card-body">
                                     <h3 class="text-decoration-none">
@@ -90,17 +90,7 @@ use yii\helpers\Url;
     .img-fluid {
         max-width: 100%;
         height: 240px;
+        align-items: center;
     }
 
-    .product-overlay {
-        background: #5ca2ee;
-        top: 0;
-        display: none;
-        height: 0;
-        position: absolute;
-        transition: height 500ms ease 0s;
-        width: 100%;
-        display: block;
-        width: 100%;
-    }
 </style>
