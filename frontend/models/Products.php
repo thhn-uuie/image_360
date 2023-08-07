@@ -118,11 +118,6 @@ class Products extends \yii\db\ActiveRecord
         return $this->getProductsCate($this->id_category);
     }
 
-    public function getRelatedProducts()
-    {
-        return $this->hasMany(Products::class, ['id_products'=>'related_product_id']) -> viaTable('product_related',['products_id'=>'id_products']);
-    }
-
     public function getRateProducts($id_products) {
         $rateDb = Rate::find()->where(['id_products'=>$id_products])->all();
 
@@ -139,4 +134,13 @@ class Products extends \yii\db\ActiveRecord
         }
         return [$rateAverage, $cmt];
     }
+
+    public function rateAvgAllProducts() {
+        $allProducts = Products::find()->all();
+        foreach ($allProducts as $item) {
+            var_dump($this->getRateProducts($item->id_products));
+
+        }
+    }
+
 }

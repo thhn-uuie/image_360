@@ -55,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'contentOptions' => [
                             'style' => 'width:150px;text-align:center'
                         ],
+                        'filter'=>false,
                     ],
 
                     [

@@ -24,6 +24,8 @@ use frontend\widgets\navbarWidget;
     </head>
 
 
+
+
     <body class="hero_area">
     <?php $this->beginBody() ?>
 
@@ -37,7 +39,6 @@ use frontend\widgets\navbarWidget;
     </header>
 
     <!-- end header section -->
-
 
     <?= $content ?>
 

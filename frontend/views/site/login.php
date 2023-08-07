@@ -2,15 +2,15 @@
 
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
-/** @var \common\models\LoginForm $model */
 
-use yii\bootstrap5\Html;
+/** @var \common\models\form\LoginForm $model */
+
 use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
 
-$this->title = 'Login';
+$this->title = 'Đăng nhập';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 
 <html>
 <div class="overlay">
@@ -18,34 +18,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <form>
         <div class="con">
-
             <header class="head-form">
                 <h5>Đăng nhập</h5>
             </header>
-            <br>
+
             <div class="field-set">
                 <span class="input-item">
-                    <i class="fa fa-user-circle" ></i>
+                    <i class="fa fa-user-circle"></i>
                 </span>
                 <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
-
                 <br>
                 <span class="input-item">
                     <i class="fa fa-key"></i>
                 </span>
                 <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
-                
+
                 <br>
-                <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
+                <?= Html::submitButton('Đăng nhập', ['class' => 'btn btn-success']) ?>
             </div>
-
-            <div class="other">
-                <button class="btn submits frgt-pass">Quên mật khẩu?</button>
-                <button class="btn submits sign-up">Đăng ký
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                </button>
-            </div>
-
         </div>
     </form>
     <?php ActiveForm::end(); ?>
@@ -57,11 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <style>
     /* @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur'); */
 
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
+    /** {*/
+    /*    padding: 0;*/
+    /*    margin: 0;*/
+    /*    box-sizing: border-box;*/
+    /*}*/
 
     input[type="text"] {
         width: 300px;
@@ -72,6 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
         outline: none;
         /* margin-left: 6%; */
     }
+
     body {
         background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
         background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
@@ -149,7 +140,7 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     header h5 {
-        font-size:400%;
+        font-size: 400%;
         font-family: 'Playfair Display', serif;
         color: #056d39;
     }
@@ -225,14 +216,14 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     button[type="submit"] {
-    padding: 8px 12px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 20px;
-    color: white;
-    cursor: pointer;
-    margin-left: 14%;
-}
+        padding: 8px 12px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+        margin-left: 14%;
+    }
 
     .fa-user-plus:before {
         content: "\f234";

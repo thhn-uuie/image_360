@@ -43,6 +43,14 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['add-review'],
+                        'roles' => ['@'], // Yêu cầu người dùng đã đăng nhập
+                        'denyCallback' => function ($rule, $action) {
+                            return Yii::$app->getResponse()->redirect(['site/login']); // Chuyển hướng đến trang đăng nhập
+                        },
+                    ],
                 ],
             ],
             'verbs' => [
@@ -90,6 +98,7 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $this->layout = 'blank';
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
