@@ -104,7 +104,7 @@ class Products extends \yii\db\ActiveRecord
     {
         $products_cate = Products::find()
             ->innerJoin('categories', 'categories.id_category = products.id_category')
-            ->where(['products.id_category' => $id_cate, 'products.status' => 'Hoạt động'])
+            ->where(['products.id_category' => $id_cate, 'products.status' => 'Hoạt động', 'categories.status'=>'Hiện'])
             ->all();
         return $products_cate;
     }

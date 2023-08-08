@@ -175,7 +175,6 @@ class ProductsController extends base\ProductsController
                 ]);
             }
 
-
         } else {
             return $this->render('update', [
                 'model' => $model,

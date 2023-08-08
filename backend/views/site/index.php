@@ -267,10 +267,11 @@ $this->title = 'Dashboard';
 
         // config
         const configRate = {
-            type: 'pie',
+            type: 'bar',
             data: dataRate,
             options: {
                 aspectRatio: 1,
+                indexAxis: 'y',
             }
         };
 

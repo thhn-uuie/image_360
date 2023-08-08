@@ -15,7 +15,7 @@ use yii\helpers\Url;
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <a href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
-                                            <img src=<?php echo '../../image/products/' . $item->image ?> alt=""/>
+                                            <img src="<?php echo '../../image/products/' . $item->image ?>" alt=""/>
                                             <p style="margin-top: 20px; color:black"><?php echo $item->name_products; ?></p>
                                         </a>
                                     </div>

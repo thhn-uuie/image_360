@@ -23,7 +23,7 @@ use yii\helpers\Html;
                 <a class="nav-link" style="cursor: pointer">Danh mục</a>
                 <div class="sub-menu-1">
                     <ul>
-                        <?php $category = \common\models\Categories::find()->all();
+                        <?php $category = \common\models\Categories::find()->where(['status'=>'Hiện'])->all();
                         foreach ($category as $item):?>
                             <li><a class="nav-link"
                                    href="<?= Url::toRoute(['products/products-category', 'id_cate' => $item->id_category]) ?>"><?php echo $item->name_category; ?></a>
