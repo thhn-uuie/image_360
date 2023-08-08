@@ -205,7 +205,7 @@ AppAsset::register($this);
     margin-left: 230px;
 }
 
-.a{
-    font-size: 12px;
+a{
+    font-size: 13px;
 }
 </style>
