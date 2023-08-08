@@ -12,6 +12,10 @@ $this->title = 'Đăng nhập';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<head>
+<link rel="stylesheet" href="../web/login/loginn.css">
+
+</head>
 
 <html>
 <div class="overlay">
@@ -24,26 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
             </header>
 
             <div class="field-set">
-                <span class="input-item">
+                <!-- <span class="input-item">
                     <i class="fa fa-user-circle"></i>
-                </span>
+                </span> -->
                 <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
                 <br>
-                <span class="input-item">
+                <!-- <span class="input-item">
                     <i class="fa fa-key"></i>
-                </span>
+                </span> -->
                 <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
                 <br>
                 <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
             </div>
 
-            <div class="other">
-                <button class="btn submits frgt-pass">Quên mật khẩu?</button>
-                <button class="btn submits sign-up">Đăng ký
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                </button>
-            </div>
+            
 
         </div>
     </form>
@@ -53,3 +52,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </html>
 
+<style>
+    .form-label{
+        margin-left: -37%;
+    }
+
+</style>

@@ -1,4 +1,5 @@
-.btn-primary {
+   
+   .btn-primary {
     width: 150px;
     padding: 10px;
     border: none;
@@ -10,13 +11,13 @@
     text-decoration: none;
     display: inline-block;
     transition-duration: 0.1s;
-    background-color: #0fc395;
+    background-color: #57d699;
     font-family: Roboto;
-    margin-left: 0%;
+
 }
 
 .btn-danger {
-    width: 150px;
+  width: 150px;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -27,9 +28,8 @@
     text-decoration: none;
     display: inline-block;
     transition-duration: 0.1s;
-    background-color: #f04e5c;
+    background-color: #e78e96;
     font-family: Roboto;
-    margin-left: 10px;
 
 }
 
@@ -38,7 +38,7 @@
 }
 
 .btn-primary:active {
-    box-shadow: 0 0 9e9q inset #0009;
+    box-shadow: 0 0 9e9q inset #0009; 
     background-color: black;
     outline: none;
 }
@@ -48,12 +48,11 @@
 }
 
 .btn-danger:active {
-    box-shadow: 0 0 2e2q inset #0009;
+    box-shadow: 0 0 2e2q inset #0009; 
     background-color: black;
     outline: none;
 }
-
 .nav.child_menu>li>a {
-    color: #000000;
-    font-weight: 100;
+  color: #000000;
+  font-weight: 100;
 }

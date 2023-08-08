@@ -184,10 +184,10 @@ AppAsset::register($this);
             <!-- /page content -->
 
             <!-- footer content -->
-            <footer>
-                <div class="pull-right">
+            <footer >
+                <div class="pull-right" >
                 </div>
-                <div class="clearfix"></div>
+                <div class="clearfix" ></div>
             </footer>
             <!-- /footer content -->
         </div>
@@ -199,4 +199,9 @@ AppAsset::register($this);
 
     </html>
 <?php $this->endPage() ?>
-
+ 
+<style>
+    footer {
+    margin-left: 230px;
+}
+</style>

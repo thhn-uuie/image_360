@@ -114,16 +114,18 @@
 
 .btn-success {
   background: #20bb9b;
-  border: -2px solid #169F85;
   float: right;
-  margin-top: -70px;
-  margin-right: 240px;
+  margin-top: -8%;
+  margin-right: 29%;
 }
 
 .row {
   --bs-gutter-x: 29rem;
   --bs-gutter-y: 0;
 }
+
+
+
 
 
 

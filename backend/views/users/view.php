@@ -115,3 +115,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'method' => 'post',
       ],
     ]) ?>
+  </div>
+
+</div>

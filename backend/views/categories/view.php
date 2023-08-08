@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="d-flex justify-content-center container mt-5">
     <div class="card p-3 bg-white"><i class="fa fa-apple"></i>
       <div class="about-product text-center mt-2">
-        <<img style="margin-top: -27px; margin-left: -9px; border-radius: -20%; margin-bottom: 16px;" class="element"
+        <img style="margin-top: -27px; margin-left: -9px; border-radius: -20%; margin-bottom: 16px;" class="element"
           width="700px" height="300px" src="<?php echo '../../image/category' . '/' . $model->image ?>">
           <div>
             <h4>Danh mục:</h4>
@@ -69,6 +69,9 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
     </div>
   </div>
+</div>
+
+
 <div class="testbox">
 
   <div style="text-align: center;">
@@ -84,23 +87,3 @@ $this->params['breadcrumbs'][] = $this->title;
   </div>
 </div>
 
-</div>
-
-<style>
-  .btn-primary {
-    width: 150px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    transition-duration: 0.1s;
-    background-color: #0fc395;
-    font-family: Roboto;
-    margin-left: 0%;
-}
-</style>
