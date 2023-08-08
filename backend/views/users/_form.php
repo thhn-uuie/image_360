@@ -23,8 +23,6 @@ use yii\helpers\ArrayHelper;
     <body>
         <div class="row">
             <div class="col-md-12">
-
-
                 <fieldset>
 
                     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
