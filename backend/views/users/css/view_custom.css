@@ -17,7 +17,7 @@ body {
 
 .info p {
     text-align: center;
-    color: #999;
+    color: #000000;
     text-transform: none;
     font-weight: 600;
     font-size: 15px;
@@ -39,14 +39,14 @@ form h1 {
     text-align: left
 }
 
-form {
+.user-form {
     border-radius: 5px;
     max-width: 700px;
     width: 100%;
     margin: 5% auto;
     background-color: #FFFFFF;
     overflow: hidden;
-    margin-top: -4%;
+    border: 1px solid #ef8f8fe8;
 }
 
 p span {
@@ -107,8 +107,8 @@ textarea {
     line-height: 40px;
 }
 
-i {
-    color: #555;
+.icon-style {
+    color: black;
 }
 
 .contentform {
@@ -131,7 +131,7 @@ i {
 .leftcontact {
     width: 49.5%;
     float: left;
-    border-right: 1px dotted #CCC;
+    border-right: 1px dotted #b84b4b;
     box-sizing: border-box;
     padding: 0px 15px 0px 0px;
 }
