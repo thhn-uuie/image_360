@@ -72,7 +72,7 @@ AppAsset::register($this);
                             <ul class="nav side-menu">
                                 <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                     <li>
-                                        <a style="font-weight:500; font-family: Arial"><i class="fa fa-user" ></i> Quản lý tài khoản <span
+                                        <a style="font-weight:450;font-size:13px; font-family: Arial"><i class="fa fa-user" ></i> Quản lý tài khoản <span
                                                     class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li>
@@ -88,7 +88,7 @@ AppAsset::register($this);
                                 <?php } ?>
                                 <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                     <li>
-                                        <a style="font-weight:500; font-family: Arial"><i class="fa fa-info-circle"></i> Hồ sơ <span
+                                        <a style="font-weight:500; font-size:13px;font-family: Arial"><i class="fa fa-info-circle"></i> Hồ sơ <span
                                                     class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li>
@@ -97,7 +97,7 @@ AppAsset::register($this);
                                         </ul>
                                     </li>
                                 <?php } ?>
-                                <li><a style="font-weight:500; font-family: Arial"><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
+                                <li><a style="font-weight:500; font-size:13px;font-family: Arial"><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
                                                 class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
@@ -108,7 +108,7 @@ AppAsset::register($this);
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a style="font-weight:500; font-family: Arial"><i class="fa fa-th-list"></i> Danh mục sản phẩm <span
+                                <li><a style="font-weight:500; font-size:13px;font-family: Arial"><i class="fa fa-th-list"></i> Danh mục sản phẩm <span
                                                 class="fa fa-chevron-down" style="    margin-left: -13%;"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
