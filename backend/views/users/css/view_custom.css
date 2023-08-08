@@ -1,6 +1,6 @@
 .form-control {
-  margin-left: 40px;
-  width: 69%;
+    margin-left: 40px;
+    width: 81%;
 }
 
 .username {
@@ -15,43 +15,51 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-legend {
-  display: block;
-  width: 90%;
-  max-width: 106%;
-  padding: -11px;
-  margin-top: -0.9rem;
+.info p {
+    text-align: center;
+    color: #999;
+    text-transform: none;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 2px
+}
 
-  margin-bottom: -0.5rem;
-  font-size: 3.5rem;
-  line-height: inherit;
-  color: inherit;
-  white-space: normal;
+.info i {
+    color: #F6AA93;
 }
 
 .user-form h1 {
-  font-size: 28px;
-  background: #F6AA93 none repeat scroll 0% 0%;
-  color: rgb(255, 255, 255);
-  padding: 14px 25px;
-  border-radius: 5px 5px 0px 0px;
-  margin: auto;
-  text-shadow: none;
-  text-align: left;
+    font-size: 18px;
+    background: #F6AA93 none repeat scroll 0% 0%;
+    color: rgb(255, 255, 255);
+    padding: 22px 25px;
+    border-radius: 5px 5px 0px 0px;
+    margin: auto;
+    text-shadow: none;
+    text-align: left
 }
 
 .user-form {
-  border-radius: 5px;
-  max-width: 70%;
-  width: 100%;
-  margin: 2% auto;
-  background-color: #FFFFFF;
-  overflow: hidden;
-  margin-top: -15px;
-  border: 1px solid #ffb0b0;
+    border-radius: 5px;
+    max-width: 70%;
+    width: 100%;
+    margin: 5% auto;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    margin-top: -15px;
+    border:1px solid #ffb5b5;
 }
 
+p span {
+    color: #F00;
+}
 
+p {
+    margin: 0px;
+    font-weight: 500;
+    line-height: 2;
+    color: #333;
+}
 
 h1 {
     text-align: center;
@@ -84,65 +92,51 @@ textarea {
     padding: 0px 15px;
 }
 
+.form-group {
+    overflow: hidden;
+    clear: both;
 }
 
-.btn-danger {
-  width: 150px;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  transition-duration: 0.1s;
-  background-color: #e78e96;
-  font-family: Roboto;
-  margin-top: 130px;
-
+.icon-case {
+    width: 35px;
+    float: left;
+    border-radius: 5px 0px 0px 5px;
+    background: #eeeeee;
+    height: 42px;
+    position: relative;
+    text-align: center;
+    line-height: 40px;
 }
 
 .icon-style{
-  color:black;
+    color:black;
 }
 
 .contentform {
-  padding: 23px 30px;
+    padding: 40px 30px;
 }
 
-.btn-primary:active {
-  box-shadow: 0 0 9e9q inset #0009;
-  background-color: black;
-  outline: none;
-}
+
 
 .leftcontact {
-  width: 45%;
-  float: left;
-  box-sizing: border-box;
-  margin-left: 27px;
+    width: 48.5%;
+    float: left;
+    box-sizing: border-box;
+    margin-left: 15px;
 }
 
 .rightcontact {
-  width: 47.5%;
-  float: right;
-  box-sizing: border-box;
+    width: 49.5%;
+    float: right;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 15px;
 }
 
-.card {
-  width: 627px;
-  height: 200px;
+.validation {
+    display: none;
+    margin: 0 0 10px;
+    font-weight: 400;
+    font-size: 13px;
+    color: #DE5959;
 }
 
-body {
-  background: #eee;
-}
-
-.bg-white {
-  background: #d6f4ef !important;
-  border: 1px solid #a31b1b !important;
-  color: #083c73;
-  margin-left: 10px;
-} 
