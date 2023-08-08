@@ -93,3 +93,81 @@
     background:#198754;
     border: 1px solid #198754;
 }
+
+
+.round-image {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-left: 20%;
+}
+
+#review_content .card-cmt {
+    margin-left: -7%;
+    width: 79vw;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+#review_content .card-header-cmt {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+#review_content .card-body-cmt {
+    height: 49px;
+    padding: 10px;
+}
+
+@media (max-width: 765px) {
+    .round-image {
+        margin-left: 8px;
+    }
+
+    #review_content .card-cmt {
+        margin-left: -6%;
+        width: 76vw;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;
+    }
+}
+
+@media (min-width: 765px) and (max-width: 872px) {
+
+    .round-image {
+        margin-left: 25px;
+    }
+    #review_content .card-cmt {
+        margin-left: -8%;
+        width: 69vw;
+    }
+}
+
+@media (min-width: 873px) and (max-width: 1000px) {
+
+    .round-image {
+        margin-left: 25px;
+    }
+    #review_content .card-cmt {
+        margin-left: -5%;
+        width: 74vw;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1270px) {
+
+    .round-image {
+        margin-left: 25px;
+    }
+    #review_content .card-cmt {
+        margin-left: -6%;
+        width: 76vw;
+    }
+}

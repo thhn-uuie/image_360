@@ -24,6 +24,7 @@ use yii\helpers\Url;
 </head>
 
 <body>
+<h2 style="font-size: 25px; font-weight:bold"> SẢN PHẨM LIÊN QUAN </h2>
     <div class="container">
         <div id="wapper">
             <div class="row filtering">

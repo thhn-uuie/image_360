@@ -42,6 +42,8 @@ class Users extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['username', 'password', 'email', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['username'], 'unique'],
+            [['password'], 'string', 'min' => 8, 'tooShort'=>'Mật khẩu phải có ít nhất 8 ký tự.'],
+            [['password'], 'match', 'pattern' => '/^(?=.*\d)(?=.*[A-Z]).*$/', 'message' => 'Mật khẩu phải có ít nhất 1 chữ hoa và 1 chữ số.'],
             [['email'], 'unique'],
             [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['id_role' => 'id_role']],
         ];

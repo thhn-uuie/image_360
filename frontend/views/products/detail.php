@@ -254,12 +254,34 @@ use frontend\widgets\rateCmtWidget;
                         </div>
                         </p>
                     <?php endfor; ?>
-
                 </div>
             </div>
         </div>
     </div>
-    <div class="mt-5" id="review_content"></div>
+    <?php $cmt = \common\models\base\Rate::find()->where(['id_products' => $products->id_products])->all();?>
+    <?php foreach ($cmt as $temp): ?>
+        <?php $comment = $temp->comment; ?>
+        <div class="mt-5" id="review_content">
+            <?php $avatarProfile = \common\models\Profile::find()->where(['id_user'=>$temp->id_user])->all(); ?>
+            <?php foreach ($avatarProfile as $item): ?>
+                <div class="row mb-3">
+                    <div class="col">
+                        <img class="round-image" src="<?php echo '../../image/avatars/' . $item->avatar ?>">
+                    </div>
+                    <div class="col">
+                        <div class="card-cmt">
+                            <div class="card-header-cmt">
+                                <b><?php echo $item->user->username ?></b>
+                            </div>
+                            <div class="card-body-cmt">
+                                <?php echo $comment; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
 </section>
 
 <?php
@@ -292,18 +314,16 @@ if (!Yii::$app->user->isGuest) {
             $('#review_modal').toggleClass('show-form');
         });
 
+        $('#rate-submit').click(function () {
+            var commentInput = document.getElementById("comment");
+
+            if (commentInput.value.trim() === "") {
+                alert("Bạn cần nhập bình luận!")
+                event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+            }
+        })
+
     });
-
-
-    document.getElementById("rate-submit").addEventListener("click", function(event) {
-        var commentInput = document.getElementById("comment");
-
-        if (commentInput.value.trim() === "") {
-            alert("Bạn cần nhập bình luận!")
-            event.preventDefault(); // Ngăn chặn gửi biểu mẫu
-        }
-    });
-
 
 
     document.getElementById("add_review").addEventListener("click", function () {
@@ -316,7 +336,7 @@ if (!Yii::$app->user->isGuest) {
         // Kiểm tra trạng thái đăng nhập ở đây
         console.log(<?php Yii::$app->user->isGuest?>);
         <?php if(!Yii::$app->user->isGuest):?>
-            return true;
+        return true;
         <?php endif;?>
         return false;
     }
