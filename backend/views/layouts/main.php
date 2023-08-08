@@ -80,7 +80,7 @@ AppAsset::register($this);
                                             </li>
 
                                             <li>
-                                                <?php echo Html::a('Danh sách tài khoản dược tạo', ['/users']) ?>
+                                                <?php echo Html::a('Danh sách tài khoản được tạo', ['/users']) ?>
                                             </li>
 
                                         </ul>
@@ -203,5 +203,9 @@ AppAsset::register($this);
 <style>
     footer {
     margin-left: 230px;
+}
+
+.a{
+    font-size: 12px;
 }
 </style>
