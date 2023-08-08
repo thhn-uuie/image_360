@@ -7,9 +7,14 @@
 .card--wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 8rem;
+    gap: 10%;
 }
 
+@media (max-width: 780px) {
+    .card--wrapper {
+        gap: 20px;
+    }
+}
 .main--title {
     color: rgba(113, 99, 186, 255);
     padding-bottom: 10px;
@@ -21,7 +26,7 @@
     border-radius: 10px;
     border: 1px solid #AED581;
     padding: 1.2rem;
-    width: 290px;
+    width: 270px;
     height: 150px;
     display: flex;
     flex-direction: column;
