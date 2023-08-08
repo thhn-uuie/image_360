@@ -1,6 +1,5 @@
 <?php
 
-use yii\imagine\Image;
 use yii\helpers\Url;
 use frontend\widgets\recommendedWidget;
 use frontend\widgets\rateCmtWidget;
@@ -10,7 +9,6 @@ use frontend\widgets\rateCmtWidget;
     <link rel="stylesheet" href="../web/view-products/css/popup.css" type="text/css">
     <link rel="stylesheet" href="../web/view-products/css/popup360.css" type="text/css">
     <link rel="stylesheet" href="../web/view-products/css/ratecmt.css" type="text/css">
-
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
@@ -88,8 +86,8 @@ use frontend\widgets\rateCmtWidget;
                         </div>
                         <!--End Pop Up QR code-->
 
-                        <h6 style="margin-top: 10px">Ảnh 360 độ: </h6>
                         <!-- Start Pop Up Image 360-->
+                        <h6 style="margin-top: 10px">Ảnh 360 độ: </h6>
                         <div class="start-btn-360">
                             <button class="open-modal-btn-360">Xem</button>
                         </div>
@@ -102,7 +100,6 @@ use frontend\widgets\rateCmtWidget;
                                 </div>
                                 <div class="form360">
                                     <?php echo $this->render('view360', ['products' => $products]) ?>
-
                                 </div>
                             </div>
                         </div>
@@ -124,15 +121,18 @@ use frontend\widgets\rateCmtWidget;
                         </script>
                         <!--End Pop Up Image 360-->
 
+                        <!-- Button Rate Products -->
                         <div class="row pb-3">
                             <div class="col d-grid">
-                                <button type="button" name="add_review" id="add_review" class="btn btn-success btn-lg" style="margin-top: 20px;">
+                                <button type="button" name="add_review" id="add_review" class="btn btn-success btn-lg"
+                                        style="margin-top: 20px;">
                                     Đánh giá
                                 </button>
-
                             </div>
                         </div>
 
+                        <!-- Modal rate products-->
+                        <?php if (!Yii::$app->user->isGuest): ?>
                             <div id="review_modal" class="modal-review" role="dialog">
                                 <div class="modal-review-dialog" role="document">
                                     <div class="modal-review-content">
@@ -141,10 +141,11 @@ use frontend\widgets\rateCmtWidget;
                                             <i id="icon-close" class="fa fa-times" style="cursor: pointer"></i>
                                         </div>
                                         <div class="modal-review-body">
-                                            <form method="post"
-                                                  action="<?= Url::toRoute(['products/detail', 'id_products' => $products->id_products]) ?>">
+                                            <form method="post">
                                                 <input type="hidden" name="_csrf-frontend"
                                                        value="<?= Yii::$app->request->getCsrfToken() ?>"/>
+
+                                                <!-- Star -->
                                                 <h4 class="text-center mt-2 mb-4">
                                                     <div class="rating-css">
                                                         <div class="star-icon">
@@ -167,10 +168,13 @@ use frontend\widgets\rateCmtWidget;
                                                     </div>
                                                 </h4>
 
+
+                                                <!--Input form-->
                                                 <input type="hidden" id="id_products_current" name="id_products_current"
                                                        value="<?php echo($products->id_products); ?>">
                                                 <input type="hidden" id="id_user_current" name="id_user_current"
                                                        value="<?php echo Yii::$app->user->identity->getId(); ?>">
+
                                                 <input type="text" name="comment" id="comment" class="form-control"
                                                        placeholder="Nhập bình luận..."/>
                                                 <input type="submit" id="rate-submit" value="Lưu">
@@ -180,13 +184,13 @@ use frontend\widgets\rateCmtWidget;
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-
+                        <?php endif; ?>
                     </div>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script src="../web/view-products/js/popup.js"></script>
 
@@ -256,25 +260,68 @@ use frontend\widgets\rateCmtWidget;
         </div>
     </div>
     <div class="mt-5" id="review_content"></div>
-
-    <script>
-
-        $(document).ready(function () {
-
-            $('#add_review').click(function () {
-
-                $('#review_modal').toggleClass('show-form');
-
-            });
-            $('#icon-close').click(function () {
-                $('#review_modal').toggleClass('show-form');
-            });
-
-        });
-
-    </script><!-- End rate and comments-->
 </section>
 
+<?php
+$hasRate = false;
+if (!Yii::$app->user->isGuest) {
+    $findRate = \common\models\base\Rate::findOne(['id_products' => $products->id_products, 'id_user' => Yii::$app->user->identity->getId()]);
+    if ($findRate !== null) {
+        $hasRate = true;
+    } else {
+        $hasRate = false;
+    }
+}
+?>
+<script>
+
+    $(document).ready(function () {
+
+        $('#add_review').click(function () {
+            var hasRated = <?php echo json_encode($hasRate)?>;
+
+            if (hasRated == true) {
+                alert("Bạn đã đánh giá sản phẩm này rồi!")
+            } else {
+                $('#review_modal').toggleClass('show-form');
+            }
+        });
+
+
+        $('#icon-close').click(function () {
+            $('#review_modal').toggleClass('show-form');
+        });
+
+    });
+
+
+    document.getElementById("rate-submit").addEventListener("click", function(event) {
+        var commentInput = document.getElementById("comment");
+
+        if (commentInput.value.trim() === "") {
+            alert("Bạn cần nhập bình luận!")
+            event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+        }
+    });
+
+
+
+    document.getElementById("add_review").addEventListener("click", function () {
+        if (!checkLoggedIn()) {
+            window.location.href = "<?= Yii::$app->urlManager->createUrl(['site/login']) ?>"; // Chuyển hướng đến trang đăng nhập
+        }
+    });
+
+    function checkLoggedIn() {
+        // Kiểm tra trạng thái đăng nhập ở đây
+        console.log(<?php Yii::$app->user->isGuest?>);
+        <?php if(!Yii::$app->user->isGuest):?>
+            return true;
+        <?php endif;?>
+        return false;
+    }
+
+</script><!-- End rate and comments-->
 
 <!-- Start Recommended Products -->
 <?= recommendedWidget::widget() ?>

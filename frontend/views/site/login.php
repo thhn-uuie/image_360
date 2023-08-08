@@ -2,18 +2,16 @@
 
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
-/** @var \common\models\LoginForm $model */
 
-use yii\bootstrap5\Html;
+/** @var \common\models\form\LoginForm $model */
+
 use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
 
-$this->title = 'Login';
+$this->title = 'Đăng nhập';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<head>
-    <link rel="stylesheet" href="../web/login/login.css" type="text/css">
-</head>
 
 <html>
 <div class="overlay">
@@ -21,17 +19,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <form>
         <div class="con">
-
             <header class="head-form">
                 <h5>Đăng nhập</h5>
             </header>
-            <br>
+
             <div class="field-set">
                 <span class="input-item">
                     <i class="fa fa-user-circle"></i>
                 </span>
                 <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
-
                 <br>
                 <span class="input-item">
                     <i class="fa fa-key"></i>
@@ -42,7 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
             </div>
 
-            
+            <div class="other">
+                <button class="btn submits frgt-pass">Quên mật khẩu?</button>
+                <button class="btn submits sign-up">Đăng ký
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </button>
+            </div>
 
         </div>
     </form>
