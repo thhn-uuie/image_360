@@ -1263,6 +1263,7 @@
     font-size: 10px;
     min-width: inherit;
     color: #000000;
+    margin-left: -13%;
 }
 
 .active a span.fa {
