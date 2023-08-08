@@ -13,11 +13,15 @@ class recommendedWidget extends Widget {
     public function run()
     {
         $products = Products::find()
-            ->limit(8)
             ->all();
         shuffle($products);
+        $randomProducts = array_rand($products, 8);
+        $recommendedProducts = [];
+        foreach ($randomProducts as $productKey) {
+            $recommendedProducts[] = $products[$productKey];
+        }
         return $this->render('recommendedWidget', [
-            'products'=> $products
+            'products'=> $recommendedProducts
         ]);
     }
 }

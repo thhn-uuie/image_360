@@ -25,32 +25,31 @@ use yii\helpers\Url;
 
 <body>
 <h2 style="font-size: 25px; font-weight:bold"> SẢN PHẨM LIÊN QUAN </h2>
-    <div class="container">
-        <div id="wapper">
-            <div class="row filtering">
-                <?php foreach ($products as $item): ?>
-                    <div class="p-2 pb-3">
-                        <a href="<?= Url::to(['product/view', 'id_products' => $item->id_products]) ?>">
-                            <div class="product-wap card rounded-0">
-                                <div class="card rounded-0">
-                                        <a
-                                            href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
-                                            <img class="img-fluid" src="<?php echo '../../image/products/' . $item->image ?>">
-                                        </a>
-                                </div>
-                                <div class="card-body">
-                                    <h3 class="text-decoration-none">
-                                        <?= $item->name_products ?>
-                                    </h3>
-                                </div>
+
+<div class="container">
+    <div id="wapper">
+        <div class="row filtering">
+            <?php foreach ($products as $item): ?>
+                <div class="p-2 pb-3">
+                    <a href="<?= Url::to(['product/view', 'id_products' => $item->id_products]) ?>">
+                        <div class="product-wap card rounded-0">
+                            <div class="card rounded-0">
+                                <a href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
+                                    <img class="img-fluid" src="<?php echo '../../image/products/' . $item->image ?>">
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                            <div class="card-body">
+                                <h3 class="text-decoration-none">
+                                    <?= $item->name_products ?>
+                                </h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
-
+</div>
 
 
 
