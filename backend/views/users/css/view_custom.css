@@ -1,6 +1,6 @@
 .form-control {
     margin-left: 40px;
-    width: 81%;
+    width: 69%;
 }
 
 .username {
@@ -41,9 +41,9 @@ body {
 
 .user-form {
     border-radius: 5px;
-    max-width: 70%;
+    max-width: 700px;
     width: 100%;
-    margin: 5% auto;
+    margin: 3% auto;
     background-color: #FFFFFF;
     overflow: hidden;
     margin-top: -15px;
@@ -119,14 +119,15 @@ textarea {
 
 
 .leftcontact {
-    width: 48.5%;
+    width: 49.5%;
     float: left;
+    border-right: 1px dotted #CCC;
     box-sizing: border-box;
-    margin-left: 15px;
+    padding: 0px 15px 0px 0px;
 }
 
 .rightcontact {
-    width: 48.5%;
+    width: 49.5%;
     float: right;
     box-sizing: border-box;
     padding: 0px 0px 0px 15px;
