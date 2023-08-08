@@ -32,19 +32,10 @@ use yii\helpers\Url;
                         <a href="<?= Url::to(['product/view', 'id_products' => $item->id_products]) ?>">
                             <div class="product-wap card rounded-0">
                                 <div class="card rounded-0">
-<a
+                                        <a
                                             href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
                                             <img class="img-fluid" src="<?php echo '../../image/products/' . $item->image ?>">
-
-                                            <!-- <img src=<?php echo '../../image/products/' . $item->image ?> alt="" /> -->
-                                            <!-- <p style="margin-top: 20px; color:black">
-                                                <?php echo $item->name_products; ?>
-                                            </p> -->
                                         </a>
-                                    <!-- <div
-                                        class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                        
-                                    </div> -->
                                 </div>
                                 <div class="card-body">
                                     <h3 class="text-decoration-none">

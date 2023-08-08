@@ -41,34 +41,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <div class="colums">
         <div class="item">
-          <label for="fname" style="margin-right:10px; margin-top: 7px;"> Thời gian tạo: <?php echo $model->created_at ?> </label>
-          
+          <label for="fname" style="margin-right:10px; margin-top: 7px;"> Thời gian tạo:
+            <?php echo $model->created_at ?>
+          </label>
+
         </div>
         <div class="item">
-          <label for="lname" style="margin-right:10px;margin-left: 25px;margin-top: 7px;"> Người tạo: <?php echo $model->created_by ?></label>
-          
+          <label for="lname" style="margin-right:10px;margin-left: 25px;margin-top: 7px;"> Người tạo:
+            <?php echo $model->created_by ?>
+          </label>
+
         </div>
         <div class="item">
-          <label for="address1" style="margin-right:10px;margin-top: 7px;"> Thời gian cập nhật: <?php echo $model->updated_at ?></label>
-         
+          <label for="address1" style="margin-right:10px;margin-top: 7px;"> Thời gian cập nhật:
+            <?php echo $model->updated_at ?>
+          </label>
+
         </div>
         <div class="item">
-          <label for="address2" style="margin-right:10px;margin-left: 25px;margin-top: 7px;">Người cập nhật: <?php echo $model->created_by ?></label>
-        
+          <label for="address2" style="margin-right:10px;margin-left: 25px;margin-top: 7px;">Người cập nhật:
+            <?php echo $model->created_by ?>
+          </label>
+
         </div>
         <div class="question">
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-
-
-
-
-
-
 <div class="testbox">
 
   <div style="text-align: center;">
@@ -83,40 +83,24 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
   </div>
 </div>
+
 </div>
 
 <style>
   .btn-primary {
-          width: 150px;
-          padding: 10px;
-          border: none;
-          border-radius: 4px;
-          font-size: 20px;
-          color: white;
-          cursor: pointer;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          transition-duration: 0.1s;
-          background-color: #0fc395;
-          font-family: Roboto;
-          margin-left: 300px;
-        }
-  .btn-danger {
-          width: 150px;
-          padding: 10px;
-          border: none;
-          border-radius: 4px;
-          font-size: 20px;
-          color: white;
-          cursor: pointer;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          transition-duration: 0.1s;
-          background-color: #f04e5c;
-          font-family: Roboto;
-          margin-left: 10px;
-
-        }
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.1s;
+    background-color: #0fc395;
+    font-family: Roboto;
+    margin-left: 0%;
+}
 </style>

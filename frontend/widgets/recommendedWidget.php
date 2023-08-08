@@ -15,6 +15,7 @@ class recommendedWidget extends Widget {
         $products = Products::find()
             ->limit(8)
             ->all();
+        shuffle($products);
         return $this->render('recommendedWidget', [
             'products'=> $products
         ]);

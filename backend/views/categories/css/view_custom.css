@@ -43,8 +43,8 @@
           transition-duration: 0.1s;
           background-color: #0fc395;
           font-family: Roboto;
-          margin-left: 300px;
-        }
+          margin-left: -20%;
+      }
 
         .btn-danger {
           width: 150px;
@@ -58,7 +58,7 @@
           text-decoration: none;
           display: inline-block;
           transition-duration: 0.1s;
-          background-color: #de4653;
+          background-color: #f04e5c;
           font-family: Roboto;
           margin-left: 10px;
 
