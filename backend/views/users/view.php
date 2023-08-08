@@ -13,94 +13,92 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="users-view">
 
-    <h1>
-        <?= Html::encode($this->title) ?>
+  <h1>
+    <?= Html::encode($this->title) ?>
+  </h1>
+
+
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../views/users/css/view_custom.css">
+    <link rel="stylesheet" href="../views/users/css/button_custom.css">
+  </head>
+
+
+  <form class="user-form">
+    <h1 class="username">
+      <?php echo $model->username ?>
     </h1>
-
-
-    <head>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-              integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="../views/users/css/view_custom.css">
-        <link rel="stylesheet" href="../views/users/css/button_custom.css">
-    </head>
-
-
-    <form class="user-form">
-        <h1 class="username">
-            <?php echo $model->username ?>
-        </h1>
-        <div class="contentform">
-            <div class="leftcontact">
-                <div class="form-group">
-                    <p>E-mail </p>
-                    <span class="icon-case"><i class="fa fa-envelope-open icon-style"> </i></span>
-                    <div class="form-control" style="margin-left: 40px">
-                        <?php echo $model->email ?>
-                    </div>
-                    <div class="validation"></div>
-                </div>
-
-                <div class="form-group">
-                    <p>Người tạo </p>
-                    <span class="icon-case"><i class="fa fa-user-circle icon-style"></i></span>
-                    <div class="form-control">
-                        <?php echo $model->created_by ?>
-                    </div>
-                    <div class="validation"></div>
-                </div>
-
-                <div class="form-group">
-                    <p>Người cập nhật </p>
-                    <span class="icon-case"><i class="fa fa-user-circle icon-style"></i></span>
-                    <div class="form-control">
-                        <?php echo $model->updated_by ?>
-                    </div>
-                    <div class="validation"></div>
-                </div>
-            </div>
-
-            <div class="rightcontact">
-
-                <div class="form-group">
-                    <p>Chức năng </p>
-                    <span class="icon-case"><i class="fa fa-user icon-style"></i></span>
-                    <?php $roleName = Yii::$app->request->post('name'); ?>
-                    <div class="form-control">
-                        <?php if ($model->id_role == 1) {
-                            echo 'admin';
-                        } else if ($model->id_role == 2) {
-                            echo 'user';
-                        } ?>
-                    </div>
-                    <div class="validation"></div>
-                </div>
-
-                <div class="form-group">
-                    <p>Thời gian tạo </p>
-                    <span class="icon-case"><i class="fa fa-clock icon-style"></i></span>
-                    <div class="form-control">
-                        <?php echo $model->created_at ?>
-                    </div>
-                    <div class="validation"></div>
-                </div>
-
-                <div class="form-group">
-                    <p>Thời gian cập nhật </p>
-                    <span class="icon-case"><i class="fa fa-clock icon-style"></i></span>
-                    <div class="form-control">
-                        <?php echo $model->updated_at ?>
-                    </div>
-                    <div class="validation"></div>
-                </div>
-            </div>
+    <div class="contentform">
+      <div class="leftcontact">
+        <div class="form-group">
+          <p>E-mail </p>
+          <span class="icon-case"><i class="fa fa-envelope-open icon-style"> </i></span>
+          <div class="form-control" style="margin-left: 40px">
+            <?php echo $model->email ?>
+          </div>
+          <div class="validation"></div>
         </div>
-    </form>
-    </body>
+
+        <div class="form-group">
+          <p>Người tạo </p>
+          <span class="icon-case"><i class="fa fa-user-circle icon-style"></i></span>
+          <div class="form-control">
+            <?php echo $model->created_by ?>
+          </div>
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Người cập nhật </p>
+          <span class="icon-case"><i class="fa fa-user-circle icon-style"></i></span>
+          <div class="form-control">
+            <?php echo $model->updated_by ?>
+          </div>
+          <div class="validation"></div>
+        </div>
+      </div>
+
+      <div class="rightcontact">
+
+        <div class="form-group">
+          <p>Chức năng </p>
+          <span class="icon-case"><i class="fa fa-user icon-style"></i></span>
+          <?php $roleName = Yii::$app->request->post('name'); ?>
+          <div class="form-control">
+            <?php if ($model->id_role == 1) {
+              echo 'admin';
+            } else if ($model->id_role == 2) {
+              echo 'user';
+            } ?>
+          </div>
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Thời gian tạo </p>
+          <span class="icon-case"><i class="fa fa-clock icon-style"></i></span>
+          <div class="form-control">
+            <?php echo $model->created_at ?>
+          </div>
+          <div class="validation"></div>
+        </div>
+
+        <div class="form-group">
+          <p>Thời gian cập nhật </p>
+          <span class="icon-case"><i class="fa fa-clock icon-style"></i></span>
+          <div class="form-control">
+            <?php echo $model->updated_at ?>
+          </div>
+          <div class="validation"></div>
+        </div>
+      </div>
+    </div>
+  </form>
 
 
-    <div style="text-align: center;">
+  <div style="text-align: center;">
 
     <?= Html::a('Cập nhật', ['update', 'id_user' => $model->id_user], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Xóa', ['delete', 'id_user' => $model->id_user], [
@@ -111,4 +109,5 @@ $this->params['breadcrumbs'][] = $this->title;
       ],
     ]) ?>
 
-</div>
+  </div>
+  </div>
