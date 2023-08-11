@@ -31,10 +31,12 @@ class ProfileController extends \backend\controllers\base\ProfileController
                         'roles' => ['@'],
                         'actions' => ['view'],
                         'matchCallback' => function ($rule, $action) {
-                            $userRole = Yii::$app->user->identity->id_role;
-                            if ($userRole == 1 || $userRole == 2) {
+                            $account = $action->controller->findModel(Yii::$app->request->get('id_user'));
+                            $account_current = Yii::$app->user->identity;
+                            if ($account_current->id_role == 1 || $account->id_user == $account_current->getId()) {
                                 return true;
                             }
+                            return false;
                         },
                     ],
                     [
@@ -95,7 +97,14 @@ class ProfileController extends \backend\controllers\base\ProfileController
         }
     }
 
-
+    /**
+     *  mục dích
+     * @param $id_user
+     * @return string|\yii\web\Response
+     * @throws \yii\web\NotFoundHttpException
+     *
+     * output
+     */
     public function actionUpdate($id_user)
     {
         $model = $this->findModel($id_user);
@@ -105,7 +114,6 @@ class ProfileController extends \backend\controllers\base\ProfileController
             $model->file_image = UploadedFile::getInstance($model, 'file_image');
             if ($model->file_image) {
                 $model->file_image->saveAs('../../image/avatars/' . time() . '_' . $model->file_image->name);
-//                var_dump($model->avatar);die;
                 if($model->avatar !== 'no-avatar.jpg') {
                     unlink('../../image/avatars/' . $model->avatar);
                     $model->avatar = time() . '_' . $model->file_image->name;

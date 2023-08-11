@@ -98,5 +98,4 @@ class ProductsController extends \yii\web\Controller
             'result' => $result
         ]);
     }
-
  }

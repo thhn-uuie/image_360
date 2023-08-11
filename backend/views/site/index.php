@@ -4,6 +4,7 @@
 
 use common\models\Products;
 use common\models\base\View;
+use yii\db\Query;
 
 $this->title = 'Dashboard';
 ?>
@@ -42,30 +43,34 @@ $this->title = 'Dashboard';
         }
 
 
-
-
     </style>
 </head>
 <body>
+<?php if (!Yii::$app->user->isGuest): ?>
+
 <div class="card--container">
     <h3 class="main--title"></h3>
     <div class="card--wrapper">
 
-        <div class="first-card">
-            <div class="card--header">
-                <div class="content-first-card">
-                    <span class="title"> Tài khoản được tạo </span>
-                    <span class="first-value">
+        <?php
+        if (Yii::$app->user->identity->id_role == 1):
+            ?>
+            <div class="first-card">
+                <div class="card--header">
+                    <div class="content-first-card">
+                        <span class="title"> Tài khoản được tạo </span>
+                        <span class="first-value">
                         <?php echo count(\common\models\User::find()->all()) ?>
                     </span>
+                    </div>
+                    <i class="fa fa-user icon-dash"></i>
                 </div>
-                <i class="fa fa-user icon-dash"></i>
-            </div>
-            <span class="card-detail">
+                <span class="card-detail">
                 <p>Admin: <?php echo count(\common\models\User::find()->where(['id_role' => '1'])->all()) ?></p>
                 <p>User: <?php echo count(\common\models\User::find()->where(['id_role' => '2'])->all()) ?></p>
             </span>
-        </div>
+            </div>
+        <?php endif; ?>
 
         <div class="first-card">
             <div class="card--header">
@@ -102,39 +107,37 @@ $this->title = 'Dashboard';
 
     <div class="row" style="margin-top: 15px">
 
-            <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <p>Những sản phẩm có lượt xem nhiều nhất</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="chartBox">
-                            <canvas id="topView"></canvas>
-                        </div>
-                    </div>
-
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <p>Những sản phẩm có lượt xem nhiều nhất</p>
                 </div>
-            </div>
-
-            <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <p>Những sản phẩm có lượt đánh giá cao nhất</p>
+                <div class="card-body">
+                    <div class="chartBox">
+                        <canvas id="topView"></canvas>
                     </div>
-                    <div class="card-body">
-                        <div class="chartBox">
-                            <canvas id="topRate"></canvas>
-                        </div>
-                    </div>
-
                 </div>
+
             </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <p>Những sản phẩm có lượt đánh giá cao nhất</p>
+                </div>
+                <div class="card-body">
+                    <div class="chartBox">
+                        <canvas id="topRate"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </div>
-
+<?php endif;?>
     <?php
-
-    use yii\db\Query;
 
 
     $query = new Query();
@@ -185,7 +188,9 @@ $this->title = 'Dashboard';
     $viewProducts = [];
     foreach ($topViewedProducts as $product) {
         array_push($nameProducts, $product->name_products);
-        array_push($viewProducts, $product->view->view_count);
+        if (View::findOne(['id_products'=>$product->id_products]) !== null) {
+            array_push($viewProducts, $product->view->view_count);
+        }
     }
 
 

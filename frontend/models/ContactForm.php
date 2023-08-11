@@ -24,7 +24,13 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+            [['name'], 'required', 'message'=>'Họ tên không được để trống'],
+            [['email'], 'required', 'message'=>'Email không được để trống'],
+            [['subject'], 'required', 'message'=>'Tiêu đề không được để trống'],
+            [['body'], 'required', 'message'=>'Nội dung không được để trống'],
+
+
+
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
@@ -38,7 +44,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => 'Họ và tên',
+            'email' => 'Email',
+            'subject' => 'Tiêu đề',
+            'body' =>'Nội dung',
+            'verifyCode' => 'Mã xác nhận',
         ];
     }
 

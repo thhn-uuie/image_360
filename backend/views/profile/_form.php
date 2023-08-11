@@ -12,6 +12,9 @@ use kartik\date\DatePicker;
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="../views/profile/css/upload-img.scss" type="text/css">
     <link rel="stylesheet" href="../views/profile/css/form-body.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
 </head>
 
 <div class="profile-form">
@@ -47,7 +50,8 @@ use kartik\date\DatePicker;
                     <?= $form->field($model, 'birthday')->widget(DatePicker::classname(), [
                         'options' => ['placeholder' => 'Nhập ngày sinh...'],
                         'pluginOptions' => [
-                            'autoclose' => true
+                            'autoclose' => true,
+                            'format' => 'dd/mm/yyyy',
                         ],
                     ]) ?>
 
@@ -61,7 +65,7 @@ use kartik\date\DatePicker;
 
                     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-                    <?= $form->field($model, 'phone')->textInput() ?>
+                    <?= $form->field($model, 'phone')->textInput(['id'=>'phone-input']) ?>
 
                     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
@@ -89,6 +93,16 @@ use kartik\date\DatePicker;
                 fileReader.readAsDataURL(fileToLoad);
             }
         }
+
+
+
+    </script>
+    <script>
+        const input = document.querySelector("#phone-input");
+        const iti = window.intlTelInput(input, {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+        });
+
     </script>
     <?php ActiveForm::end(); ?>
 

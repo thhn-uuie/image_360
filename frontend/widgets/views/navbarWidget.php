@@ -16,7 +16,7 @@ use yii\helpers\Html;
                 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <?php echo Html::a('Sản phẩm', ['/categories/categories'], ['class' => 'nav-link']) ?>
+                <?php echo Html::a('Ảnh 360', ['/categories/categories'], ['class' => 'nav-link']) ?>
             </li>
 
             <li class="nav-item active">
@@ -43,7 +43,7 @@ use yii\helpers\Html;
 <!--                </a>-->
 <!--            </li>-->
             <li class="nav-item">
-                <a class="nav-link" href="contact.html">Liên hệ</a>
+                <a class="nav-link" href="<?= Url::toRoute(['site/contact'])?>">Liên hệ</a>
             </li>
         </ul>
         <!--                <div class="user_option">-->

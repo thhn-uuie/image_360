@@ -89,17 +89,25 @@ if (Yii::$app->user->isGuest) {
                         <div class="col-md-12"><label class="labels">Địa chỉ</label>
                             <p style="font-size: 15px"><?php echo $model->address ?></p></div>
 
-                        <?php if (Yii::$app->user->isGuest): ?>
-                        <?php if (Yii::$app->user->identity->id_role == 1):?>
-                        <div class="col-md-6"><label class="labels">Thời gian tạo profile</label>
-                            <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
-                        <div class="col-md-6"><label class="labels">Người tạo profile</label>
-                            <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
-                        <div class="col-md-6"><label class="labels">Thời gian cập nhật profile</label>
-                            <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
-                        <div class="col-md-6"><label class="labels">Người cập nhật profile</label>
-                            <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
-                        <?php endif; ?>
+                        <?php if (!Yii::$app->user->isGuest): ?>
+                            <?php if (Yii::$app->user->identity->id_role == 2): ?>
+                                <div class="col-md-6"><label class="labels">Thời gian cập nhật profile</label>
+                                    <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p>
+                                </div>
+                                <div class="col-md-6"><label class="labels">Người cập nhật profile</label>
+                                    <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
+                            <?php else:?>
+                                <div class="col-md-6"><label class="labels">Thời gian tạo profile</label>
+                                    <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p>
+                                </div>
+                                <div class="col-md-6"><label class="labels">Người tạo profile</label>
+                                    <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
+                                <div class="col-md-6"><label class="labels">Thời gian cập nhật profile</label>
+                                    <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p>
+                                </div>
+                                <div class="col-md-6"><label class="labels">Người cập nhật profile</label>
+                                    <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
 

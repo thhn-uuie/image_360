@@ -258,11 +258,11 @@ use frontend\widgets\rateCmtWidget;
             </div>
         </div>
     </div>
-    <?php $cmt = \common\models\base\Rate::find()->where(['id_products' => $products->id_products])->all();?>
+    <?php $cmt = \common\models\base\Rate::find()->where(['id_products' => $products->id_products])->all(); ?>
     <?php foreach ($cmt as $temp): ?>
         <?php $comment = $temp->comment; ?>
         <div class="mt-5" id="review_content">
-            <?php $avatarProfile = \common\models\Profile::find()->where(['id_user'=>$temp->id_user])->all(); ?>
+            <?php $avatarProfile = \common\models\Profile::find()->where(['id_user' => $temp->id_user])->all(); ?>
             <?php foreach ($avatarProfile as $item): ?>
                 <div class="row mb-3">
                     <div class="col">
@@ -271,11 +271,25 @@ use frontend\widgets\rateCmtWidget;
                     <div class="col">
                         <div class="card-cmt">
                             <div class="card-header-cmt">
-                                <b><?php echo $item->user->username ?></b>
+                                <b>
+                                    <?php echo $item->user->username ?>
+                                </b>
+                                <b style="margin-left: 20px;">
+                                    <?php $fullStar = $temp->rate; ?>
+                                    <?php for ($i = 0; $i < $fullStar; $i++): ?>
+                                        <i class="fa fa-star star-light main_star text-warning"></i>
+                                    <?php endfor; ?>
+                                    <?php $emptyStar = 5 - ($fullStar); ?>
+                                    <?php for ($st = 0; $st < $emptyStar; $st++): ?>
+                                        <i class="fa fa-star star-light main_star" style="color: #757575"></i>
+                                    <?php endfor; ?>
+                                </b>
                             </div>
+                            <?php if ($comment !== ''):?>
                             <div class="card-body-cmt">
                                 <?php echo $comment; ?>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
@@ -314,21 +328,22 @@ if (!Yii::$app->user->isGuest) {
             $('#review_modal').toggleClass('show-form');
         });
 
-        $('#rate-submit').click(function () {
-            var commentInput = document.getElementById("comment");
-
-            if (commentInput.value.trim() === "") {
-                alert("Bạn cần nhập bình luận!")
-                event.preventDefault(); // Ngăn chặn gửi biểu mẫu
-            }
-        })
+        // $('#rate-submit').click(function () {
+        //     var commentInput = document.getElementById("comment");
+        //
+        //     if (commentInput.value.trim() === "") {
+        //         alert("Bạn cần nhập bình luận!")
+        //         event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+        //     }
+        // })
 
     });
 
 
     document.getElementById("add_review").addEventListener("click", function () {
         if (!checkLoggedIn()) {
-            window.location.href = "<?= Yii::$app->urlManager->createUrl(['site/login']) ?>"; // Chuyển hướng đến trang đăng nhập
+            alert("Bạn cần đăng nhập để thực hiện chức năng này!");
+            event.preventDefault();
         }
     });
 

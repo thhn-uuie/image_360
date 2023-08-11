@@ -71,14 +71,14 @@ use yii\widgets\ActiveForm;
           <?= $form->field($model, 'name_category')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="form-group">
-          <?= $form->field($model, 'status')->dropDownList(
-            [
-              'Ẩn' => 'Ẩn',
-              'Hiện' => 'Hiện',
-            ],
-            [
-              'prompt' => 'Trạng thái'
-            ]
+          <?= $form->field($model, 'status')->radioList(
+              [
+                  'Ẩn' => 'Ẩn',
+                  'Hiện' => 'Hiện',
+              ],
+              [
+                      'style'=>'margin-left:-47px;'
+              ]
           ) ?>
         </div>
       </div>
