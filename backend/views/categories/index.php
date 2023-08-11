@@ -44,9 +44,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'image',
                         'format' => 'html',
                         'value' => function ($model) {
-                            return Html::img('../../image/category/' . $model['image'], ['width' => '100', 'height' => '100']);
+                            return Html::img('../../image/category/' . $model['image'], ['width' => '150', 'height' => '150']);
                         },
                         'filter' => false,
+                        'headerOptions' => [
+                            'style' => 'width:150px;text-align:center'
+                        ],
+                        'contentOptions' => [
+                            'style' => 'width:150px;text-align:center'
+                        ],
                     ],
                     'name_category',
                     // 'status',

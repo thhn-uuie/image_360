@@ -8,7 +8,11 @@ class Profile extends \common\models\base\Profile {
    {
        if ($insert) {
            $this->created_at = time();
-           $this->created_by = Yii::$app->user->identity->username;
+           if (Profile::find()->all() ==null) {
+               $this->created_by = $this->user->username;
+           } else {
+               $this->created_by = Yii::$app->user->identity->username;
+           }
        } else {
             $this->updated_at = time();
             $this->updated_by = Yii::$app->user->identity->username;

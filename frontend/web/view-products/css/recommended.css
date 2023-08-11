@@ -1,0 +1,36 @@
+.img-fluid {
+    max-width: 100%;
+    height: 240px;
+    align-items: center;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-family: fontawesome;
+    font-size: 30px;
+    color: #007bff;
+}
+
+.slick-prev:before {
+    content: '\f100';
+}
+
+.slick-next:before {
+    content: '\f101';
+}
+
+.card-header .h2 {
+    font-size: 25px;
+    font-weight:bold
+}
+.container {
+    margin-top: 20px!important;
+}
+
+#prd-box {
+    height: 360px;
+    border: 1px solid #afa8a2;
+}
+#prd-box .card-body {
+    background: rgba(255, 219, 219, 0.57);
+}

@@ -12,7 +12,10 @@ class allProductsWidget extends Widget {
 
     public function run()
     {
-        $products = Products::find()->where(['products.status' => 'Hoạt động'])->all();
+        $products = Products::find()
+            ->innerJoin('categories', 'categories.id_category = products.id_category')
+            ->where(['products.status' => 'Hoạt động', 'categories.status' => 'Hiện'])
+            ->all();
         return $this->render('allProductsWidget', [
             'products' => $products
         ]);

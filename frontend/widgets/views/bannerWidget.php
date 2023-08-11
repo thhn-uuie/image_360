@@ -8,7 +8,7 @@
             <div class="detail-box">
                 <hf style="line-height: 1.5cm; font-size: 23px"> Khám phá thế giới xung quanh một cách toàn diện qua những hình ảnh 360 độ sống động.</hf>
                 <br>
-                <a href="">
+                <a href="<?= \yii\helpers\Url::toRoute(['site/contact'])?>">
                     Liên hệ
                 </a>
             </div>

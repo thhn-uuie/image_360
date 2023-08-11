@@ -68,9 +68,9 @@ $this->title = 'Trình diễn ảnh 360';
 
 <!-- contact section -->
 
-<section class="contact_section ">
-    <?= contactWidget::widget() ?>
-</section>
+<!--<section class="contact_section ">-->
+<!--    --><?php //= contactWidget::widget() ?>
+<!--</section>-->
 
 <!-- end contact section -->
 

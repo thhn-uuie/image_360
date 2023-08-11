@@ -12,7 +12,7 @@ class categoryWidget extends Widget {
 
     public function run()
     {
-        $cate = Categories::find()->all();
+        $cate = Categories::find()->where(['status'=>'Hiện'])->all();
         return $this->render('categoryWidget', [
             'cate' => $cate
         ]);

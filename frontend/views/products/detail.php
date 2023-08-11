@@ -288,13 +288,13 @@ use frontend\widgets\rateCmtWidget;
                     <div class="col">
                         <div class="card-cmt">
                             <div class="card-header-cmt">
-                                <b>
-                                    <?php echo $item->user->username ?>
-                                </b>
+                                <b><?php echo $item->user->username ?></b>
                             </div>
+                            <?php if ($comment !== ''):?>
                             <div class="card-body-cmt">
                                 <?php echo $comment; ?>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
@@ -333,21 +333,22 @@ if (!Yii::$app->user->isGuest) {
             $('#review_modal').toggleClass('show-form');
         });
 
-        $('#rate-submit').click(function () {
-            var commentInput = document.getElementById("comment");
-
-            if (commentInput.value.trim() === "") {
-                alert("Bạn cần nhập bình luận!")
-                event.preventDefault(); // Ngăn chặn gửi biểu mẫu
-            }
-        })
+        // $('#rate-submit').click(function () {
+        //     var commentInput = document.getElementById("comment");
+        //
+        //     if (commentInput.value.trim() === "") {
+        //         alert("Bạn cần nhập bình luận!")
+        //         event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+        //     }
+        // })
 
     });
 
 
     document.getElementById("add_review").addEventListener("click", function () {
         if (!checkLoggedIn()) {
-            window.location.href = "<?= Yii::$app->urlManager->createUrl(['site/login']) ?>"; // Chuyển hướng đến trang đăng nhập
+            alert("Bạn cần đăng nhập để thực hiện chức năng này!");
+            event.preventDefault();
         }
     });
 
