@@ -33,7 +33,7 @@ use yii\helpers\Url;
     <?php endif; ?>
 
     <div class="btn-box">
-        <?php echo Html::a('Xem tất cả ảnh', ['/categories/categories'], ['class' => 'btn-box']) ?>
+        <?php echo Html::a('Xem tất cả ảnh', ['/products/show-all'], ['class' => 'btn-box']) ?>
 
     </div>
 </div>

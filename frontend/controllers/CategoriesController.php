@@ -6,11 +6,6 @@ use frontend\models\Categories;
 
 class CategoriesController extends \yii\web\Controller
 {
-    public function actionCategories()
-    {
-        return $this->render('categories');
-    }
-
     public function actionSearch() {
         $categories = Categories::find()->all();
         return $this->render('search', [

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\helper\StarProducts;
 use common\models\base\Rate;
 use frontend\models\Categories;
 use frontend\models\Products;
@@ -17,8 +18,15 @@ class ProductsController extends \yii\web\Controller
         $products = new Products();
 
         $products_cate = $products->getProductsCate($id_cate);
+
+
+        $star = new StarProducts();
+        $averageRatings = $star->getStar($products_cate);
+
+
         return $this->render('products-category', [
-            'products_cate' => $products_cate
+            'products_cate' => $products_cate,
+            'averageRatings'=> $averageRatings
         ]);
     }
 
@@ -97,5 +105,8 @@ class ProductsController extends \yii\web\Controller
         return $this->render('search', [
             'result' => $result
         ]);
+    }
+    public function actionShowAll() {
+        return $this->render('show-all');
     }
  }

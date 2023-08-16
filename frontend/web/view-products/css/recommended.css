@@ -19,12 +19,13 @@
     content: '\f101';
 }
 
-.card-header .h2 {
+.card-header h2{
     font-size: 25px;
-    font-weight:bold
+
 }
-.container {
+#container-recmt {
     margin-top: 20px!important;
+    color:black;
 }
 
 #prd-box {

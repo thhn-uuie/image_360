@@ -10,9 +10,9 @@ use yii\helpers\Url;
 
 <div class="card">
     <div class="card-header">
-        <h2> SẢN PHẨM CÙNG DANH MỤC </h2>
+        <h2> <strong>SẢN PHẨM CÙNG DANH MỤC </strong></h2>
     </div>
-    <div class="container">
+    <div class="container" id="container-recmt">
         <div id="wrapper">
             <div class="row filtering">
                 <?php foreach ($sameCate as $item): ?>

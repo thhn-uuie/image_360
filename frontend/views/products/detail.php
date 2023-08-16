@@ -192,7 +192,6 @@ use frontend\widgets\rateCmtWidget;
         </div>
     </div>
     </div>
-    <script src="../web/view-products/js/popup.js"></script>
 
     <!-- Close Content -->
 
@@ -357,6 +356,8 @@ if (!Yii::$app->user->isGuest) {
     }
 
 </script><!-- End rate and comments-->
+<script src="../web/view-products/js/popup.js"></script>
+
 
 <!-- Start Recommended Products -->
 <?= recommendedWidget::widget() ?>
