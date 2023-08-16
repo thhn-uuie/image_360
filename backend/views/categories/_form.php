@@ -131,5 +131,5 @@ use yii\widgets\ActiveForm;
     float: right;
     margin-top: -8%;
     margin-right: 29%;
-}
+  }
 </style>

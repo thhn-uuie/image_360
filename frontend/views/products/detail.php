@@ -5,6 +5,7 @@ use frontend\widgets\recommendedWidget;
 use frontend\widgets\rateCmtWidget;
 
 ?>
+
 <head>
     <link rel="stylesheet" href="../web/view-products/css/popup.css" type="text/css">
     <link rel="stylesheet" href="../web/view-products/css/popup360.css" type="text/css">
@@ -19,14 +20,16 @@ use frontend\widgets\rateCmtWidget;
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
                     <img class="card-img img-products" src="<?php echo '../../image/products/' . $products->image ?>"
-                         id="product-detail">
+                        id="product-detail">
                 </div>
             </div>
             <!-- col end -->
             <div class="col-lg-7 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="h2"><?php echo $products->name_products ?></h1>
+                        <h1 class="h2">
+                            <?php echo $products->name_products ?>
+                        </h1>
                         <p class="py-2">
                             <?php $fullStar = floor($rateAvg[0]); ?>
                             <?php for ($i = 0; $i < $fullStar; $i++): ?>
@@ -47,24 +50,35 @@ use frontend\widgets\rateCmtWidget;
                             <?php endfor; ?>
 
 
-                            <span class="list-inline-item text-dark">Đánh giá: <?php echo round($rateAvg[0], 1) ?>
-                                    | <?php echo $rateAvg[1] ?> Bình luận
-                            | Lượt xem: <strong> <?php echo $viewCount->view_count ?> </strong></span>
+                            <span class="list-inline-item text-dark">Đánh giá:
+                                <?php echo round($rateAvg[0], 1) ?>
+                                |
+                                <?php echo $rateAvg[1] ?> Bình luận
+                                | Lượt xem: <strong>
+                                    <?php echo $viewCount->view_count ?>
+                                </strong>
+                            </span>
                         </p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Danh mục:</h6>
                             </li>
                             <li class="list-inline-item">
-                                <a href="<?= Url::toRoute(['products/products-category', 'id_cate' => $products->id_category]) ?>">
+                                <a
+                                    href="<?= Url::toRoute(['products/products-category', 'id_cate' => $products->id_category]) ?>">
                                     <p class="text-muted">
-                                        <strong><?php echo $name_cate->name_category ?></strong></p>
+                                        <strong>
+                                            <?php echo $name_cate->name_category ?>
+                                        </strong>
+                                    </p>
                                 </a>
                             </li>
                         </ul>
 
                         <h6>Mô tả:</h6>
-                        <p><?php echo $products->description ?></p>
+                        <p>
+                            <?php echo $products->description ?>
+                        </p>
 
 
                         <h6>Mã QR: </h6>
@@ -80,7 +94,7 @@ use frontend\widgets\rateCmtWidget;
 
                                 <div class="modal-body-qr">
                                     <img style="width: 250px; height: 250px"
-                                         src="<?php echo '../../qr/' . $products->qr_code ?>">
+                                        src="<?php echo '../../qr/' . $products->qr_code ?>">
                                 </div>
                             </div>
                         </div>
@@ -125,7 +139,7 @@ use frontend\widgets\rateCmtWidget;
                         <div class="row pb-3">
                             <div class="col d-grid">
                                 <button type="button" name="add_review" id="add_review" class="btn btn-success btn-lg"
-                                        style="margin-top: 20px;">
+                                    style="margin-top: 20px;">
                                     Đánh giá
                                 </button>
                             </div>
@@ -143,26 +157,26 @@ use frontend\widgets\rateCmtWidget;
                                         <div class="modal-review-body">
                                             <form method="post">
                                                 <input type="hidden" name="_csrf-frontend"
-                                                       value="<?= Yii::$app->request->getCsrfToken() ?>"/>
+                                                    value="<?= Yii::$app->request->getCsrfToken() ?>" />
 
                                                 <!-- Star -->
                                                 <h4 class="text-center mt-2 mb-4">
                                                     <div class="rating-css">
                                                         <div class="star-icon">
                                                             <input type="radio" value="1" name="product_rating" checked
-                                                                   id="rating1">
+                                                                id="rating1">
                                                             <label for="rating1" class="fa fa-star"></label>
                                                             <input type="radio" value="2" name="product_rating"
-                                                                   id="rating2">
+                                                                id="rating2">
                                                             <label for="rating2" class="fa fa-star"></label>
                                                             <input type="radio" value="3" name="product_rating"
-                                                                   id="rating3">
+                                                                id="rating3">
                                                             <label for="rating3" class="fa fa-star"></label>
                                                             <input type="radio" value="4" name="product_rating"
-                                                                   id="rating4">
+                                                                id="rating4">
                                                             <label for="rating4" class="fa fa-star"></label>
                                                             <input type="radio" value="5" name="product_rating"
-                                                                   id="rating5">
+                                                                id="rating5">
                                                             <label for="rating5" class="fa fa-star"></label>
                                                         </div>
                                                     </div>
@@ -171,12 +185,12 @@ use frontend\widgets\rateCmtWidget;
 
                                                 <!--Input form-->
                                                 <input type="hidden" id="id_products_current" name="id_products_current"
-                                                       value="<?php echo($products->id_products); ?>">
+                                                    value="<?php echo ($products->id_products); ?>">
                                                 <input type="hidden" id="id_user_current" name="id_user_current"
-                                                       value="<?php echo Yii::$app->user->identity->getId(); ?>">
+                                                    value="<?php echo Yii::$app->user->identity->getId(); ?>">
 
                                                 <input type="text" name="comment" id="comment" class="form-control"
-                                                       placeholder="Nhập bình luận..."/>
+                                                    placeholder="Nhập bình luận..." />
                                                 <input type="submit" id="rate-submit" value="Lưu">
                                             </form>
 
@@ -202,7 +216,9 @@ use frontend\widgets\rateCmtWidget;
             <div class="row">
                 <div class="col-sm-4 text-center">
                     <h1 class="text-warning mt-4 mb-4">
-                        <b><span id="average_rating"><?php echo round($rateAvg[0], 1) ?></span> / 5</b>
+                        <b><span id="average_rating">
+                                <?php echo round($rateAvg[0], 1) ?>
+                            </span> / 5</b>
                     </h1>
                     <div class="mb-3">
                         <?php $fullStar = floor($rateAvg[0]); ?>
@@ -224,7 +240,9 @@ use frontend\widgets\rateCmtWidget;
                         <?php endfor; ?>
 
                     </div>
-                    <h3><span id="total_review"><?php echo $rateAvg[1] ?></span> Đánh giá</h3>
+                    <h3><span id="total_review">
+                            <?php echo $rateAvg[1] ?>
+                        </span> Đánh giá</h3>
                 </div>
                 <div class="col-sm-4">
                     <?php $star = [5, 4, 3, 2, 1] ?>
@@ -233,22 +251,21 @@ use frontend\widgets\rateCmtWidget;
                         ?>
 
                         <p>
-                        <div class="progress-label-left"><b><?php echo $star[$i] ?></b> <i
-                                    class="fa fa-star text-warning"></i></div>
+                        <div class="progress-label-left"><b>
+                                <?php echo $star[$i] ?>
+                            </b> <i class="fa fa-star text-warning"></i></div>
 
-                        <div class="progress-label-right">(<span
-                                    id="total_five_star_review"><?php echo count($rateProducts) ?></span>)
+                        <div class="progress-label-right">(<span id="total_five_star_review"><?php echo count($rateProducts) ?></span>)
                         </div>
                         <div class="progress">
                             <?php if ($rateAvg[1] == 0): ?>
-                                <div class="progress-bar bg-warning" role="progressbar"
-                                     aria-valuenow="0"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
                             <?php else: ?>
                                 <div class="progress-bar bg-warning" role="progressbar"
-                                     style="width: <?php echo count($rateProducts) / $rateAvg[1] * 100 ?>%"
-                                     aria-valuenow="<?php echo count($rateProducts) / $rateAvg[1] * 100 ?>"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
+                                    style="width: <?php echo count($rateProducts) / $rateAvg[1] * 100 ?>%"
+                                    aria-valuenow="<?php echo count($rateProducts) / $rateAvg[1] * 100 ?>" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
                             <?php endif; ?>
                         </div>
                         </p>
@@ -270,19 +287,7 @@ use frontend\widgets\rateCmtWidget;
                     <div class="col">
                         <div class="card-cmt">
                             <div class="card-header-cmt">
-                                <b>
-                                    <?php echo $item->user->username ?>
-                                </b>
-                                <b style="margin-left: 20px;">
-                                    <?php $fullStar = $temp->rate; ?>
-                                    <?php for ($i = 0; $i < $fullStar; $i++): ?>
-                                        <i class="fa fa-star star-light main_star text-warning"></i>
-                                    <?php endfor; ?>
-                                    <?php $emptyStar = 5 - ($fullStar); ?>
-                                    <?php for ($st = 0; $st < $emptyStar; $st++): ?>
-                                        <i class="fa fa-star star-light main_star" style="color: #757575"></i>
-                                    <?php endfor; ?>
-                                </b>
+                                <b><?php echo $item->user->username ?></b>
                             </div>
                             <?php if ($comment !== ''):?>
                             <div class="card-body-cmt">
@@ -313,7 +318,7 @@ if (!Yii::$app->user->isGuest) {
     $(document).ready(function () {
 
         $('#add_review').click(function () {
-            var hasRated = <?php echo json_encode($hasRate)?>;
+            var hasRated = <?php echo json_encode($hasRate) ?>;
 
             if (hasRated == true) {
                 alert("Bạn đã đánh giá sản phẩm này rồi!")
@@ -348,10 +353,10 @@ if (!Yii::$app->user->isGuest) {
 
     function checkLoggedIn() {
         // Kiểm tra trạng thái đăng nhập ở đây
-        console.log(<?php Yii::$app->user->isGuest?>);
-        <?php if(!Yii::$app->user->isGuest):?>
-        return true;
-        <?php endif;?>
+        console.log(<?php Yii::$app->user->isGuest ?>);
+        <?php if (!Yii::$app->user->isGuest): ?>
+            return true;
+        <?php endif; ?>
         return false;
     }
 
