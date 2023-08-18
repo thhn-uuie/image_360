@@ -289,7 +289,7 @@ $this->title = 'Dashboard';
 
         // Instantly assign Chart.js version
         const chartVersion = document.getElementById('chartVersion');
-        chartVersion.innerText = Chart.version;
+        // chartVersion.innerText = Chart.version;
     </script>
 
 </body>

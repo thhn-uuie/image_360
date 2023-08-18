@@ -19,11 +19,6 @@ class searchBarWidget extends Widget {
 
     public function run()
     {
-        // return $this->render('searchBarWidget');
-
-        $products = Products::find()->all();
-        return $this->render('searchBarWidget', [
-            'products'=> $products
-        ]);
+        return $this->render('searchBarWidget');
     }
 }

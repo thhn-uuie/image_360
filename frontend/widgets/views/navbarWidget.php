@@ -16,7 +16,7 @@ use yii\helpers\Html;
                 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <?php echo Html::a('Ảnh 360', ['/categories/categories'], ['class' => 'nav-link']) ?>
+                <?php echo Html::a('Ảnh 360', ['/products/show-all'], ['class' => 'nav-link']) ?>
             </li>
 
             <li class="nav-item active">

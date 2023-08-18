@@ -14,7 +14,12 @@ class contentHomeWidget extends Widget {
 
     public function run()
     {
-        $products = Products::find()->where(['products.status' => 'Hoạt động'])->all();
+        $products = Products::find()
+            ->innerJoin('categories', 'categories.id_category = products.id_category')
+            ->where(['products.status' => 'Hoạt động', 'categories.status' => 'Hiện'])
+            ->orderBy(['id_products'=>SORT_DESC])
+            ->limit(8)
+            ->all();
         return $this->render('contentHomeWidget', [
             'products' => $products
         ]);
