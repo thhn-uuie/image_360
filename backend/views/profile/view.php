@@ -47,7 +47,7 @@ if (Yii::$app->user->isGuest) {
             <div class="col-md-5 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="300px" height="300px"
-                         src="<?php echo '../../image/avatars/' . $model->avatar ?>">
+                         src="<?php echo Yii::$app->homeUrl .'../../image/avatars/' . $model->avatar ?>">
                     <span class="font-weight-bold"
                           style="margin-top: 40px; font-size:30px; color: #E86A33">
                         <?php echo $model->name ?>
