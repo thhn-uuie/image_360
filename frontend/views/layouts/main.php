@@ -26,11 +26,12 @@ AppAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>
-    <!DOCTYPE html>
-    <html lang="<?= Yii::$app->language ?>" class="h-100">
-    <head>
-        <meta charset="<?= Yii::$app->charset ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>" class="h-100">
+
+<head>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <?php $this->registerCsrfMetaTags() ?>
         <title>
@@ -41,7 +42,7 @@ AppAsset::register($this);
     </head>
 
 
-    <body class="hero_area">
+<body class="hero_area">
     <?php $this->beginBody() ?>
 
 
@@ -55,17 +56,15 @@ AppAsset::register($this);
 <!--        --><?php //= navbarWidget::widget() ?>
         <!-- ============================================== NAVBAR : END ============================================== -->
 
+        <?= navbarWidget::widget()?>
     </header>
     <!-- end header section -->
 
     <?= $content ?>
 
     <?php $this->endBody() ?>
-
-
-    </body>
+</body>
 
     </html>
 
 <?php $this->endPage();
-

@@ -20,21 +20,20 @@ AppAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>" class="h-100">
 
-    <!DOCTYPE html>
-    <html lang="<?= Yii::$app->language ?>" class="h-100">
+<head>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <?php $this->registerCsrfMetaTags() ?>
+    <title>
+        <?= Html::encode($this->title) ?>
+    </title>
+    <?php $this->head() ?>
+</head>
 
-    <head>
-        <meta charset="<?= Yii::$app->charset ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <?php $this->registerCsrfMetaTags() ?>
-        <title>
-            <?= Html::encode($this->title) ?>
-        </title>
-        <?php $this->head() ?>
-    </head>
-
-    <body class="nav-md">
+<body class="nav-md">
     <?php $this->beginBody() ?>
     <div class="container body">
         <div class="main_container">
@@ -55,11 +54,13 @@ AppAsset::register($this);
                                 <img alt="..." class="img-circle profile_img" src="<?php echo Yii::$app->homeUrl. '../../image/avatars/'.$profile_id_user->avatar ?>">
                             </div>
 
-                        <?php $user = \common\models\User::findOne(['id_user'=>$profile_id_user->id_user]); ?>
+                        <?php $user = \common\models\User::findOne(['id_user' => $profile_id_user->id_user]); ?>
                         <div class="profile_info">
                             <span>Xin chào,</span><br>
 
-                            <span style="font-size: 15px; color: #720303; font-weight: bold"><?php echo $user->username ?></span>
+                            <span style="font-size: 15px; color: #720303; font-weight: bold">
+                                <?php echo $user->username ?>
+                            </span>
                             <h2></h2>
                         </div>
 
@@ -73,8 +74,10 @@ AppAsset::register($this);
                             <ul class="nav side-menu">
                                 <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                     <li>
-                                        <a style="font-weight:450;font-size:13px; font-family: Arial"><i class="fa fa-user" ></i> Quản lý tài khoản <span
-                                                    class="fa fa-chevron-down"></span></a>
+                                        <a style="font-weight:450;font-size:13px; font-family: Arial"><i
+                                                class="fa fa-user"></i>
+                                            Quản lý tài
+                                            khoản <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li>
                                                 <?php echo Html::a('Tạo tài khoản mới', ['/users/create']) ?>
@@ -89,8 +92,9 @@ AppAsset::register($this);
                                 <?php } ?>
                                 <?php if (Yii::$app->user->identity->id_role == 1) { ?>
                                     <li>
-                                        <a style="font-weight:500; font-size:13px;font-family: Arial"><i class="fa fa-info-circle"></i> Hồ sơ <span
-                                                    class="fa fa-chevron-down"></span></a>
+                                        <a style="font-weight:500; font-size:13px;font-family: Arial"><i
+                                                class="fa fa-info-circle"></i> Hồ sơ
+                                            <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li>
                                                 <?php echo Html::a('Danh sách hồ sơ các tài khoản', ['/profile/index']) ?>
@@ -98,8 +102,9 @@ AppAsset::register($this);
                                         </ul>
                                     </li>
                                 <?php } ?>
-                                <li><a style="font-weight:500; font-size:13px;font-family: Arial"><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span
-                                                class="fa fa-chevron-down"></span></a>
+                                <li><a style="font-weight:500; font-size:13px;font-family: Arial"><i
+                                            class="fa fa-product-hunt"></i> Quản lý
+                                        sản phẩm <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <?php echo Html::a('Tạo sản phẩm mới', ['/products/create']) ?>
@@ -109,8 +114,10 @@ AppAsset::register($this);
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a style="font-weight:500; font-size:13px;font-family: Arial"><i class="fa fa-th-list"></i> Danh mục sản phẩm <span
-                                                class="fa fa-chevron-down" style="    margin-left: -13%;"></span></a>
+                                <li><a style="font-weight:500; font-size:13px;font-family: Arial"><i
+                                            class="fa fa-th-list"></i>
+                                        Danh mục sản
+                                        phẩm <span class="fa fa-chevron-down" style="    margin-left: -13%;"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <?php echo Html::a('Tạo danh mục mới', ['/categories/create']) ?>
@@ -120,15 +127,12 @@ AppAsset::register($this);
                                         </li>
                                     </ul>
                                 </li>
-
-
                             </ul>
                         </div>
-
                     </div>
-
                 </div>
             </div>
+
 
             <!-- top navigation -->
             <div class="top_nav">
@@ -147,24 +151,24 @@ AppAsset::register($this);
                                     </a>
 
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
-                                     aria-labelledby="navbarDropdown">
+                                    aria-labelledby="navbarDropdown">
                                     <?php if (Yii::$app->user->identity->id_role == 2): ?>
                                         <?php $profile = Profile::findOne(['id_user' => Yii::$app->user->identity->id_user]) ?>
                                         <?php if ($profile == null): ?>
-                                            <a class="dropdown-item"
-                                               href="/image_360/backend/web/index.php?r=profile/create"> Profile</a>
+                                            <a class="dropdown-item" href="/image_360/backend/web/index.php?r=profile/create">
+                                                Profile</a>
                                         <?php else: ?>
                                             <a class="dropdown-item"
-                                               href="<?= Url::toRoute(['profile/view', 'id_user' => $profile->id_user]) ?>">
+                                                href="<?= Url::toRoute(['profile/view', 'id_user' => $profile->id_user]) ?>">
                                                 Hồ sơ</a>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                     <?= Html::beginForm(['/site/logout'], 'post')
-                                    . Html::submitButton(
-                                        'Đăng xuất (' . Yii::$app->user->identity->username . ')',
-                                        ['class' => 'dropdown-item']
-                                    )
-                                    . Html::endForm(); ?>
+                                        . Html::submitButton(
+                                            'Đăng xuất (' . Yii::$app->user->identity->username . ')',
+                                            ['class' => 'dropdown-item']
+                                        )
+                                        . Html::endForm(); ?>
                                 </div>
 
                             </li>
@@ -173,6 +177,7 @@ AppAsset::register($this);
                 </div>
             </div>
             <!-- /top navigation -->
+
 
             <!-- page content -->
             <div class="right_col" role="main">
@@ -185,10 +190,10 @@ AppAsset::register($this);
             <!-- /page content -->
 
             <!-- footer content -->
-            <footer >
-                <div class="pull-right" >
+            <footer>
+                <div class="pull-right">
                 </div>
-                <div class="clearfix" ></div>
+                <div class="clearfix"></div>
             </footer>
             <!-- /footer content -->
         </div>
@@ -196,16 +201,17 @@ AppAsset::register($this);
 
 
     <?php $this->endBody() ?>
+</body>
 
-    </html>
+</html>
 <?php $this->endPage() ?>
- 
+
 <style>
     footer {
-    margin-left: 230px;
-}
+        margin-left: 230px;
+    }
 
-a{
-    font-size: 13px;
-}
+    a {
+        font-size: 13px;
+    }
 </style>

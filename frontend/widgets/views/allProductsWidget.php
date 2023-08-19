@@ -1,6 +1,5 @@
 <?php
 use yii\helpers\Url;
-
 ?>
 
 <div class="col-sm-9 padding-right">
