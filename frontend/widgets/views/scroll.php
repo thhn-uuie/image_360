@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+//var_dump(Yii::$app->homeUrl);
 ?>
 <style>
     .product-slider .row {

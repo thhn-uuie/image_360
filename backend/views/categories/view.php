@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="../views/categories/css/view_custom.css">
+    <link rel="stylesheet" href="../cate/view_custom.css">
 </head>
 
 <div class="categories-view">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card p-3 bg-white"><i class="fa fa-apple"></i>
             <div class="about-product text-center mt-2">
                 <img style="margin-top: -27px; margin-left: -9px; margin-bottom: 16px;" class="element"
-                     width="700px" height="300px" src="<?php echo '../../image/category' . '/' . $model->image ?>">
+                     width="700px" height="300px" src="<?php echo Yii::$app->homeUrl.'../../image/category/'.$model->image?>">
                 <div>
                     <h4>Danh mục:</h4>
                     <h6 class="mt-0 text-black-50">

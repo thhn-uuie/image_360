@@ -8,6 +8,7 @@ use yii\helpers\ArrayHelper;
 /** @var yii\web\View $this */
 /** @var common\models\base\Users $model */
 /** @var yii\widgets\ActiveForm $form */
+var_dump(Yii::$app->homeUrl);
 ?>
 
 <div class="users-form">
@@ -17,7 +18,7 @@ use yii\helpers\ArrayHelper;
     <head>
         <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
         <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../views/users/css/form_custom.css">
+        <link rel="stylesheet" href="../user/form_custom.css">
     </head>
 
     <body>

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <head>
-<link rel="stylesheet" href="../web/login/loginn.css">
+<link rel="stylesheet" href="../login/loginn.css">
 
 </head>
 

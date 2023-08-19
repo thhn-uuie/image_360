@@ -28,7 +28,7 @@ use yii\helpers\Url;
 
 <script>
     <?php
-    $url = Url::to('../../image/file360/') . $model->files;
+    $url = Url::toRoute('../../image/file360') .'/'. $model->files;
     ?>
     pannellum.viewer('panorama', {
         "type": "equirectangular",

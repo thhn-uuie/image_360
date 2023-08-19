@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <head>
-<link rel="stylesheet" href="../web/search_bar/search_bar.css" type="text/css">
+<link rel="stylesheet" href="<?php echo \yii\helpers\Url::base(). '/search_bar/search_bar.css'?>" type="text/css">
 
 </head>
 

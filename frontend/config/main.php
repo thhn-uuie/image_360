@@ -1,6 +1,6 @@
 <?php
-use yii\web\Request;
-$baseUrl = str_replace('/frontend/web', '',(new Request)->getBaseUrl());
+use \yii\web\Request;
+$baseUrl = str_replace('/frontend/web', '/anh360', (new Request)->getBaseUrl());
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -16,7 +16,8 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
-        ],
+            'baseUrl' => $baseUrl,
+            ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -38,18 +39,15 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-//
-//        'request' => [
-//            'baseUrl'=>$baseUrl,
-//        ],
-//        'urlManager' => [
-//            'baseUrl'=>$baseUrl,
-//            'enablePrettyUrl' => true,
-//            'showScriptName' => false,
-//            'rules' => [
-//
-//            ],
-//        ],
+
+        'urlManager' => [
+            'baseUrl' => $baseUrl,
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                '' => 'site/index',
+            ],
+        ],
 
     ],
     'params' => $params,

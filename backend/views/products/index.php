@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'image',
                         'format' => 'html',
                         'value' => function ($model) {
-                            return Html::img('../../image/products/' . $model['image'], ['width' => '100', 'height' => '100'], ['class' => 'circular-image']);
+                            return Html::img(Yii::$app->homeUrl.'../../image/products/' . $model['image'], ['width' => '100', 'height' => '100'], ['class' => 'circular-image']);
                         },
 
                         'headerOptions' => [

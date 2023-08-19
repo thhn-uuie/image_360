@@ -7,9 +7,9 @@ use frontend\widgets\rateCmtWidget;
 ?>
 
 <head>
-    <link rel="stylesheet" href="../web/view-products/css/popup.css" type="text/css">
-    <link rel="stylesheet" href="../web/view-products/css/popup360.css" type="text/css">
-    <link rel="stylesheet" href="../web/view-products/css/ratecmt.css" type="text/css">
+    <link rel="stylesheet" href="../view-products/css/popup.css" type="text/css">
+    <link rel="stylesheet" href="../view-products/css/popup360.css" type="text/css">
+    <link rel="stylesheet" href="../view-products/css/ratecmt.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
@@ -361,7 +361,7 @@ if (!Yii::$app->user->isGuest) {
     }
 
 </script><!-- End rate and comments-->
-<script src="../web/view-products/js/popup.js"></script>
+<script src="../view-products/js/popup.js"></script>
 
 
 <!-- Start Recommended Products -->

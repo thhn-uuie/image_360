@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
   <title>Sign Up Form</title>
   <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
   <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="../views/categories/css/form_custom.css" type="text/css">
-  <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
-  <link rel="stylesheet" href="../views/products/css/upload.css" type="text/css">
+  <link rel="stylesheet" href="../cate/form_custom.css" type="text/css">
+  <link rel="stylesheet" href="../product/upload-img.scss" type="text/css">
+  <link rel="stylesheet" href="../product/upload.css" type="text/css">
 </head>
 
 <div class="categories-form">
@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
           <div class="wrapper">
             <div class="image">
               <?php if ($model->image !== null): ?>
-                <img class="categories-pic" src="<?php echo '../../image/category/' . $model->image ?>" />
+                <img class="categories-pic" src="<?php echo Yii::$app->homeUrl.'../../image/category/' . $model->image ?>" />
               <?php else: ?>
                 <img class="categories-pic" />
               <?php endif; ?>

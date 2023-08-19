@@ -21,8 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
   <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="../views/users/css/view_custom.css">
-    <link rel="stylesheet" href="../views/users/css/button_custom.css">
+    <link rel="stylesheet" href="../user/view_custom.css">
+    <link rel="stylesheet" href="../user/button_custom.css">
   </head>
 
 

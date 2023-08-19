@@ -24,7 +24,7 @@ use yii\helpers\Url;
                             <div class="dropdown">
                                 <?php $ava = \common\models\Profile::findOne(['id_user'=>Yii::$app->user->identity->id_user])?>
                                 <a href="javascript:void(0)" id="navbarDropdown" onclick="clickDropDown()" class="dropbtn">
-                                    <img src="<?php echo '../../image/avatars/'. $ava->avatar?>" alt="" style="width: 35px;height: 35px;border-radius: 50%; margin-right:10px">
+                                    <img src="<?php echo Url::base() . '/../image/avatars/'. $ava->avatar?>" alt="" style="width: 35px;height: 35px;border-radius: 50%; margin-right:10px">
                                     <?= Yii::$app->user->identity->username?>
                                     <i class="fa fa-caret-down"></i>
                                 </a>
@@ -64,23 +64,6 @@ use yii\helpers\Url;
         margin-left: -10vw;
         margin-top: 10px;
     }
-    .btn {
-        padding:0!important;
-    }
-    .dropbtn {
-        font-family: poppins, sans-serif;
-        color: #007bff;
-        font-size: 14px;
-        border: none;
-        cursor: pointer;
-    }
-
-
-
-    .dropdown {
-        position: relative;
-    }
-
     .dropdown-content {
         display: none;
         height: 48px;
@@ -92,6 +75,49 @@ use yii\helpers\Url;
         z-index: 3;
         margin-left: 4vw;
     }
+
+    @media (max-width: 768px) {
+        .content-log-out {
+            margin-left: -16vw;
+            margin-top: 10px;
+        }
+
+        .dropdown-content {
+            min-width: 125px;
+            margin-left: 8vw;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 991px) {
+        .content-log-out {
+            margin-left: -13vw;
+        }
+        .dropdown-content {
+            min-width: 125px;
+            margin-left: 8vw;
+        }
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .content-log-out {
+            margin-left: -15vw;
+        }
+    }
+    .btn {
+        padding:0!important;
+    }
+    .dropbtn {
+        font-family: poppins, sans-serif;
+        color: #007bff;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
+
 
     #log-out {
         color: black;

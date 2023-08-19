@@ -14,14 +14,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <head>
-    <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <link rel="stylesheet" href="../views/products/css/view-css.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="../views/products/css/view360-css.css" type="text/css">
+
+    <link rel="stylesheet" href="../product/upload-img.scss" type="text/css">
+    <link rel="stylesheet" href="../product/view360-css.css" type="text/css">
+    <link rel="stylesheet" href="../product/view-css.css" type="text/css">
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
@@ -49,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <img
                         class="show-image-products" width="250px" height="300px"
-                        src="<?php echo '../../image/products' . '/' . $model->image ?>">
+                        src="<?php echo Yii::$app->homeUrl. '../../image/products/' . $model->image ?>">
                 <div class="grid-container">
                     <div class="col">
                         <div class="start-btn-container">
@@ -63,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="fas fa-times"></div>
                             <div class="form">
                                 <img class="qr-code" width="250px" height="250px"
-                                     src="<?php echo '../../qr/' . $model->qr_code ?>">
+                                     src="<?php echo Yii::$app->homeUrl.'../../qr/' . $model->qr_code ?>">
                             </div>
                         </div>
                         <script>
