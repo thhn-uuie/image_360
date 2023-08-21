@@ -9,7 +9,6 @@ use Yii;
  *
  * @property int $id_products
  * @property string $name_products
- * @property string $description
  * @property string $status
  * @property int|null $id_category
  * @property string $image
@@ -19,10 +18,12 @@ use Yii;
  * @property int|null $updated_at
  * @property string|null $updated_by
  * @property string|null $qr_code
+ * @property string|null $description
  *
  * @property Categories $category
- * @property Rate $rate
+ * @property Rate[] $rates
  * @property View $view
+ * @property Wishlist[] $wishlists
  */
 class Products extends \yii\db\ActiveRecord
 {
@@ -40,9 +41,10 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name_products', 'description', 'status', 'image', 'files'], 'required'],
+            [['name_products', 'status', 'image', 'files'], 'required'],
             [['id_category', 'created_at', 'updated_at'], 'integer'],
-            [['name_products', 'description', 'status', 'image', 'files', 'created_by', 'updated_by', 'qr_code'], 'string', 'max' => 255],
+            [['description'], 'string'],
+            [['name_products', 'status', 'image', 'files', 'created_by', 'updated_by', 'qr_code'], 'string', 'max' => 255],
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
         ];
     }
@@ -53,18 +55,18 @@ class Products extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_products' => 'Id Products',
+            'id_products' => 'Id sản phẩm',
             'name_products' => 'Tên sản phẩm',
-            'description' => 'Mô tả',
             'status' => 'Trạng thái',
             'id_category' => 'Danh mục',
             'image' => 'Hình ảnh',
-            'files' => 'Ảnh 360',
-            'created_at' => 'Thời gian tạo',
+            'files' => 'Ảnh 360 độ',
+            'created_at' => 'Ngày tạo',
             'created_by' => 'Người tạo',
-            'updated_at' => 'Thời gian cập nhật',
-            'updated_by' => 'Người cập nhât',
-            'qr_code' => 'Qr Code',
+            'updated_at' => 'Ngày cập nhật',
+            'updated_by' => 'Người cập nhật',
+            'qr_code' => 'Mã QR',
+            'description' => 'Mô tả',
         ];
     }
 
@@ -79,13 +81,13 @@ class Products extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Rate]].
+     * Gets query for [[Rates]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getRate()
+    public function getRates()
     {
-        return $this->hasOne(Rate::class, ['id_products' => 'id_products']);
+        return $this->hasMany(Rate::class, ['id_products' => 'id_products']);
     }
 
     /**
@@ -96,5 +98,15 @@ class Products extends \yii\db\ActiveRecord
     public function getView()
     {
         return $this->hasOne(View::class, ['id_products' => 'id_products']);
+    }
+
+    /**
+     * Gets query for [[Wishlists]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWishlists()
+    {
+        return $this->hasMany(Wishlist::class, ['id_products' => 'id_products']);
     }
 }

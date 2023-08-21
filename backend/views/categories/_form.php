@@ -44,7 +44,7 @@ use yii\widgets\ActiveForm;
                 <?php if ($model->image !== null): ?>
                   Đã chọn ảnh.
                 <?php else: ?>
-                  Chưa chọn ảnh.
+                  Chưa chọn ảnh nào.
                 <?php endif; ?>
               </div>
             </div>

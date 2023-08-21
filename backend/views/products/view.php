@@ -122,21 +122,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                 style="font-size: 40px; font-weight: bold"><?php echo $model->name_products ?></h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-11"><label class="labels">Mô tả sản phẩm</label>
+                        <div class="col-md-11"><label class="labels"><strong>Mô tả sản phẩm</strong></label>
                             <p style="font-size: 15px"><?php echo $model->description ?></p></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Trạng thái</label>
+                        <div class="col-md-12"><label class="labels"><strong>Trạng thái</strong></label>
                             <p style="font-size: 15px"><?php echo $model->status ?></p></div>
-                        <div class="col-md-12"><label class="labels">Danh mục sản phẩm</label>
+                        <div class="col-md-12"><label class="labels"><strong>Danh mục sản phẩm</strong></label>
                             <p style="font-size: 15px"><?php echo $model->category->name_category ?></p></div>
-                        <div class="col-md-6"><label class="labels">Thời gian tạo sản phẩm</label>
+                        <div class="col-md-6"><label class="labels"><strong>Thời gian tạo sản phẩm</strong></label>
                             <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->created_at) ?></p></div>
-                        <div class="col-md-6"><label class="labels">Người tạo sản phẩm</label>
+                        <div class="col-md-6"><label class="labels"><strong>Người tạo sản phẩm</strong></label>
                             <p style="font-size: 15px"><?php echo $model->created_by ?></p></div>
-                        <div class="col-md-6"><label class="labels">Thời gian cập nhật</label>
+                        <div class="col-md-6"><label class="labels"><strong>Thời gian cập nhật</strong></label>
                             <p style="font-size: 15px"><?php echo date('d-m-Y h:i:s', $model->updated_at) ?></p></div>
-                        <div class="col-md-6"><label class="labels">Người cập nhật</label>
+                        <div class="col-md-6"><label class="labels"><strong>Người cập nhật</strong></label>
                             <p style="font-size: 15px"><?php echo $model->updated_by ?></p></div>
                     </div>
                 </div>

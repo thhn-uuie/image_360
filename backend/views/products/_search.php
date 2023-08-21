@@ -19,17 +19,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name_products') ?>
 
-    <?= $form->field($model, 'description') ?>
-
     <?= $form->field($model, 'status') ?>
 
     <?= $form->field($model, 'id_category') ?>
 
-    <?php // echo $form->field($model, 'image') ?>
+    <?= $form->field($model, 'image') ?>
 
     <?php // echo $form->field($model, 'files') ?>
-
-    <?php // echo $form->field($model, 'qr_code') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
@@ -38,6 +34,10 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <?php // echo $form->field($model, 'updated_by') ?>
+
+    <?php // echo $form->field($model, 'qr_code') ?>
+
+    <?php // echo $form->field($model, 'description') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

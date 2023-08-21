@@ -94,7 +94,10 @@ use Itstructure\CKEditor\CKEditor;
                     <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'description')->widget(CKEditor::class, [
                         'options' => ['row' => 6],
-                        'preset' => 'custom'
+                        'preset' => 'custom',
+                        'clientOptions' => [
+                                'maxLength' => false,
+                                ],
                     ]) ?>
                     <?= $form->field($model, 'status')->dropDownList(
                         [

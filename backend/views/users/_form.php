@@ -8,7 +8,6 @@ use yii\helpers\ArrayHelper;
 /** @var yii\web\View $this */
 /** @var common\models\base\Users $model */
 /** @var yii\widgets\ActiveForm $form */
-var_dump(Yii::$app->homeUrl);
 ?>
 
 <div class="users-form">

@@ -11,7 +11,7 @@ $this->title = 'Dashboard';
 
 
 <head>
-    <link rel="stylesheet" href="../views/site/css/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="../web/site/dashboard.css" type="text/css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 
@@ -77,14 +77,24 @@ $this->title = 'Dashboard';
                 <div class="content-first-card">
                     <span class="title"> Tổng sản phẩm </span>
                     <span class="first-value">
-                        <?php echo count(Products::find()->all()); ?>
+                        <?php if (Yii::$app->user->identity->id_role == 1): ?>
+                            <?php echo count(Products::find()->all()); ?>
+                        <?php else: ?>
+                            <?php echo count(Products::find()->where(['created_by' => Yii::$app->user->identity->username])->all()); ?>
+                        <?php endif; ?>
                     </span>
                 </div>
                 <i class="fa fa-product-hunt icon-dash"></i>
             </div>
             <span class="card-detail-products">
-                <p class="active-prd"> Đang hoạt động: <?php echo count(\common\models\Products::find()->where(['status' => 'Hoạt động'])->all()) ?> </p>
-                <p class="noactive">Không hoạt động: <?php echo count(\common\models\Products::find()->where(['status' => 'Không hoạt động'])->all()) ?></p>
+                <?php if (Yii::$app->user->identity->id_role == 1): ?>
+                    <p class="active-prd"> Đang hoạt động: <?php echo count(\common\models\Products::find()->where(['status' => 'Hoạt động'])->all()) ?> </p>
+                    <p class="noactive">Không hoạt động: <?php echo count(\common\models\Products::find()->where(['status' => 'Không hoạt động'])->all()) ?></p>
+                <?php else: ?>
+                    <p class="active-prd"> Đang hoạt động: <?php echo count(\common\models\Products::find()->where(['status' => 'Hoạt động', 'created_by' => Yii::$app->user->identity->username])->all()) ?> </p>
+                    <p class="noactive">Không hoạt động: <?php echo count(\common\models\Products::find()->where(['status' => 'Không hoạt động', 'created_by' => Yii::$app->user->identity->username])->all()) ?></p>
+                <?php endif; ?>
+
             </span>
         </div>
 
@@ -93,14 +103,23 @@ $this->title = 'Dashboard';
                 <div class="content-first-card">
                     <span class="title"> Tổng danh mục </span>
                     <span class="first-value">
-                        <?php echo count(\common\models\Categories::find()->all()) ?>
+                       <?php if (Yii::$app->user->identity->id_role == 1): ?>
+                           <?php echo count(\common\models\Categories::find()->all()); ?>
+                       <?php else: ?>
+                           <?php echo count(\common\models\Categories::find()->where(['created_by' => Yii::$app->user->identity->username])->all()); ?>
+                       <?php endif; ?>
                     </span>
                 </div>
                 <i class="fa fa-list icon-dash"></i>
             </div>
             <span class="card-detail-products">
-                <p> Đang hoạt động: <?php echo count(\common\models\Categories::find()->where(['status' => 'Hiện'])->all()) ?> </p>
-                <p>Không hoạt động: <?php echo count(\common\models\Categories::find()->where(['status' => 'Ẩn'])->all()) ?></p>
+                <?php if (Yii::$app->user->identity->id_role == 1): ?>
+                    <p class="active-prd"> Đang hoạt động: <?php echo count(\common\models\Categories::find()->where(['status' => 'Hiện'])->all()) ?> </p>
+                    <p class="noactive">Không hoạt động: <?php echo count(\common\models\Categories::find()->where(['status' => 'Ẩn'])->all()) ?></p>
+                <?php else: ?>
+                    <p class="active-prd"> Đang hoạt động: <?php echo count(\common\models\Categories::find()->where(['status' => 'Hiện', 'created_by' => Yii::$app->user->identity->username])->all()) ?> </p>
+                    <p class="noactive">Không hoạt động: <?php echo count(\common\models\Categories::find()->where(['status' => 'Ẩn', 'created_by' => Yii::$app->user->identity->username])->all()) ?></p>
+                <?php endif; ?>
             </span>
         </div>
     </div>
@@ -136,7 +155,7 @@ $this->title = 'Dashboard';
         </div>
 
     </div>
-<?php endif;?>
+    <?php endif; ?>
     <?php
 
 
@@ -188,7 +207,7 @@ $this->title = 'Dashboard';
     $viewProducts = [];
     foreach ($topViewedProducts as $product) {
         array_push($nameProducts, $product->name_products);
-        if (View::findOne(['id_products'=>$product->id_products]) !== null) {
+        if (View::findOne(['id_products' => $product->id_products]) !== null) {
             array_push($viewProducts, $product->view->view_count);
         }
     }
