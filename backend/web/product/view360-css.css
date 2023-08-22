@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two:700|Poppins&display=swap');
+
+::selection{
+    color: white;
+    background: #48DBFB;
+}
+.center, .start-btn-360 {
+    position: absolute;
+    z-index: 100;
+}
+.modal-box-360{
+    position:absolute;
+    z-index:200;
+    top: 40%;
+    opacity: 0;
+    visibility: hidden;
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid #50dcfb;
+    box-shadow: 5px 5px 30px rgba(0,0,0,.2);
+}
+
+.modal-box-360.show-modal-360{
+    opacity: 1;
+    visibility: visible;
+    transition: .4s;
+    position: fixed;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.modal-box-360 .fa-times{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #48DBFB;
+    height: 45px;
+    width: 50px;
+    line-height: 40px;
+    color: white;
+    font-size: 18px;
+    border-radius: 0 5px 0 50px;
+    padding-left: 13px;
+    cursor: pointer;
+}
+.fa-times:hover{
+    font-size: 22px;
+}
+.modal-box-360 .icon1{
+    font-size: 60px;
+    background: #48DBFB;
+    height: 120px;
+    width: 120px;
+    color: white;
+    border-radius: 50%;
+    line-height: 120px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.modal-box-360 header{
+    font-size: 31px;
+    font-family: 'Lobster Two';
+    margin-bottom: 10px;
+}
+.modal-box-360 p{
+    /* margin-bottom: 10px; */
+    line-height: 20px;
+    color: grey;
+}
+form360 input, form360 button{
+    height: 50px;
+    width: 95%;
+    border-radius: 3px;
+}
+form360 .icon2{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin-top: 15px;
+    background: #48DBFB;
+    color: white;
+    line-height: 50px;
+    font-size: 24px;
+    border-radius: 5px 0 0 5px;
+}
+form360 input{
+    margin-top: 15px;
+    padding: 0 65px;
+    font-size: 18px;
+    outline: none;
+    border: 2px solid #1ed2fa;
+    caret-color: #48DBFB;
+}
+input::placeholder{
+    color: #8c8c8c;
+}
+form360 input:focus{
+    box-shadow: 0 0 15px #82e6fc,
+    0 0 25px #b4f0fd,
+    0 0 35px #ffffff;
+}
+
+form360 button:hover{
+    background: #1ed2fa;
+    border: 1px solid #05cdfa;
+    letter-spacing: 2px;
+}
+.modal-box-360 .icons{
+    margin-top: 25px;
+}
+.icons i{
+    font-size: 22px;
+    margin: 0 7px;
+    color: #48DBFB;
+    cursor: pointer;
+}
+.icons i:hover{
+    transform: scale(1.1);
+    color: #05cdfa;
+}
+

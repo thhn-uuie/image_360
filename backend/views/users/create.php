@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var common\models\base\Users $model */
 
 $this->title = 'Tạo tài khoản mới';
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tài khoản', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="users-create">

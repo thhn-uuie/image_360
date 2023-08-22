@@ -14,7 +14,6 @@ $this->title = 'Hồ sơ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-index">
-
     <div class="card border-info mb-3" >
         <div class="card-header">
             <div class="col-md-10" style="font-size: 35px; font-weight:bold">
@@ -46,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             $profile_id_user = Profile::findOne(['id_user' => Yii::$app->user->identity->id_user]);
                             if (Yii::$app->user->identity->getId() == $profile_id_user->id_user) {
 
-                                return Html::img('../../image/avatars/' . $model['avatar'], ['class' => 'imgAvatar', 'width' => '100', 'height' => '100']);
+                                return Html::img(Yii::$app->homeUrl.'../../../image/avatars/' . $model['avatar'], ['class' => 'imgAvatar', 'width' => '100', 'height' => '100']);
                             }
                         },
                         'headerOptions' => [

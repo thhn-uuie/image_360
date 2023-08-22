@@ -49,7 +49,7 @@ class ProductsController extends Controller
 
     /**
      * Displays a single Products model.
-     * @param int $id_products Id Products
+     * @param int $id_products Id sản phẩm
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -85,7 +85,7 @@ class ProductsController extends Controller
     /**
      * Updates an existing Products model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id_products Id Products
+     * @param int $id_products Id sản phẩm
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -105,7 +105,7 @@ class ProductsController extends Controller
     /**
      * Deletes an existing Products model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id_products Id Products
+     * @param int $id_products Id sản phẩm
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -119,7 +119,7 @@ class ProductsController extends Controller
     /**
      * Finds the Products model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id_products Id Products
+     * @param int $id_products Id sản phẩm
      * @return Products the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

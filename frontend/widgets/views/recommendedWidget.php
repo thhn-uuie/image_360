@@ -5,7 +5,7 @@ use yii\helpers\Url;
 ?>
 
 <head>
-    <link rel="stylesheet" href="../web/view-products/css/recommended.css" type="text/css">
+    <link rel="stylesheet" href="../view-products/css/recommended.css" type="text/css">
 </head>
 
 <div class="card">

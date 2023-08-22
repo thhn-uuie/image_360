@@ -18,7 +18,7 @@ use yii\helpers\Url;
                     <div class="box">
                         <a href="<?= Url::toRoute(['products/detail', 'id_products' => $limitShowProducts[$item]->id_products]) ?>">
                             <div class="img-box">
-                                <img src="<?php echo '../../image/products/' . $limitShowProducts[$item]->image; ?>" alt="">
+                                <img src="<?php echo Url::base() . '/../image/products/' . $limitShowProducts[$item]->image; ?>" alt="">
                             </div>
                             <div class="detail-box">
                                 <h6 style="margin: auto">

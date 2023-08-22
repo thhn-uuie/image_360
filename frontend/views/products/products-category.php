@@ -2,12 +2,12 @@
 use yii\helpers\Url;
 ?>
 <head>
-    <link rel="stylesheet" href="products/css/main.css">
-    <link rel="stylesheet" href="products/css/owl.carousel.css">
-    <link rel="stylesheet" href="products/css/owl.transitions.css">
-    <link rel="stylesheet" href="products/css/animate.min.css">
-    <link rel="stylesheet" href="products/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="products/css/font-awesome.css">
+    <link rel="stylesheet" href="../../frontend/web/products/css/main.css">
+    <link rel="stylesheet" href="../../frontend/web/products/css/owl.carousel.css">
+    <link rel="stylesheet" href="../../frontend/web/products/css/owl.transitions.css">
+    <link rel="stylesheet" href="../../frontend/web/products/css/animate.min.css">
+    <link rel="stylesheet" href="../../frontend/web/products/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../frontend/web/products/css/font-awesome.css">
 </head>
 
 
@@ -27,7 +27,7 @@ use yii\helpers\Url;
 
 
 
-                <!--                <div class="home-banner"><img src="products/images/banners/LHS-banner.jpg" alt="Image"></div>-->
+                <!--                <div class="home-banner"><img src="../products/images/banners/LHS-banner.jpg" alt="Image"></div>-->
             </div>
             <!-- /.sidemenu-holder -->
             <!-- ============================================== SIDEBAR : END ============================================== -->
@@ -184,13 +184,14 @@ use yii\helpers\Url;
         return isFavorite;
     }
 </script>
-<script src="products/js/jquery-1.11.1.min.js"></script>
-<script src="products/js/bootstrap.min.js"></script>
-<script src="products/js/bootstrap-hover-dropdown.min.js"></script>
-<script src="products/js/owl.carousel.min.js"></script>
-<script src="products/js/bootstrap-slider.min.js"></script>
-<script src="products/js/bootstrap-select.min.js"></script>
-<script src="products/js/scripts.js"></script>
+<script src="../../frontend/web/products/js/jquery-1.11.1.min.js"></script>
+<script src="../../frontend/web/products/js/bootstrap.min.js"></script>
+<script src="../../frontend/web/products/js/bootstrap-hover-dropdown.min.js"></script>
+<script src="../../frontend/web/products/js/owl.carousel.min.js"></script>
+<script src="../../frontend/web/products/js/bootstrap-slider.min.js"></script>
+<script src="../../frontend/web/products/js/bootstrap-select.min.js"></script>
+<script src="../../frontend/web/products/js/scripts.js"></script>
+
 
 
 

@@ -6,16 +6,12 @@ use common\helper\File360Helper;
 use common\models\Products;
 use common\helper\ImageHelper;
 use common\models\search\ProductsSearch;
-use common\models\User;
 use yii\helpers\ArrayHelper;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
 use yii\web\UploadedFile;
 use backend\components\PngWriter;
 use yii\data\ActiveDataProvider;
-use yii\grid\GridView;
 use common\models\base\Categories;
 use yii\filters\AccessControl;
 
@@ -90,7 +86,6 @@ class ProductsController extends base\ProductsController
 
         $model = new Products();
 
-        //lấy danh sách các danh mục có status là 'hiện'
         $cate = Categories::find()->where(['status' => 'Hiện'])->all();
         $categoryList = ArrayHelper::map($cate, 'id_category', 'name_category');
 
@@ -102,18 +97,6 @@ class ProductsController extends base\ProductsController
         if ($model->load(Yii::$app->request->post())) {
             $model->file_360 = UploadedFile::getInstance($model, 'file_360');
             $model->file_image = UploadedFile::getInstance($model, 'file_image');
-            $model->qr;
-
-//            $idPath = $model->getRecordPrevious($model);
-            if (!empty($model->qr)) {
-                $qrImg = Yii::getAlias('@image_360/qr/') . $model->qr->name;
-                $model->qr->saveAs($qrImg);
-            } else {
-                $qrPath = $model->createQR();
-                $model->qr_code = basename($qrPath);
-                $model->setAttribute('qr_code', $model->qr_code);
-                $model->qr = UploadedFile::getInstance($model, 'qr');
-            }
 
             // Upload image
             $path = '/products';
@@ -140,6 +123,7 @@ class ProductsController extends base\ProductsController
                 'model' => $model,
             ]);
         }
+
     }
 
 
@@ -187,6 +171,7 @@ class ProductsController extends base\ProductsController
     {
         $model = $this->findModel($id_products);
         $model->delete();
+
         unlink('../../image/products/' . $model->image);
         unlink('../../image/file360/' . $model->files);
         unlink('../../qr/' . $model->qr_code);

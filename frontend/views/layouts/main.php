@@ -23,7 +23,6 @@ use frontend\widgets\searchBarWidget;
 
 AppAsset::register($this);
 
-
 ?>
 
 <?php $this->beginPage() ?>

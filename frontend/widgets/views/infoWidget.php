@@ -23,7 +23,7 @@
                             </li>
                             <li>
                                 <div class="thumb-content">
-                                    <a href= "<?php echo \yii\helpers\Url::to(['categories/categories'])?>">
+                                    <a href= "<?php echo \yii\helpers\Url::to(['products/show-all'])?>">
                                         Ảnh 360
                                     </a>
                                 </div>

@@ -135,12 +135,4 @@ class Products extends \yii\db\ActiveRecord
         return [$rateAverage, $cmt];
     }
 
-    public function rateAvgAllProducts() {
-        $allProducts = Products::find()->all();
-        foreach ($allProducts as $item) {
-            var_dump($this->getRateProducts($item->id_products));
-
-        }
-    }
-
 }

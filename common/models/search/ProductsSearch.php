@@ -18,7 +18,7 @@ class ProductsSearch extends Products
     {
         return [
             [['id_products', 'id_category', 'created_at', 'updated_at'], 'integer'],
-            [['name_products', 'description', 'status', 'image', 'files', 'created_by', 'updated_by', 'qr_code'], 'safe'],
+            [['name_products', 'status', 'image', 'files', 'created_by', 'updated_by', 'qr_code', 'description'], 'safe'],
         ];
     }
 
@@ -65,13 +65,13 @@ class ProductsSearch extends Products
         ]);
 
         $query->andFilterWhere(['like', 'name_products', $this->name_products])
-            ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'files', $this->files])
             ->andFilterWhere(['like', 'created_by', $this->created_by])
             ->andFilterWhere(['like', 'updated_by', $this->updated_by])
-            ->andFilterWhere(['like', 'qr_code', $this->qr_code]);
+            ->andFilterWhere(['like', 'qr_code', $this->qr_code])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

@@ -10,8 +10,8 @@ use kartik\date\DatePicker;
 ?>
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <link rel="stylesheet" href="../views/profile/css/upload-img.scss" type="text/css">
-    <link rel="stylesheet" href="../views/profile/css/form-body.css" type="text/css">
+    <link rel="stylesheet" href="../profile/upload-img.scss" type="text/css">
+    <link rel="stylesheet" href="../profile/form-body.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
 
@@ -29,7 +29,7 @@ use kartik\date\DatePicker;
                     <!-- Upload image -->
                     <div class="avatar-wrapper">
                         <?php if ($model->avatar !== null): ?>
-                            <img class="profile-pic" src="<?php echo '../../image/avatars/' . $model->avatar ?>"/>
+                            <img class="profile-pic" src="<?php echo Yii::$app->homeUrl. '../../image/avatars/' . $model->avatar ?>"/>
                         <?php else: ?>
                             <img class="profile-pic" src=""/>
                         <?php endif; ?>

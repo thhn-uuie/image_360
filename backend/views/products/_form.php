@@ -19,8 +19,8 @@ use Itstructure\CKEditor\CKEditor;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
-    <link rel="stylesheet" href="../views/products/css/upload-img.scss" type="text/css">
-    <link rel="stylesheet" href="../views/products/css/upload.css" type="text/css">
+    <link rel="stylesheet" href="../product/upload-img.scss" type="text/css">
+    <link rel="stylesheet" href="../product/upload.css" type="text/css">
 </head>
 <div class="products-form">
 
@@ -33,7 +33,7 @@ use Itstructure\CKEditor\CKEditor;
                 <!-- Upload image -->
                 <div class="avatar-wrapper">
                     <?php if ($model->image !== null): ?>
-                        <img class="products-pic" src="<?php echo '../../image/products/' . $model->image ?>"/>
+                        <img class="products-pic" src="<?php echo Yii::$app->homeUrl.'../../image/products/' . $model->image ?>"/>
                     <?php else: ?>
                         <img class="products-pic" src=""/>
                     <?php endif; ?>
@@ -94,7 +94,10 @@ use Itstructure\CKEditor\CKEditor;
                     <?= $form->field($model, 'name_products')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'description')->widget(CKEditor::class, [
                         'options' => ['row' => 6],
-                        'preset' => 'custom'
+                        'preset' => 'custom',
+                        'clientOptions' => [
+                                'maxLength' => false,
+                                ],
                     ]) ?>
                     <?= $form->field($model, 'status')->dropDownList(
                         [

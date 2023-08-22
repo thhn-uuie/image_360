@@ -16,6 +16,7 @@ use yii\web\View;
 
 AppAsset::register($this);
 
+//var_dump(Yii::$app->homeUrl);
 ?>
 
 <?php $this->beginPage() ?>
@@ -39,9 +40,9 @@ AppAsset::register($this);
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/image_360/backend/web/" class="site_title"><span
-                                class="glyphicon glyphicon-picture"></span>
-                            <span> Ảnh 360</span></a>
+                        <a href="/image_360/backend/web/"><span
+                                    class="glyphicon glyphicon-picture"></span>
+                            <span class="content-title"> Ảnh 360</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -49,10 +50,9 @@ AppAsset::register($this);
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <?php $profile_id_user = Profile::findOne(['id_user' => Yii::$app->user->identity->id_user]) ?>
-                        <div class="profile_pic">
-                            <img alt="..." class="img-circle profile_img"
-                                src="<?php echo '../../image/avatars/' . $profile_id_user->avatar ?>">
-                        </div>
+                            <div class="profile_pic">
+                                <img alt="..." class="img-circle profile_img" src="<?php echo Yii::$app->homeUrl. '../../image/avatars/'.$profile_id_user->avatar ?>">
+                            </div>
 
                         <?php $user = \common\models\User::findOne(['id_user' => $profile_id_user->id_user]); ?>
                         <div class="profile_info">
@@ -97,7 +97,7 @@ AppAsset::register($this);
                                             <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li>
-                                                <?php echo Html::a('Danh sách hồ sơ các tài khoản', ['/profile']) ?>
+                                                <?php echo Html::a('Danh sách hồ sơ các tài khoản', ['/profile/index']) ?>
                                             </li>
                                         </ul>
                                     </li>
@@ -145,10 +145,10 @@ AppAsset::register($this);
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <?php $profile_id_user = Profile::findOne(['id_user' => Yii::$app->user->identity->id_user]) ?>
-                                <a href="javascript:" class="user-profile dropdown-toggle" aria-haspopup="true"
-                                    id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<?php echo '../../image/avatars/' . $profile_id_user->avatar ?>" alt="">
-                                </a>
+                                    <a href="javascript:" class="user-profile dropdown-toggle" aria-haspopup="true"
+                                       id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="<?php echo Yii::$app->homeUrl . '../../image/avatars/'.$profile_id_user->avatar ?>" alt="">
+                                    </a>
 
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">

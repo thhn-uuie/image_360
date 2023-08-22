@@ -17,7 +17,7 @@ use yii\helpers\ArrayHelper;
     <head>
         <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
         <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../views/users/css/form_custom.css">
+        <link rel="stylesheet" href="../user/form_custom.css">
     </head>
 
     <body>
