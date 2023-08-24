@@ -71,9 +71,15 @@ use yii\helpers\Url;
                                     <div class="action">
                                         <ul class="list-unstyled">
                                             <li class="lnk wishlist">
-                                                <a class="add-to-cart" id="wishlist" href="javascript:void(0)" onclick="addWL(<?= Yii::$app->user->identity->id_user?>,<?= $item->id_products ?>)" title="Wishlist">
+                                                <?php if(!Yii::$app->user->isGuest):?>
+                                                <a class="add-to-cart" id="wishlist" href="javascript:void(0)" onclick="addWL(<?= Yii::$app->user->identity->id_user?>,<?= $item->id_products ?>)" title="Yêu thích">
                                                     <i class="icon fa fa-heart"></i> Yêu thích
                                                 </a>
+                                                <?php else:?>
+                                                    <a class="add-to-cart" id="wishlist" href="javascript:void(0)" onclick="addWL(null,<?= $item->id_products ?>)" title="Yêu thích">
+                                                        <i class="icon fa fa-heart"></i> Yêu thích
+                                                    </a>
+                                                <?php endif;?>
                                             </li>
                                         </ul>
                                     </div>
@@ -86,6 +92,8 @@ use yii\helpers\Url;
                         </div>
                         <!-- /.col-md-3 -->
                     <?php endforeach; ?>
+                    <?= \yii\widgets\LinkPager::widget(['pagination' => $pagination]) ?>
+
                 </div>
                 <!-- /.row -->
             </div>

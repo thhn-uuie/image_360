@@ -60,7 +60,7 @@ use yii\helpers\Url;
                                                     <div class="product-image">
                                                         <div class="image">
                                                             <a href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
-                                                                <img src="<?php echo '../../../image/products/' . $item->image ?>" alt="">
+                                                                <img src="<?php echo '../../image/products/' . $item->image ?>" alt="">
                                                             </a>
                                                         </div>
                                                          </div>
@@ -100,9 +100,15 @@ use yii\helpers\Url;
                                                         <div class="action">
                                                             <ul class="list-unstyled">
                                                                 <li class="lnk wishlist">
-                                                                    <a class="add-to-cart" id="wishlist" href="javascript:void(0)" onclick="addWL(<?= Yii::$app->user->identity->id_user?>,<?= $item->id_products ?>)" title="Wishlist">
-                                                                        <i class="icon fa fa-heart"></i> Yêu thích
-                                                                    </a>
+                                                                    <?php if(!Yii::$app->user->isGuest):?>
+                                                                        <a class="add-to-cart" id="wishlist" href="javascript:void(0)" onclick="addWL(<?= Yii::$app->user->identity->id_user?>,<?= $item->id_products ?>)" title="Yêu thích">
+                                                                            <i class="icon fa fa-heart"></i> Yêu thích
+                                                                        </a>
+                                                                    <?php else:?>
+                                                                        <a class="add-to-cart" id="wishlist" href="javascript:void(0)" onclick="addWL(null,<?= $item->id_products ?>)" title="Yêu thích">
+                                                                            <i class="icon fa fa-heart"></i> Yêu thích
+                                                                        </a>
+                                                                    <?php endif;?>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -178,10 +184,14 @@ use yii\helpers\Url;
 
     function addWL(user, id) {
         if (addWis(user, id)) {
-            alert("dã có");
+            alert("Ảnh này đã có trong Yêu thích!");
         } else {
             $.get('<?= Url::toRoute(['wishlist/add'])?>', {'id': id}, function (data) {
-                alert("thanh cong");
+                if(data === '1') {
+                    alert('Thêm ảnh vào Yêu thích thành công!');
+                } else {
+                    alert('Bạn cần đăng nhập để thực hiện chức năng này!');
+                }
             });
         }
 
@@ -204,6 +214,7 @@ use yii\helpers\Url;
                         }
                     }
                 }
+                console.log(isFavorite);
             },
             error: function (xhr, status, error) {
                 console.error(error);

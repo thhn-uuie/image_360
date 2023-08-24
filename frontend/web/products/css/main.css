@@ -29,6 +29,18 @@ Text Domain:  Flipmart
 /*===================================================================================*/
 /*  Body
 /*===================================================================================*/
+#wislist-style {
+    margin-bottom: 15px;
+    font-size: 15px;
+    border: none;
+    padding: 10px;
+    width: 191px;
+    border-radius: 20px;
+    background: #ffe2e2;
+}
+
+
+
 .green-text {
     color: #abd07e !important;
 }
@@ -7616,7 +7628,7 @@ img[src="assets/images/blank.gif"] {
 }
 
 .special-product .product .col {
-    padding-right: 0px
+    padding-right: 6px;
 }
 
 .special-product .product .btn-primary {
@@ -10132,6 +10144,20 @@ age-container #owl-main .owl-next {
     top: 0;
     margin-left: -55px
 }
+.product .cart.showImg360 {
+    margin-top: 5px;
+    opacity: 0;
+    -webkit-transition: all 0.5s linear 0s;
+    -moz-transition: all 0.5s linear 0s;
+    -o-transition: all 0.5s linear 0s;
+    transition: all 0.5s linear 0s;
+    width: 100%;
+    z-index: 5;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    margin-left: -55px
+}
 
 .product .cart .action ul li {
     float: left;
@@ -10202,6 +10228,11 @@ age-container #owl-main .owl-next {
     top: 45%
 }
 
+.product:hover .cart.showImg360 {
+    z-index:5;
+    opacity: 1;
+    top: 80%;
+}
 .best-seller .product .product-info .name,
 .special-offer .product .product-info .name {
     margin-top: 4px;
@@ -11395,7 +11426,7 @@ age-container #owl-main .owl-next {
 }
 
 .single-product .product-info .description-container {
-    line-height: 20px;
+    line-height: 30px;
     color: #666666;
 }
 
@@ -13698,7 +13729,7 @@ age-container #owl-main .owl-next {
 }
 
 .body-content .my-wishlist-page img {
-    width: 100%
+    width: 80%;
 }
 
 .body-content .my-wishlist-page .my-wishlist table tbody tr:nth-child(even) {
@@ -13763,4 +13794,30 @@ age-container #owl-main .owl-next {
 .home-banner {
     margin-top: 30px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background: #478aff;
+    color: white;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #007bff;
+    background-image: linear-gradient(to right, #fff, #007bff26);
+    border: 1px solid #00000021;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#yii-debug-toolbar {
+    display:none!important;
 }

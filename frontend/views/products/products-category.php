@@ -106,6 +106,7 @@ use yii\helpers\Url;
                                         </div>
                                         <!-- /.col-md-3 -->
                                     <?php endforeach; ?>
+                                    <?= \yii\widgets\LinkPager::widget(['pagination' => $pagination]) ?>
                                 </div>
                                 <!-- /.row -->
                             </div>

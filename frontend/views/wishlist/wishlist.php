@@ -2,6 +2,8 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
+use frontend\models\Wishlist;
 
 ?>
 <head>
@@ -16,11 +18,19 @@ use yii\helpers\Html;
                         <table class="table">
                             <thead>
                             <tr>
-                                <th colspan="4" class="heading-title">Hình ảnh yêu thích</th>
+                                <th colspan="2" class="heading-title">Hình ảnh yêu thích</th>
+
+                                <th colspan="2" class="count-wis" style="
+                                                                    font-size: 19px;
+                                                                    padding: 0;
+                                                                    text-transform: none;
+                                                                    ">
+                                    <?= $total?> ảnh
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
-<!--                            --><?php //var_dump($wis);die;?>
+                            <!--                            --><?php //var_dump($wis);die;?>
                             <?php foreach ($wis as $item): ?>
                                 <tr>
                                     <td class="col-md-5"><img src="<?= '../../image/products/' . $item->image ?>"
@@ -30,13 +40,14 @@ use yii\helpers\Html;
                                             <a href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
                                                 <?= $item->name_products ?>
                                             </a>
+
                                         </div>
                                         <div class="rating">
                                             <?php $query = new \yii\db\Query();
                                             $query->select(['ROUND(AVG(rate),1) AS average_rating', 'count(comment) as cmt'])
-                                                    ->from('rate')
-                                                    ->where(['id_products'=>$item->id_products])
-                                                    ->all();
+                                                ->from('rate')
+                                                ->where(['id_products' => $item->id_products])
+                                                ->all();
                                             $rating = $query->all();
                                             $star = $rating[0]['average_rating'];
                                             ?>
@@ -61,7 +72,9 @@ use yii\helpers\Html;
                                         </div>
                                     </td>
                                     <td class="col-md-1 close-btn">
-                                        <a href="javascript:void(0)" onclick="deleteWL(<?= Yii::$app->user->identity->id_user?>,<?= $item->id_products ?>)"  id="delete-wis-btn" class="delete-wis-btn">
+                                        <a href="javascript:void(0)"
+                                           onclick="deleteWL(<?= Yii::$app->user->identity->id_user ?>,<?= $item->id_products ?>)"
+                                           id="delete-wis-btn" class="delete-wis-btn">
                                             <i class="fa fa-times"
                                                style="font-size:20px">
                                             </i>
@@ -72,16 +85,21 @@ use yii\helpers\Html;
                             <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?= LinkPager::widget(['pagination' => $pagination]) ?>
+
                     </div>
                 </div>
             </div><!-- /.row -->
         </div><!-- /.sigin-in-->
     </div>
+    <div style="margin-top:15px"></div>
+    <?= \frontend\widgets\infoWidget::widget()?>
 </div>
 
-<script src="products/js/jquery-1.11.1.min.js"></script>
-<script src="products/js/bootstrap.min.js"></script>
-<script src="products/js/scripts.js"></script>
+<script src="../../frontend/web/products/js/jquery-1.11.1.min.js"></script>
+<script src="../../frontend/web/products/js/bootstrap.min.js"></script>
+<script src="../../frontend/web/products/js/scripts.js"></script>
+
 <script>
     function deleteWL(user, id) {
         if (deleteWis(user, id)) {
@@ -99,7 +117,7 @@ use yii\helpers\Html;
             url: '<?= Url::toRoute(['wishlist/view-wis']) ?>',
             type: 'GET',
             dataType: 'json',
-            async:false,
+            async: false,
             success: function (response) {
                 console.log(response);
                 if (response.length > 0) {

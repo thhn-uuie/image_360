@@ -54,15 +54,16 @@ use Itstructure\CKEditor\CKEditor;
 
                                 <style>
                                     #panorama {
-                                        width: 336px!important;
-                                        height: 200px!important;
+                                        width: 416px!important;
+                                        height: 249px!important;
+                                        border-radius:10px;
                                     }
                                 </style>
 
                             <?= $this->render('view360', ['model'=>$model]) ?>
                             <?php else: ?>
 
-                            <div id="panorama" style="width:336px; height:200px;"></div>
+                            <div id="panorama" style="height:252px;"></div>
                             <?php endif; ?>
 
                         </div>
@@ -155,7 +156,8 @@ use Itstructure\CKEditor\CKEditor;
                     pannellum.viewer('panorama', {
                         "type": "equirectangular",
                         "panorama": url,
-                        "autoLoad": true
+                        "autoLoad": true,
+                        "autoRotate": -3,
                     });
                     $('.panorama').attr('src', url);
                 }

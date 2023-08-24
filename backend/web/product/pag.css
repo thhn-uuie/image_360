@@ -1,0 +1,22 @@
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background: #478aff;
+    color: white;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #007bff;
+    background-image: linear-gradient(to right, #fff, #007bff26);
+    border: 1px solid #00000021;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

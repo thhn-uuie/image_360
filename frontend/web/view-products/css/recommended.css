@@ -28,10 +28,3 @@
     color:black;
 }
 
-#prd-box {
-    height: 360px;
-    border: 1px solid #afa8a2;
-}
-#prd-box .card-body {
-    background: rgba(255, 219, 219, 0.57);
-}

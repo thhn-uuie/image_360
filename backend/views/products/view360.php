@@ -17,8 +17,14 @@ use yii\helpers\Url;
     <style>
         #panorama {
             margin:0 auto;
-            width: 70vw;
+            width: 75vw;
             height: 85vh;
+        }
+        @media(max-width:768px) {
+            #panorama {
+                width: 70vw;
+                height: 70vh;
+            }
         }
     </style>
 </head>
@@ -33,7 +39,8 @@ use yii\helpers\Url;
     pannellum.viewer('panorama', {
         "type": "equirectangular",
         "panorama": "<?php echo $url; ?>",
-        "autoLoad": true
+        "autoLoad": true,
+        "autoRotate": -3,
     });
 </script>
 

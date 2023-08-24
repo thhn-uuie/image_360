@@ -5,6 +5,8 @@ namespace frontend\models;
 use common\models\base\View;
 use common\models\base\Rate;
 use Yii;
+use yii\data\Pagination;
+use yii\db\Query;
 
 /**
  * This is the model class for table "products".
@@ -102,11 +104,18 @@ class Products extends \yii\db\ActiveRecord
 
     public function getProductsCate($id_cate)
     {
-        $products_cate = Products::find()
+        $query = Products::find()
             ->innerJoin('categories', 'categories.id_category = products.id_category')
-            ->where(['products.id_category' => $id_cate, 'products.status' => 'Hoạt động', 'categories.status'=>'Hiện'])
+            ->where(['products.id_category' => $id_cate, 'products.status' => 'Hoạt động', 'categories.status'=>'Hiện']);
+         $pagination = new Pagination([
+             'defaultPageSize' => 12,
+             'totalCount' => $query->count(),
+         ]);
+
+        $products_cate = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
             ->all();
-        return $products_cate;
+        return [$products_cate, $pagination];
     }
 
     public function getViewProducts($id_products) {
@@ -134,5 +143,6 @@ class Products extends \yii\db\ActiveRecord
         }
         return [$rateAverage, $cmt];
     }
+
 
 }

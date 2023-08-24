@@ -53,10 +53,9 @@ AppAsset::register($this);
         <?= topMenu::widget() ?>
 
         <!-- ============================================== NAVBAR ============================================== -->
-<!--        --><?php //= navbarWidget::widget() ?>
+        <?= navbarWidget::widget() ?>
         <!-- ============================================== NAVBAR : END ============================================== -->
 
-        <?= navbarWidget::widget()?>
     </header>
     <!-- end header section -->
 

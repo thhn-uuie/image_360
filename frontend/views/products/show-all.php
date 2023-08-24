@@ -41,15 +41,16 @@ use yii\helpers\Url;
 
 
                 <!-- ============================================== SCROLL TABS ============================================== -->
-                <?= \frontend\widgets\scroll::widget() ?>
+                <?= \frontend\widgets\showProducts::widget() ?>
                 <!-- ============================================== SCROLL TABS : END ============================================== -->
             </div>
             <!-- ============================================== CONTENT : END ============================================== -->
         </div>
         <!-- /.row -->
-
     </div>
     <!-- /.container -->
+    <?= \frontend\widgets\infoWidget::widget()?>
+
 </div>
 <!-- /#top-banner-and-menu -->
 
@@ -60,10 +61,14 @@ use yii\helpers\Url;
 <script>
     function addWL(user, id) {
         if (addWis(user, id)) {
-            alert("dã có");
+            alert("Ảnh này đã có trong Yêu thích!");
         } else {
             $.get('<?= Url::toRoute(['wishlist/add'])?>', {'id': id}, function (data) {
-                alert("thanh cong");
+                if(data === '1') {
+                    alert('Thêm ảnh vào Yêu thích thành công!');
+                } else {
+                    alert('Bạn cần đăng nhập để thực hiện chức năng này!');
+                }
             });
         }
 
@@ -86,6 +91,7 @@ use yii\helpers\Url;
                         }
                     }
                 }
+                console.log(isFavorite);
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -96,7 +102,6 @@ use yii\helpers\Url;
 </script>
 
 <script src="../../frontend/web/products/js/jquery-1.11.1.min.js"></script>
-<script src="../../frontend/web/products/js/bootstrap.min.js"></script>
 <script src="../../frontend/web/products/js/bootstrap-hover-dropdown.min.js"></script>
 <script src="../../frontend/web/products/js/owl.carousel.min.js"></script>
 <script src="../../frontend/web/products/js/bootstrap-slider.min.js"></script>

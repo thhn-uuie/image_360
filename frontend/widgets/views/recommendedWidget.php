@@ -17,11 +17,9 @@ use yii\helpers\Url;
             <div class="row filtering">
                 <?php foreach ($sameCate as $item): ?>
                     <div class="p-2 pb-3" id="img-prd">
-                        <a
-                                href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
+                        <a href="<?= Url::toRoute(['products/detail', 'id_products' => $item->id_products]) ?>">
                             <div class="product-wap card rounded-0" id="prd-box">
                                 <div class="card rounded-0">
-
                                     <img class="img-fluid" src="<?php echo '../../image/products/' . $item->image ?>">
                                 </div>
                                 <div class="card-body">
@@ -68,7 +66,16 @@ use yii\helpers\Url;
     $('.filtering').slick({
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 4
+        slidesToScroll: 4,
+        responsive: [
+            {
+                breakpoint: 768, // Điểm phá vỡ tại màn hình < 768px
+                settings: {
+                    slidesToShow: 2, // Giới hạn hiển thị 1 slide
+                    slidesToScroll: 2
+                }
+            }
+        ]
     });
 </script>
 

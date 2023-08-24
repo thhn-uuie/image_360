@@ -16,7 +16,7 @@
 }
 
 .top-bar ul li {
-  width: 150px;
+  width: 183px;
   padding-top: 5px;
 }
 .top-bar .fa {
@@ -110,6 +110,7 @@
   -webkit-box-pack: center;
   justify-content: center;
   padding: 10px 0px;
+  height: auto!important;
 }
 
 #navbarSupportedContent.innerpage_navbar {
@@ -813,4 +814,7 @@ a:hover, a:focus {
 
 .footer_section a {
   color: rgb(203, 201, 201);
+}
+#yii-debug-toolbar {
+  display:none!important;
 }

@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             $profile_id_user = Profile::findOne(['id_user' => Yii::$app->user->identity->id_user]);
                             if (Yii::$app->user->identity->getId() == $profile_id_user->id_user) {
 
-                                return Html::img(Yii::$app->homeUrl.'../../../image/avatars/' . $model['avatar'], ['class' => 'imgAvatar', 'width' => '100', 'height' => '100']);
+                                return Html::img(Yii::$app->homeUrl.'../../image/avatars/' . $model['avatar'], ['class' => 'imgAvatar', 'width' => '100', 'height' => '100']);
                             }
                         },
                         'headerOptions' => [

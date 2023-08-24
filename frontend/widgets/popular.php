@@ -19,7 +19,7 @@ class popular extends Widget {
             ->innerJoin('view', 'view.id_products = products.id_products')
             ->where(['products.status' => 'Hoạt động', 'categories.status' => 'Hiện'])
             ->orderBy(['view.view_count' => SORT_DESC])
-            ->limit(3);
+            ->limit(5);
 
         $products = $query->all();
         return $this->render('popular',

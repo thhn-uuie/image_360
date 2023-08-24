@@ -144,7 +144,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <!-- End block content -->
-    </main>
 
 </div>
 

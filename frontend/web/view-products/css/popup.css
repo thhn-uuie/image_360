@@ -4,6 +4,8 @@
     outline: none;
     border-radius: 10px;
     background: rgba(179,200,144,0.5);
+    width: 84px;
+    margin-left: 11px;
 }
 
 .modal-qrcode {

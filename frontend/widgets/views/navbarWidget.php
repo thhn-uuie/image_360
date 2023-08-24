@@ -8,7 +8,7 @@ use yii\helpers\Html;
         <span class=""></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <?php echo Html::a('Trang chủ', ['/site/index'], ['class' => 'nav-link']) ?>

@@ -17,8 +17,10 @@ class ProductsController extends \yii\web\Controller
     {
         $products = new Products();
 
-        $products_cate = $products->getProductsCate($id_cate);
+        $getData = $products->getProductsCate($id_cate);
 
+        $products_cate = $getData[0];
+        $pagination = $getData[1];
 
         $star = new StarProducts();
         $averageRatings = $star->getStar($products_cate);
@@ -26,7 +28,8 @@ class ProductsController extends \yii\web\Controller
 
         return $this->render('products-category', [
             'products_cate' => $products_cate,
-            'averageRatings'=> $averageRatings
+            'averageRatings'=> $averageRatings,
+            'pagination'=>$pagination,
         ]);
     }
 

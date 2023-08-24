@@ -1,6 +1,8 @@
 <?php
+
 use yii\helpers\Html;
 use yii\helpers\Url;
+
 ?>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 <div class="top-bar animate-dropdown">
@@ -16,16 +18,20 @@ use yii\helpers\Url;
                             </a>
                         </li>
                     <?php else: ?>
-                        <li><a href="#"><i class="icon fa fa-user"></i>Quản lý</a></li>
+                        <li><a href="<?php echo Yii::$app->homeUrl . '../backend/web/' ?>"><i
+                                        class="icon fa fa-user"></i>Quản lý</a></li>
 
-                        <li><a href="<?= Url::toRoute(['wishlist/wishlist']) ?>"><i class="icon fa fa-heart"></i>Yêu thích</a></li>
-
+                        <li><a href="<?= Url::toRoute(['wishlist/wishlist']) ?>"><i class="icon fa fa-heart"></i>Yêu
+                                thích</a></li>
+                        <li style="margin-right:-140px"></li>
                         <li>
                             <div class="dropdown">
-                                <?php $ava = \common\models\Profile::findOne(['id_user'=>Yii::$app->user->identity->id_user])?>
-                                <a href="javascript:void(0)" id="navbarDropdown" onclick="clickDropDown()" class="dropbtn">
-                                    <img src="<?php echo Url::base() . '/../image/avatars/'. $ava->avatar?>" alt="" style="width: 35px;height: 35px;border-radius: 50%; margin-right:10px">
-                                    <?= Yii::$app->user->identity->username?>
+                                <?php $ava = \common\models\Profile::findOne(['id_user' => Yii::$app->user->identity->id_user]) ?>
+                                <a href="javascript:void(0)" id="navbarDropdown" onclick="clickDropDown()"
+                                   class="dropbtn">
+                                    <img src="<?php echo Url::base() . '/../image/avatars/' . $ava->avatar ?>" alt=""
+                                         style="width: 35px;height: 35px;border-radius: 50%; margin-left:20px">
+                                    <?= Yii::$app->user->identity->username ?>
                                     <i class="fa fa-caret-down"></i>
                                 </a>
                                 <div id="myDropdown" class="dropdown-content">
@@ -33,7 +39,7 @@ use yii\helpers\Url;
                                         <?= Html::beginForm(['/site/logout'], 'post', ['class' => 'logout'])
                                         . Html::submitButton(
                                             '<p class="content-log-out"><i class="icon fa fa-sign-out" style="font-size:15px"></i> Đăng xuất</p>',
-                                            ['class' => 'btn btn-link logout-btn', 'style'=>'height:45px']
+                                            ['class' => 'btn btn-link logout-btn', 'style' => 'height:45px']
                                         )
                                         . Html::endForm(); ?>
                                     </a>
@@ -49,8 +55,8 @@ use yii\helpers\Url;
             <div class="clearfix"></div>
         </div>
         <!-- /.header-top-inner -->
-        <?= \frontend\widgets\searchBarWidget::widget()?>
-        <?= \frontend\widgets\navbarWidget::widget() ?>
+        <?= \frontend\widgets\searchBarWidget::widget() ?>
+        <!--        --><?php //= \frontend\widgets\navbarWidget::widget() ?>
 
     </div>
     <!-- /.container -->
@@ -58,12 +64,13 @@ use yii\helpers\Url;
 <!-- /.header-top -->
 
 <style>
-    .content-log-out{
-        font-family: poppins, sans-serif!important;
-        font-size:14px;
+    .content-log-out {
+        font-family: poppins, sans-serif !important;
+        font-size: 14px;
         margin-left: -10vw;
         margin-top: 10px;
     }
+
     .dropdown-content {
         display: none;
         height: 48px;
@@ -71,7 +78,7 @@ use yii\helpers\Url;
         background-color: #ffc8d3;
         min-width: 160px;
         overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 3;
         margin-left: 4vw;
     }
@@ -92,19 +99,23 @@ use yii\helpers\Url;
         .content-log-out {
             margin-left: -13vw;
         }
+
         .dropdown-content {
             min-width: 125px;
             margin-left: 8vw;
         }
     }
+
     @media (min-width: 992px) and (max-width: 1199px) {
         .content-log-out {
             margin-left: -15vw;
         }
     }
+
     .btn {
-        padding:0!important;
+        padding: 0 !important;
     }
+
     .dropbtn {
         font-family: poppins, sans-serif;
         color: #007bff;
@@ -118,14 +129,15 @@ use yii\helpers\Url;
     }
 
 
-
     #log-out {
         color: black;
         text-decoration: none;
     }
 
 
-    .show {display: block;}
+    .show {
+        display: block;
+    }
 </style>
 
 
@@ -137,7 +149,7 @@ use yii\helpers\Url;
     }
 
     // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;

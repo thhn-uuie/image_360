@@ -15,8 +15,10 @@ use yii\helpers\ArrayHelper;
 $this->title = 'Quản lý sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<head>
+<link rel="stylesheet" href="<?= Yii::$app->homeUrl . 'product/pag.css'?>" type="text/css">
 
-
+</head>
 <div class="products-index">
     <div class="card border-info mb-3" style="border-color: #ffa600!important;">
         <div class="card-header">
@@ -170,7 +172,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ],
             ); ?>
-
 
         </div>
     </div>

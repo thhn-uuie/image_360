@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster+Two:700|Poppins&display=swap');
 
 .open-modal-btn-360 {
-    padding: 4px 26px;
+    margin-top: 10px;
+    padding: 7px 26px;
     border: none;
     outline: none;
-    border-radius: 8px;
-    background: rgb(179 200 144 / 61%);
-    margin-left: 1px;
+    border-radius: 15px;
+    background: rgb(161 255 254 / 50%);
+    box-shadow: 3px 5px 8px rgb(15 109 115 / 37%);
 }
 
 .modal-360 {
@@ -27,12 +27,16 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 10px;
-    background: #aac8a7;
+    background: #b78e93;
     padding-right: 10px;
 }
 
 .modal-header-360 p{
     margin-top:10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    list-style: upper-alpha;
 }
 
 .modal-360.show-modal-360{
@@ -45,4 +49,3 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-

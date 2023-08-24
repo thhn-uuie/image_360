@@ -11,7 +11,6 @@
 .modal-box-360{
     position:absolute;
     z-index:200;
-    top: 40%;
     opacity: 0;
     visibility: hidden;
     background: white;
@@ -19,6 +18,8 @@
     border-radius: 5px;
     border: 1px solid #50dcfb;
     box-shadow: 5px 5px 30px rgba(0,0,0,.2);
+    top: -50vh;
+    left: -16vw;
 }
 
 .modal-box-360.show-modal-360{
@@ -28,7 +29,7 @@
     position: fixed;
     width: 80vw;
     top: 50%;
-    left: 50%;
+    left: 57%;
     transform: translate(-50%, -50%);
 }
 .modal-box-360 .fa-times{
@@ -121,3 +122,8 @@ form360 button:hover{
     color: #05cdfa;
 }
 
+@media(max-width:768px) {
+    .modal-box-360.show-modal-360{
+        left:50%;
+    }
+}

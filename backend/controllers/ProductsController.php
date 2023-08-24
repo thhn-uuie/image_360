@@ -6,6 +6,7 @@ use common\helper\File360Helper;
 use common\models\Products;
 use common\helper\ImageHelper;
 use common\models\search\ProductsSearch;
+use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii\filters\VerbFilter;
 use Yii;
@@ -75,6 +76,13 @@ class ProductsController extends base\ProductsController
                 'query' => Products::find()->where(['created_by' => Yii::$app->user->identity->username]),
             ]);
         }
+        $count = $dataProvider->getTotalCount();
+
+        // Tạo đối tượng Pagination với pageSize là 5
+        $pagination = new Pagination(['pageSize' => 5, 'totalCount' => $count]);
+
+        // Áp dụng phân trang vào query
+        $dataProvider->setPagination($pagination);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
