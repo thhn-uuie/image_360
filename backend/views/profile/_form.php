@@ -65,11 +65,31 @@ use borales\extensions\phoneInput\PhoneInput;
 
                     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-                    <?= $form->field($model, 'phone')->widget(PhoneInput::className(), [
-                        'jsOptions' => [
-                            'preferredCountries' => ['no', 'pl', 'ua'],
-                        ]
-                    ]); ?>
+                    <?= $form->field($model, 'phone')->textInput([
+                        'id' => 'phone',
+                        'oninput' => 'validatePhoneNumber()',
+
+                    ]) ?>
+
+                    <script>
+                        function validatePhoneNumber() {
+                            var phoneNumber = document.getElementById('phone').value;
+                            console.log(phoneNumber);
+
+                            // Thực hiện xác thực số điện thoại tại đây
+                            // Ví dụ: Sử dụng biểu thức chính quy
+                            var pattern = /^(03|05|07|08|09)\d{8}$/;
+                            var isValid = pattern.test(phoneNumber);
+                            console.log(isValid)
+                            // Hiển thị thông báo lỗi nếu số điện thoại không hợp lệ
+                            if (!isValid) {
+                                document.getElementById('phone').setCustomValidity('Vui lòng nhập số điện thoại hợp lệ!');
+                            } else {
+                                document.getElementById('phone').setCustomValidity('');
+                            }
+                        }
+                    </script>
+
                     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
                     <div class="form-group">

@@ -79,7 +79,7 @@ class ProfileController extends base\ProfileController
         if ($model->load(Yii::$app->request->post())) {
 
             $loadImg->loadImgAvatar($model);
-            $model->phone = $model->phone_number;
+            $model->phone =(string)$model->phone;
 
             if ($model->save(false)) {
                 //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
@@ -130,6 +130,7 @@ class ProfileController extends base\ProfileController
                 $model->file_image = $old_avatar;
             }
 
+            $model->phone =(string)$model->phone;
             if ($model->save(false)) {
                 //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
                 return $this->redirect(['view', 'id_user' => $model->id_user]);

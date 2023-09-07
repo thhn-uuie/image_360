@@ -18,7 +18,7 @@ use Yii;
  * @property int|null $updated_at
  * @property string|null $updated_by
  * @property string|null $email
- * @property int|null $phone
+ * @property string|null $phone
  *
  * @property Users $user
  */
@@ -39,8 +39,8 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'birthday', 'gender', 'address'], 'required'],
-            [['created_at', 'updated_at', 'phone'], 'integer'],
-            [['name', 'birthday', 'gender', 'address', 'avatar', 'created_by', 'updated_by', 'email'], 'string', 'max' => 255],
+            [['created_at', 'updated_at'], 'integer'],
+            [['name', 'birthday', 'gender', 'address', 'avatar', 'created_by', 'updated_by', 'email', 'phone'], 'string', 'max' => 255],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['id_user' => 'id_user']],
         ];
     }
