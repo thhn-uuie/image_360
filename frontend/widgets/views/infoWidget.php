@@ -29,7 +29,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="thumb-content"><a href="#.">Liên hệ</a></div>
+                                <div class="thumb-content"><a href="<?php echo \yii\helpers\Url::to(['site/contact'])?>">Liên hệ</a></div>
                             </li>
                         </ul>
                     </div>

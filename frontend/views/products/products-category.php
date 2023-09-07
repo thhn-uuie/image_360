@@ -2,12 +2,12 @@
 use yii\helpers\Url;
 ?>
 <head>
-    <link rel="stylesheet" href="../../frontend/web/products/css/main.css">
-    <link rel="stylesheet" href="../../frontend/web/products/css/owl.carousel.css">
-    <link rel="stylesheet" href="../../frontend/web/products/css/owl.transitions.css">
-    <link rel="stylesheet" href="../../frontend/web/products/css/animate.min.css">
-    <link rel="stylesheet" href="../../frontend/web/products/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="../../frontend/web/products/css/font-awesome.css">
+    <link rel="stylesheet" href="../../frontend/web/css/main.css">
+    <link rel="stylesheet" href="../../frontend/web/css/owl.carousel.css">
+    <link rel="stylesheet" href="../../frontend/web/css/owl.transitions.css">
+    <link rel="stylesheet" href="../../frontend/web/css/animate.min.css">
+    <link rel="stylesheet" href="../../frontend/web/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../frontend/web/css/font-awesome.css">
 </head>
 
 

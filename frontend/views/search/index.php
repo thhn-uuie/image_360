@@ -43,7 +43,7 @@ use yii\helpers\Url;
 
                 <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
                     <div class="more-info-tab clearfix ">
-                        <h3 class="new-product-title pull-left"> Ảnh 360</h3>
+                        <h3 class="new-product-title pull-left"> Tìm kiếm ảnh có từ <strong style="font-style: italic">"<?= $string ?>"</strong></h3>
                         <!--        <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">-->
                         <!--            <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">Tất cả</a></li>-->
                         <!--        </ul>-->
@@ -164,10 +164,10 @@ use yii\helpers\Url;
             <!-- ============================================== CONTENT : END ============================================== -->
         </div>
         <!-- /.row -->
-
     </div>
     <!-- /.container -->
 </div>
+<?= \frontend\widgets\infoWidget::widget()?>
 <!-- /#top-banner-and-menu -->
 
 <!-- ============================================================= FOOTER ============================================================= -->

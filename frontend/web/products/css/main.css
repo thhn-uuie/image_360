@@ -91,9 +91,6 @@ Text Domain:  Flipmart
     vertical-align: top;
 }
 
-ul {
-    list-style: none;
-}
 
 a {
     -webkit-transition: all 0.2s linear 0s;
@@ -7046,10 +7043,6 @@ Text Domain:  Flipmart
 .inline {
     display: inline-block;
     vertical-align: top;
-}
-
-ul {
-    list-style: none;
 }
 
 a {

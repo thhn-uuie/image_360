@@ -117,7 +117,6 @@ class User extends \common\models\base\Users implements IdentityInterface
         if ($insert) {
             $profile = new Profile();
             $profile->id_user = $this->id_user;
-
             $profile->avatar = 'no-avatar.jpg';
             $profile->created_at = time();
             if (Profile::find()->all() ==null) {

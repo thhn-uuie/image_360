@@ -14,7 +14,7 @@ class ContactForm extends Model
     public $email;
     public $subject;
     public $body;
-    public $verifyCode;
+    //public $verifyCode;
 
 
     /**
@@ -34,7 +34,7 @@ class ContactForm extends Model
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+           // ['verifyCode', 'captcha'],
         ];
     }
 
@@ -48,7 +48,7 @@ class ContactForm extends Model
             'email' => 'Email',
             'subject' => 'Tiêu đề',
             'body' =>'Nội dung',
-            'verifyCode' => 'Mã xác nhận',
+           // 'verifyCode' => 'Mã xác nhận',
         ];
     }
 
@@ -60,10 +60,16 @@ class ContactForm extends Model
      */
     public function sendEmail($email)
     {
+//        return Yii::$app->mailer->compose()
+//            ->setTo($email)
+//            ->setFrom($this->email)
+//            ->setTo([$email])
+//            ->setSubject($this->subject)
+//            ->setTextBody($this->body)
+//            ->send();
         return Yii::$app->mailer->compose()
+            ->setFrom($this->email)
             ->setTo($email)
-            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
-            ->setReplyTo([$this->email => $this->name])
             ->setSubject($this->subject)
             ->setTextBody($this->body)
             ->send();

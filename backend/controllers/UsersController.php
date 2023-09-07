@@ -6,6 +6,7 @@ use common\models\User;
 
 use common\models\search\UsersSearch;
 use console\rbac\UserRule;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -61,6 +62,11 @@ class UsersController extends Controller
     {
         $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+
+        $count = $dataProvider->getTotalCount();
+
+        // Tạo đối tượng Pagination với pageSize là 5
+        $pagination = new Pagination(['pageSize' => 5, 'totalCount' => $count]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

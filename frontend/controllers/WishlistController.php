@@ -72,11 +72,11 @@ class WishlistController extends \yii\web\Controller
 
     public function actionDelete($id)
     {
-        if (!Yii::$app->user->isGuest) {
-            $product = $this->findModel($id);
-            $product->delete();
-//            return $this->redirect(['wishlist']);
-        }
+        $this->findModel($id)->delete();
+
+//        return $this->redirect(['wishlist']);
+            return true;
+
     }
 
     protected function findModel($id_products)

@@ -3,18 +3,17 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\date\DatePicker;
+use borales\extensions\phoneInput\PhoneInput;
 
 /** @var yii\web\View $this */
 /** @var common\models\Profile $model */
 /** @var yii\widgets\ActiveForm $form */
+
 ?>
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="../profile/upload-img.scss" type="text/css">
     <link rel="stylesheet" href="../profile/form-body.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
-
 </head>
 
 <div class="profile-form">
@@ -29,7 +28,8 @@ use kartik\date\DatePicker;
                     <!-- Upload image -->
                     <div class="avatar-wrapper">
                         <?php if ($model->avatar !== null): ?>
-                            <img class="profile-pic" src="<?php echo Yii::$app->homeUrl. '../../image/avatars/' . $model->avatar ?>"/>
+                            <img class="profile-pic"
+                                 src="<?php echo Yii::$app->homeUrl . '../../image/avatars/' . $model->avatar ?>"/>
                         <?php else: ?>
                             <img class="profile-pic" src=""/>
                         <?php endif; ?>
@@ -65,13 +65,15 @@ use kartik\date\DatePicker;
 
                     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-                    <span id="error-msg" class="hide"></span>
-                    <?= $form->field($model, 'phone')->textInput(['id'=>'phone-input', 'type'=>'tel']) ?>
-
+                    <?= $form->field($model, 'phone')->widget(PhoneInput::className(), [
+                        'jsOptions' => [
+                            'preferredCountries' => ['no', 'pl', 'ua'],
+                        ]
+                    ]); ?>
                     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                        <?= Html::submitButton('Lưu', ['class' => 'btn btn-success', 'id' => 'submitBtn']) ?>
                     </div>
 
                 </div>
@@ -94,48 +96,8 @@ use kartik\date\DatePicker;
                 fileReader.readAsDataURL(fileToLoad);
             }
         }
-
-
-
     </script>
-    <script>
-        const input = document.querySelector("#phone-input");
-        const errorMsg = document.querySelector("#error-msg");
-        const validMsg = document.querySelector("#valid-msg");
 
-        // here, the index maps to the error code returned from getValidationError - see readme
-        const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
-
-        // initialise plugin
-        const iti = window.intlTelInput(input, {
-            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
-        });
-
-        const reset = () => {
-            input.classList.remove("error");
-            errorMsg.innerHTML = "";
-            errorMsg.classList.add("hide");
-        };
-
-        // on click button: validate
-        input.addEventListener('blur', () => {
-            reset();
-            if (input.value.trim()) {
-                if (iti.isValidNumber()) {
-                } else {
-                    input.classList.add("error");
-                    const errorCode = iti.getValidationError();
-                    errorMsg.innerHTML = errorMap[errorCode];
-                    errorMsg.classList.remove("hide");
-                }
-            }
-        });
-
-        // on keyup / change flag: reset
-        input.addEventListener('change', reset);
-        input.addEventListener('keyup', reset);
-
-    </script>
     <?php ActiveForm::end(); ?>
 
 </div>

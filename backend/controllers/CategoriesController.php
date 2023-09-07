@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Categories;
 use common\models\Products;
+use yii\data\Pagination;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
@@ -72,6 +73,13 @@ class CategoriesController extends base\CategoriesController {
                 'query' => Categories::find()->where(['created_by' => Yii::$app->user->identity->username]),
             ]);
         }
+        $count = $dataProvider->getTotalCount();
+
+        // Tạo đối tượng Pagination với pageSize là 5
+        $pagination = new Pagination(['pageSize' => 5, 'totalCount' => $count]);
+
+        // Áp dụng phân trang vào query
+        $dataProvider->setPagination($pagination);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

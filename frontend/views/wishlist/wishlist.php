@@ -25,7 +25,7 @@ use frontend\models\Wishlist;
                                                                     padding: 0;
                                                                     text-transform: none;
                                                                     ">
-                                    <?= $total?> ảnh
+                                    <?= $total ?> ảnh
                                 </th>
                             </tr>
                             </thead>
@@ -93,7 +93,7 @@ use frontend\models\Wishlist;
         </div><!-- /.sigin-in-->
     </div>
     <div style="margin-top:15px"></div>
-    <?= \frontend\widgets\infoWidget::widget()?>
+    <?= \frontend\widgets\infoWidget::widget() ?>
 </div>
 
 <script src="../../frontend/web/products/js/jquery-1.11.1.min.js"></script>
@@ -102,38 +102,13 @@ use frontend\models\Wishlist;
 
 <script>
     function deleteWL(user, id) {
-        if (deleteWis(user, id)) {
-            $.get('<?= Url::toRoute(['wishlist/delete'])?>', {'id': id}, function (data) {
-                alert("thanh cong");
-            });
-
-        }
-
-    }
-
-    function deleteWis(id_user, id_products) {
-        var isFavorite = false;
-        $.ajax({
-            url: '<?= Url::toRoute(['wishlist/view-wis']) ?>',
-            type: 'GET',
-            dataType: 'json',
-            async: false,
-            success: function (response) {
-                console.log(response);
-                if (response.length > 0) {
-                    for (var i = 0; i < response.length; i++) {
-                        if (id_user == response[i]['id_user'] && id_products == response[i]['id_products']) {
-                            isFavorite = true;
-                            break;
-                        }
-                    }
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error(error);
+        $.get('<?= Url::toRoute(['wishlist/delete'])?>', {'id': id}, function (data) {
+            if (data == 1) {
+                alert('Xóa thành công');
+                location.reload();
             }
         });
-        return isFavorite;
     }
+</script>
 </script>
 

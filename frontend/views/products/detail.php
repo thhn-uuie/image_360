@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 ?>
 <head>
@@ -157,7 +158,7 @@ use yii\helpers\Url;
                                 </div>
 
                                 <div class="description-container m-t-20">
-                                    <?php echo $products->description ?>
+                                    <?php echo Html::decode($products->description) ?>
                                 </div><!-- /.description-container -->
 
                                 <!-- Pop up QR | 360 -->
@@ -266,7 +267,7 @@ use yii\helpers\Url;
 
             </div><!-- /.col -->
             <div class="clearfix"></div>
-
+<div class="overlay">
             <!-- Start Rate and Comments-->
             <div class="card" id="rate-cmt-form">
                 <div class="card-header" style="font-size: 25px"><strong>ĐÁNH GIÁ - BÌNH LUẬN SẢN PHẨM</strong></div>
@@ -381,7 +382,7 @@ use yii\helpers\Url;
 
     </div>
     <?= \frontend\widgets\infoWidget::widget() ?>
-
+    </div>
 </div><!-- /.row -->
 
 
@@ -408,6 +409,7 @@ if (!Yii::$app->user->isGuest) {
             } else {
                 $('#review_modal').toggleClass('show-form');
                 $('#rate-cmt-form').addClass('show-content');
+                $('body').addClass('overlay');
             }
         });
 
